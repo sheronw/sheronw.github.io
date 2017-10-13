@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://uplus5f7b.github.io/"/>
-  <updated>2017-10-13T18:10:22.518Z</updated>
+  <updated>2017-10-13T19:23:24.064Z</updated>
   <id>http://uplus5f7b.github.io/</id>
   
   <author>
@@ -15,6 +15,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Learning How to Learn笔记</title>
+    <link href="http://uplus5f7b.github.io/2017/10/13/learning/"/>
+    <id>http://uplus5f7b.github.io/2017/10/13/learning/</id>
+    <published>2017-10-13T19:21:52.000Z</published>
+    <updated>2017-10-13T19:23:24.064Z</updated>
+    
+    <content type="html"><![CDATA[<p>当初在Coursera随便看的公开课，然后总结了这么几句废话。</p><p>道理谁都懂，但实践起来又是另外一回事hhh</p><ul><li>要学会教会他人，自己写笔记整理也可以</li><li>学完的知识要及时回想，比如睡前脑子里过一遍</li><li>适当的休息</li><li>调动多种感官（突然想起来某个本子？？？）</li><li>考前深呼吸</li><li>考试的时候先做会儿难题，进入状态以后先做简单题再做难题</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;当初在Coursera随便看的公开课，然后总结了这么几句废话。&lt;/p&gt;
+&lt;p&gt;道理谁都懂，但实践起来又是另外一回事hhh&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;要学会教会他人，自己写笔记整理也可以&lt;/li&gt;
+&lt;li&gt;学完的知识要及时回想，比如睡前脑子里过一遍&lt;/li&gt;
+&lt;li&gt;适当的休
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>关于路径之类的一些乱七八糟的笔记</title>
+    <link href="http://uplus5f7b.github.io/2017/10/13/post/"/>
+    <id>http://uplus5f7b.github.io/2017/10/13/post/</id>
+    <published>2017-10-13T19:20:17.000Z</published>
+    <updated>2017-10-13T19:20:58.727Z</updated>
+    
+    <content type="html"><![CDATA[<p>显示当前目录下在的东西：ls<br>清空命令行上面的显示：cls<br>用户主目录~<br>根目录/<br>当前目录./<br>上一级目录../<br>进入到某一目录：cd<br>创建目录：mkdir<br>移动目录or文件：mv 源 目标<br>复制目录or文件： cp 源 目标<br>删除目录or文件： rm</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;显示当前目录下在的东西：ls&lt;br&gt;清空命令行上面的显示：cls&lt;br&gt;用户主目录~&lt;br&gt;根目录/&lt;br&gt;当前目录./&lt;br&gt;上一级目录../&lt;br&gt;进入到某一目录：cd&lt;br&gt;创建目录：mkdir&lt;br&gt;移动目录or文件：mv 源 目标&lt;br&gt;复制目录or文件： cp 
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
