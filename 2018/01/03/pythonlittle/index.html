@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> /父与子的编程之旅：与小卡特一起学Python/ 不完全笔记 · U+5F7B</title><meta name="description" content="/父与子的编程之旅：与小卡特一起学Python/ 不完全笔记 - U+5F7B"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://uplus5f7b.github.io/atom.xml" title="U+5F7B"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://twitter.com/Uplus5F7B" target="_blank" class="nav-list-link">TWITTER</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">/父与子的编程之旅：与小卡特一起学Python/ 不完全笔记</h1><div class="post-info">Jan 3, 2018</div><div class="post-content"><blockquote>
+<p>花了一学期水了门Python，结果发现讲的内容还没给小孩看的课本多，所以圣诞假的时候瞄了几眼写了点笔记。<br>教程中使用的是2.7版本</p>
+</blockquote>
+<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><h3 id="向列表添加元素"><a href="#向列表添加元素" class="headerlink" title="向列表添加元素"></a>向列表添加元素</h3><ul>
+<li>append()<ul>
+<li>extend()</li>
+</ul>
+</li>
+<li>insert(index,element)<h3 id="从列表删除元素"><a href="#从列表删除元素" class="headerlink" title="从列表删除元素"></a>从列表删除元素</h3></li>
+<li>list.remove(element)</li>
+<li>del list[index]</li>
+<li>lastLetter = list.pop(index) //将列表中的元素挪走 留空时挪走最后一个<h3 id="搜索列表"><a href="#搜索列表" class="headerlink" title="搜索列表"></a>搜索列表</h3></li>
+<li>index = list.index(element)<h3 id="列表排序"><a href="#列表排序" class="headerlink" title="列表排序"></a>列表排序</h3></li>
+<li>list.sort()</li>
+<li>list.reverse() //逆置</li>
+<li>list.sort(reverse=True) //逆向排序</li>
+<li>sortedList = sorted(list)</li>
+</ul>
+<h2 id="Dictionary"><a href="#Dictionary" class="headerlink" title="Dictionary"></a>Dictionary</h2><ul>
+<li>value = dictionary.values()</li>
+</ul>
+<h2 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h2><ul>
+<li>global var //强制全局</li>
+</ul>
+<h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><ul>
+<li>object.attribute</li>
+<li>object.method()</li>
+</ul>
+<h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2><ul>
+<li>import my_module</li>
+<li>from my_module import my_function</li>
+<li>from my_module import* //从模块导入所有名字</li>
+<li>time<ul>
+<li>sleep(seconds)</li>
+</ul>
+</li>
+</ul>
+<h2 id="打印格式化与字符串"><a href="#打印格式化与字符串" class="headerlink" title="打印格式化与字符串"></a>打印格式化与字符串</h2><h3 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h3><ul>
+<li>不换行：语句后加逗号or字符串间用加号连接</li>
+<li>换行符：\n<h3 id="水平间隔制表符（Tab）"><a href="#水平间隔制表符（Tab）" class="headerlink" title="水平间隔制表符（Tab）"></a>水平间隔制表符（Tab）</h3></li>
+<li>制表符：\t</li>
+<li>print “s1/ts2” //s2部分将挪到下一个制表点（每八个字符为一个制表快）<h3 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h3></li>
+<li>print “123’,str,’456”</li>
+<li>浮点数格式化时四舍五入，整数格式化时直接去掉多余位</li>
+<li>%+f //总是显示正负号</li>
+<li>%e or %E //数字的e记法</li>
+<li>%g or %G //自动选择浮点数或E记法</li>
+<li>打印百分号： %%</li>
+<li>format()<br>  print ‘I got {0:.1f} in math, {1:.1f} in science’.format(math,science)</li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/2017/10/13/twn/" class="next">NEXT</a></div><div class="copyright"><p>© 2017 - 2018 <a href="http://uplus5f7b.github.io">U+5F7B</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
