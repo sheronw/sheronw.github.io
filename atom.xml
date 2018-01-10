@@ -1,27 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Sheron W</title>
+  <title>SheronW</title>
   
   
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sheronw.github.io/"/>
-  <updated>2018-01-04T19:32:12.898Z</updated>
+  <updated>2018-01-10T03:56:17.307Z</updated>
   <id>http://sheronw.github.io/</id>
   
   <author>
-    <name>Sheron W</name>
+    <name>SheronW</name>
     
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Introduction to Git for Data Science�ʼ�</title>
+    <link href="http://sheronw.github.io/2018/01/09/IntroToGit/"/>
+    <id>http://sheronw.github.io/2018/01/09/IntroToGit/</id>
+    <published>2018-01-10T03:54:46.000Z</published>
+    <updated>2018-01-10T03:56:17.307Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>ˢIns��ʱ�򿴵���<a href="https://www.datacamp.com/courses/introduction-to-git-for-data-science" target="_blank" rel="external">����</a>hhh������ʱ�����͵㿪��</p></blockquote><h2 id="Basic-Workflow"><a href="#Basic-Workflow" class="headerlink" title="Basic Workflow"></a>Basic Workflow</h2><ol><li>version control system</li></ol><ul><li>���治ͬ�汾</li><li>��Ŀ����</li><li>��ֹ�ظ�����</li></ul><ol><li>repository</li></ol><ul><li>�ļ�</li><li>ֱ�ӱ༭��·��</li><li>������Ϣ����Ŀ¼�е�.git��<br><em>all of the information about a repository is stored under its root directory�����ļ���ͬһ�㼶��</em></li></ul><ol><li><p><strong>git status</strong> #�ϴθ���ʱ�������ļ��б�</p></li><li><p><strong>git diff (filename/depository)</strong> #compare the file as it currently is to what you last saved<br><strong>git diff -r HEAD filename</strong> #���ϴθ��¶Ա�</p></li><li><p><strong>git add filename</strong> #add a file to staging area</p></li><li><p><strong>git commit -m “Messeage”</strong></p></li><li><p><strong>git log (path)</strong> #view the log of the project’s history<br>Press the space bar to go down a page or the ‘q’ key to quit</p></li></ol><a id="more"></a><h2 id="Repositories"><a href="#Repositories" class="headerlink" title="Repositories"></a>Repositories</h2><ol><li><strong>git show hash</strong> #��ʾĳ��commit����Ϣ</li><li>��ǩ<strong>HEAD</strong>��ʾ������һ��commit����ǩ<strong>HEAD~1</strong>��ʾ����һ��֮ǰ��commit���Դ�����</li><li><strong>git annotate file</strong> #shows who made the last change to each line of a file and when</li><li><strong>git diff ID1..ID2</strong></li><li>�����ض��ļ����ڸ�Ŀ¼�½� <strong>.gitignore</strong></li><li><strong>git clean -n</strong> #��ʾ·����û��׷�ٵ��ļ�<br><strong>git clean -f</strong> #ɾ����Щ�ļ�</li><li><strong>git config –list</strong><br>- -system: settings for every user on this computer.<br>- -global: settings for every one of your projects.<br>- -local: settings for one specific project.</li></ol><h2 id="Undo"><a href="#Undo" class="headerlink" title="Undo"></a>Undo</h2><ol><li><strong>git checkout – filename</strong> #discard the changes that have not yet been staged</li><li><strong>git reset HEAD filename</strong> #undo changes that have been staged, to the state you last staged</li><li><strong>git checkout ĳ��commit��hash �ļ���</strong> #��ĳ���ļ��ָ���ĳ��commit��״̬</li><li>the act of restoring the file is saved as another commit</li><li><strong>git reset HEAD (path)</strong></li><li><strong>git checkout – (path)</strong></li><li>·��.�������и�·���Լ����µ��ļ�</li></ol><h2 id="Working-with-branches"><a href="#Working-with-branches" class="headerlink" title="Working with branches"></a>Working with branches</h2><ol><li><strong>git branch</strong> #list all of the branches in a repository</li><li><strong>git diff branch-1..branch-2</strong> #shows the difference between two branches</li><li><strong>git checkout branch-name</strong> #switch to another branch(Ҫcommit���е�change)</li><li><strong>git rm file</strong> #delete file</li><li><strong>git checkout -b branch-name</strong> #create a new branch</li><li><strong>git merge source destination</strong> #merge to branch(incorporates the changes made to the source branch into the destination branch)</li><li>����mergeʱ������conflict����ôʹ��<strong>git status</strong>���ҳ��������ļ�Ȼ���޸ģ�<strong>nano filename</strong>��</li></ol><h2 id="Collaborating"><a href="#Collaborating" class="headerlink" title="Collaborating"></a>Collaborating</h2><ol><li><strong>git init project-name</strong> #create a new repository</li><li>������Ҫ��repository���½�repository</li><li>��·����<strong>git init</strong>��<strong>git init ·��</strong>�����е�projectת��Ϊrepository</li><li><strong>git clone URL or file:///existing/project newRepository</strong> #clone a repository</li><li><strong>git remote</strong> #list the names of repository��s remotes</li><li><strong>git remote -v</strong> #shows the remote’s URLs</li><li><strong>git remote add remote-name URL</strong> #add more remote</li><li><strong>git remote rm remote-name</strong> #remove remote</li><li><strong>git pull remote branch</strong> #gets everything in branch in the remote repository identified by remote and merges it into the current branch of your local repository</li><li><strong>git push remote-name branch-name</strong> #pushes the contents of your branch branch-name into a branch with the same name in the remote repository associated with remote-name</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;ˢIns��ʱ�򿴵���&lt;a href=&quot;https://www.datacamp.com/courses/introduction-to-git-for-data-science&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;����&lt;/a&gt;hhh������ʱ�����͵㿪��&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;Basic-Workflow&quot;&gt;&lt;a href=&quot;#Basic-Workflow&quot; class=&quot;headerlink&quot; title=&quot;Basic Workflow&quot;&gt;&lt;/a&gt;Basic Workflow&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;version control system&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;���治ͬ�汾&lt;/li&gt;
+&lt;li&gt;��Ŀ����&lt;/li&gt;
+&lt;li&gt;��ֹ�ظ�����&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;repository&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;�ļ�&lt;/li&gt;
+&lt;li&gt;ֱ�ӱ༭��·��&lt;/li&gt;
+&lt;li&gt;������Ϣ����Ŀ¼�е�.git��&lt;br&gt;&lt;em&gt;all of the information about a repository is stored under its root directory�����ļ���ͬһ�㼶��&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;git status&lt;/strong&gt; #�ϴθ���ʱ�������ļ��б�&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;git diff (filename/depository)&lt;/strong&gt; #compare the file as it currently is to what you last saved&lt;br&gt;&lt;strong&gt;git diff -r HEAD filename&lt;/strong&gt; #���ϴθ��¶Ա�&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;git add filename&lt;/strong&gt; #add a file to staging area&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;git commit -m “Messeage”&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;git log (path)&lt;/strong&gt; #view the log of the project’s history&lt;br&gt;Press the space bar to go down a page or the ‘q’ key to quit&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="notetaking" scheme="http://sheronw.github.io/categories/notetaking/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>不知道应该起什么标题的纽约纪行</title>
+    <link href="http://sheronw.github.io/2018/01/05/Christmas2017InNYC/"/>
+    <id>http://sheronw.github.io/2018/01/05/Christmas2017InNYC/</id>
+    <published>2018-01-05T20:35:12.000Z</published>
+    <updated>2018-01-10T03:53:08.201Z</updated>
+    
+    <content type="html"><![CDATA[<p>今年圣诞假也就两个周，和过年的时间也对不上，所以自认为并没有回国的需要（最主要的是今年入了Pixel 2，还有各种在墙外用习惯了的服务，不想回国再折腾），于是和几个中国留学生合计了一下，发现去趟纽约的来回路费+Airbnb多人拼房的费用比来回机票要便宜点儿，就在距离出发一两周前十分敷衍地把所有东西订完了（其实早点定的话会更便宜……）。</p><p>不过，写点什么好呢，只好翻翻自己没写几个字的流水账本和（第一个周）同行的女生在微博发的Vlog（因为本人在里面有正脸……所以就不发URL了hhhh），Vlog什么的似乎最近很流行的样子，看起来感觉也很好，但我连照片都懒得拍，拍视频什么的太难为我了QvQ</p><a id="more"></a><p>然后才发现……因为我们这一行人都懒散没规划，回过头来看看这两个周的假期并！没！有！逛！多！少！地！方！也就吃得还挺好（和我们学校typical American food相比），日常就是睡到中午，下午逛一会儿，晚上回去各自抱着各自的电脑熬到下半夜，再加上我们都是几个没什么仪式感的人，所以圣诞节和元旦也就跟没过差不多，甚至比平时都敷衍。</p><p>其实之前一直觉得美国不美（和世界上绝大多数国家or地区比，真的），尤其是非自然景观，因为这是一个老牌的现代化国家，所以一切都是看起来旧旧的新东西，历史感不浓厚。目前唯一能够感受到历史厚重感的地方应该就是东部的没落工业地区吧，就和<em>迷河</em>或<em>Sally Face</em>里的场景，还有我在路上看到的大多数没有什么烟火气的小镇一样，充满着颓圮的气息，楼要不高不低，砖要红，周围要有杂草，天要阴——这是一种不太积极向上的美感，但也是我目前为止唯一觉得美国“漂亮”的地方（至于一些高大上的东西，摩天大楼还有高科技什么玩意儿的，放在哪个国家都一样，所以忽略不计）。</p><p>纽约也是这样，虽然不能算是没落，但你可以深切地体会到这里的 <strong>脏 乱 差</strong> ，莫名其妙杂乱无章的城市规划，无处不在的垃圾和污水，大冬天睡在路边的无家可归者，总是有股尿骚味的地铁站里跟你搭讪的流浪汉。虽然说是这么说，我还是觉得纽约是散发着独特的魅力的，但又说不出来到底为什么——也许她的居民可以随意布置自己的房子不用担心天际线和穿墙打洞，也许不论什么人都能来这儿呆着找机会不必担心自己是低端人口，即使是连英语都不会说的人。Big Apple的绰号的确不为过，这是一个纷繁复杂的万花筒。</p><p>不过说是纽约纪行，但主要的活动范围其实也就在曼哈顿，尤其是比较靠南的那一块儿，就是SOHO和东村附近。最开始的几天好像都在陪着他们逛街（之后的几天好像也在陪他们逛街），大概就是SOHO周遭的各种小店铺大店铺，然而其实我最大的花销就是为了晚上大家一起看电影而在APPLE Store买的mini porter to HDMI adpter……接近四十刀的价格感觉肉疼极了。其实可能是之前我在国内也没买过那些牌子，反正看了看价格也都不便宜，在H&amp;M买了个白色卫衣就三十多刀，我之前的卫衣明明是漫踪打折的时候花了软妹币七八十捞的hhh</p><p>然后好像我们一直都在逛街，去了世贸中心附近但完全没去911纪念馆一直在逛街，第五大道洛克菲勒广场之类的当然更是逛街，本来打算去西边的高线公园但其实也没去成也是在附近逛街……可是因为去的时候只带了个书包连箱子都没带，回来的时候也只带了个书包，也就买了件卫衣买了条裤子，回来的时候都穿身上了，也没有什么购物体验可以分享（这次旅行之后我发现我之前真的对男孩子们的购买力和逛街力有很大的误会……可以说是纠正了刻板印象了）hhh</p><p>公园的话，好像去了bryant park的那个冬天的集市，但仅仅是路过所以根本没逛，再就是大名鼎鼎的central park，正好去的那天下了挺大的雪，虽然人不多但真的是白茫茫一片啥都没有如果是夏天草木繁盛的时候去应该会很热闹吧，但冬天真的没什么可看的。</p><p>纽约本来有无数值得去的博物馆艺术馆啊之类的，可是我们也就去了三个，大都会（MET），现代艺术（MoMA）还有自然历史博物馆（其实就是最著名的那三个）。</p><p>MET真的很棒，之前初中毕业旅行的时候就去过一次，而这次旅行有四分之一的时间都贡献给了它，尽管如此去了这么多次常规展览也可能看了不到四分之一QvQ说到逛博物馆，我一直都特别讨厌那种去最知名的几个展品前面拍好照绕了一圈就算是去过了的那种游览方式，可是如果要仔细观察每一个展品，把所有的说明都看完，听一遍官方解说再把各种历史背景了解完的话，估计一天一个展厅都看不完吧hhh这次正好同行的都是文科生，听他们一边解释一边讨论希腊罗马古埃及历史还有各种兵器的演变感觉还是挺有意思的。</p><p>在某些展厅可以看到外面中央公园的方尖碑，再加上在埃及展馆神庙前面有当初碑下放着的螃蟹，于是出于好奇就冒着严寒去看了一下。这个方尖碑和华盛顿特区那个美国人仿造的不一样，倒是埃及人公元前15世纪造的真货，换了好几个王朝挪了好几个地方，到托勒密王朝的时候有了个名字叫克娄巴特拉之针，反正辗转之后被送到了美国。一直都是这样，政府了一个古老又辉煌的文明之后就把那边的宝贝搬回家，和当年圆明园似的。估计古埃及那帮人也没想到过自己出于某种愿望建造的方尖碑会被挪好几个地方，从一个帝国到另一个帝国，知道几千年后远渡重洋，来到一个年轻又野心勃勃的国家，被刻上他们的文字和他们的愿望，放在公园里面供来自全世界的人瞻仰。他们可能更没想到在几千年后，新世界的人们又仿照方尖碑的式样又造了个方尖碑，然后给予了什么别的愿望。</p><p>自然历史博物馆的话，我也就逛了半天，门口有老罗斯福的雕像，卖票的地方还有老罗的语录，看样子应该是和（喜欢自然历史的）老罗有点关系了。虽然进去之后发现基本上全是标本………………可能在之前的时代里看标本是一件挺有意思的事情，但现在各式各样的资源这么多，看标本就有点无聊了。不过人类学方面的一些展馆都挺有意思，我看了大洋洲和亚洲的部分，之前一直不知道人类学都是学啥的，看完了之后大概有了一点印象hhh</p><p>虽然MoMA有很多著名的展品，但恕我直言，这个品牌营销做的十分不错，首先MoMA这四个单词就已经是一种符号一样的品牌形象了，还有那么多周边产品和Store（是的，感觉这栋楼已经被周边店给充满了，而除了楼马路对面还有一家），最主要的是楼下的那家餐馆还是米其林（当然我没去）……所以门票也是这几个里面最贵的，因为另外两个博物馆都是捐赠制每次不要脸地交一美刀就进去了hhh我去的那一天MoMA挤满了人，完全没有看下去的兴致。其他的展品倒是名气不大，但我至少硬着头皮看不懂装懂地看完了，可是五楼的那些画，本来值得好好看看，但看着一堆人排队在前面合影我就……嘛，所以梵高的星空我连看都没看，毕加索马蒂斯夏加尔的一些之前在画册上见到的我还是远远观望了一下。有意思的是MoMA的门票可以兑换一张楼下MoMA电影院的票，我看的是<em>Smithereens</em>，1982年的片子，很嬉皮士歌很好听，虽然和展品一样看不懂。</p><p>其实这次旅行花销最多的就是吃，主要是吃一些在我们村里吃不到的东西，比如中餐和日料，我们也没有去找什么推荐都是在路边随便找的店铺，最主要的是我……也感受不出来好吃不好吃，应该算是好吃吧，但就是贵极了，基本上都是把美元当人民币花的节奏。吃过一次法餐，还是从MET出来在上东区走投无路吃的（虽然我觉得还蛮好吃的）。结果就是最后几天我们都吃土了，天天吃burger king和subway……</p><p>最后说下纽约的地铁，其实感觉没有网上说的那么乱，uptown往北走downtown往南走，分清楚local和express这两种车，再就是仔细听广播还有多注意观察各种指示牌，反正我倒是没有遇到什么大问题。治安的话，即使是午夜地铁里也挤满了人……虽然还是有各种奇奇怪怪的人。卖艺的倒是挺多，虽然可以说是噪音污染但大部分时间都感觉很有feel，一想到北京地铁的卖艺人就觉得有点扎心。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今年圣诞假也就两个周，和过年的时间也对不上，所以自认为并没有回国的需要（最主要的是今年入了Pixel 2，还有各种在墙外用习惯了的服务，不想回国再折腾），于是和几个中国留学生合计了一下，发现去趟纽约的来回路费+Airbnb多人拼房的费用比来回机票要便宜点儿，就在距离出发一两周前十分敷衍地把所有东西订完了（其实早点定的话会更便宜……）。&lt;/p&gt;
+&lt;p&gt;不过，写点什么好呢，只好翻翻自己没写几个字的流水账本和（第一个周）同行的女生在微博发的Vlog（因为本人在里面有正脸……所以就不发URL了hhhh），Vlog什么的似乎最近很流行的样子，看起来感觉也很好，但我连照片都懒得拍，拍视频什么的太难为我了QvQ&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="recording" scheme="http://sheronw.github.io/categories/recording/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>/父与子的编程之旅：与小卡特一起学Python/ 不完全笔记</title>
     <link href="http://sheronw.github.io/2018/01/03/pythonlittle/"/>
     <id>http://sheronw.github.io/2018/01/03/pythonlittle/</id>
     <published>2018-01-04T00:10:32.000Z</published>
-    <updated>2018-01-04T19:32:12.898Z</updated>
+    <updated>2018-01-10T03:47:43.794Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>花了一学期水了门Python，结果发现讲的内容还没给小孩看的课本多，所以圣诞假的时候瞄了几眼写了点笔记。<br>教程中使用的是2.7版本</p></blockquote><h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><h3 id="向列表添加元素"><a href="#向列表添加元素" class="headerlink" title="向列表添加元素"></a>向列表添加元素</h3><ul><li>append()<ul><li>extend()</li></ul></li><li>insert(index,element)<h3 id="从列表删除元素"><a href="#从列表删除元素" class="headerlink" title="从列表删除元素"></a>从列表删除元素</h3></li><li>list.remove(element)</li><li>del list[index]</li><li>lastLetter = list.pop(index) //将列表中的元素挪走 留空时挪走最后一个<h3 id="搜索列表"><a href="#搜索列表" class="headerlink" title="搜索列表"></a>搜索列表</h3></li><li>index = list.index(element)<h3 id="列表排序"><a href="#列表排序" class="headerlink" title="列表排序"></a>列表排序</h3></li><li>list.sort()</li><li>list.reverse() //逆置</li><li>list.sort(reverse=True) //逆向排序</li><li>sortedList = sorted(list)</li></ul><h2 id="Dictionary"><a href="#Dictionary" class="headerlink" title="Dictionary"></a>Dictionary</h2><ul><li>value = dictionary.values()</li></ul><h2 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h2><ul><li>global var //强制全局</li></ul><h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><ul><li>object.attribute</li><li>object.method()</li></ul><h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2><ul><li>import my_module</li><li>from my_module import my_function</li><li>from my_module import* //从模块导入所有名字</li><li>time<ul><li>sleep(seconds)</li></ul></li></ul><h2 id="打印格式化与字符串"><a href="#打印格式化与字符串" class="headerlink" title="打印格式化与字符串"></a>打印格式化与字符串</h2><h3 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h3><ul><li>不换行：语句后加逗号or字符串间用加号连接</li><li>换行符：\n<h3 id="水平间隔制表符（Tab）"><a href="#水平间隔制表符（Tab）" class="headerlink" title="水平间隔制表符（Tab）"></a>水平间隔制表符（Tab）</h3></li><li>制表符：\t</li><li>print “s1/ts2” //s2部分将挪到下一个制表点（每八个字符为一个制表快）<h3 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h3></li><li>print “123’,str,’456”</li><li>浮点数格式化时四舍五入，整数格式化时直接去掉多余位</li><li>%+f //总是显示正负号</li><li>%e or %E //数字的e记法</li><li>%g or %G //自动选择浮点数或E记法</li><li>打印百分号： %%</li><li>format()<br>  print ‘I got {0:.1f} in math, {1:.1f} in science’.format(math,science)</li></ul>]]></content>
     
@@ -45,7 +116,7 @@
     <link href="http://sheronw.github.io/2017/10/13/twn/"/>
     <id>http://sheronw.github.io/2017/10/13/twn/</id>
     <published>2017-10-13T19:35:12.000Z</published>
-    <updated>2017-10-13T19:49:32.545Z</updated>
+    <updated>2018-01-10T03:51:59.277Z</updated>
     
     <content type="html"><![CDATA[<p><em>只有第一章有认真读，越到后面越不认真，最后直接放弃了hmm</em></p><a id="more"></a><h3 id="第一篇-论劳动生产力提高的原因，以及论劳动产品在不同阶层的人中间自然分配的顺序"><a href="#第一篇-论劳动生产力提高的原因，以及论劳动产品在不同阶层的人中间自然分配的顺序" class="headerlink" title="第一篇 论劳动生产力提高的原因，以及论劳动产品在不同阶层的人中间自然分配的顺序"></a>第一篇 论劳动生产力提高的原因，以及论劳动产品在不同阶层的人中间自然分配的顺序</h3><p>亚当·斯密第一次定义了生产的三大要素：劳动、土地和资本，在他看来，是资本——而不是其他——带来了市场进而劳动分工的扩展，资本的投入导致市场扩张，而后者反过来也带来更多的利润和投资，所谓的“资本主义”便是从这个定义延展出来的概念。</p><p>当人们的全部注意力集中在单独一个目标上，而不是分散在许许多多的事物上时，他们就更有可能发现比较容易和比较迅捷地实现任何目的的方法。</p><p>经常去参观这些制造业的人，常常会看到一些非常巧妙的机器，它们是普通劳动者为了便利和加快他们自己承担的那部分工作而发明出来的。</p><p>劳动分工的结果之一在于，每个劳动者产出的产品，除了自给自足之外，还有多余的产品可以用于等价交换。普遍的富裕就这样自动扩散到所有不同阶层中了。</p><p>哎呀，假如我们考察一下所有这些东西，看一看每一种都要使用多少种不同的劳动，我们就会了解到，没有成千上万人的帮助和合作，连一个文明社会中最卑微的劳动者，都不可能得到他日常所使用的那种平常简单（即便是我们臆想的那种平常简单）的生活用品。</p><p>由于确定能拿自己劳动产出的所有剩余物，也即超出自己消费的那部分产出，去交换自己所需要的他人劳动产出的剩余部分，这就鼓励每一个人去从事一种专门的职业，鼓励每一个人培养和完善他可能拥有的从事这一职业的才能或天资。</p><p>劳动分工源自相互交换的力量，分工的程度必然总是受限于这一力量的大小，换言之，即受限于市场的规模。</p><p>我们可以发现，“价值”一词有两种不同的含义：有时表示某一特定物品的效用，有时又表示占有该物品时所带来的购买其他货物的能力。前者可以称为“使用价值”，后者可以称为“交换价值”。具有最大使用价值的东西，常常很少或根本没有交换价值；反之，具有最大的交换价值的东西，常常很少或根本没有使用价值。</p><p>任何商品的价值，对于占有它但不愿自己使用或消费而是用来交换其他产品的人来说，等于该商品能使他购买或支配的劳动的数量。因此，劳动是衡量一切商品交换价值的尺度。</p><p>劳动是为一切东西支付的最初的价格，是初始购买货币。</p><p>拥有财富立即地、直接地给她带来的权力是购买力，即一种对市场上所有劳动或所有劳动产品的支配力。</p><p>一旦资本在个别人手中积聚起来，他们其中的一些人就会自然用之来雇佣勤勉的人民劳作，并为他们提供原材料和生活资料，目的是通过劳动产品的售卖以及从他们的劳动对原材料价值的增加中获得利润。</p><p>工人们附加在原材料上的价值分成了两个部分：一部分用来支付工人的工资，另一部分支付雇主的利润，作为他垫付原料和工资的全部资本的报偿。</p><p>劳动不仅衡量价格中分解成为劳动工资的那一部分的价值，而且也衡量其分解成为地租和利润的那两部分的价值。</p><p>绝大多数商品的价格都由三部分组成：劳动者的工资、地租、资本家的利润。当然，牲畜、机器的损耗也可以直接或最终分解为地租、劳动和利润这三部分。</p><p>雇佣劳动是资本存在的前提，如果没有无产者出卖劳动力，资本就不会产生。</p><p>引起劳动工资上升的，不是国民财富的实际大小，而是它的不断增长。因此，劳动工资最高的，不是在最富的国家，而是在最兴旺发达或者说致富最快的国家。</p><p>资本的增加，会提高工资，也倾向于降低利润。</p><p>地租，作为使用土地所支付的价格，自然是承租人在土地的实际状况下所能支付的最高价格。</p><p>土地初级产物中的有些部分的真实价格的上升，最初是扩大改良和耕种的结果，而后又成为改良和耕种进一步扩大的原因。</p><p>所有劳动生产力中的改良都会直接降低制造品的真实价格，并会间接提高土地的真实地租。</p><p>商人的利益总是要扩大市场，缩小竞争的范围。</p><p>这些建议是来自这样一个阶层的人，他们的利益从来不和公共利益完全一致，他们会为了获得利益而欺骗甚至压迫公众，在许多场合下，他们也因此确实欺骗和压迫了公众。</p><h3 id="第二篇-论存货的性质、积累和使用"><a href="#第二篇-论存货的性质、积累和使用" class="headerlink" title="第二篇 论存货的性质、积累和使用"></a>第二篇 论存货的性质、积累和使用</h3><p>每个国家的劳动数量不仅随使用劳动的存货增加而增加，而且由于上述增加的结果，相同数量的劳动能完成数量大得多的工作。</p><p>资本可以用来生产、制造或购买货物，然后再将其卖出以取得利润。</p><p>资本可以用来改良土地、购买机器或生产用的工具，或被用作其他无须易主或流通就能提供收入或利润东西。</p><p>每年能再任何一国被使用的货币数量，一定是由每年在该国流通的消费品的价值决定的。</p><p>个体的收入可以用于：各种即时消费之上——那些某天的支出花费不能减轻或支持另一天的支出花费的消费；还可以用于比较耐久，因而可以积累起来的东西之上——某天的支出可以减少或支持和提高另一天的支出。</p><p>用于耐用商品的花销，不仅有利于积累，而且有利于节俭。</p><p>资本可以用作四种用途：第一，用以获取社会上每年所需使用和消费的天然产物；第二，用来制造和准备这些天然产物，以供直接使用和消费；第三，将天然产物和制成品从充裕的地方运往缺乏的地方；第四，将天然产物和制成品分成较小的部分，以适应所需之人的随时需求。按照第一种方法使用的，是所有从事土地、矿藏和渔业的改良或耕作的人的资本；按照第二种方法使用的，是所有制造厂主的资本；按照第三种方法使用的，是所有批发商的资本；按照第四种方法使用的，是所有零售商的资本。</p><p>当任何一个产业部门的产出超过了本国的需求时，剩余的部分必须被送往国外，交换一些本国需要的东西。没有这种出口，本国的一部分生产性劳动必然会停止，而年产物的价值也会减少。</p><p>当一国资本增加到这种程度，以致不能全部用来供应本国消费和支持本国生产性劳动时，其剩余部分自然会流入运输贸易，用来为其他国家履行相同的职能。</p><h3 id="第三篇-论不同国家中不同的财富增长过程"><a href="#第三篇-论不同国家中不同的财富增长过程" class="headerlink" title="第三篇 论不同国家中不同的财富增长过程"></a>第三篇 论不同国家中不同的财富增长过程</h3><p>实际上，城市并不总是从其邻近的农村获取其全部生活资料，甚至不一定仰赖于其国内农村，而可以从遥远的国家获取；虽然这算不上一般规则的例外情形，但却导致不同时期、不同国家财富发展过程中的巨大差异。</p><p>商人一般有志于成为乡绅，而他们确实变成乡绅时，通常会成为最好的乡村改进者。商人习惯于把他的钱主要用于有利可图的项目上；而一个纯粹的乡绅，却习惯于把钱主要用在花销上。前者常常是看着他的钱从口袋中出去，然后又带着利润回来；后者一旦与钱分离，则很少会再期望能够见到它了。</p><h3 id="第四篇-论政治经济学体系"><a href="#第四篇-论政治经济学体系" class="headerlink" title="第四篇 论政治经济学体系"></a>第四篇 论政治经济学体系</h3><p>鼓励出口、抑制进口是重商主义提出的两大富国手段，但对于某些特定的商品，重商主义体系却遵循相反的政策：抑制出口，鼓励进口。可是，它宣称，其最终的目的总是一致的，都是要通过有利的贸易顺差使国家富饶。</p><p>消费是所有生产的唯一归宿和目标；只有当是为促进消费者的利益所必须时才应该去注意生产者的利益。</p>]]></content>
     
@@ -55,31 +126,7 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Learning How to Learn笔记</title>
-    <link href="http://sheronw.github.io/2017/10/13/learning/"/>
-    <id>http://sheronw.github.io/2017/10/13/learning/</id>
-    <published>2017-10-13T19:21:52.000Z</published>
-    <updated>2017-10-13T19:23:24.064Z</updated>
-    
-    <content type="html"><![CDATA[<p>当初在Coursera随便看的公开课，然后总结了这么几句废话。</p><p>道理谁都懂，但实践起来又是另外一回事hhh</p><ul><li>要学会教会他人，自己写笔记整理也可以</li><li>学完的知识要及时回想，比如睡前脑子里过一遍</li><li>适当的休息</li><li>调动多种感官（突然想起来某个本子？？？）</li><li>考前深呼吸</li><li>考试的时候先做会儿难题，进入状态以后先做简单题再做难题</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;当初在Coursera随便看的公开课，然后总结了这么几句废话。&lt;/p&gt;
-&lt;p&gt;道理谁都懂，但实践起来又是另外一回事hhh&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;要学会教会他人，自己写笔记整理也可以&lt;/li&gt;
-&lt;li&gt;学完的知识要及时回想，比如睡前脑子里过一遍&lt;/li&gt;
-&lt;li&gt;适当的休
-      
-    
-    </summary>
+      <category term="reading" scheme="http://sheronw.github.io/categories/reading/"/>
     
     
   </entry>
@@ -89,7 +136,7 @@
     <link href="http://sheronw.github.io/2017/10/13/post/"/>
     <id>http://sheronw.github.io/2017/10/13/post/</id>
     <published>2017-10-13T19:20:17.000Z</published>
-    <updated>2017-10-13T19:20:58.727Z</updated>
+    <updated>2018-01-10T03:47:55.091Z</updated>
     
     <content type="html"><![CDATA[<p>显示当前目录下在的东西：ls<br>清空命令行上面的显示：cls<br>用户主目录~<br>根目录/<br>当前目录./<br>上一级目录../<br>进入到某一目录：cd<br>创建目录：mkdir<br>移动目录or文件：mv 源 目标<br>复制目录or文件： cp 源 目标<br>删除目录or文件： rm</p>]]></content>
     
