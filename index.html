@@ -273,7 +273,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/09/IntroToGit/" itemprop="url">Introduction to Git for Data Science�ʼ�</a></h1>
+                <a class="post-title-link" href="/2018/01/09/IntroToGit/" itemprop="url">Introduction to Git for Data Science笔记</a></h1>
         
 
         <div class="post-meta">
@@ -347,28 +347,26 @@
       
         
           <blockquote>
-<p>ˢIns��ʱ�򿴵���<a href="https://www.datacamp.com/courses/introduction-to-git-for-data-science" target="_blank" rel="external">����</a>hhh������ʱ�����͵㿪��</p>
+<p>刷Ins的时候看到的<a href="https://www.datacamp.com/courses/introduction-to-git-for-data-science" target="_blank" rel="external">广告</a>hhh反正课时不长就点开了</p>
 </blockquote>
 <h2 id="Basic-Workflow"><a href="#Basic-Workflow" class="headerlink" title="Basic Workflow"></a>Basic Workflow</h2><ol>
-<li>version control system</li>
-</ol>
+<li><p>version control system</p>
 <ul>
-<li>���治ͬ�汾</li>
-<li>��Ŀ����</li>
-<li>��ֹ�ظ�����</li>
+<li>保存不同版本</li>
+<li>项目合作</li>
+<li>防止重复工作</li>
 </ul>
-<ol>
-<li>repository</li>
-</ol>
-<ul>
-<li>�ļ�</li>
-<li>ֱ�ӱ༭��·��</li>
-<li>������Ϣ����Ŀ¼�е�.git��<br><em>all of the information about a repository is stored under its root directory�����ļ���ͬһ�㼶��</em></li>
-</ul>
-<ol>
-<li><p><strong>git status</strong> #�ϴθ���ʱ�������ļ��б�</p>
 </li>
-<li><p><strong>git diff (filename/depository)</strong> #compare the file as it currently is to what you last saved<br><strong>git diff -r HEAD filename</strong> #���ϴθ��¶Ա�</p>
+<li><p>repository</p>
+<ul>
+<li>文件</li>
+<li>直接编辑的路径</li>
+<li>其他信息（根目录中的.git）<br><em>all of the information about a repository is stored under its root directory（和文件夹同一层级）</em></li>
+</ul>
+</li>
+<li><p><strong>git status</strong> #上次更改时保存的文件列表</p>
+</li>
+<li><p><strong>git diff (filename/depository)</strong> #compare the file as it currently is to what you last saved<br><strong>git diff -r HEAD filename</strong> #和上次更新对比</p>
 </li>
 <li><p><strong>git add filename</strong> #add a file to staging area</p>
 </li>
@@ -619,6 +617,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notetaking/" itemprop="url" rel="index">
+                    <span itemprop="name">notetaking</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -647,59 +667,22 @@
 
       
         
-          
-            <blockquote>
+          <blockquote>
 <p>花了一学期水了门Python，结果发现讲的内容还没给小孩看的课本多，所以圣诞假的时候瞄了几眼写了点笔记。<br>教程中使用的是2.7版本</p>
 </blockquote>
-<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><h3 id="向列表添加元素"><a href="#向列表添加元素" class="headerlink" title="向列表添加元素"></a>向列表添加元素</h3><ul>
-<li>append()<ul>
-<li>extend()</li>
+<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><ul>
+<li>向列表添加元素<br>append()<br>extend()<br>insert(index,element)</li>
+<li>从列表删除元素<br>list.remove(element)<br>del list[index]<br>lastLetter = list.pop(index) //将列表中的元素挪走 留空时挪走最后一个</li>
+<li>搜索列表<br>index = list.index(element)</li>
+<li>列表排序<br>list.sort()<br>list.reverse() //逆置<br>list.sort(reverse=True) //逆向排序<br>sortedList = sorted(list)</li>
 </ul>
-</li>
-<li>insert(index,element)<h3 id="从列表删除元素"><a href="#从列表删除元素" class="headerlink" title="从列表删除元素"></a>从列表删除元素</h3></li>
-<li>list.remove(element)</li>
-<li>del list[index]</li>
-<li>lastLetter = list.pop(index) //将列表中的元素挪走 留空时挪走最后一个<h3 id="搜索列表"><a href="#搜索列表" class="headerlink" title="搜索列表"></a>搜索列表</h3></li>
-<li>index = list.index(element)<h3 id="列表排序"><a href="#列表排序" class="headerlink" title="列表排序"></a>列表排序</h3></li>
-<li>list.sort()</li>
-<li>list.reverse() //逆置</li>
-<li>list.sort(reverse=True) //逆向排序</li>
-<li>sortedList = sorted(list)</li>
-</ul>
-<h2 id="Dictionary"><a href="#Dictionary" class="headerlink" title="Dictionary"></a>Dictionary</h2><ul>
-<li>value = dictionary.values()</li>
-</ul>
-<h2 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h2><ul>
-<li>global var //强制全局</li>
-</ul>
-<h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><ul>
-<li>object.attribute</li>
-<li>object.method()</li>
-</ul>
-<h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2><ul>
-<li>import my_module</li>
-<li>from my_module import my_function</li>
-<li>from my_module import* //从模块导入所有名字</li>
-<li>time<ul>
-<li>sleep(seconds)</li>
-</ul>
-</li>
-</ul>
-<h2 id="打印格式化与字符串"><a href="#打印格式化与字符串" class="headerlink" title="打印格式化与字符串"></a>打印格式化与字符串</h2><h3 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h3><ul>
-<li>不换行：语句后加逗号or字符串间用加号连接</li>
-<li>换行符：\n<h3 id="水平间隔制表符（Tab）"><a href="#水平间隔制表符（Tab）" class="headerlink" title="水平间隔制表符（Tab）"></a>水平间隔制表符（Tab）</h3></li>
-<li>制表符：\t</li>
-<li>print “s1/ts2” //s2部分将挪到下一个制表点（每八个字符为一个制表快）<h3 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h3></li>
-<li>print “123’,str,’456”</li>
-<li>浮点数格式化时四舍五入，整数格式化时直接去掉多余位</li>
-<li>%+f //总是显示正负号</li>
-<li>%e or %E //数字的e记法</li>
-<li>%g or %G //自动选择浮点数或E记法</li>
-<li>打印百分号： %%</li>
-<li>format()<br>  print ‘I got {0:.1f} in math, {1:.1f} in science’.format(math,science)</li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/03/pythonlittle/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -933,6 +916,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notetaking/" itemprop="url" rel="index">
+                    <span itemprop="name">notetaking</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           

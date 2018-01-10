@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sheronw.github.io/"/>
-  <updated>2018-01-10T03:56:17.307Z</updated>
+  <updated>2018-01-10T04:16:56.715Z</updated>
   <id>http://sheronw.github.io/</id>
   
   <author>
@@ -17,39 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Introduction to Git for Data Science�ʼ�</title>
+    <title>Introduction to Git for Data Science笔记</title>
     <link href="http://sheronw.github.io/2018/01/09/IntroToGit/"/>
     <id>http://sheronw.github.io/2018/01/09/IntroToGit/</id>
     <published>2018-01-10T03:54:46.000Z</published>
-    <updated>2018-01-10T03:56:17.307Z</updated>
+    <updated>2018-01-10T04:16:56.715Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>ˢIns��ʱ�򿴵���<a href="https://www.datacamp.com/courses/introduction-to-git-for-data-science" target="_blank" rel="external">����</a>hhh������ʱ�����͵㿪��</p></blockquote><h2 id="Basic-Workflow"><a href="#Basic-Workflow" class="headerlink" title="Basic Workflow"></a>Basic Workflow</h2><ol><li>version control system</li></ol><ul><li>���治ͬ�汾</li><li>��Ŀ����</li><li>��ֹ�ظ�����</li></ul><ol><li>repository</li></ol><ul><li>�ļ�</li><li>ֱ�ӱ༭��·��</li><li>������Ϣ����Ŀ¼�е�.git��<br><em>all of the information about a repository is stored under its root directory�����ļ���ͬһ�㼶��</em></li></ul><ol><li><p><strong>git status</strong> #�ϴθ���ʱ�������ļ��б�</p></li><li><p><strong>git diff (filename/depository)</strong> #compare the file as it currently is to what you last saved<br><strong>git diff -r HEAD filename</strong> #���ϴθ��¶Ա�</p></li><li><p><strong>git add filename</strong> #add a file to staging area</p></li><li><p><strong>git commit -m “Messeage”</strong></p></li><li><p><strong>git log (path)</strong> #view the log of the project’s history<br>Press the space bar to go down a page or the ‘q’ key to quit</p></li></ol><a id="more"></a><h2 id="Repositories"><a href="#Repositories" class="headerlink" title="Repositories"></a>Repositories</h2><ol><li><strong>git show hash</strong> #��ʾĳ��commit����Ϣ</li><li>��ǩ<strong>HEAD</strong>��ʾ������һ��commit����ǩ<strong>HEAD~1</strong>��ʾ����һ��֮ǰ��commit���Դ�����</li><li><strong>git annotate file</strong> #shows who made the last change to each line of a file and when</li><li><strong>git diff ID1..ID2</strong></li><li>�����ض��ļ����ڸ�Ŀ¼�½� <strong>.gitignore</strong></li><li><strong>git clean -n</strong> #��ʾ·����û��׷�ٵ��ļ�<br><strong>git clean -f</strong> #ɾ����Щ�ļ�</li><li><strong>git config –list</strong><br>- -system: settings for every user on this computer.<br>- -global: settings for every one of your projects.<br>- -local: settings for one specific project.</li></ol><h2 id="Undo"><a href="#Undo" class="headerlink" title="Undo"></a>Undo</h2><ol><li><strong>git checkout – filename</strong> #discard the changes that have not yet been staged</li><li><strong>git reset HEAD filename</strong> #undo changes that have been staged, to the state you last staged</li><li><strong>git checkout ĳ��commit��hash �ļ���</strong> #��ĳ���ļ��ָ���ĳ��commit��״̬</li><li>the act of restoring the file is saved as another commit</li><li><strong>git reset HEAD (path)</strong></li><li><strong>git checkout – (path)</strong></li><li>·��.�������и�·���Լ����µ��ļ�</li></ol><h2 id="Working-with-branches"><a href="#Working-with-branches" class="headerlink" title="Working with branches"></a>Working with branches</h2><ol><li><strong>git branch</strong> #list all of the branches in a repository</li><li><strong>git diff branch-1..branch-2</strong> #shows the difference between two branches</li><li><strong>git checkout branch-name</strong> #switch to another branch(Ҫcommit���е�change)</li><li><strong>git rm file</strong> #delete file</li><li><strong>git checkout -b branch-name</strong> #create a new branch</li><li><strong>git merge source destination</strong> #merge to branch(incorporates the changes made to the source branch into the destination branch)</li><li>����mergeʱ������conflict����ôʹ��<strong>git status</strong>���ҳ��������ļ�Ȼ���޸ģ�<strong>nano filename</strong>��</li></ol><h2 id="Collaborating"><a href="#Collaborating" class="headerlink" title="Collaborating"></a>Collaborating</h2><ol><li><strong>git init project-name</strong> #create a new repository</li><li>������Ҫ��repository���½�repository</li><li>��·����<strong>git init</strong>��<strong>git init ·��</strong>�����е�projectת��Ϊrepository</li><li><strong>git clone URL or file:///existing/project newRepository</strong> #clone a repository</li><li><strong>git remote</strong> #list the names of repository��s remotes</li><li><strong>git remote -v</strong> #shows the remote’s URLs</li><li><strong>git remote add remote-name URL</strong> #add more remote</li><li><strong>git remote rm remote-name</strong> #remove remote</li><li><strong>git pull remote branch</strong> #gets everything in branch in the remote repository identified by remote and merges it into the current branch of your local repository</li><li><strong>git push remote-name branch-name</strong> #pushes the contents of your branch branch-name into a branch with the same name in the remote repository associated with remote-name</li></ol>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>刷Ins的时候看到的<a href="https://www.datacamp.com/courses/introduction-to-git-for-data-science" target="_blank" rel="external">广告</a>hhh反正课时不长就点开了</p></blockquote><h2 id="Basic-Workflow"><a href="#Basic-Workflow" class="headerlink" title="Basic Workflow"></a>Basic Workflow</h2><ol><li><p>version control system</p><ul><li>保存不同版本</li><li>项目合作</li><li>防止重复工作</li></ul></li><li><p>repository</p><ul><li>文件</li><li>直接编辑的路径</li><li>其他信息（根目录中的.git）<br><em>all of the information about a repository is stored under its root directory（和文件夹同一层级）</em></li></ul></li><li><p><strong>git status</strong> #上次更改时保存的文件列表</p></li><li><p><strong>git diff (filename/depository)</strong> #compare the file as it currently is to what you last saved<br><strong>git diff -r HEAD filename</strong> #和上次更新对比</p></li><li><p><strong>git add filename</strong> #add a file to staging area</p></li><li><p><strong>git commit -m “Messeage”</strong></p></li><li><p><strong>git log (path)</strong> #view the log of the project’s history<br>Press the space bar to go down a page or the ‘q’ key to quit</p></li></ol><a id="more"></a><h2 id="Repositories"><a href="#Repositories" class="headerlink" title="Repositories"></a>Repositories</h2><ol><li><strong>git show hash</strong> #显示某次commit的信息</li><li>标签<strong>HEAD</strong>表示最近的一次commit，标签<strong>HEAD~1</strong>表示最近一次之前的commit，以此类推</li><li><strong>git annotate file</strong> #shows who made the last change to each line of a file and when</li><li><strong>git diff ID1..ID2</strong></li><li>忽略特定文件：在根目录新建 <strong>.gitignore</strong></li><li><strong>git clean -n</strong> #显示路径中没被追踪的文件<br><strong>git clean -f</strong> #删除这些文件</li><li><strong>git config –list</strong><br>- -system: settings for every user on this computer.<br>- -global: settings for every one of your projects.<br>- -local: settings for one specific project.</li></ol><h2 id="Undo"><a href="#Undo" class="headerlink" title="Undo"></a>Undo</h2><ol><li><strong>git checkout – filename</strong> #discard the changes that have not yet been staged</li><li><strong>git reset HEAD filename</strong> #undo changes that have been staged, to the state you last staged</li><li><strong>git checkout 某次commit的hash 文件名</strong> #将某个文件恢复到某次commit的状态</li><li>the act of restoring the file is saved as another commit</li><li><strong>git reset HEAD (path)</strong></li><li><strong>git checkout – (path)</strong></li><li>路径.代表所有该路径以及以下的文件</li></ol><h2 id="Working-with-branches"><a href="#Working-with-branches" class="headerlink" title="Working with branches"></a>Working with branches</h2><ol><li><strong>git branch</strong> #list all of the branches in a repository</li><li><strong>git diff branch-1..branch-2</strong> #shows the difference between two branches</li><li><strong>git checkout branch-name</strong> #switch to another branch(要commit所有的change)</li><li><strong>git rm file</strong> #delete file</li><li><strong>git checkout -b branch-name</strong> #create a new branch</li><li><strong>git merge source destination</strong> #merge to branch(incorporates the changes made to the source branch into the destination branch)</li><li>如果merge时出现了conflict，那么使用<strong>git status</strong>查找出问题的文件然后修改（<strong>nano filename</strong>）</li></ol><h2 id="Collaborating"><a href="#Collaborating" class="headerlink" title="Collaborating"></a>Collaborating</h2><ol><li><strong>git init project-name</strong> #create a new repository</li><li>尽量不要在repository里新建repository</li><li>在路径中<strong>git init</strong>或<strong>git init 路径</strong>将现有的project转化为repository</li><li><strong>git clone URL or file:///existing/project newRepository</strong> #clone a repository</li><li><strong>git remote</strong> #list the names of repository’s remotes</li><li><strong>git remote -v</strong> #shows the remote’s URLs</li><li><strong>git remote add remote-name URL</strong> #add more remote</li><li><strong>git remote rm remote-name</strong> #remove remote</li><li><strong>git pull remote branch</strong> #gets everything in branch in the remote repository identified by remote and merges it into the current branch of your local repository</li><li><strong>git push remote-name branch-name</strong> #pushes the contents of your branch branch-name into a branch with the same name in the remote repository associated with remote-name</li></ol>]]></content>
     
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;ˢIns��ʱ�򿴵���&lt;a href=&quot;https://www.datacamp.com/courses/introduction-to-git-for-data-science&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;����&lt;/a&gt;hhh������ʱ�����͵㿪��&lt;/p&gt;
+&lt;p&gt;刷Ins的时候看到的&lt;a href=&quot;https://www.datacamp.com/courses/introduction-to-git-for-data-science&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;广告&lt;/a&gt;hhh反正课时不长就点开了&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&quot;Basic-Workflow&quot;&gt;&lt;a href=&quot;#Basic-Workflow&quot; class=&quot;headerlink&quot; title=&quot;Basic Workflow&quot;&gt;&lt;/a&gt;Basic Workflow&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;version control system&lt;/li&gt;
-&lt;/ol&gt;
+&lt;li&gt;&lt;p&gt;version control system&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;���治ͬ�汾&lt;/li&gt;
-&lt;li&gt;��Ŀ����&lt;/li&gt;
-&lt;li&gt;��ֹ�ظ�����&lt;/li&gt;
+&lt;li&gt;保存不同版本&lt;/li&gt;
+&lt;li&gt;项目合作&lt;/li&gt;
+&lt;li&gt;防止重复工作&lt;/li&gt;
 &lt;/ul&gt;
-&lt;ol&gt;
-&lt;li&gt;repository&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ul&gt;
-&lt;li&gt;�ļ�&lt;/li&gt;
-&lt;li&gt;ֱ�ӱ༭��·��&lt;/li&gt;
-&lt;li&gt;������Ϣ����Ŀ¼�е�.git��&lt;br&gt;&lt;em&gt;all of the information about a repository is stored under its root directory�����ļ���ͬһ�㼶��&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;git status&lt;/strong&gt; #�ϴθ���ʱ�������ļ��б�&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;git diff (filename/depository)&lt;/strong&gt; #compare the file as it currently is to what you last saved&lt;br&gt;&lt;strong&gt;git diff -r HEAD filename&lt;/strong&gt; #���ϴθ��¶Ա�&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;repository&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;文件&lt;/li&gt;
+&lt;li&gt;直接编辑的路径&lt;/li&gt;
+&lt;li&gt;其他信息（根目录中的.git）&lt;br&gt;&lt;em&gt;all of the information about a repository is stored under its root directory（和文件夹同一层级）&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;git status&lt;/strong&gt; #上次更改时保存的文件列表&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;git diff (filename/depository)&lt;/strong&gt; #compare the file as it currently is to what you last saved&lt;br&gt;&lt;strong&gt;git diff -r HEAD filename&lt;/strong&gt; #和上次更新对比&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;git add filename&lt;/strong&gt; #add a file to staging area&lt;/p&gt;
 &lt;/li&gt;
@@ -92,21 +90,25 @@
     <link href="http://sheronw.github.io/2018/01/03/pythonlittle/"/>
     <id>http://sheronw.github.io/2018/01/03/pythonlittle/</id>
     <published>2018-01-04T00:10:32.000Z</published>
-    <updated>2018-01-10T03:47:43.794Z</updated>
+    <updated>2018-01-10T04:12:55.528Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>花了一学期水了门Python，结果发现讲的内容还没给小孩看的课本多，所以圣诞假的时候瞄了几眼写了点笔记。<br>教程中使用的是2.7版本</p></blockquote><h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><h3 id="向列表添加元素"><a href="#向列表添加元素" class="headerlink" title="向列表添加元素"></a>向列表添加元素</h3><ul><li>append()<ul><li>extend()</li></ul></li><li>insert(index,element)<h3 id="从列表删除元素"><a href="#从列表删除元素" class="headerlink" title="从列表删除元素"></a>从列表删除元素</h3></li><li>list.remove(element)</li><li>del list[index]</li><li>lastLetter = list.pop(index) //将列表中的元素挪走 留空时挪走最后一个<h3 id="搜索列表"><a href="#搜索列表" class="headerlink" title="搜索列表"></a>搜索列表</h3></li><li>index = list.index(element)<h3 id="列表排序"><a href="#列表排序" class="headerlink" title="列表排序"></a>列表排序</h3></li><li>list.sort()</li><li>list.reverse() //逆置</li><li>list.sort(reverse=True) //逆向排序</li><li>sortedList = sorted(list)</li></ul><h2 id="Dictionary"><a href="#Dictionary" class="headerlink" title="Dictionary"></a>Dictionary</h2><ul><li>value = dictionary.values()</li></ul><h2 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h2><ul><li>global var //强制全局</li></ul><h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><ul><li>object.attribute</li><li>object.method()</li></ul><h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2><ul><li>import my_module</li><li>from my_module import my_function</li><li>from my_module import* //从模块导入所有名字</li><li>time<ul><li>sleep(seconds)</li></ul></li></ul><h2 id="打印格式化与字符串"><a href="#打印格式化与字符串" class="headerlink" title="打印格式化与字符串"></a>打印格式化与字符串</h2><h3 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h3><ul><li>不换行：语句后加逗号or字符串间用加号连接</li><li>换行符：\n<h3 id="水平间隔制表符（Tab）"><a href="#水平间隔制表符（Tab）" class="headerlink" title="水平间隔制表符（Tab）"></a>水平间隔制表符（Tab）</h3></li><li>制表符：\t</li><li>print “s1/ts2” //s2部分将挪到下一个制表点（每八个字符为一个制表快）<h3 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h3></li><li>print “123’,str,’456”</li><li>浮点数格式化时四舍五入，整数格式化时直接去掉多余位</li><li>%+f //总是显示正负号</li><li>%e or %E //数字的e记法</li><li>%g or %G //自动选择浮点数或E记法</li><li>打印百分号： %%</li><li>format()<br>  print ‘I got {0:.1f} in math, {1:.1f} in science’.format(math,science)</li></ul>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>花了一学期水了门Python，结果发现讲的内容还没给小孩看的课本多，所以圣诞假的时候瞄了几眼写了点笔记。<br>教程中使用的是2.7版本</p></blockquote><h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><ul><li>向列表添加元素<br>append()<br>extend()<br>insert(index,element)</li><li>从列表删除元素<br>list.remove(element)<br>del list[index]<br>lastLetter = list.pop(index) //将列表中的元素挪走 留空时挪走最后一个</li><li>搜索列表<br>index = list.index(element)</li><li>列表排序<br>list.sort()<br>list.reverse() //逆置<br>list.sort(reverse=True) //逆向排序<br>sortedList = sorted(list)</li></ul><a id="more"></a><h2 id="Dictionary"><a href="#Dictionary" class="headerlink" title="Dictionary"></a>Dictionary</h2><ul><li>value = dictionary.values()</li></ul><h2 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h2><ul><li>global var //强制全局</li></ul><h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><ul><li>object.attribute</li><li>object.method()</li></ul><h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2><ul><li>import my_module</li><li>from my_module import my_function</li><li>from my_module import* //从模块导入所有名字</li><li>time<ul><li>sleep(seconds)</li></ul></li></ul><h2 id="打印格式化与字符串"><a href="#打印格式化与字符串" class="headerlink" title="打印格式化与字符串"></a>打印格式化与字符串</h2><ul><li>换行<br>不换行：语句后加逗号or字符串间用加号连接<br>换行符：\n</li><li>水平间隔制表符（Tab）<br>制表符：\t<br>print “s1/ts2” //s2部分将挪到下一个制表点（每八个字符为一个制表快）</li><li>格式化<br>print “123’,str,’456”<br>浮点数格式化时四舍五入，整数格式化时直接去掉多余位<br>%+f //总是显示正负号<br>%e or %E //数字的e记法<br>%g or %G //自动选择浮点数或E记法<br>打印百分号： %%<br>format()<br>  print ‘I got {0:.1f} in math, {1:.1f} in science’.format(math,science)</li></ul>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;blockquote&gt;
+      &lt;blockquote&gt;
 &lt;p&gt;花了一学期水了门Python，结果发现讲的内容还没给小孩看的课本多，所以圣诞假的时候瞄了几眼写了点笔记。&lt;br&gt;教程中使用的是2.7版本&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&quot;List&quot;&gt;&lt;a href=&quot;#List&quot; class=&quot;
-      
+&lt;h2 id=&quot;List&quot;&gt;&lt;a href=&quot;#List&quot; class=&quot;headerlink&quot; title=&quot;List&quot;&gt;&lt;/a&gt;List&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;向列表添加元素&lt;br&gt;append()&lt;br&gt;extend()&lt;br&gt;insert(index,element)&lt;/li&gt;
+&lt;li&gt;从列表删除元素&lt;br&gt;list.remove(element)&lt;br&gt;del list[index]&lt;br&gt;lastLetter = list.pop(index) //将列表中的元素挪走 留空时挪走最后一个&lt;/li&gt;
+&lt;li&gt;搜索列表&lt;br&gt;index = list.index(element)&lt;/li&gt;
+&lt;li&gt;列表排序&lt;br&gt;list.sort()&lt;br&gt;list.reverse() //逆置&lt;br&gt;list.sort(reverse=True) //逆向排序&lt;br&gt;sortedList = sorted(list)&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
+    
+      <category term="notetaking" scheme="http://sheronw.github.io/categories/notetaking/"/>
     
     
   </entry>
@@ -136,7 +138,7 @@
     <link href="http://sheronw.github.io/2017/10/13/post/"/>
     <id>http://sheronw.github.io/2017/10/13/post/</id>
     <published>2017-10-13T19:20:17.000Z</published>
-    <updated>2018-01-10T03:47:55.091Z</updated>
+    <updated>2018-01-10T04:08:22.893Z</updated>
     
     <content type="html"><![CDATA[<p>显示当前目录下在的东西：ls<br>清空命令行上面的显示：cls<br>用户主目录~<br>根目录/<br>当前目录./<br>上一级目录../<br>进入到某一目录：cd<br>创建目录：mkdir<br>移动目录or文件：mv 源 目标<br>复制目录or文件： cp 源 目标<br>删除目录or文件： rm</p>]]></content>
     
@@ -148,6 +150,8 @@
       
     
     </summary>
+    
+      <category term="notetaking" scheme="http://sheronw.github.io/categories/notetaking/"/>
     
     
   </entry>
