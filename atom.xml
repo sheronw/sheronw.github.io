@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sheronw.github.io/"/>
-  <updated>2018-11-06T20:18:28.677Z</updated>
+  <updated>2018-11-17T14:17:50.202Z</updated>
   <id>http://sheronw.github.io/</id>
   
   <author>
@@ -15,6 +15,45 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Operating Systems Basics </title>
+    <link href="http://sheronw.github.io/2018/11/17/OSB/"/>
+    <id>http://sheronw.github.io/2018/11/17/OSB/</id>
+    <published>2018-11-17T14:15:43.000Z</published>
+    <updated>2018-11-17T14:17:50.202Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="OS-tasks"><a href="#OS-tasks" class="headerlink" title="OS tasks"></a>OS tasks</h2><ul><li>managing the resources of a computer (hardware network, etc.)</li><li>coordinate the running of all other programs</li><li>can be considered as a set of programs<ul><li>kernel: name given to the core OS program<h2 id="Getting-program-to-run"><a href="#Getting-program-to-run" class="headerlink" title="Getting program to run"></a>Getting program to run</h2></li></ul></li><li>POST - test program from specific location in BIOS</li><li>Boot loader - “bootstrap loader”<ul><li>small program that begins loading the OS<ul><li>computer cannot run without 1st loading software, but needs instructions on how to load software</li></ul></li><li>might have multi stages</li></ul></li><li>kernel is loaded into memory &amp; executed</li><li>kernel runs “init” process &amp; sets runlevel</li><li>initialization scripts</li></ul><a id="more"></a><h2 id="System-calls"><a href="#System-calls" class="headerlink" title="System calls"></a>System calls</h2><ul><li>set of functions to request access to resources of the machine</li><li>system call numbers</li><li>often referred to as an API (Application Programming Interface)</li><li>differ by platform &amp; standards</li><li>APP-Kernel-(CPU&amp;Memory&amp;Devices)</li><li>C standard lib contains wrappers around system calls</li><li><p>behavior on x86 is essentially</p><ul><li>set up parameters to pass to sc</li><li>put all num in register EAX</li><li>trigger HW interrupt</li><li><a href="http://www.linux.it/~rubini/docs/ksys/" target="_blank" rel="external">http://www.linux.it/~rubini/docs/ksys/</a><h3 id="exec"><a href="#exec" class="headerlink" title="exec"></a>exec</h3></li><li>replace current running program as another program</li><li>execve<h3 id="Process-IDs"><a href="#Process-IDs" class="headerlink" title="Process IDs"></a>Process IDs</h3></li><li>every unix process has a unique identifier (int)</li><li>pid_t getpid(void);</li><li>every process has a parent process</li><li>pid_t getppid(void);</li><li><p>processing tables: ps</p><h3 id="fork"><a href="#fork" class="headerlink" title="fork"></a>fork</h3><p> #include<unistd.h><br> #include<sys types.h=""><br> pid_t fork(void);</sys></unistd.h></p></li><li><p>creating an identical copy of the running program with one exception</p></li><li>return 0 to the child, PID to the parent</li><li>vfork(): fork&amp;exec</li><li>process exit status<ul><li>can wait until the child process ends</li><li>wait() can return the exit status of child</li><li><strong>WIFEXITED</strong> return true if normally</li><li><strong>WEXITSTATUS</strong> extract actual return/exit value</li></ul></li></ul></li></ul><h3 id="Memory-management-calls"><a href="#Memory-management-calls" class="headerlink" title="Memory management calls"></a>Memory management calls</h3><ul><li>mmap - allocate memory or map files/devices into memory</li><li>shmget</li><li>shmctl</li><li>mprotect</li><li>mlock, munlock<h3 id="Time"><a href="#Time" class="headerlink" title="Time"></a>Time</h3><ul><li>time, gettimeofday/settimeofday</li><li>getitimer, setitimer</li><li>alarm</li></ul></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;OS-tasks&quot;&gt;&lt;a href=&quot;#OS-tasks&quot; class=&quot;headerlink&quot; title=&quot;OS tasks&quot;&gt;&lt;/a&gt;OS tasks&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;managing the resources of a computer (hardware network, etc.)&lt;/li&gt;
+&lt;li&gt;coordinate the running of all other programs&lt;/li&gt;
+&lt;li&gt;can be considered as a set of programs&lt;ul&gt;
+&lt;li&gt;kernel: name given to the core OS program&lt;h2 id=&quot;Getting-program-to-run&quot;&gt;&lt;a href=&quot;#Getting-program-to-run&quot; class=&quot;headerlink&quot; title=&quot;Getting program to run&quot;&gt;&lt;/a&gt;Getting program to run&lt;/h2&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;POST - test program from specific location in BIOS&lt;/li&gt;
+&lt;li&gt;Boot loader - “bootstrap loader”&lt;ul&gt;
+&lt;li&gt;small program that begins loading the OS&lt;ul&gt;
+&lt;li&gt;computer cannot run without 1st loading software, but needs instructions on how to load software&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;might have multi stages&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;kernel is loaded into memory &amp;amp; executed&lt;/li&gt;
+&lt;li&gt;kernel runs “init” process &amp;amp; sets runlevel&lt;/li&gt;
+&lt;li&gt;initialization scripts&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="notetaking" scheme="http://sheronw.github.io/categories/notetaking/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Formatted I/O, Line Input, Scanf - C</title>
