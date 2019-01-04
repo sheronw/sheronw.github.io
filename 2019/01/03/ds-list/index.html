@@ -81,17 +81,21 @@
 
 
 
-<meta name="description" content="read a file from stdin and put it to both stdout &amp;amp; stderrint main (int argc, char *argv[]){     char *fname = NULL;     if (argc&amp;gt;1){         frame=argv[1];     }     else{         return 1;">
+<meta name="description" content="The List InterfaceDefinition����˼�壬����һ���������չ�����index���㿪ʼ��ÿһ��Ԫ�ض���һ����Ӧ��index�����ڿ���ִ�еĲ��������Կ��ٷ��ĵ����Ƚϻ����������ӡ�ɾ�������ҵȡ�">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Formatted I&#x2F;O, Line Input, Scanf - C">
-<meta property="og:url" content="http://sheronw.github.io/2018/11/06/Formatted-I-O-Line-Input-Scanf-C/index.html">
+<meta property="og:title" content="the List interface - �򵥴ֱ����ݽṹ��1��">
+<meta property="og:url" content="http://sheronw.github.io/2019/01/03/ds-list/index.html">
 <meta property="og:site_name" content="SheronW">
-<meta property="og:description" content="read a file from stdin and put it to both stdout &amp;amp; stderrint main (int argc, char *argv[]){     char *fname = NULL;     if (argc&amp;gt;1){         frame=argv[1];     }     else{         return 1;">
+<meta property="og:description" content="The List InterfaceDefinition����˼�壬����һ���������չ�����index���㿪ʼ��ÿһ��Ԫ�ض���һ����Ӧ��index�����ڿ���ִ�еĲ��������Կ��ٷ��ĵ����Ƚϻ����������ӡ�ɾ�������ҵȡ�">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-06T20:18:28.677Z">
+<meta property="og:image" content="https://i.loli.net/2019/01/04/5c2eaff197a53.png">
+<meta property="og:image" content="https://i.loli.net/2019/01/04/5c2eba55b74be.png">
+<meta property="og:image" content="https://i.loli.net/2019/01/04/5c2eb80d92f81.png">
+<meta property="og:updated_time" content="2019-01-04T01:50:03.109Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Formatted I&#x2F;O, Line Input, Scanf - C">
-<meta name="twitter:description" content="read a file from stdin and put it to both stdout &amp;amp; stderrint main (int argc, char *argv[]){     char *fname = NULL;     if (argc&amp;gt;1){         frame=argv[1];     }     else{         return 1;">
+<meta name="twitter:title" content="the List interface - �򵥴ֱ����ݽṹ��1��">
+<meta name="twitter:description" content="The List InterfaceDefinition����˼�壬����һ���������չ�����index���㿪ʼ��ÿһ��Ԫ�ض���һ����Ӧ��index�����ڿ���ִ�еĲ��������Կ��ٷ��ĵ����Ƚϻ����������ӡ�ɾ�������ҵȡ�">
+<meta name="twitter:image" content="https://i.loli.net/2019/01/04/5c2eaff197a53.png">
 
 
 
@@ -121,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://sheronw.github.io/2018/11/06/Formatted-I-O-Line-Input-Scanf-C/"/>
+  <link rel="canonical" href="http://sheronw.github.io/2019/01/03/ds-list/"/>
 
 
 
 
 
-  <title>Formatted I/O, Line Input, Scanf - C | SheronW</title>
+  <title>the List interface - �򵥴ֱ����ݽṹ��1�� | SheronW</title>
   
 
 
@@ -254,7 +258,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sheronw.github.io/2018/11/06/Formatted-I-O-Line-Input-Scanf-C/">
+    <link itemprop="mainEntityOfPage" href="http://sheronw.github.io/2019/01/03/ds-list/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SheronW">
@@ -271,7 +275,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Formatted I/O, Line Input, Scanf - C</h1>
+          <h1 class="post-title" itemprop="name headline">the List interface - �򵥴ֱ����ݽṹ��1��</h1>
         
 
         <div class="post-meta">
@@ -283,8 +287,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-06T15:15:43-05:00">
-                2018-11-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-03T20:45:50-05:00">
+                2019-01-03
               </time>
             
 
@@ -306,8 +310,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notetaking/" itemprop="url" rel="index">
-                    <span itemprop="name">notetaking</span>
+                  <a href="/categories/�򵥴ֱ����ݽu/" itemprop="url" rel="index">
+                    <span itemprop="name">�򵥴ֱ����ݽṹ</span>
                   </a>
                 </span>
 
@@ -343,56 +347,16 @@
       
 
       
-        <h2 id="read-a-file-from-stdin-and-put-it-to-both-stdout-amp-stderr"><a href="#read-a-file-from-stdin-and-put-it-to-both-stdout-amp-stderr" class="headerlink" title="read a file from stdin and put it to both stdout &amp; stderr"></a>read a file from stdin and put it to both stdout &amp; stderr</h2><pre><code>int main (int argc, char *argv[]){
-    char *fname = NULL;
-    if (argc&gt;1){
-        frame=argv[1];
-    }
-    else{
-        return 1;
-    }
-    FILE *file = fopen(fname, &quot;r&quot;);
-
-    int input;
-    while((input=fgetc(file))!= EOF){
-        fputc(input,stdout);
-        fputc(input,stderr);
-    }
-}
-</code></pre><a id="more"></a>
-<p>end of file ^D<br>end program ^C<br>stderr line buffer<br>stdout file buffer(???)</p>
-<h2 id="re-reading"><a href="#re-reading" class="headerlink" title="re-reading"></a>re-reading</h2><pre><code>void rewind(FILE *stream);
-</code></pre><p>changing location of a file to the beginning<br>fseek: move to some location</p>
-<h2 id="getting-location"><a href="#getting-location" class="headerlink" title="getting location"></a>getting location</h2><pre><code>long ftell(FILE * stream);
-off_t ftello(FILE *stream);
-</code></pre><p>if is larger than a long in size, then:</p>
-<pre><code>int fgetpos(FILE *restrict stream, fpos_t *restrict pos);
-int fsetpos(FILE *stream, const fpos_t *pos);
-</code></pre><p>need to check man page for different systems<br>df: space of hard drive<br>file: blocks of pointers point to a chunk of data blocks of actual disk</p>
-<h2 id="Format-Printing"><a href="#Format-Printing" class="headerlink" title="Format Printing"></a>Format Printing</h2><h3 id="printing-to-a-string"><a href="#printing-to-a-string" class="headerlink" title="printing to a string"></a>printing to a string</h3><pre><code>int sprintf(char *str, const char *format, /* args */ );
-</code></pre><ul>
-<li>return number of bytes that would have been written</li>
-<li>writes at most size-1 bytes (leave space for null byte)</li>
-</ul>
-<h3 id="line-based-input"><a href="#line-based-input" class="headerlink" title="line based input"></a>line based input</h3><pre><code>char *fgets(char *str, int size, FILE *stream);
-</code></pre><ul>
-<li>stores in str</li>
-<li>stops at -n, EOF</li>
-<li><strong>do not use gets</strong></li>
-</ul>
-<h3 id="scanf"><a href="#scanf" class="headerlink" title="scanf"></a>scanf</h3><pre><code>scanf(&quot;%d&quot;,&amp;x);
-scanf(&quot;%s&quot;,str);
-</code></pre><ul>
-<li>read line using fgets(), parses data using sscanf() from line</li>
-<li>character ranges(check textbook)<h3 id="realloc"><a href="#realloc" class="headerlink" title="realloc"></a>realloc</h3>  void <em> realloc(void </em>ptr, size_t size);</li>
-<li>change previous allocated block ptr be changed to size size(larger or smaller &amp; copy old data as needed)</li>
-<li><p>app: connect strings</p>
-<h3 id="getline"><a href="#getline" class="headerlink" title="getline"></a>getline</h3><p>  ssize_t getline(char <em>* linep, size_t </em>linecapp, FILE * stream);<br>  free(linep);</p>
-</li>
-<li><p>dynamically allocated, but must free later</p>
-</li>
-<li>not part of c standard</li>
-</ul>
+        <h1 id="The-List-Interface"><a href="#The-List-Interface" class="headerlink" title="The List Interface"></a>The List Interface</h1><h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>����˼�壬����һ������<br>���չ�����index���㿪ʼ��ÿһ��Ԫ�ض���һ����Ӧ��index��<br>���ڿ���ִ�еĲ��������Կ�<a href="https://docs.oracle.com/javase/7/docs/api/java/util/List.html" target="_blank" rel="external">�ٷ��ĵ�</a>���Ƚϻ����������ӡ�ɾ�������ҵȡ�<br><a id="more"></a></p>
+<h2 id="Implementations"><a href="#Implementations" class="headerlink" title="Implementations"></a>Implementations</h2><p>2 implementations: ArrayList &amp; LinkedList</p>
+<h3 id="Array-List"><a href="#Array-List" class="headerlink" title="Array List"></a>Array List</h3><p>ʲô��Array��<br>�ҵ������ǣ�ָ�������ͣ�����object��T��array�������ڴ����滭��һ������������<strong>��������</strong>��T������array�ĳ����ڳ�ʼ��ʱ����������֮��Ҳ���ܸġ�<br>������array����list�Ļ�����ʵ����ͦ�鷳�ģ������ڷ�list�Ľ�β����ɾ���������ӵĲ������͵ð����к�����Ԫ��һ��һ������Ų��<br>����һ�����ǣ���Ϊarray�Ǹ��������ģ���listָ�����������Ӷ��ٶ���������һ������array�����˵�ʱ�����Ǿ͵��½�һ��array��������Ԫ�ض�һ�������Ƶ��µ����棬Ȼ���ض���list��arrayָ��Ϊ�����µ�array��<br>��*��ʵ�����������õ���ָ������������ֻ��Ϊ�˰������⣬������֮����˵��<br><img src="https://i.loli.net/2019/01/04/5c2eaff197a53.png" alt="enter image description here"></p>
+<h3 id="Linked-List"><a href="#Linked-List" class="headerlink" title="Linked List"></a>Linked List</h3><p>linked list����һ����β�����ĵ�λ��ÿ����λ��node��<br>��������node������Ҫ���ֶ�������һ��������node�����������������ݣ�����һ����ָ����һ��node��ָ��next��</p>
+<h4 id="head-and-tail-pointers"><a href="#head-and-tail-pointers" class="headerlink" title="head and tail pointers"></a>head and tail pointers</h4><p>Ϊ���������ܹ��ڴ�����ʱ���ܹ��ҵ��ű���������Ҫ֪����һ��node�ǵ�һ������һ��node������һ����ÿһ��������liked list���涼��һ��head node��һ��tail node��ָ����Ӧ��node����������ɾ����βnode֮���Ĳ�����ʱ����Ҫ��Ӧ��update��<br>�����������ӻ�ɾ��node������������Ҫһ������iterator��������node��ȷ���������ڲ�����node����һ�����͸�����������whileѭ����index������iһ����������Ų����Ӧ��λ��֮���½�һ��node����ֵ��Ȼ���������صļ���ָ�����滻��Ϸ��hmmm<br><img src="https://i.loli.net/2019/01/04/5c2eba55b74be.png" alt="enter image description here"></p>
+<h4 id="doubly-linked"><a href="#doubly-linked" class="headerlink" title="doubly-linked"></a>doubly-linked</h4><p>��ʵ��ǰ�����ֲ�࣬��������ǰ�����ǵ�����ͷ�����ڱ�˫���ˣ�ÿһ��node���涼��һ��ָ����һ��node��prev��ָ����һ��node��next��</p>
+<h4 id="circular"><a href="#circular" class="headerlink" title="circular"></a>circular</h4><p>��Ȼ������Ҫhead�������������ǿ�ͷ�����������ǲ�Ҫtail�ˣ�ֱ�Ӱ�����һ��������һ��node�ϡ�</p>
+<h4 id="sentinel-nodes"><a href="#sentinel-nodes" class="headerlink" title="sentinel nodes"></a>sentinel nodes</h4><p>circular�������棬���԰�����sentinel node�����������ϵ��Ǹ����ۣ������˵�һ��node������һ��node��</p>
+<p><img src="https://i.loli.net/2019/01/04/5c2eb80d92f81.png" alt="enter image description here"></p>
+<p><a href="https://www.tutorialspoint.com/data_structures_algorithms/linked_list_algorithms.htm" target="_blank" rel="external">https://www.tutorialspoint.com/data_structures_algorithms/linked_list_algorithms.htm</a><br><a href="https://www.tutorialspoint.com/data_structures_algorithms/doubly_linked_list_algorithm.htm" target="_blank" rel="external">https://www.tutorialspoint.com/data_structures_algorithms/doubly_linked_list_algorithm.htm</a><br><a href="https://www.tutorialspoint.com/data_structures_algorithms/circular_linked_list_algorithm.htm" target="_blank" rel="external">https://www.tutorialspoint.com/data_structures_algorithms/circular_linked_list_algorithm.htm</a></p>
 
       
     </div>
@@ -417,8 +381,8 @@ scanf(&quot;%s&quot;,str);
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/24/karasu/" rel="next" title="KARASU">
-                <i class="fa fa-chevron-left"></i> KARASU
+              <a href="/2018/11/17/OSB/" rel="next" title="Operating Systems Basics ">
+                <i class="fa fa-chevron-left"></i> Operating Systems Basics 
               </a>
             
           </div>
@@ -426,10 +390,6 @@ scanf(&quot;%s&quot;,str);
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/17/OSB/" rel="prev" title="Operating Systems Basics ">
-                Operating Systems Basics  <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -590,7 +550,7 @@ scanf(&quot;%s&quot;,str);
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#read-a-file-from-stdin-and-put-it-to-both-stdout-amp-stderr"><span class="nav-number">1.</span> <span class="nav-text">read a file from stdin and put it to both stdout & stderr</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#re-reading"><span class="nav-number">2.</span> <span class="nav-text">re-reading</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getting-location"><span class="nav-number">3.</span> <span class="nav-text">getting location</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Format-Printing"><span class="nav-number">4.</span> <span class="nav-text">Format Printing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#printing-to-a-string"><span class="nav-number">4.1.</span> <span class="nav-text">printing to a string</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#line-based-input"><span class="nav-number">4.2.</span> <span class="nav-text">line based input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scanf"><span class="nav-number">4.3.</span> <span class="nav-text">scanf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#realloc"><span class="nav-number">4.4.</span> <span class="nav-text">realloc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getline"><span class="nav-number">4.5.</span> <span class="nav-text">getline</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#The-List-Interface"><span class="nav-number">1.</span> <span class="nav-text">The List Interface</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Definition"><span class="nav-number">1.1.</span> <span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implementations"><span class="nav-number">1.2.</span> <span class="nav-text">Implementations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-List"><span class="nav-number">1.2.1.</span> <span class="nav-text">Array List</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linked-List"><span class="nav-number">1.2.2.</span> <span class="nav-text">Linked List</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#head-and-tail-pointers"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">head and tail pointers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#doubly-linked"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">doubly-linked</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#circular"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">circular</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sentinel-nodes"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">sentinel nodes</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
