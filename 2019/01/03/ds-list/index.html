@@ -91,7 +91,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/01/04/5c2eaff197a53.png">
 <meta property="og:image" content="https://i.loli.net/2019/01/04/5c2eba55b74be.png">
 <meta property="og:image" content="https://i.loli.net/2019/01/04/5c2eb80d92f81.png">
-<meta property="og:updated_time" content="2019-01-04T01:52:57.023Z">
+<meta property="og:updated_time" content="2019-01-05T00:13:25.835Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="the List interface - 简单粗暴数据结构（1）">
 <meta name="twitter:description" content="The List InterfaceDefinition顾名思义，就是一个表。按照惯例，index从零开始，每一个元素都有一个相应的index。至于可以执行的操作，可以看官方文档。比较基本的有添加、删除、查找等。">
@@ -349,9 +349,9 @@
       
         <h1 id="The-List-Interface"><a href="#The-List-Interface" class="headerlink" title="The List Interface"></a>The List Interface</h1><h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>顾名思义，就是一个表。<br>按照惯例，index从零开始，每一个元素都有一个相应的index。<br>至于可以执行的操作，可以看<a href="https://docs.oracle.com/javase/7/docs/api/java/util/List.html" target="_blank" rel="external">官方文档</a>。比较基本的有添加、删除、查找等。<br><a id="more"></a></p>
 <h2 id="Implementations"><a href="#Implementations" class="headerlink" title="Implementations"></a>Implementations</h2><p>2 implementations: ArrayList &amp; LinkedList</p>
-<h3 id="Array-List"><a href="#Array-List" class="headerlink" title="Array List"></a>Array List</h3><p>什么是Array？<br>我的理解是，指定数据型（或者object）T，array可以在内存里面画出一块区域来储存<strong>给定数量</strong>的T。因此array的长度在初始化时必须声明。之后也不能改。<br>所以用array来搞list的话，其实还是挺麻烦的，比如在非list的结尾进行删除或者添加的操作，就得把所有后面的元素一个一个往后挪。<br>还有一个就是，因为array是给定数量的，但list指不定会往里加多少东西，所以一旦这个array快满了的时候我们就得新建一个array，把现有元素都一个个复制到新的里面，然后重定向list的array指针为这个新的array。<br>（*其实并不是真的用到了指针这个东西，只是为了帮助理解，具体的之后会说）<br><img src="https://i.loli.net/2019/01/04/5c2eaff197a53.png" alt="enter image description here"></p>
+<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><p>什么是Array？<br>我的理解是，指定数据型（或者object）T，array可以在内存里面画出一块区域来储存<strong>给定数量</strong>的T。因此array的长度在初始化时必须声明。之后也不能改。<br>所以用array来搞list的话，其实还是挺麻烦的，比如在非list的结尾进行删除或者添加的操作，就得把所有后面的元素一个一个往后挪。<br>还有一个就是，因为array是给定数量的，但list指不定会往里加多少东西，所以一旦这个array快满了的时候我们就得新建一个array，把现有元素都一个个复制到新的里面，然后重定向list的array指针为这个新的array。<br>（*其实并不是真的用到了指针这个东西，只是为了帮助理解，具体的之后会说）<br><img src="https://i.loli.net/2019/01/04/5c2eaff197a53.png" alt="enter image description here"></p>
 <h3 id="Linked-List"><a href="#Linked-List" class="headerlink" title="Linked List"></a>Linked List</h3><p>linked list就是一串首尾相连的单位，每个单位叫node。<br>最基本的node里面需要两种东西，第一种是这个node里面真正储存的数据，另外一种是指向下一个node的指针next。</p>
-<h4 id="head-and-tail-pointers"><a href="#head-and-tail-pointers" class="headerlink" title="head and tail pointers"></a>head and tail pointers</h4><p>为了让我们能够在处理的时候能够找得着北，我们需要知道哪一个node是第一个，哪一个node是最后一个。每一个这样的liked list里面都有一个head node和一个tail node，指向相应的node，进行添加删除首尾node之类的操作的时候需要相应地update。<br>至于如何添加或删除node，首先我们需要一个叫做iterator的特殊的node来确定我们正在操作的node是哪一个（就跟基础课里面while循环的index计数器i一样），将它挪到相应的位置之后新建一个node并赋值，然后就是相关的几个指向的替换游戏了hmmm<br><img src="https://i.loli.net/2019/01/04/5c2eba55b74be.png" alt="enter image description here"></p>
+<h4 id="head-and-tail-pointers"><a href="#head-and-tail-pointers" class="headerlink" title="head and tail pointers"></a>head and tail pointers</h4><p>为了让我们能够在处理的时候能够找得着北，我们需要知道哪一个node是第一个，哪一个node是最后一个。每一个这样的liked list里面都有一个head node和一个tail node，指向相应的node，进行添加删除首尾node之类的操作的时候需要相应地update。<br>至于如何添加或删除node，首先我们需要一个叫做iterator的特殊的node指针来确定我们正在操作的node是哪一个（就跟基础课里面while循环的index计数器i一样），将它挪到相应的位置之后新建一个node并赋值，然后就是相关的几个指向的替换游戏了hmmm<br><img src="https://i.loli.net/2019/01/04/5c2eba55b74be.png" alt="enter image description here"></p>
 <h4 id="doubly-linked"><a href="#doubly-linked" class="headerlink" title="doubly-linked"></a>doubly-linked</h4><p>其实和前面那种差不多，区别就是前面的是单向箭头，现在变双向了，每一个node里面都有一个指向后一个node的prev和指向下一个node的next。</p>
 <h4 id="circular"><a href="#circular" class="headerlink" title="circular"></a>circular</h4><p>虽然还是需要head提醒我们哪里是开头，但这次我们不要tail了，直接把最后一个连到第一个node上。</p>
 <h4 id="sentinel-nodes"><a href="#sentinel-nodes" class="headerlink" title="sentinel nodes"></a>sentinel nodes</h4><p>circular的升级版，可以把这个sentinel node想象成项链上的那个搭扣，连接了第一个node和最后一个node。</p>
@@ -381,8 +381,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/17/OSB/" rel="next" title="Operating Systems Basics ">
-                <i class="fa fa-chevron-left"></i> Operating Systems Basics 
+              <a href="/2018/12/31/2018booklist/" rel="next" title="2018年度书单">
+                <i class="fa fa-chevron-left"></i> 2018年度书单
               </a>
             
           </div>
@@ -390,6 +390,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/04/ds-stackandqueue/" rel="prev" title="Stack & Queue - 简单粗暴数据结构（2）">
+                Stack & Queue - 简单粗暴数据结构（2） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -475,7 +479,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -550,7 +554,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#The-List-Interface"><span class="nav-number">1.</span> <span class="nav-text">The List Interface</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Definition"><span class="nav-number">1.1.</span> <span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implementations"><span class="nav-number">1.2.</span> <span class="nav-text">Implementations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-List"><span class="nav-number">1.2.1.</span> <span class="nav-text">Array List</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linked-List"><span class="nav-number">1.2.2.</span> <span class="nav-text">Linked List</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#head-and-tail-pointers"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">head and tail pointers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#doubly-linked"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">doubly-linked</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#circular"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">circular</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sentinel-nodes"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">sentinel nodes</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#The-List-Interface"><span class="nav-number">1.</span> <span class="nav-text">The List Interface</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Definition"><span class="nav-number">1.1.</span> <span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implementations"><span class="nav-number">1.2.</span> <span class="nav-text">Implementations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList"><span class="nav-number">1.2.1.</span> <span class="nav-text">ArrayList</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linked-List"><span class="nav-number">1.2.2.</span> <span class="nav-text">Linked List</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#head-and-tail-pointers"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">head and tail pointers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#doubly-linked"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">doubly-linked</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#circular"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">circular</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sentinel-nodes"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">sentinel nodes</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
