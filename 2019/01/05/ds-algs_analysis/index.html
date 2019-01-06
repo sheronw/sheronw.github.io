@@ -90,7 +90,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.loli.net/2019/01/06/5c31685b1e670.png">
 <meta property="og:image" content="https://i.loli.net/2019/01/06/5c317ff7b4aa8.png">
-<meta property="og:updated_time" content="2019-01-06T04:32:33.320Z">
+<meta property="og:updated_time" content="2019-01-06T04:41:00.482Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm Analysis - 简单粗暴数据结构（3）">
 <meta name="twitter:description" content="big-oh notation其实大O符号的标准定义是这样的：设f和g是定义域为自然数集N上的函数，若存在正数c和n，使得对一切n&amp;gt;n0，0&amp;lt;=f(n)&amp;lt;=cg(n)成立，则称f(n)的渐进上界g(n)，记作f(n)=O(g(n))。……虽然我希望你认真地 阅读以上定义并理解，但如果是非本专业的学生，只是学学数据结构的话，算法分析方面的知识只要下狠心背下来就ok，这个定义不看也可">
@@ -384,7 +384,7 @@ for(int i=0;i&lt;n;i++){//运行了n次
         return n
     else:
         return f(n-1)+f(n-2)
-</code></pre><p>首先，要找出来T(n)和下一层递归的关系。在n比较大的情况下，想求f(n)就要把f(n-1)和f(n-2)都算出来，两个都需要时间，而得到这两个值之后相加是常数时间O(1)，所以关系就是T(n)=T(n-1)+T(n-2)。<br>递归树的原理是这样的，先在每一个节点都写上这一层需要运行的时间，然后把这个运行时间拆成一棵树，只属于这个节点的运行时间留下，剩下的放到下一层。每画一个树，三个节点的和都等于没拆分之前单独一个节点的运行时间。<br><img src="https://i.loli.net/2019/01/06/5c317ff7b4aa8.png" alt="enter image description here"><br>这样我们就画出来了一棵树……其实每个分支节点的高度不应该是一样的，但毕竟是渐进上界嘛，这个树差不多有n层（最长的那一条应该是一路往左，每次减一），每个节点是O(1)，那么T(n)=O(1)+O(2)+O(4)+…+O(2<sup>n</sup>)，按照公式T(n)=O(2<sup>n</sup>)。<br>所以这个玩意儿显然是成指数增长的，数一大就会变得巨慢无比（不信可以跑跑看看），不是个好算法……<br>一般来说，O(1)<o(logn)<o(n)<o(nlogn)<o(n<sup>a)<o(a<sup>n)</o(a<sup></o(logn)<o(n)<o(nlogn)<o(n<sup></p>
+</code></pre><p>首先，要找出来T(n)和下一层递归的关系。在n比较大的情况下，想求f(n)就要把f(n-1)和f(n-2)都算出来，两个都需要时间，而得到这两个值之后相加是常数时间O(1)，所以关系就是T(n)=T(n-1)+T(n-2)。<br>递归树的原理是这样的，先在每一个节点都写上这一层需要运行的时间，然后把这个运行时间拆成一棵树，只属于这个节点的运行时间留下，剩下的放到下一层。每画一个树，三个节点的和都等于没拆分之前单独一个节点的运行时间。<br><img src="https://i.loli.net/2019/01/06/5c317ff7b4aa8.png" alt="enter image description here"><br>这样我们就画出来了一棵树……其实每个分支节点的高度不应该是一样的，但毕竟是渐进上界嘛，这个树差不多有n层（最长的那一条应该是一路往左，每次减一），每个节点是O(1)，那么T(n)=O(1)+O(2)+O(4)+…+O(2<sup>n</sup>)，按照公式T(n)=O(2<sup>n</sup>)。<br>所以这个玩意儿显然是成指数增长的，数一大就会变得巨慢无比（不信可以跑跑看看），不是个好算法……<br>一般来说，O(1)&lt;O(logn)&lt;O(n)&lt;O(nlogn)&lt;O(n^a)&lt;O(a^n)，a是一个常数</p>
 
       
     </div>
