@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sheronw.github.io/"/>
-  <updated>2019-01-11T01:09:15.414Z</updated>
+  <updated>2019-01-11T18:46:39.722Z</updated>
   <id>http://sheronw.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Priority Queue - 简单粗暴数据结构（8）</title>
+    <link href="http://sheronw.github.io/2019/01/11/ds-pq/"/>
+    <id>http://sheronw.github.io/2019/01/11/ds-pq/</id>
+    <published>2019-01-11T18:45:37.000Z</published>
+    <updated>2019-01-11T18:46:39.722Z</updated>
+    
+    <content type="html"><![CDATA[<p>Priority Queue（优先队列）就是一个Queue，不过每次添加进新的元素都会将queue里面所有东西都按照优先级排一下顺序，有最高优先级的在最前面。</p><h2 id="Basic-Operations"><a href="#Basic-Operations" class="headerlink" title="Basic Operations"></a>Basic Operations</h2><p>和queue一样嘛，enqueue，dequeue，peek<br>当然和queue不一样的是，当你dequeue或者peek的时候，出来的那个元素肯定是优先级最高的（比如说，最大的元素，或者最小的元素）<br><a id="more"></a></p><h2 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h2><h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><p>enqueue就是把元素加到list中，O(1)<br>dequeue或者是peek的话要找出优先级最高的，因此要把整个list遍历一遍，所以就是O(n)<br>当然也可以反过来，每次enqueue的时候就把这个元素放在正确的位置上，这样index为零的格子里面就是优先级最高的了，enqueue变成了O(n)，但dequeue和peek都是O(1)<br>但这种implementation显然有点慢，一般来说我们都用heap。</p><h3 id="Heap"><a href="#Heap" class="headerlink" title="Heap"></a>Heap</h3><h4 id="什么是Heap？"><a href="#什么是Heap？" class="headerlink" title="什么是Heap？"></a>什么是Heap？</h4><p>heap也是一种binary tree。和binary  search tree不同的是，爸爸总是大于等于（或者小于等于）两个儿子，两个儿子之间的大小关系并没有规定。爸爸大于等于俩儿子的heap叫max heap，反之叫min heap。</p><h4 id="enqueue"><a href="#enqueue" class="headerlink" title="enqueue"></a>enqueue</h4><p>其实也就是在heap中插入一个元素。<br>方法是，将新加进的元素放在底层最后面，检查它和爸爸是否符合原则，如果不符合就和爸爸交换，直到满足条件（或者它自己成为了root）为止。这种方法叫做sift up。<br>可以看出这个方法和树的层数有关，因此是O(logn)。</p><h4 id="peek"><a href="#peek" class="headerlink" title="peek"></a>peek</h4><p>这个简单，直接return root的值就好，O(1)。</p><h4 id="dequeue"><a href="#dequeue" class="headerlink" title="dequeue"></a>dequeue</h4><p>其实就是在heap里面删除最上面的那个元素。<br>方法是，把底层最后一个元素拿出来放在要删除的这个元素的空缺里，然后检查它的儿子是否满足原则，不满足就交换，直到满足条件（或者它再次回到最底层）为止。这种方法叫做sift down。<br>可以看出这个方法和树的层数有关，因此是O(logn)。</p><p><img src="https://i.loli.net/2019/01/12/5c38e41add166.png" alt="enter image description here"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Priority Queue（优先队列）就是一个Queue，不过每次添加进新的元素都会将queue里面所有东西都按照优先级排一下顺序，有最高优先级的在最前面。&lt;/p&gt;
+&lt;h2 id=&quot;Basic-Operations&quot;&gt;&lt;a href=&quot;#Basic-Operations&quot; class=&quot;headerlink&quot; title=&quot;Basic Operations&quot;&gt;&lt;/a&gt;Basic Operations&lt;/h2&gt;&lt;p&gt;和queue一样嘛，enqueue，dequeue，peek&lt;br&gt;当然和queue不一样的是，当你dequeue或者peek的时候，出来的那个元素肯定是优先级最高的（比如说，最大的元素，或者最小的元素）&lt;br&gt;
+    
+    </summary>
+    
+      <category term="简单粗暴数据结构" scheme="http://sheronw.github.io/categories/%E7%AE%80%E5%8D%95%E7%B2%97%E6%9A%B4%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Tree part 3 - 简单粗暴数据结构（7）</title>
