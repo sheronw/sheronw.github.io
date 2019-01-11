@@ -546,6 +546,163 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sheronw.github.io/2019/01/07/ds-tree3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SheronW">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/11.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SheronW">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/07/ds-tree3/" itemprop="url">Tree part 3 - 简单粗暴数据结构（7）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-07T20:01:35-05:00">
+                2019-01-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/简单粗暴数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">简单粗暴数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>这一篇文章讲一下关于树的几个变种，lab里面并没有相关的内容，考试虽然也考但也不是重点。</p>
+<h2 id="B-Trees-amp-2-3-Trees"><a href="#B-Trees-amp-2-3-Trees" class="headerlink" title="B-Trees &amp; 2-3 Trees"></a>B-Trees &amp; 2-3 Trees</h2><p>在最前面放一张凡凡制作的表情包：</p>
+<p><img src="https://i.loli.net/2019/01/11/5c378b209ed47.jpg" style="zoom:50%"></p>
+<p>逼数，哦不，B-Tree是这样的，它的一个node里面可以存放好几个变量（可以用linked list来实现），也有不止一个儿子。这样它的层数比其他树都小，搜索起来也会更快。<br>因为一个node里面可以放不止一个变量，所以对于每个逼数，我们都规定一个branching factor t，代表最多能有几个儿子。</p>
+<p>B-Tree的特点：</p>
+<ol>
+<li>Every path from the root to a leaf has the same length（层高是统一的）</li>
+<li>If a node has  t  children, it contains  t−1  keys.（keys就是这个node里面的变量数）</li>
+<li>Every node (except the root) is at least half full.（每个node里面的变量数最少是n/2）</li>
+<li>The elements stored in a given subtree all have keys that are between the keys in the parent node on either side of the subtree pointer. (This generalizes the BST invariant.) </li>
+<li>The root has at least two children if it is not a leaf.</li>
+</ol>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/01/07/ds-tree3/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sheronw.github.io/2019/01/06/ds-arithmetic_expression/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1591,154 +1748,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sheronw.github.io/2018/03/24/karasu/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="SheronW">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/11.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SheronW">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/24/karasu/" itemprop="url">KARASU</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-24T10:00:00-04:00">
-                2018-03-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/recording/" itemprop="url" rel="index">
-                    <span itemprop="name">recording</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>不知道该起什么名，叫八沢之鸦太不知所云，叫暗翼之鸦太中二，直接叫鸦又土，还是直接用鸦的罗马音算了（起名废的纠结）。</p>
-<p>初中毕业的那个暑假坐公交车的时候突然想到的脑洞，高一下学期写完了，一不小心就拖了这么久才录到电脑里，现在也懒得改了。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/24/karasu/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1793,7 +1802,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
