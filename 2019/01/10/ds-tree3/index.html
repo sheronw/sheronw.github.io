@@ -97,7 +97,7 @@ https://i.loli.net/2019/01/11/5c37dd492e812.png
 https://i.loli.net/2019/01/11/5c37ea6fe329b.png
 ">
 <meta property="og:image" content="https://i.loli.net/2019/01/11/5c3791ebaa2ef.png">
-<meta property="og:updated_time" content="2019-01-11T01:06:34.302Z">
+<meta property="og:updated_time" content="2019-01-11T01:09:15.414Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tree part 3 - 简单粗暴数据结构（7）">
 <meta name="twitter:description" content="这一篇文章讲一下关于树的几个变种，lab里面并没有相关的内容，考试虽然也考但也不是重点。 B-Trees &amp;amp; 2-3 Trees在最前面放一张凡凡制作的表情包：  逼数，哦不，B-Tree是这样的，它的一个node里面可以存放好几个变量（可以用linked list来实现），也有不止一个儿子。这样它的层数比其他树都小，搜索起来也会更快。因为一个node里面可以放不止一个变量，所以对于每个逼">
@@ -374,7 +374,7 @@ https://i.loli.net/2019/01/11/5c37dd492e812.png
 <h2 id="Tries"><a href="#Tries" class="headerlink" title="Tries"></a>Tries</h2><p>这是一个用来保存各种字符串的树，因为重合部分很多，所以挺省内存的，插入之类的原理挺简单，只要会读里面有哪些字符串就可以了。<br>一般来讲，只要从root开始读，只要读到一个特殊的node就算字符串结尾（至于这个特殊的node怎么表示，不同的方法有轻微的区别，比如加一个空node，或者这个node有个特殊值，可以看一下上课老师怎么讲的）<br><img src="
 https://i.loli.net/2019/01/11/5c37ea6fe329b.png
 " style="zoom:50%"><br>好吧，假设上图里面绿色的node全都是终止node，那么上面这个trie里面存在的字符串有：a, an, and, any, all, be, been</p>
-<h2 id="Huffman-Trees"><a href="#Huffman-Trees" class="headerlink" title="Huffman Trees"></a>Huffman Trees</h2><p>实现这个这个其实是CS 241的最后一个作业（压轴），但在151阶段，考试时给一个文本（或者每个字母对应的频率），能够手写一棵树就够。<br>huffman tree就是一个能够压缩文本的“密码表”，向左就记0，向右就记1，字母出现频率越高就离root越近，也就是说encode的二进制字符串就越短。<br>生成这棵树的方法，死记硬背的话很简单：找到频率最小的俩字母，连在同一个爸爸上，这个爸爸的值就是这两个的频率之和，然后把这个爸爸作为一个整体放到剩下的那堆字母里，再找两个频率最小的……直到表为空，最后一个爸爸就是root。<br><img src="https://i.loli.net/2019/01/11/5c3791ebaa2ef.png" alt="enter image description here"><br>根据上面的树，可以得到编码如下：<br>| 字母 | 编码 |<br>|–|–|<br>| e | 0 |<br>| h | 100 |<br>| s | 101 |<br>| c | 11 |<br>最后安利一篇<a href="http://mindhacks.cn/2011/07/10/the-importance-of-knowing-why-part3/" target="_blank" rel="external">关于huffman tree原理的高阶讲解</a>（在文章靠后的位置）</p>
+<h2 id="Huffman-Trees"><a href="#Huffman-Trees" class="headerlink" title="Huffman Trees"></a>Huffman Trees</h2><p>实现这个这个其实是CS 241的最后一个作业（压轴），但在151阶段，考试时给一个文本（或者每个字母对应的频率），能够手写一棵树就够。<br>huffman tree就是一个能够压缩文本的“密码表”，向左就记0，向右就记1，字母出现频率越高就离root越近，也就是说encode的二进制字符串就越短。<br>生成这棵树的方法，死记硬背的话很简单：找到频率最小的俩字母，连在同一个爸爸上，这个爸爸的值就是这两个的频率之和，然后把这个爸爸作为一个整体放到剩下的那堆字母里，再找两个频率最小的……直到表为空，最后一个爸爸就是root。<br><img src="https://i.loli.net/2019/01/11/5c3791ebaa2ef.png" alt="enter image description here"><br>根据上面的树，可以得到编码如下：<br> e  0 h  100  s  101  c  11<br>最后安利一篇<a href="http://mindhacks.cn/2011/07/10/the-importance-of-knowing-why-part3/" target="_blank" rel="external">关于huffman tree原理的高阶讲解</a>（在文章靠后的位置）</p>
 <blockquote>
 <p>参考链接<br><a href="https://www.cs.cornell.edu/courses/cs3110/2012sp/recitations/rec25-B-trees/rec25.html" target="_blank" rel="external">https://www.cs.cornell.edu/courses/cs3110/2012sp/recitations/rec25-B-trees/rec25.html</a></p>
 </blockquote>
