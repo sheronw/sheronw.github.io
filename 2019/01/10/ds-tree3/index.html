@@ -81,17 +81,27 @@
 
 
 
-<meta name="description" content="infix, prefix, postfix如下是三种不同的表达式的写法： infix就是我们从小学到现在一直用的那种。举个例子吧：(A+B)/C-D*C一般来说运算符号都是放在两个数中间的，默认从左到右、不同符号优先级不同，还有括号来规定运算顺序。当然，虽然你懂怎么算，但除非特殊说明，计算机并不知道哪个优先，所以有一种叫做fully parenthesized expression的东西，大概是">
+<meta name="description" content="这一篇文章讲一下关于树的几个变种，lab里面并没有相关的内容，考试虽然也考但也不是重点。 B-Trees &amp;amp; 2-3 Trees在最前面放一张凡凡制作的表情包：  逼数，哦不，B-Tree是这样的，它的一个node里面可以存放好几个变量（可以用linked list来实现），也有不止一个儿子。这样它的层数比其他树都小，搜索起来也会更快。因为一个node里面可以放不止一个变量，所以对于每个逼">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Arithmetic expression - 简单粗暴数据结构（4）">
-<meta property="og:url" content="http://sheronw.github.io/2019/01/06/ds-arithmetic_expression/index.html">
+<meta property="og:title" content="Tree part 3 - 简单粗暴数据结构（7）">
+<meta property="og:url" content="http://sheronw.github.io/2019/01/10/ds-tree3/index.html">
 <meta property="og:site_name" content="SheronW">
-<meta property="og:description" content="infix, prefix, postfix如下是三种不同的表达式的写法： infix就是我们从小学到现在一直用的那种。举个例子吧：(A+B)/C-D*C一般来说运算符号都是放在两个数中间的，默认从左到右、不同符号优先级不同，还有括号来规定运算顺序。当然，虽然你懂怎么算，但除非特殊说明，计算机并不知道哪个优先，所以有一种叫做fully parenthesized expression的东西，大概是">
+<meta property="og:description" content="这一篇文章讲一下关于树的几个变种，lab里面并没有相关的内容，考试虽然也考但也不是重点。 B-Trees &amp;amp; 2-3 Trees在最前面放一张凡凡制作的表情包：  逼数，哦不，B-Tree是这样的，它的一个node里面可以存放好几个变量（可以用linked list来实现），也有不止一个儿子。这样它的层数比其他树都小，搜索起来也会更快。因为一个node里面可以放不止一个变量，所以对于每个逼">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-07T02:08:26.646Z">
+<meta property="og:image" content="https://i.loli.net/2019/01/11/5c378b209ed47.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/01/11/5c37da39c6c43.png">
+<meta property="og:image" content="
+https://i.loli.net/2019/01/11/5c37dd492e812.png
+">
+<meta property="og:image" content="
+https://i.loli.net/2019/01/11/5c37ea6fe329b.png
+">
+<meta property="og:image" content="https://i.loli.net/2019/01/11/5c3791ebaa2ef.png">
+<meta property="og:updated_time" content="2019-01-11T01:06:34.302Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Arithmetic expression - 简单粗暴数据结构（4）">
-<meta name="twitter:description" content="infix, prefix, postfix如下是三种不同的表达式的写法： infix就是我们从小学到现在一直用的那种。举个例子吧：(A+B)/C-D*C一般来说运算符号都是放在两个数中间的，默认从左到右、不同符号优先级不同，还有括号来规定运算顺序。当然，虽然你懂怎么算，但除非特殊说明，计算机并不知道哪个优先，所以有一种叫做fully parenthesized expression的东西，大概是">
+<meta name="twitter:title" content="Tree part 3 - 简单粗暴数据结构（7）">
+<meta name="twitter:description" content="这一篇文章讲一下关于树的几个变种，lab里面并没有相关的内容，考试虽然也考但也不是重点。 B-Trees &amp;amp; 2-3 Trees在最前面放一张凡凡制作的表情包：  逼数，哦不，B-Tree是这样的，它的一个node里面可以存放好几个变量（可以用linked list来实现），也有不止一个儿子。这样它的层数比其他树都小，搜索起来也会更快。因为一个node里面可以放不止一个变量，所以对于每个逼">
+<meta name="twitter:image" content="https://i.loli.net/2019/01/11/5c378b209ed47.jpg">
 
 
 
@@ -121,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://sheronw.github.io/2019/01/06/ds-arithmetic_expression/"/>
+  <link rel="canonical" href="http://sheronw.github.io/2019/01/10/ds-tree3/"/>
 
 
 
 
 
-  <title>Arithmetic expression - 简单粗暴数据结构（4） | SheronW</title>
+  <title>Tree part 3 - 简单粗暴数据结构（7） | SheronW</title>
   
 
 
@@ -254,7 +264,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sheronw.github.io/2019/01/06/ds-arithmetic_expression/">
+    <link itemprop="mainEntityOfPage" href="http://sheronw.github.io/2019/01/10/ds-tree3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SheronW">
@@ -271,7 +281,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Arithmetic expression - 简单粗暴数据结构（4）</h1>
+          <h1 class="post-title" itemprop="name headline">Tree part 3 - 简单粗暴数据结构（7）</h1>
         
 
         <div class="post-meta">
@@ -283,8 +293,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-06T18:58:47-05:00">
-                2019-01-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-10T20:01:35-05:00">
+                2019-01-10
               </time>
             
 
@@ -343,15 +353,31 @@
       
 
       
-        <h2 id="infix-prefix-postfix"><a href="#infix-prefix-postfix" class="headerlink" title="infix, prefix, postfix"></a>infix, prefix, postfix</h2><p>如下是三种不同的表达式的写法：</p>
-<h3 id="infix"><a href="#infix" class="headerlink" title="infix"></a>infix</h3><p>就是我们从小学到现在一直用的那种。<br>举个例子吧：(A+B)/C-D*C<br>一般来说运算符号都是放在两个数中间的，默认从左到右、不同符号优先级不同，还有括号来规定运算顺序。<br>当然，虽然你懂怎么算，但除非特殊说明，计算机并不知道哪个优先，所以有一种叫做fully parenthesized expression的东西，大概是这样的：(((A+B)/C)-(D*C))。</p>
+        <p>这一篇文章讲一下关于树的几个变种，lab里面并没有相关的内容，考试虽然也考但也不是重点。</p>
+<h2 id="B-Trees-amp-2-3-Trees"><a href="#B-Trees-amp-2-3-Trees" class="headerlink" title="B-Trees &amp; 2-3 Trees"></a>B-Trees &amp; 2-3 Trees</h2><p>在最前面放一张凡凡制作的表情包：</p>
+<p><img src="https://i.loli.net/2019/01/11/5c378b209ed47.jpg" style="zoom:50%"></p>
+<p>逼数，哦不，B-Tree是这样的，它的一个node里面可以存放好几个变量（可以用linked list来实现），也有不止一个儿子。这样它的层数比其他树都小，搜索起来也会更快。<br>因为一个node里面可以放不止一个变量，所以对于每个逼数，我们都规定一个branching factor t，代表最多能有几个儿子。</p>
+<p>B-Tree的特点：</p>
+<ol>
+<li>Every path from the root to a leaf has the same length（层高是统一的）</li>
+<li>If a node has  t  children, it contains  t−1  keys.（keys就是这个node里面的变量数）</li>
+<li>Every node (except the root) is at least half full.（每个node里面的变量数最少是n/2）</li>
+<li>The elements stored in a given subtree all have keys that are between the keys in the parent node on either side of the subtree pointer. (This generalizes the BST invariant.) </li>
+<li>The root has at least two children if it is not a leaf.</li>
+</ol>
 <a id="more"></a>
-<h3 id="prefix"><a href="#prefix" class="headerlink" title="prefix"></a>prefix</h3><p>prefix，顾名思义，就是运算符号放在了两个数字前面，比如这样：A + B变成了+ A B<br>那之前的(A+B)/C-D*C要怎么写呢？从最小的单位（比如A+B）开始改成prefix，然后把这个单位作为一个整体带入到下一轮的转换中：- / + A B C * D C</p>
-<h3 id="postfix"><a href="#postfix" class="headerlink" title="postfix"></a>postfix</h3><p>postfix就同理了，只不过符号在数字后面，比如之前的(A+B)/C-D*C就是 A B + C / D C * -</p>
-<h2 id="expression-objects"><a href="#expression-objects" class="headerlink" title="expression objects"></a>expression objects</h2><p>在还没有讲面向对象之前，这一块儿都跳过。反正下面的算法里面在实际程序里面带去的的都不是字符，而是两种不同的东西——要么是一种叫做『运算符』的object，要么是一种叫『数字』的object。</p>
-<h2 id="infix-to-postfix-algorithm"><a href="#infix-to-postfix-algorithm" class="headerlink" title="infix-to-postfix algorithm"></a>infix-to-postfix algorithm</h2><p>这个算法中用栈来暂存运算符号。建议你自己在纸上找一个infix然后自己写写看看hhh<br>首先我们有了一串用infix表示的式子，我们从左到右每次读取一个运算符号或者数字x：<br>如果x是左括号，那么就把它放到stack上；<br>如果x是数字，就把它放到postfix的列表里；<br>如果x是符号，比较x和stack最上面那个符号的优先级，把优先级大于等于它的符号全拿出来放到postfix里，再把x放到stack上；<br>如果x是右括号，就把x丢掉，再把stack上所有东西一个一个拿出来放到postfix里，直到遇到左括号，拿出来删掉。<br>然后最后postfix里面就是我们想要的了。</p>
-<h2 id="evaluate-postfix-algorithm"><a href="#evaluate-postfix-algorithm" class="headerlink" title="evaluate postfix algorithm"></a>evaluate postfix algorithm</h2><p>这个就和我们之前手动转换infix和postfix的原理很像了，就是两个数字和一个运算符号作为一个小单元。<br>还是那样子，还是需要一个stack，假设我们有一串用postfix表示的式子，从左到右每次读取一个运算符号或者数字x：<br>如果x是一个数字，就放在stack上；<br>如果x是一个运算符号，就把stack最上面的两个数拿出来（最先拿出来的是正常从左到右运算里面的第二个数），算一个数值，再把这个数放回stack上；<br>最后，如果式子正确，读取完毕后，stack上应该只有唯一的一个数，这个就是我们所要求的结果。</p>
-<p><a href="http://interactivepython.org/runestone/static/pythonds/BasicDS/InfixPrefixandPostfixExpressions.html" target="_blank" rel="external">可以参考这里</a></p>
+<p><img src="https://i.loli.net/2019/01/11/5c37da39c6c43.png" style="zoom:50%"><br>因为是BST的衍生，所以搜索和遍历都和它大同小异。</p>
+<h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><p>比较理想一点的状况是，在原来的树里，正好就有适合它的一个空位（因为每一个node不一定都是满的），这样直接插进去就好了。但有的时候，属于这个node的范围里面正好满了……<br>解决办法就是，把这个node中间的那个元素取出来，放在他爸爸那里，然后把已经满了的node分成两个半满的node，连在相应的位置上（要是爸爸满了就再往上推）。<br>用刚刚那个图举例子，假设我们要插一个0进去：<br><img src="
+https://i.loli.net/2019/01/11/5c37dd492e812.png
+" style="zoom:50%"></p>
+<h3 id="2-3-Trees"><a href="#2-3-Trees" class="headerlink" title="2-3 Trees"></a>2-3 Trees</h3><p>哦，这个就是branch factor=3的逼数，一个node最多可以有三个儿子，两个元素。</p>
+<h2 id="Tries"><a href="#Tries" class="headerlink" title="Tries"></a>Tries</h2><p>这是一个用来保存各种字符串的树，因为重合部分很多，所以挺省内存的，插入之类的原理挺简单，只要会读里面有哪些字符串就可以了。<br>一般来讲，只要从root开始读，只要读到一个特殊的node就算字符串结尾（至于这个特殊的node怎么表示，不同的方法有轻微的区别，比如加一个空node，或者这个node有个特殊值，可以看一下上课老师怎么讲的）<br><img src="
+https://i.loli.net/2019/01/11/5c37ea6fe329b.png
+" style="zoom:50%"><br>好吧，假设上图里面绿色的node全都是终止node，那么上面这个trie里面存在的字符串有：a, an, and, any, all, be, been</p>
+<h2 id="Huffman-Trees"><a href="#Huffman-Trees" class="headerlink" title="Huffman Trees"></a>Huffman Trees</h2><p>实现这个这个其实是CS 241的最后一个作业（压轴），但在151阶段，考试时给一个文本（或者每个字母对应的频率），能够手写一棵树就够。<br>huffman tree就是一个能够压缩文本的“密码表”，向左就记0，向右就记1，字母出现频率越高就离root越近，也就是说encode的二进制字符串就越短。<br>生成这棵树的方法，死记硬背的话很简单：找到频率最小的俩字母，连在同一个爸爸上，这个爸爸的值就是这两个的频率之和，然后把这个爸爸作为一个整体放到剩下的那堆字母里，再找两个频率最小的……直到表为空，最后一个爸爸就是root。<br><img src="https://i.loli.net/2019/01/11/5c3791ebaa2ef.png" alt="enter image description here"><br>根据上面的树，可以得到编码如下：<br>| 字母 | 编码 |<br>|–|–|<br>| e | 0 |<br>| h | 100 |<br>| s | 101 |<br>| c | 11 |<br>最后安利一篇<a href="http://mindhacks.cn/2011/07/10/the-importance-of-knowing-why-part3/" target="_blank" rel="external">关于huffman tree原理的高阶讲解</a>（在文章靠后的位置）</p>
+<blockquote>
+<p>参考链接<br><a href="https://www.cs.cornell.edu/courses/cs3110/2012sp/recitations/rec25-B-trees/rec25.html" target="_blank" rel="external">https://www.cs.cornell.edu/courses/cs3110/2012sp/recitations/rec25-B-trees/rec25.html</a></p>
+</blockquote>
 
       
     </div>
@@ -376,8 +402,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/05/ds-algs_analysis/" rel="next" title="Algorithm Analysis - 简单粗暴数据结构（3）">
-                <i class="fa fa-chevron-left"></i> Algorithm Analysis - 简单粗暴数据结构（3）
+              <a href="/2019/01/09/ds-tree2/" rel="next" title="Tree part 2 - 简单粗暴数据结构（6）">
+                <i class="fa fa-chevron-left"></i> Tree part 2 - 简单粗暴数据结构（6）
               </a>
             
           </div>
@@ -385,10 +411,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/07/ds-tree1/" rel="prev" title="Tree part 1 - 简单粗暴数据结构（5）">
-                Tree part 1 - 简单粗暴数据结构（5） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -549,7 +571,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#infix-prefix-postfix"><span class="nav-number">1.</span> <span class="nav-text">infix, prefix, postfix</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#infix"><span class="nav-number">1.1.</span> <span class="nav-text">infix</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prefix"><span class="nav-number">1.2.</span> <span class="nav-text">prefix</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#postfix"><span class="nav-number">1.3.</span> <span class="nav-text">postfix</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#expression-objects"><span class="nav-number">2.</span> <span class="nav-text">expression objects</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#infix-to-postfix-algorithm"><span class="nav-number">3.</span> <span class="nav-text">infix-to-postfix algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#evaluate-postfix-algorithm"><span class="nav-number">4.</span> <span class="nav-text">evaluate postfix algorithm</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Trees-amp-2-3-Trees"><span class="nav-number">1.</span> <span class="nav-text">B-Trees & 2-3 Trees</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#插入"><span class="nav-number">1.1.</span> <span class="nav-text">插入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Trees"><span class="nav-number">1.2.</span> <span class="nav-text">2-3 Trees</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tries"><span class="nav-number">2.</span> <span class="nav-text">Tries</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Huffman-Trees"><span class="nav-number">3.</span> <span class="nav-text">Huffman Trees</span></a></li></ol></div>
             
 
           </div>
