@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://sheronw.github.io/2019/01/12/ds-hashing/</loc>
+    
+    <lastmod>2019-01-12T18:41:11.602Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://sheronw.github.io/2019/01/11/ds-pq/</loc>
     
     <lastmod>2019-01-11T18:46:39.722Z</lastmod>

@@ -81,27 +81,19 @@
 
 
 
-<meta name="description" content="这一篇文章讲一下关于树的几个变种，lab里面并没有相关的内容，考试虽然也考但也不是重点。 B-Trees &amp;amp; 2-3 Trees在最前面放一张凡凡制作的表情包：  逼数，哦不，B-Tree是这样的，它的一个node里面可以存放好几个变量（可以用linked list来实现），也有不止一个儿子。这样它的层数比其他树都小，搜索起来也会更快。因为一个node里面可以放不止一个变量，所以对于每个逼">
+<meta name="description" content="Basic Concepts之前在array里面查找一个东西，要么线性搜索，要么把这个array排好再搜……hashing就是一种简单粗暴放东西的方法，它用一个hash function，放东西的时候把这个东西的key转换成index，值放在相应的格子里，这样下次搜索这个key的时候就可以秒搜了。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Tree part 3 - 简单粗暴数据结构（7）">
-<meta property="og:url" content="http://sheronw.github.io/2019/01/10/ds-tree3/index.html">
+<meta property="og:title" content="Hashing - 简单粗暴数据结构（9）">
+<meta property="og:url" content="http://sheronw.github.io/2019/01/12/ds-hashing/index.html">
 <meta property="og:site_name" content="SheronW">
-<meta property="og:description" content="这一篇文章讲一下关于树的几个变种，lab里面并没有相关的内容，考试虽然也考但也不是重点。 B-Trees &amp;amp; 2-3 Trees在最前面放一张凡凡制作的表情包：  逼数，哦不，B-Tree是这样的，它的一个node里面可以存放好几个变量（可以用linked list来实现），也有不止一个儿子。这样它的层数比其他树都小，搜索起来也会更快。因为一个node里面可以放不止一个变量，所以对于每个逼">
+<meta property="og:description" content="Basic Concepts之前在array里面查找一个东西，要么线性搜索，要么把这个array排好再搜……hashing就是一种简单粗暴放东西的方法，它用一个hash function，放东西的时候把这个东西的key转换成index，值放在相应的格子里，这样下次搜索这个key的时候就可以秒搜了。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.loli.net/2019/01/11/5c378b209ed47.jpg">
-<meta property="og:image" content="https://i.loli.net/2019/01/11/5c37da39c6c43.png">
-<meta property="og:image" content="
-https://i.loli.net/2019/01/11/5c37dd492e812.png
-">
-<meta property="og:image" content="
-https://i.loli.net/2019/01/11/5c37ea6fe329b.png
-">
-<meta property="og:image" content="https://i.loli.net/2019/01/11/5c3791ebaa2ef.png">
-<meta property="og:updated_time" content="2019-01-11T01:09:15.414Z">
+<meta property="og:image" content="https://i.loli.net/2019/01/13/5c3a2aaf801be.png">
+<meta property="og:updated_time" content="2019-01-12T18:41:11.602Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tree part 3 - 简单粗暴数据结构（7）">
-<meta name="twitter:description" content="这一篇文章讲一下关于树的几个变种，lab里面并没有相关的内容，考试虽然也考但也不是重点。 B-Trees &amp;amp; 2-3 Trees在最前面放一张凡凡制作的表情包：  逼数，哦不，B-Tree是这样的，它的一个node里面可以存放好几个变量（可以用linked list来实现），也有不止一个儿子。这样它的层数比其他树都小，搜索起来也会更快。因为一个node里面可以放不止一个变量，所以对于每个逼">
-<meta name="twitter:image" content="https://i.loli.net/2019/01/11/5c378b209ed47.jpg">
+<meta name="twitter:title" content="Hashing - 简单粗暴数据结构（9）">
+<meta name="twitter:description" content="Basic Concepts之前在array里面查找一个东西，要么线性搜索，要么把这个array排好再搜……hashing就是一种简单粗暴放东西的方法，它用一个hash function，放东西的时候把这个东西的key转换成index，值放在相应的格子里，这样下次搜索这个key的时候就可以秒搜了。">
+<meta name="twitter:image" content="https://i.loli.net/2019/01/13/5c3a2aaf801be.png">
 
 
 
@@ -131,13 +123,13 @@ https://i.loli.net/2019/01/11/5c37ea6fe329b.png
 
 
 
-  <link rel="canonical" href="http://sheronw.github.io/2019/01/10/ds-tree3/"/>
+  <link rel="canonical" href="http://sheronw.github.io/2019/01/12/ds-hashing/"/>
 
 
 
 
 
-  <title>Tree part 3 - 简单粗暴数据结构（7） | SheronW</title>
+  <title>Hashing - 简单粗暴数据结构（9） | SheronW</title>
   
 
 
@@ -264,7 +256,7 @@ https://i.loli.net/2019/01/11/5c37ea6fe329b.png
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sheronw.github.io/2019/01/10/ds-tree3/">
+    <link itemprop="mainEntityOfPage" href="http://sheronw.github.io/2019/01/12/ds-hashing/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SheronW">
@@ -281,7 +273,7 @@ https://i.loli.net/2019/01/11/5c37ea6fe329b.png
 
         
         
-          <h1 class="post-title" itemprop="name headline">Tree part 3 - 简单粗暴数据结构（7）</h1>
+          <h1 class="post-title" itemprop="name headline">Hashing - 简单粗暴数据结构（9）</h1>
         
 
         <div class="post-meta">
@@ -293,8 +285,8 @@ https://i.loli.net/2019/01/11/5c37ea6fe329b.png
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-10T20:01:35-05:00">
-                2019-01-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-12T13:39:54-05:00">
+                2019-01-12
               </time>
             
 
@@ -353,31 +345,17 @@ https://i.loli.net/2019/01/11/5c37ea6fe329b.png
       
 
       
-        <p>这一篇文章讲一下关于树的几个变种，lab里面并没有相关的内容，考试虽然也考但也不是重点。</p>
-<h2 id="B-Trees-amp-2-3-Trees"><a href="#B-Trees-amp-2-3-Trees" class="headerlink" title="B-Trees &amp; 2-3 Trees"></a>B-Trees &amp; 2-3 Trees</h2><p>在最前面放一张凡凡制作的表情包：</p>
-<p><img src="https://i.loli.net/2019/01/11/5c378b209ed47.jpg" style="zoom:50%"></p>
-<p>逼数，哦不，B-Tree是这样的，它的一个node里面可以存放好几个变量（可以用linked list来实现），也有不止一个儿子。这样它的层数比其他树都小，搜索起来也会更快。<br>因为一个node里面可以放不止一个变量，所以对于每个逼数，我们都规定一个branching factor t，代表最多能有几个儿子。</p>
-<p>B-Tree的特点：</p>
-<ol>
-<li>Every path from the root to a leaf has the same length（层高是统一的）</li>
-<li>If a node has  t  children, it contains  t−1  keys.（keys就是这个node里面的变量数）</li>
-<li>Every node (except the root) is at least half full.（每个node里面的变量数最少是n/2）</li>
-<li>The elements stored in a given subtree all have keys that are between the keys in the parent node on either side of the subtree pointer. (This generalizes the BST invariant.) </li>
-<li>The root has at least two children if it is not a leaf.</li>
-</ol>
+        <h2 id="Basic-Concepts"><a href="#Basic-Concepts" class="headerlink" title="Basic Concepts"></a>Basic Concepts</h2><p>之前在array里面查找一个东西，要么线性搜索，要么把这个array排好再搜……<br>hashing就是一种简单粗暴放东西的方法，它用一个hash function，放东西的时候把这个东西的key转换成index，值放在相应的格子里，这样下次搜索这个key的时候就可以秒搜了。</p>
+<p><img src="https://i.loli.net/2019/01/13/5c3a2aaf801be.png" alt="enter image description here"></p>
 <a id="more"></a>
-<p><img src="https://i.loli.net/2019/01/11/5c37da39c6c43.png" style="zoom:50%"><br>因为是BST的衍生，所以搜索和遍历都和它大同小异。</p>
-<h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><p>比较理想一点的状况是，在原来的树里，正好就有适合它的一个空位（因为每一个node不一定都是满的），这样直接插进去就好了。但有的时候，属于这个node的范围里面正好满了……<br>解决办法就是，把这个node中间的那个元素取出来，放在他爸爸那里，然后把已经满了的node分成两个半满的node，连在相应的位置上（要是爸爸满了就再往上推）。<br>用刚刚那个图举例子，假设我们要插一个0进去：<br><img src="
-https://i.loli.net/2019/01/11/5c37dd492e812.png
-" style="zoom:50%"></p>
-<h3 id="2-3-Trees"><a href="#2-3-Trees" class="headerlink" title="2-3 Trees"></a>2-3 Trees</h3><p>哦，这个就是branch factor=3的逼数，一个node最多可以有三个儿子，两个元素。</p>
-<h2 id="Tries"><a href="#Tries" class="headerlink" title="Tries"></a>Tries</h2><p>这是一个用来保存各种字符串的树，因为重合部分很多，所以挺省内存的，插入之类的原理挺简单，只要会读里面有哪些字符串就可以了。<br>一般来讲，只要从root开始读，只要读到一个特殊的node就算字符串结尾（至于这个特殊的node怎么表示，不同的方法有轻微的区别，比如加一个空node，或者这个node有个特殊值，可以看一下上课老师怎么讲的）<br><img src="
-https://i.loli.net/2019/01/11/5c37ea6fe329b.png
-" style="zoom:50%"><br>好吧，假设上图里面绿色的node全都是终止node，那么上面这个trie里面存在的字符串有：a, an, and, any, all, be, been</p>
-<h2 id="Huffman-Trees"><a href="#Huffman-Trees" class="headerlink" title="Huffman Trees"></a>Huffman Trees</h2><p>实现这个这个其实是CS 241的最后一个作业（压轴），但在151阶段，考试时给一个文本（或者每个字母对应的频率），能够手写一棵树就够。<br>huffman tree就是一个能够压缩文本的“密码表”，向左就记0，向右就记1，字母出现频率越高就离root越近，也就是说encode的二进制字符串就越短。<br>生成这棵树的方法，死记硬背的话很简单：找到频率最小的俩字母，连在同一个爸爸上，这个爸爸的值就是这两个的频率之和，然后把这个爸爸作为一个整体放到剩下的那堆字母里，再找两个频率最小的……直到表为空，最后一个爸爸就是root。<br><img src="https://i.loli.net/2019/01/11/5c3791ebaa2ef.png" alt="enter image description here"><br>根据上面的树，可以得到编码如下：<br> e  0 h  100  s  101  c  11<br>最后安利一篇<a href="http://mindhacks.cn/2011/07/10/the-importance-of-knowing-why-part3/" target="_blank" rel="external">关于huffman tree原理的高阶讲解</a>（在文章靠后的位置）</p>
-<blockquote>
-<p>参考链接<br><a href="https://www.cs.cornell.edu/courses/cs3110/2012sp/recitations/rec25-B-trees/rec25.html" target="_blank" rel="external">https://www.cs.cornell.edu/courses/cs3110/2012sp/recitations/rec25-B-trees/rec25.html</a></p>
-</blockquote>
+<h2 id="Hash-Function-Design"><a href="#Hash-Function-Design" class="headerlink" title="Hash Function Design"></a>Hash Function Design</h2><p>就是把keys转换成整数（index）的函数啦，Java好像有现成的method可以用。<br>如果keys都是整数，而且整数都不算大的话，f(key)=key。<br>一个好的hash function，当然是要做到『均匀』——首先，不能黏在一起，比如尽可能降低不同的key值指向同一个hashing值的情况（也就是说collision）。其次，也不能距离太远，array不能搞得太大，至少要控制在空间复杂度小于O(2<sup>n</sup>)吧。</p>
+<h3 id="Division-Method"><a href="#Division-Method" class="headerlink" title="Division Method"></a>Division Method</h3><p>现在最常用的方法。<br>假设key值已经转换成整数了，hash(key)=key%table size<br>为了减少collision，比较适合做table size的数：prime numbers或者是numbers without small prime factors<br>（power of 2 不是一个好的table size，太容易撞了）</p>
+<h3 id="MAD"><a href="#MAD" class="headerlink" title="MAD"></a>MAD</h3><p>是multiply，add，divide的缩写。<br>hash(key)=(a*key+b)%table size<br>上面的加强版。</p>
+<p>……我能想起来的只有这么多了，上课看下笔记吧。</p>
+<h2 id="Collision-Handing"><a href="#Collision-Handing" class="headerlink" title="Collision Handing"></a>Collision Handing</h2><p>当然，虽然理论上说可以秒搜，但实际上经常是达不到这个情况的——万一正好两个不同key的hash值相等呢？所以我们就要处理这些重复的值。</p>
+<h3 id="Open-Addressing"><a href="#Open-Addressing" class="headerlink" title="Open Addressing"></a>Open Addressing</h3><h4 id="Linear-Probing"><a href="#Linear-Probing" class="headerlink" title="Linear Probing"></a>Linear Probing</h4><p>最简单粗暴的解决办法。要是hash对应的格子已经满了，就放到下一个，这样以此类推直到找到空位。<br>搜索的时候也是，如果这个格子的key值和想要搜的key不相等，就搜下一个，以此类推。<br>缺点是，最坏情况下你可能要把整个表都搜一遍，也就是O(n)。</p>
+<h4 id="Double-Hashing"><a href="#Double-Hashing" class="headerlink" title="Double Hashing"></a>Double Hashing</h4><p>其实也很简单粗暴，准备两个hash function，第一个撞了就换第二个，第二个还撞就用上面那个方法……<br>类似地，还有一种方法叫做rehashing，就是准备i个不同的hash function……（也不是说这i个函数完全不一样，可以只是稍微改动一下系数什么的）</p>
+<h3 id="Separate-Chaining"><a href="#Separate-Chaining" class="headerlink" title="Separate Chaining"></a>Separate Chaining</h3><p>可以说是表中表了。array中的每一个格子里面都存放一个linked list，要是有重复了就把新加进来的key和value存放在linked list里面就好啦。</p>
 
       
     </div>
@@ -402,8 +380,8 @@ https://i.loli.net/2019/01/11/5c37ea6fe329b.png
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/09/ds-tree2/" rel="next" title="Tree part 2 - 简单粗暴数据结构（6）">
-                <i class="fa fa-chevron-left"></i> Tree part 2 - 简单粗暴数据结构（6）
+              <a href="/2019/01/11/ds-pq/" rel="next" title="Priority Queue - 简单粗暴数据结构（8）">
+                <i class="fa fa-chevron-left"></i> Priority Queue - 简单粗暴数据结构（8）
               </a>
             
           </div>
@@ -411,10 +389,6 @@ https://i.loli.net/2019/01/11/5c37ea6fe329b.png
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/11/ds-pq/" rel="prev" title="Priority Queue - 简单粗暴数据结构（8）">
-                Priority Queue - 简单粗暴数据结构（8） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -575,7 +549,7 @@ https://i.loli.net/2019/01/11/5c37ea6fe329b.png
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Trees-amp-2-3-Trees"><span class="nav-number">1.</span> <span class="nav-text">B-Trees & 2-3 Trees</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#插入"><span class="nav-number">1.1.</span> <span class="nav-text">插入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Trees"><span class="nav-number">1.2.</span> <span class="nav-text">2-3 Trees</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tries"><span class="nav-number">2.</span> <span class="nav-text">Tries</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Huffman-Trees"><span class="nav-number">3.</span> <span class="nav-text">Huffman Trees</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Concepts"><span class="nav-number">1.</span> <span class="nav-text">Basic Concepts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash-Function-Design"><span class="nav-number">2.</span> <span class="nav-text">Hash Function Design</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Division-Method"><span class="nav-number">2.1.</span> <span class="nav-text">Division Method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MAD"><span class="nav-number">2.2.</span> <span class="nav-text">MAD</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Collision-Handing"><span class="nav-number">3.</span> <span class="nav-text">Collision Handing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Open-Addressing"><span class="nav-number">3.1.</span> <span class="nav-text">Open Addressing</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Linear-Probing"><span class="nav-number">3.1.1.</span> <span class="nav-text">Linear Probing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Double-Hashing"><span class="nav-number">3.1.2.</span> <span class="nav-text">Double Hashing</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Separate-Chaining"><span class="nav-number">3.2.</span> <span class="nav-text">Separate Chaining</span></a></li></ol></li></ol></div>
             
 
           </div>
