@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sheronw.github.io/"/>
-  <updated>2019-01-12T18:41:11.602Z</updated>
+  <updated>2019-01-13T19:14:43.636Z</updated>
   <id>http://sheronw.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Graph part 1 - 简单粗暴数据结构（10）</title>
+    <link href="http://sheronw.github.io/2019/01/13/ds-graph1/"/>
+    <id>http://sheronw.github.io/2019/01/13/ds-graph1/</id>
+    <published>2019-01-13T18:40:08.000Z</published>
+    <updated>2019-01-13T19:14:43.636Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Basic-Terminology"><a href="#Basic-Terminology" class="headerlink" title="Basic Terminology"></a>Basic Terminology</h2><p>这学期最后一个数据结构是图。简单地来说就是『由线连起来的点』，由Vertex（点）和Edge（线）组成。G=(V,E)<br>下面的很多定义都是从图论（数学）里面拿来用的hhh</p><h3 id="direct-amp-indirect"><a href="#direct-amp-indirect" class="headerlink" title="direct &amp; indirect"></a>direct &amp; indirect</h3><p>根据edge是否有方向（带箭头），graph可以分成direct graph（digraph）和indirect graph（没有方向的）。<br>如果是direct graph，那么edge可以用两个<strong>有序的</strong>vertices来表示。<br><a id="more"></a></p><h3 id="dense-amp-sparse"><a href="#dense-amp-sparse" class="headerlink" title="dense &amp; sparse"></a>dense &amp; sparse</h3><p>根据edge的数量多少，graph又可以分成dense graph和sparse graph。<br>如果这个图比较dense，那么对每一个vertex来说，都几乎和剩下所有的edge相连，那么E=O(V<sup>2</sup>)。<br>如果这个图比较sparse，edge的数量肯定是小于O(V<sup>2</sup>)的。<br>一般来说，sparse graph更适合用adjacency list来represent（见后面）。</p><p>cycle是一条从一个vertex出发，又回到它这里的一段路径。</p><h3 id="weighted-amp-unweighted"><a href="#weighted-amp-unweighted" class="headerlink" title="weighted &amp; unweighted"></a>weighted &amp; unweighted</h3><p>weighted graph其实就是在edge上标了数值。一个实际应用的例子就是走不同edge所需要的旅行成本。</p><h2 id="Representation-Methods"><a href="#Representation-Methods" class="headerlink" title="Representation Methods"></a>Representation Methods</h2><p><img src="https://i.loli.net/2019/01/14/5c3b845879e26.png" alt="enter image description here"></p><h3 id="Adjacency-Matrix"><a href="#Adjacency-Matrix" class="headerlink" title="Adjacency Matrix"></a>Adjacency Matrix</h3><p>适用于dense graph。<br>简单来讲就是搞一个矩阵，横纵座标分别代表一个vertex，如果这两个vertices之间有edge，这一格的值就为1，否则为0。<br>如果是directed graph的话，可以规定横或纵中的一个为起始vertex。<br>如果是weighted graph的话，把1换成值就可以了。</p><h3 id="Adjacency-Lists"><a href="#Adjacency-Lists" class="headerlink" title="Adjacency Lists"></a>Adjacency Lists</h3><p>适用于sparse graph。<br>简单地说就是每一个vertex都有一个相应的linked-list，记录了所有与它相连的vertices。<br>如果是directed graph的话，就只记录以它为起点的edge对应的vertices。<br>如果是weighted graph的话，linked-list中再增加一项edge的值。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Basic-Terminology&quot;&gt;&lt;a href=&quot;#Basic-Terminology&quot; class=&quot;headerlink&quot; title=&quot;Basic Terminology&quot;&gt;&lt;/a&gt;Basic Terminology&lt;/h2&gt;&lt;p&gt;这学期最后一个数据结构是图。简单地来说就是『由线连起来的点』，由Vertex（点）和Edge（线）组成。G=(V,E)&lt;br&gt;下面的很多定义都是从图论（数学）里面拿来用的hhh&lt;/p&gt;
+&lt;h3 id=&quot;direct-amp-indirect&quot;&gt;&lt;a href=&quot;#direct-amp-indirect&quot; class=&quot;headerlink&quot; title=&quot;direct &amp;amp; indirect&quot;&gt;&lt;/a&gt;direct &amp;amp; indirect&lt;/h3&gt;&lt;p&gt;根据edge是否有方向（带箭头），graph可以分成direct graph（digraph）和indirect graph（没有方向的）。&lt;br&gt;如果是direct graph，那么edge可以用两个&lt;strong&gt;有序的&lt;/strong&gt;vertices来表示。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="简单粗暴数据结构" scheme="http://sheronw.github.io/categories/%E7%AE%80%E5%8D%95%E7%B2%97%E6%9A%B4%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Hashing - 简单粗暴数据结构（9）</title>
@@ -485,24 +506,6 @@
     </summary>
     
       <category term="notetaking" scheme="http://sheronw.github.io/categories/notetaking/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://sheronw.github.io/2017/10/08/hello-world/"/>
-    <id>http://sheronw.github.io/2017/10/08/hello-world/</id>
-    <published>2017-10-08T20:05:41.470Z</published>
-    <updated>2017-10-13T18:10:22.518Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to my little new world.</p><a id="more"></a>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to my little new world.&lt;/p&gt;
-    
-    </summary>
     
     
   </entry>
