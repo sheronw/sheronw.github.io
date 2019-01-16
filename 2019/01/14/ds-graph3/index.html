@@ -81,17 +81,19 @@
 
 
 
-<meta name="description" content="这一篇文章就是各种奇怪的算法了……但考试中给一个图能画出来算法每一步得到的结果就ok，实在不理解的话，死记硬背其实也是可以的hhh Search以下算法针对indirect graph，用来遍历图中每个点。 Breadth First Search(BFS)广度优先搜索。如名字所示，就是把当前所在的vertex周围的vertex都搜索一遍，然后依次对它周围的vertex都执行相同的这个操作……咦，">
+<meta name="description" content="Minimum Spanning TreeDefinition我不知道该怎么描述，总的来说，给一个图，选出来一些互相相连但不成环（connected but acyclic）的edge，使得这些edge的总和最小，并且每一个点都能通过这个集合走到另外任意一个点。”connect network at min cost”">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Graph part 2 - 简单粗暴数据结构（11）">
-<meta property="og:url" content="http://sheronw.github.io/2019/01/14/ds-graph2/index.html">
+<meta property="og:title" content="Graph part 3 - 简单粗暴数据结构（12）">
+<meta property="og:url" content="http://sheronw.github.io/2019/01/14/ds-graph3/index.html">
 <meta property="og:site_name" content="SheronW">
-<meta property="og:description" content="这一篇文章就是各种奇怪的算法了……但考试中给一个图能画出来算法每一步得到的结果就ok，实在不理解的话，死记硬背其实也是可以的hhh Search以下算法针对indirect graph，用来遍历图中每个点。 Breadth First Search(BFS)广度优先搜索。如名字所示，就是把当前所在的vertex周围的vertex都搜索一遍，然后依次对它周围的vertex都执行相同的这个操作……咦，">
+<meta property="og:description" content="Minimum Spanning TreeDefinition我不知道该怎么描述，总的来说，给一个图，选出来一些互相相连但不成环（connected but acyclic）的edge，使得这些edge的总和最小，并且每一个点都能通过这个集合走到另外任意一个点。”connect network at min cost”">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-15T01:59:39.274Z">
+<meta property="og:image" content="https://i.loli.net/2019/01/16/5c3e7d51808f3.png">
+<meta property="og:updated_time" content="2019-01-16T00:59:33.464Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Graph part 2 - 简单粗暴数据结构（11）">
-<meta name="twitter:description" content="这一篇文章就是各种奇怪的算法了……但考试中给一个图能画出来算法每一步得到的结果就ok，实在不理解的话，死记硬背其实也是可以的hhh Search以下算法针对indirect graph，用来遍历图中每个点。 Breadth First Search(BFS)广度优先搜索。如名字所示，就是把当前所在的vertex周围的vertex都搜索一遍，然后依次对它周围的vertex都执行相同的这个操作……咦，">
+<meta name="twitter:title" content="Graph part 3 - 简单粗暴数据结构（12）">
+<meta name="twitter:description" content="Minimum Spanning TreeDefinition我不知道该怎么描述，总的来说，给一个图，选出来一些互相相连但不成环（connected but acyclic）的edge，使得这些edge的总和最小，并且每一个点都能通过这个集合走到另外任意一个点。”connect network at min cost”">
+<meta name="twitter:image" content="https://i.loli.net/2019/01/16/5c3e7d51808f3.png">
 
 
 
@@ -121,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://sheronw.github.io/2019/01/14/ds-graph2/"/>
+  <link rel="canonical" href="http://sheronw.github.io/2019/01/14/ds-graph3/"/>
 
 
 
 
 
-  <title>Graph part 2 - 简单粗暴数据结构（11） | SheronW</title>
+  <title>Graph part 3 - 简单粗暴数据结构（12） | SheronW</title>
   
 
 
@@ -254,7 +256,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sheronw.github.io/2019/01/14/ds-graph2/">
+    <link itemprop="mainEntityOfPage" href="http://sheronw.github.io/2019/01/14/ds-graph3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SheronW">
@@ -271,7 +273,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Graph part 2 - 简单粗暴数据结构（11）</h1>
+          <h1 class="post-title" itemprop="name headline">Graph part 3 - 简单粗暴数据结构（12）</h1>
         
 
         <div class="post-meta">
@@ -283,7 +285,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-14T20:57:54-05:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-14T19:58:31-05:00">
                 2019-01-14
               </time>
             
@@ -343,73 +345,26 @@
       
 
       
-        <p>这一篇文章就是各种奇怪的算法了……但考试中给一个图能画出来算法每一步得到的结果就ok，实在不理解的话，死记硬背其实也是可以的hhh</p>
-<h2 id="Search"><a href="#Search" class="headerlink" title="Search"></a>Search</h2><p>以下算法针对indirect graph，用来遍历图中每个点。</p>
-<h3 id="Breadth-First-Search-BFS"><a href="#Breadth-First-Search-BFS" class="headerlink" title="Breadth First Search(BFS)"></a>Breadth First Search(BFS)</h3><p>广度优先搜索。如名字所示，就是把当前所在的vertex周围的vertex都搜索一遍，然后<strong>依次</strong>对它周围的vertex都执行相同的这个操作……<br>咦，好像可以用队列呀？只要检查完它周围的vertex，然后把它们全加进队列里面，然后从队列里面取出下一个就可以咯？<br>当然，秉着效率优先的原则，我们要把已经检查过了的vertex进行标记，这样就不用再搜一遍了。<br><a id="more"></a></p>
-<pre><code>将开始搜索的vertex（就记作s吧）放入队列q中
-当队列q不为空时：
-    dequeue出来一个vertex u
-    检查是否是我们要找的，是的话就return该vertex
-    将u进行标记
-    for u的所有邻居 v：
-        如果v没有标记：
-            将v加入队列q
-return『无结果』
-</code></pre><p>时间复杂度：O(V+E)<br>首先所有的vertex都要被enqueue和dequeue一次，所以是O(V)；其次对每个u来说，所有的邻居都要被扫描一遍检查是否有标记（也就是说扫描一遍和u有关系的所有edge），这样每个edge都被扫描了两遍（因为它和两个vertex有关系），所以是O(E)。</p>
-<p><a href="https://blog.csdn.net/raphealguo/article/details/7523411" target="_blank" rel="external">可以看这一篇</a></p>
-<h3 id="Depth-First-Search-DFS"><a href="#Depth-First-Search-DFS" class="headerlink" title="Depth First Search(DFS)"></a>Depth First Search(DFS)</h3><p>深度优先搜索。就是一条路走到黑，走不下去了就退到上一个节点，再换另一条路。<br>……退回到上一个节点？我们可以用递归或者是栈。<br>stack的话和广度搜索有点相似：</p>
-<pre><code>将起点s标记，放进栈stack中
-当stack不为空时：
-    peek最上面的元素u（只是peek，不拿出来）
-    检查是否u是我们想要的，是的话就return它
-    在与它相邻的vertices中，看看还有没有没被标记的
-    要是有的话，找一个没被标记的v，将其标记并放到栈里面
-    没有的话，就把u从栈里面拿出来
-return 『无结果』
-</code></pre><p>递归：</p>
-<pre><code>dfs(V,E,u):
-    将u进行标记
-    如果就是我们要找的，结束搜索直接return
-    for u所有的邻居v：
-        如果v没有被标记：
-            dfs(V,E,v)
-dfs(V,E,起点s)
-</code></pre><p>时间复杂度和广度优先搜索一样，也是一个vertex都会至少检查一次，每个edge都会检查两次，也是O(V+E)</p>
-<h2 id="Shortest-Paths"><a href="#Shortest-Paths" class="headerlink" title="Shortest Paths"></a>Shortest Paths</h2><p>以下算法用于weighted graph寻找图中两点间最短路径。</p>
-<h3 id="Dijkstra’s-Algorithm"><a href="#Dijkstra’s-Algorithm" class="headerlink" title="Dijkstra’s Algorithm"></a>Dijkstra’s Algorithm</h3><p>这个名字看起来挺奇怪，其实那个j好像不发音，是个荷兰的计算机科学家的姓。这个人名言超级多，忘了听谁说的被誉为是计算机科学界的米兰昆德拉……<br>跑题了，这个算法利用一个表<strong>d</strong>来记录从出发点<strong>s</strong>到图中每一个点的最短距离（初始值是无穷大），然后不断更新它。<br>为了能够找到确切的路径，我们又准备了另外一个表<strong>prev</strong>（初始值为空），用来存储路径中该点前面的那个点，当然也要不断更新它，这样就可以从我们找到的终点一路开倒车找回s了。<br>那么如何不断更新呢？把所有的点都放在一个set里面，然后每次拿出来一个距离最小的（可以用priority queue？）（其实这里用到了一种叫做『贪心』的策略，即既然想要最短路径，那就从最短的开始下手）。<br>给定任意一点u和它的某个邻居v，如何判定我们找到了新的最小距离呢？如果到u的最小距离加上u与v之间的距离竟然小于到v的最小距离，那么就说明经过u到v距离会更短，那么我们就要把到v的最小距离改成之前那个了……</p>
-<pre><code>for all vertices v in graph G: // 初始化
-    d[v]=infinity
-    prev[v]=NULL
-d[s]=0 // 起点到它本身的距离为零
-while 存在未标记的点:
-    u=未标记的点中有最小d[u]的那个
-    for all neighbors v of u:
-        if d[u]+(u,v)&lt;d[v]:
-            d[v]=d[u]+(u,v)
-            prev[v]=u
-    将u进行标记
-</code></pre><p>来分析一下这个的时间复杂度，while循环里面包着的for循环有点熟悉，往上一翻发现和广度优先搜索如出一辙，所以这一块儿应该是O(E)。剩下的就是while里面包着的找最小d[u]的那个了，之前我们说过可以用priority queue，这个的时间复杂度是O(logn)，剩下的部分是和点（vertices）有关的，因此是O(VlogV)。加起来总的时间复杂度应该是O(VlogV)。</p>
-<p>那么输出完整路径的算法为：</p>
-<pre><code>v=我们要找的终点
-while prev[v]!=s:
-    print v
-    v=prev[v]
-print s
-</code></pre><p>悄悄地说一句，这是我们当初期末考试中唯一一个真正考了的关于graph的算法……hhh</p>
-<h3 id="Floyd’s-Algorithms"><a href="#Floyd’s-Algorithms" class="headerlink" title="Floyd’s Algorithms"></a>Floyd’s Algorithms</h3><p>dijkstra 的算法虽然快，但有一个问题：当weighted graph中有值为负的edge的时候就用不了了（dijkstra的『贪心』找最短距离的邻居这个策略就行不通了，如果有负edge的话，经过它那里到邻居的距离可能比它的距离还短）。<br>Floyd呢，运用了『动态规划』的算法思想，如果没记错的话<strong>不管是考试还是lab都不太可能会出现，看不懂也没关系</strong>……<br>动态规划比较浅显的解释就是这样：准备一个表，然后开始填表，有一些值要事先填好，每一个需要填的值都与已经填好的某些值有固定关系（类似递归）。<br>之前说到，已经不能用找邻居的方式来解决这个问题了，但我们可以列一张表，把任意两点之间的最短距离都列出来。<br>和之前的adjacency matrix一样，我们需要一个二维数组来记录两点间最小距离（就叫这张表是memo[|V|][|V|]吧）。<br>首先把base case填好。为了便于更新最小值，把所有值都初始化为无穷大。每一点和自己的距离目前是0。任意两个edge之间的距离，我们先初始化为edge的值本身。<br>然后我们来找到填表的关系。因为可能会出现负值，所以不能像之前那样只走一遍了。对于这个图中的每一个点k，我们都要考虑是否有可能有<strong>任何两点之间的最短距离(i,j)</strong>会使用(1…k)这些点（就是将所有点都排一下序）。所以对每个点k来说我们都要从头到尾重新把这个表再填一下，看看会不会有更小的值。如果这个最小距离和k根本没关系的话，那么使用(1…k)这些点和使用(1…k-1)这些点的结果是一样的。如果有关系的话，那么最小距离就可以分成两半——使用从(1…k-1)这些点，从i到k的距离加上从k到j的距离。</p>
-<pre><code>momo[][]=new int[V][V]
-for i in range (1,V):
-    for j in range (1,V):
-        if i==j, memo[i][j]=0
-        else, memo[i][j]=infinity
-for edges (u,v) in G:
-    memo[u][v]=d(u,v)
-for k from 1 to V:
-    for i from 1 to V:
-        for j from 1 to V:
-            if memo[i][j]&gt;memo[i][k]+memo[k][j]:
-                memo[i][j]=memo[i][k]+memo[k][j]
-</code></pre><p>时间复杂度倒是一看便知，三个for循环，O(V<sup>3</sup>)</p>
+        <h2 id="Minimum-Spanning-Tree"><a href="#Minimum-Spanning-Tree" class="headerlink" title="Minimum Spanning Tree"></a>Minimum Spanning Tree</h2><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>我不知道该怎么描述，总的来说，给一个图，选出来一些互相相连但不成环（connected but acyclic）的edge，使得这些edge的总和最小，并且每一个点都能通过这个集合走到另外任意一个点。”connect network at min cost”<br><a id="more"></a></p>
+<h3 id="Prim’s-Algorithm"><a href="#Prim’s-Algorithm" class="headerlink" title="Prim’s Algorithm"></a>Prim’s Algorithm</h3><p>这个算法把图里面所有的点分为两部分：已经连起来的和还没有连起来的。我们先从起点r开始，这样r自己属于连起来的，别的点都是还没连起来的。因为是minimum，所以我们又用到了『贪心』的思想，所以要找到一个和r相连的值最小的edge，用它把r和另外一个点连起来，这样这个点也被加到了『连起来的』这个集合里面了，然后我们在找一个能和这个集合搭界的最小的edge……直到所有的点都被连起来了为止。</p>
+<p><img src="https://i.loli.net/2019/01/16/5c3e7d51808f3.png" alt="enter image description here"></p>
+<pre><code>S={r}
+T={}
+while S != V(the set of all vertices):
+    find the cheapest edge crossing S and V/S(就是所有点的集合里面除了S之外的部分), let it be e
+    add e to T
+    vertex=end of e not in S
+    add vertex to S
+return e
+</code></pre><p>首先我们每次都要和一个新的点相连，图里一共|V|个点，所以while loop要运行|V|次吧。最坏情况下所有的edge都和这个点相连，所以循环里面最坏要运行|E|次吧。所以时间复杂度是O(|V||E|)。</p>
+<h3 id="Kruskal’s-algorithm"><a href="#Kruskal’s-algorithm" class="headerlink" title="Kruskal’s algorithm"></a>Kruskal’s algorithm</h3><p>如果上一个算法是找一棵大树，那么这个算法是要找一片森林，然后把它们拼成一棵大树……<br>首先先将给所有edge的值排个序，然后一个一个从最小的开始往上加——只要加上这个edge图里面不会出现任何圈，那么就可以放心地加上去……直到我们发现所有的vertices都被连起来了为止。<br>（我画了一下图，结果发现和上面那个图一模一样？）</p>
+<pre><code>sort all edges by weight
+T={}
+for each edge e(in sorted order):
+    if adding e doesn&apos;t create a cycle:
+        add e to T
+return T
+</code></pre><p>看一下时间复杂度。开头给edge排序可以就用之前的任何一种排序算法，最快的是O(|E|log|E|)。循环一共是O(|E|)次。检查是否有cycle需要用到广度优先搜索，就是O(|V|+|E|)。这么分析的话时间复杂度应该是O(|E|log|E|+|E|(|V|+|E|))=O(|E|<sup>2</sup>)。<br>不过有奇技淫巧可以把这个的时间复杂度降到O(|E|log|V|)<br>，具体怎么操作的我也不太清楚……</p>
 
       
     </div>
@@ -434,8 +389,8 @@ for k from 1 to V:
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/14/ds-graph3/" rel="next" title="Graph part 3 - 简单粗暴数据结构（12）">
-                <i class="fa fa-chevron-left"></i> Graph part 3 - 简单粗暴数据结构（12）
+              <a href="/2019/01/13/ds-graph1/" rel="next" title="Graph part 1 - 简单粗暴数据结构（10）">
+                <i class="fa fa-chevron-left"></i> Graph part 1 - 简单粗暴数据结构（10）
               </a>
             
           </div>
@@ -443,6 +398,10 @@ for k from 1 to V:
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/14/ds-graph2/" rel="prev" title="Graph part 2 - 简单粗暴数据结构（11）">
+                Graph part 2 - 简单粗暴数据结构（11） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -603,7 +562,7 @@ for k from 1 to V:
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Search"><span class="nav-number">1.</span> <span class="nav-text">Search</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Breadth-First-Search-BFS"><span class="nav-number">1.1.</span> <span class="nav-text">Breadth First Search(BFS)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Depth-First-Search-DFS"><span class="nav-number">1.2.</span> <span class="nav-text">Depth First Search(DFS)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shortest-Paths"><span class="nav-number">2.</span> <span class="nav-text">Shortest Paths</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Dijkstra’s-Algorithm"><span class="nav-number">2.1.</span> <span class="nav-text">Dijkstra’s Algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Floyd’s-Algorithms"><span class="nav-number">2.2.</span> <span class="nav-text">Floyd’s Algorithms</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Minimum-Spanning-Tree"><span class="nav-number">1.</span> <span class="nav-text">Minimum Spanning Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Definition"><span class="nav-number">1.1.</span> <span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Prim’s-Algorithm"><span class="nav-number">1.2.</span> <span class="nav-text">Prim’s Algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kruskal’s-algorithm"><span class="nav-number">1.3.</span> <span class="nav-text">Kruskal’s algorithm</span></a></li></ol></li></ol></div>
             
 
           </div>
