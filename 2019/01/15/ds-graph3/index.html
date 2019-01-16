@@ -81,19 +81,19 @@
 
 
 
-<meta name="description" content="Basic Terminology这学期最后一个数据结构是图。简单地来说就是『由线连起来的点』，由Vertex（点）和Edge（线）组成。G=(V,E)下面的很多定义都是从图论（数学）里面拿来用的hhh direct &amp;amp; indirect根据edge是否有方向（带箭头），graph可以分成direct graph（digraph）和indirect graph（没有方向的）。如果是dire">
+<meta name="description" content="Minimum Spanning TreeDefinition我不知道该怎么描述，总的来说，给一个图，选出来一些互相相连但不成环（connected but acyclic）的edge，使得这些edge的总和最小，并且每一个点都能通过这个集合走到另外任意一个点。”connect network at min cost”">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Graph part 1 - 简单粗暴数据结构（10）">
-<meta property="og:url" content="http://sheronw.github.io/2019/01/13/ds-graph1/index.html">
+<meta property="og:title" content="Graph part 3 - 简单粗暴数据结构（12）">
+<meta property="og:url" content="http://sheronw.github.io/2019/01/15/ds-graph3/index.html">
 <meta property="og:site_name" content="SheronW">
-<meta property="og:description" content="Basic Terminology这学期最后一个数据结构是图。简单地来说就是『由线连起来的点』，由Vertex（点）和Edge（线）组成。G=(V,E)下面的很多定义都是从图论（数学）里面拿来用的hhh direct &amp;amp; indirect根据edge是否有方向（带箭头），graph可以分成direct graph（digraph）和indirect graph（没有方向的）。如果是dire">
+<meta property="og:description" content="Minimum Spanning TreeDefinition我不知道该怎么描述，总的来说，给一个图，选出来一些互相相连但不成环（connected but acyclic）的edge，使得这些edge的总和最小，并且每一个点都能通过这个集合走到另外任意一个点。”connect network at min cost”">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.loli.net/2019/01/14/5c3b845879e26.png">
-<meta property="og:updated_time" content="2019-01-13T19:14:43.636Z">
+<meta property="og:image" content="https://i.loli.net/2019/01/16/5c3e7d51808f3.png">
+<meta property="og:updated_time" content="2019-01-16T01:01:20.914Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Graph part 1 - 简单粗暴数据结构（10）">
-<meta name="twitter:description" content="Basic Terminology这学期最后一个数据结构是图。简单地来说就是『由线连起来的点』，由Vertex（点）和Edge（线）组成。G=(V,E)下面的很多定义都是从图论（数学）里面拿来用的hhh direct &amp;amp; indirect根据edge是否有方向（带箭头），graph可以分成direct graph（digraph）和indirect graph（没有方向的）。如果是dire">
-<meta name="twitter:image" content="https://i.loli.net/2019/01/14/5c3b845879e26.png">
+<meta name="twitter:title" content="Graph part 3 - 简单粗暴数据结构（12）">
+<meta name="twitter:description" content="Minimum Spanning TreeDefinition我不知道该怎么描述，总的来说，给一个图，选出来一些互相相连但不成环（connected but acyclic）的edge，使得这些edge的总和最小，并且每一个点都能通过这个集合走到另外任意一个点。”connect network at min cost”">
+<meta name="twitter:image" content="https://i.loli.net/2019/01/16/5c3e7d51808f3.png">
 
 
 
@@ -123,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://sheronw.github.io/2019/01/13/ds-graph1/"/>
+  <link rel="canonical" href="http://sheronw.github.io/2019/01/15/ds-graph3/"/>
 
 
 
 
 
-  <title>Graph part 1 - 简单粗暴数据结构（10） | SheronW</title>
+  <title>Graph part 3 - 简单粗暴数据结构（12） | SheronW</title>
   
 
 
@@ -256,7 +256,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sheronw.github.io/2019/01/13/ds-graph1/">
+    <link itemprop="mainEntityOfPage" href="http://sheronw.github.io/2019/01/15/ds-graph3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SheronW">
@@ -273,7 +273,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Graph part 1 - 简单粗暴数据结构（10）</h1>
+          <h1 class="post-title" itemprop="name headline">Graph part 3 - 简单粗暴数据结构（12）</h1>
         
 
         <div class="post-meta">
@@ -285,8 +285,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-13T13:40:08-05:00">
-                2019-01-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-15T19:58:31-05:00">
+                2019-01-15
               </time>
             
 
@@ -345,14 +345,26 @@
       
 
       
-        <h2 id="Basic-Terminology"><a href="#Basic-Terminology" class="headerlink" title="Basic Terminology"></a>Basic Terminology</h2><p>这学期最后一个数据结构是图。简单地来说就是『由线连起来的点』，由Vertex（点）和Edge（线）组成。G=(V,E)<br>下面的很多定义都是从图论（数学）里面拿来用的hhh</p>
-<h3 id="direct-amp-indirect"><a href="#direct-amp-indirect" class="headerlink" title="direct &amp; indirect"></a>direct &amp; indirect</h3><p>根据edge是否有方向（带箭头），graph可以分成direct graph（digraph）和indirect graph（没有方向的）。<br>如果是direct graph，那么edge可以用两个<strong>有序的</strong>vertices来表示。<br><a id="more"></a></p>
-<h3 id="dense-amp-sparse"><a href="#dense-amp-sparse" class="headerlink" title="dense &amp; sparse"></a>dense &amp; sparse</h3><p>根据edge的数量多少，graph又可以分成dense graph和sparse graph。<br>如果这个图比较dense，那么对每一个vertex来说，都几乎和剩下所有的edge相连，那么E=O(V<sup>2</sup>)。<br>如果这个图比较sparse，edge的数量肯定是小于O(V<sup>2</sup>)的。<br>一般来说，sparse graph更适合用adjacency list来represent（见后面）。</p>
-<p>cycle是一条从一个vertex出发，又回到它这里的一段路径。</p>
-<h3 id="weighted-amp-unweighted"><a href="#weighted-amp-unweighted" class="headerlink" title="weighted &amp; unweighted"></a>weighted &amp; unweighted</h3><p>weighted graph其实就是在edge上标了数值。一个实际应用的例子就是走不同edge所需要的旅行成本。</p>
-<h2 id="Representation-Methods"><a href="#Representation-Methods" class="headerlink" title="Representation Methods"></a>Representation Methods</h2><p><img src="https://i.loli.net/2019/01/14/5c3b845879e26.png" alt="enter image description here"></p>
-<h3 id="Adjacency-Matrix"><a href="#Adjacency-Matrix" class="headerlink" title="Adjacency Matrix"></a>Adjacency Matrix</h3><p>适用于dense graph。<br>简单来讲就是搞一个矩阵，横纵座标分别代表一个vertex，如果这两个vertices之间有edge，这一格的值就为1，否则为0。<br>如果是directed graph的话，可以规定横或纵中的一个为起始vertex。<br>如果是weighted graph的话，把1换成值就可以了。</p>
-<h3 id="Adjacency-Lists"><a href="#Adjacency-Lists" class="headerlink" title="Adjacency Lists"></a>Adjacency Lists</h3><p>适用于sparse graph。<br>简单地说就是每一个vertex都有一个相应的linked-list，记录了所有与它相连的vertices。<br>如果是directed graph的话，就只记录以它为起点的edge对应的vertices。<br>如果是weighted graph的话，linked-list中再增加一项edge的值。</p>
+        <h2 id="Minimum-Spanning-Tree"><a href="#Minimum-Spanning-Tree" class="headerlink" title="Minimum Spanning Tree"></a>Minimum Spanning Tree</h2><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>我不知道该怎么描述，总的来说，给一个图，选出来一些互相相连但不成环（connected but acyclic）的edge，使得这些edge的总和最小，并且每一个点都能通过这个集合走到另外任意一个点。”connect network at min cost”<br><a id="more"></a></p>
+<h3 id="Prim’s-Algorithm"><a href="#Prim’s-Algorithm" class="headerlink" title="Prim’s Algorithm"></a>Prim’s Algorithm</h3><p>这个算法把图里面所有的点分为两部分：已经连起来的和还没有连起来的。我们先从起点r开始，这样r自己属于连起来的，别的点都是还没连起来的。因为是minimum，所以我们又用到了『贪心』的思想，所以要找到一个和r相连的值最小的edge，用它把r和另外一个点连起来，这样这个点也被加到了『连起来的』这个集合里面了，然后我们在找一个能和这个集合搭界的最小的edge……直到所有的点都被连起来了为止。</p>
+<p><img src="https://i.loli.net/2019/01/16/5c3e7d51808f3.png" alt="enter image description here"></p>
+<pre><code>S={r}
+T={}
+while S != V(the set of all vertices):
+    find the cheapest edge crossing S and V/S(就是所有点的集合里面除了S之外的部分), let it be e
+    add e to T
+    vertex=end of e not in S
+    add vertex to S
+return e
+</code></pre><p>首先我们每次都要和一个新的点相连，图里一共|V|个点，所以while loop要运行|V|次吧。最坏情况下所有的edge都和这个点相连，所以循环里面最坏要运行|E|次吧。所以时间复杂度是O(|V||E|)。</p>
+<h3 id="Kruskal’s-algorithm"><a href="#Kruskal’s-algorithm" class="headerlink" title="Kruskal’s algorithm"></a>Kruskal’s algorithm</h3><p>如果上一个算法是找一棵大树，那么这个算法是要找一片森林，然后把它们拼成一棵大树……<br>首先先将给所有edge的值排个序，然后一个一个从最小的开始往上加——只要加上这个edge图里面不会出现任何圈，那么就可以放心地加上去……直到我们发现所有的vertices都被连起来了为止。<br>（我画了一下图，结果发现和上面那个图一模一样？）</p>
+<pre><code>sort all edges by weight
+T={}
+for each edge e(in sorted order):
+    if adding e doesn&apos;t create a cycle:
+        add e to T
+return T
+</code></pre><p>看一下时间复杂度。开头给edge排序可以就用之前的任何一种排序算法，最快的是O(|E|log|E|)。循环一共是O(|E|)次。检查是否有cycle需要用到广度优先搜索，就是O(|V|+|E|)。这么分析的话时间复杂度应该是O(|E|log|E|+|E|(|V|+|E|))=O(|E|<sup>2</sup>)。<br>不过有奇技淫巧可以把这个的时间复杂度降到O(|E|log|V|)<br>，具体怎么操作的我也不太清楚……</p>
 
       
     </div>
@@ -377,8 +389,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/12/ds-hashing/" rel="next" title="Hashing - 简单粗暴数据结构（9）">
-                <i class="fa fa-chevron-left"></i> Hashing - 简单粗暴数据结构（9）
+              <a href="/2019/01/14/ds-graph2/" rel="next" title="Graph part 2 - 简单粗暴数据结构（11）">
+                <i class="fa fa-chevron-left"></i> Graph part 2 - 简单粗暴数据结构（11）
               </a>
             
           </div>
@@ -386,10 +398,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/14/ds-graph2/" rel="prev" title="Graph part 2 - 简单粗暴数据结构（11）">
-                Graph part 2 - 简单粗暴数据结构（11） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -550,7 +558,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Terminology"><span class="nav-number">1.</span> <span class="nav-text">Basic Terminology</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#direct-amp-indirect"><span class="nav-number">1.1.</span> <span class="nav-text">direct & indirect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dense-amp-sparse"><span class="nav-number">1.2.</span> <span class="nav-text">dense & sparse</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#weighted-amp-unweighted"><span class="nav-number">1.3.</span> <span class="nav-text">weighted & unweighted</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Representation-Methods"><span class="nav-number">2.</span> <span class="nav-text">Representation Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Adjacency-Matrix"><span class="nav-number">2.1.</span> <span class="nav-text">Adjacency Matrix</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adjacency-Lists"><span class="nav-number">2.2.</span> <span class="nav-text">Adjacency Lists</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Minimum-Spanning-Tree"><span class="nav-number">1.</span> <span class="nav-text">Minimum Spanning Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Definition"><span class="nav-number">1.1.</span> <span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Prim’s-Algorithm"><span class="nav-number">1.2.</span> <span class="nav-text">Prim’s Algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kruskal’s-algorithm"><span class="nav-number">1.3.</span> <span class="nav-text">Kruskal’s algorithm</span></a></li></ol></li></ol></div>
             
 
           </div>

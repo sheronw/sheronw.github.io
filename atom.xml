@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sheronw.github.io/"/>
-  <updated>2019-01-15T01:59:39.274Z</updated>
+  <updated>2019-01-16T01:01:20.914Z</updated>
   <id>http://sheronw.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Graph part 3 - 简单粗暴数据结构（12）</title>
+    <link href="http://sheronw.github.io/2019/01/15/ds-graph3/"/>
+    <id>http://sheronw.github.io/2019/01/15/ds-graph3/</id>
+    <published>2019-01-16T00:58:31.000Z</published>
+    <updated>2019-01-16T01:01:20.914Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Minimum-Spanning-Tree"><a href="#Minimum-Spanning-Tree" class="headerlink" title="Minimum Spanning Tree"></a>Minimum Spanning Tree</h2><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>我不知道该怎么描述，总的来说，给一个图，选出来一些互相相连但不成环（connected but acyclic）的edge，使得这些edge的总和最小，并且每一个点都能通过这个集合走到另外任意一个点。”connect network at min cost”<br><a id="more"></a></p><h3 id="Prim’s-Algorithm"><a href="#Prim’s-Algorithm" class="headerlink" title="Prim’s Algorithm"></a>Prim’s Algorithm</h3><p>这个算法把图里面所有的点分为两部分：已经连起来的和还没有连起来的。我们先从起点r开始，这样r自己属于连起来的，别的点都是还没连起来的。因为是minimum，所以我们又用到了『贪心』的思想，所以要找到一个和r相连的值最小的edge，用它把r和另外一个点连起来，这样这个点也被加到了『连起来的』这个集合里面了，然后我们在找一个能和这个集合搭界的最小的edge……直到所有的点都被连起来了为止。</p><p><img src="https://i.loli.net/2019/01/16/5c3e7d51808f3.png" alt="enter image description here"></p><pre><code>S={r}T={}while S != V(the set of all vertices):    find the cheapest edge crossing S and V/S(就是所有点的集合里面除了S之外的部分), let it be e    add e to T    vertex=end of e not in S    add vertex to Sreturn e</code></pre><p>首先我们每次都要和一个新的点相连，图里一共|V|个点，所以while loop要运行|V|次吧。最坏情况下所有的edge都和这个点相连，所以循环里面最坏要运行|E|次吧。所以时间复杂度是O(|V||E|)。</p><h3 id="Kruskal’s-algorithm"><a href="#Kruskal’s-algorithm" class="headerlink" title="Kruskal’s algorithm"></a>Kruskal’s algorithm</h3><p>如果上一个算法是找一棵大树，那么这个算法是要找一片森林，然后把它们拼成一棵大树……<br>首先先将给所有edge的值排个序，然后一个一个从最小的开始往上加——只要加上这个edge图里面不会出现任何圈，那么就可以放心地加上去……直到我们发现所有的vertices都被连起来了为止。<br>（我画了一下图，结果发现和上面那个图一模一样？）</p><pre><code>sort all edges by weightT={}for each edge e(in sorted order):    if adding e doesn&apos;t create a cycle:        add e to Treturn T</code></pre><p>看一下时间复杂度。开头给edge排序可以就用之前的任何一种排序算法，最快的是O(|E|log|E|)。循环一共是O(|E|)次。检查是否有cycle需要用到广度优先搜索，就是O(|V|+|E|)。这么分析的话时间复杂度应该是O(|E|log|E|+|E|(|V|+|E|))=O(|E|<sup>2</sup>)。<br>不过有奇技淫巧可以把这个的时间复杂度降到O(|E|log|V|)<br>，具体怎么操作的我也不太清楚……</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Minimum-Spanning-Tree&quot;&gt;&lt;a href=&quot;#Minimum-Spanning-Tree&quot; class=&quot;headerlink&quot; title=&quot;Minimum Spanning Tree&quot;&gt;&lt;/a&gt;Minimum Spanning Tree&lt;/h2&gt;&lt;h3 id=&quot;Definition&quot;&gt;&lt;a href=&quot;#Definition&quot; class=&quot;headerlink&quot; title=&quot;Definition&quot;&gt;&lt;/a&gt;Definition&lt;/h3&gt;&lt;p&gt;我不知道该怎么描述，总的来说，给一个图，选出来一些互相相连但不成环（connected but acyclic）的edge，使得这些edge的总和最小，并且每一个点都能通过这个集合走到另外任意一个点。”connect network at min cost”&lt;br&gt;
+    
+    </summary>
+    
+      <category term="简单粗暴数据结构" scheme="http://sheronw.github.io/categories/%E7%AE%80%E5%8D%95%E7%B2%97%E6%9A%B4%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Graph part 2 - 简单粗暴数据结构（11）</title>
@@ -30,26 +50,6 @@
       &lt;p&gt;这一篇文章就是各种奇怪的算法了……但考试中给一个图能画出来算法每一步得到的结果就ok，实在不理解的话，死记硬背其实也是可以的hhh&lt;/p&gt;
 &lt;h2 id=&quot;Search&quot;&gt;&lt;a href=&quot;#Search&quot; class=&quot;headerlink&quot; title=&quot;Search&quot;&gt;&lt;/a&gt;Search&lt;/h2&gt;&lt;p&gt;以下算法针对indirect graph，用来遍历图中每个点。&lt;/p&gt;
 &lt;h3 id=&quot;Breadth-First-Search-BFS&quot;&gt;&lt;a href=&quot;#Breadth-First-Search-BFS&quot; class=&quot;headerlink&quot; title=&quot;Breadth First Search(BFS)&quot;&gt;&lt;/a&gt;Breadth First Search(BFS)&lt;/h3&gt;&lt;p&gt;广度优先搜索。如名字所示，就是把当前所在的vertex周围的vertex都搜索一遍，然后&lt;strong&gt;依次&lt;/strong&gt;对它周围的vertex都执行相同的这个操作……&lt;br&gt;咦，好像可以用队列呀？只要检查完它周围的vertex，然后把它们全加进队列里面，然后从队列里面取出下一个就可以咯？&lt;br&gt;当然，秉着效率优先的原则，我们要把已经检查过了的vertex进行标记，这样就不用再搜一遍了。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="简单粗暴数据结构" scheme="http://sheronw.github.io/categories/%E7%AE%80%E5%8D%95%E7%B2%97%E6%9A%B4%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Graph part 3 - 简单粗暴数据结构（12）</title>
-    <link href="http://sheronw.github.io/2019/01/14/ds-graph3/"/>
-    <id>http://sheronw.github.io/2019/01/14/ds-graph3/</id>
-    <published>2019-01-15T00:58:31.000Z</published>
-    <updated>2019-01-16T00:59:33.464Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Minimum-Spanning-Tree"><a href="#Minimum-Spanning-Tree" class="headerlink" title="Minimum Spanning Tree"></a>Minimum Spanning Tree</h2><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>我不知道该怎么描述，总的来说，给一个图，选出来一些互相相连但不成环（connected but acyclic）的edge，使得这些edge的总和最小，并且每一个点都能通过这个集合走到另外任意一个点。”connect network at min cost”<br><a id="more"></a></p><h3 id="Prim’s-Algorithm"><a href="#Prim’s-Algorithm" class="headerlink" title="Prim’s Algorithm"></a>Prim’s Algorithm</h3><p>这个算法把图里面所有的点分为两部分：已经连起来的和还没有连起来的。我们先从起点r开始，这样r自己属于连起来的，别的点都是还没连起来的。因为是minimum，所以我们又用到了『贪心』的思想，所以要找到一个和r相连的值最小的edge，用它把r和另外一个点连起来，这样这个点也被加到了『连起来的』这个集合里面了，然后我们在找一个能和这个集合搭界的最小的edge……直到所有的点都被连起来了为止。</p><p><img src="https://i.loli.net/2019/01/16/5c3e7d51808f3.png" alt="enter image description here"></p><pre><code>S={r}T={}while S != V(the set of all vertices):    find the cheapest edge crossing S and V/S(就是所有点的集合里面除了S之外的部分), let it be e    add e to T    vertex=end of e not in S    add vertex to Sreturn e</code></pre><p>首先我们每次都要和一个新的点相连，图里一共|V|个点，所以while loop要运行|V|次吧。最坏情况下所有的edge都和这个点相连，所以循环里面最坏要运行|E|次吧。所以时间复杂度是O(|V||E|)。</p><h3 id="Kruskal’s-algorithm"><a href="#Kruskal’s-algorithm" class="headerlink" title="Kruskal’s algorithm"></a>Kruskal’s algorithm</h3><p>如果上一个算法是找一棵大树，那么这个算法是要找一片森林，然后把它们拼成一棵大树……<br>首先先将给所有edge的值排个序，然后一个一个从最小的开始往上加——只要加上这个edge图里面不会出现任何圈，那么就可以放心地加上去……直到我们发现所有的vertices都被连起来了为止。<br>（我画了一下图，结果发现和上面那个图一模一样？）</p><pre><code>sort all edges by weightT={}for each edge e(in sorted order):    if adding e doesn&apos;t create a cycle:        add e to Treturn T</code></pre><p>看一下时间复杂度。开头给edge排序可以就用之前的任何一种排序算法，最快的是O(|E|log|E|)。循环一共是O(|E|)次。检查是否有cycle需要用到广度优先搜索，就是O(|V|+|E|)。这么分析的话时间复杂度应该是O(|E|log|E|+|E|(|V|+|E|))=O(|E|<sup>2</sup>)。<br>不过有奇技淫巧可以把这个的时间复杂度降到O(|E|log|V|)<br>，具体怎么操作的我也不太清楚……</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Minimum-Spanning-Tree&quot;&gt;&lt;a href=&quot;#Minimum-Spanning-Tree&quot; class=&quot;headerlink&quot; title=&quot;Minimum Spanning Tree&quot;&gt;&lt;/a&gt;Minimum Spanning Tree&lt;/h2&gt;&lt;h3 id=&quot;Definition&quot;&gt;&lt;a href=&quot;#Definition&quot; class=&quot;headerlink&quot; title=&quot;Definition&quot;&gt;&lt;/a&gt;Definition&lt;/h3&gt;&lt;p&gt;我不知道该怎么描述，总的来说，给一个图，选出来一些互相相连但不成环（connected but acyclic）的edge，使得这些edge的总和最小，并且每一个点都能通过这个集合走到另外任意一个点。”connect network at min cost”&lt;br&gt;
     
     </summary>
     
