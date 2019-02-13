@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="read a file from stdin and put it to both stdout &amp;amp; stderrint main (int argc, char *argv[]){     char *fname = NULL;     if (argc&amp;gt;1){         frame=argv[1];     }     else{         return 1;">
+<meta name="description" content="二进制转十进制很简单，从右往左加，第一位乘以2的零次方，第二位乘以2的一次方，然后以此类推…… $$10101_{10}=1\times2^4+0\times2^3+1\times2^2+0\times2^1+1\times2^0=21$$ 还有一种方法是Horner’s Rule，从左往右算，每次把下一位加在这个结果中作为一个整体。 $$10101_{10}=(((1\times2+0)\tim">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Formatted I&#x2F;O, Line Input, Scanf - C">
-<meta property="og:url" content="http://sheronw.github.io/2018/11/06/Formatted-I-O-Line-Input-Scanf-C/index.html">
+<meta property="og:title" content="十进制、二进制与十六进制的相互转换，以及Two’s Complement Notation">
+<meta property="og:url" content="http://sheronw.github.io/2019/02/13/10,2,16&Two's Complement Notation/index.html">
 <meta property="og:site_name" content="SheronW">
-<meta property="og:description" content="read a file from stdin and put it to both stdout &amp;amp; stderrint main (int argc, char *argv[]){     char *fname = NULL;     if (argc&amp;gt;1){         frame=argv[1];     }     else{         return 1;">
+<meta property="og:description" content="二进制转十进制很简单，从右往左加，第一位乘以2的零次方，第二位乘以2的一次方，然后以此类推…… $$10101_{10}=1\times2^4+0\times2^3+1\times2^2+0\times2^1+1\times2^0=21$$ 还有一种方法是Horner’s Rule，从左往右算，每次把下一位加在这个结果中作为一个整体。 $$10101_{10}=(((1\times2+0)\tim">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-06T20:18:28.677Z">
+<meta property="og:updated_time" content="2019-02-13T23:47:53.320Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Formatted I&#x2F;O, Line Input, Scanf - C">
-<meta name="twitter:description" content="read a file from stdin and put it to both stdout &amp;amp; stderrint main (int argc, char *argv[]){     char *fname = NULL;     if (argc&amp;gt;1){         frame=argv[1];     }     else{         return 1;">
+<meta name="twitter:title" content="十进制、二进制与十六进制的相互转换，以及Two’s Complement Notation">
+<meta name="twitter:description" content="二进制转十进制很简单，从右往左加，第一位乘以2的零次方，第二位乘以2的一次方，然后以此类推…… $$10101_{10}=1\times2^4+0\times2^3+1\times2^2+0\times2^1+1\times2^0=21$$ 还有一种方法是Horner’s Rule，从左往右算，每次把下一位加在这个结果中作为一个整体。 $$10101_{10}=(((1\times2+0)\tim">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://sheronw.github.io/2018/11/06/Formatted-I-O-Line-Input-Scanf-C/"/>
+  <link rel="canonical" href="http://sheronw.github.io/2019/02/13/10,2,16&Two's Complement Notation/"/>
 
 
 
 
 
-  <title>Formatted I/O, Line Input, Scanf - C | SheronW</title>
+  <title>十进制、二进制与十六进制的相互转换，以及Two’s Complement Notation | SheronW</title>
   
 
 
@@ -254,7 +254,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sheronw.github.io/2018/11/06/Formatted-I-O-Line-Input-Scanf-C/">
+    <link itemprop="mainEntityOfPage" href="http://sheronw.github.io/2019/02/13/10,2,16&Two's Complement Notation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SheronW">
@@ -271,7 +271,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Formatted I/O, Line Input, Scanf - C</h1>
+          <h1 class="post-title" itemprop="name headline">十进制、二进制与十六进制的相互转换，以及Two’s Complement Notation</h1>
         
 
         <div class="post-meta">
@@ -283,8 +283,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-06T15:15:43-05:00">
-                2018-11-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-13T18:47:37-05:00">
+                2019-02-13
               </time>
             
 
@@ -306,8 +306,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notetaking/" itemprop="url" rel="index">
-                    <span itemprop="name">notetaking</span>
+                  <a href="/categories/computer-science/" itemprop="url" rel="index">
+                    <span itemprop="name">computer science</span>
                   </a>
                 </span>
 
@@ -343,56 +343,27 @@
       
 
       
-        <h2 id="read-a-file-from-stdin-and-put-it-to-both-stdout-amp-stderr"><a href="#read-a-file-from-stdin-and-put-it-to-both-stdout-amp-stderr" class="headerlink" title="read a file from stdin and put it to both stdout &amp; stderr"></a>read a file from stdin and put it to both stdout &amp; stderr</h2><pre><code>int main (int argc, char *argv[]){
-    char *fname = NULL;
-    if (argc&gt;1){
-        frame=argv[1];
-    }
-    else{
-        return 1;
-    }
-    FILE *file = fopen(fname, &quot;r&quot;);
-
-    int input;
-    while((input=fgetc(file))!= EOF){
-        fputc(input,stdout);
-        fputc(input,stderr);
-    }
-}
-</code></pre><a id="more"></a>
-<p>end of file ^D<br>end program ^C<br>stderr line buffer<br>stdout file buffer(???)</p>
-<h2 id="re-reading"><a href="#re-reading" class="headerlink" title="re-reading"></a>re-reading</h2><pre><code>void rewind(FILE *stream);
-</code></pre><p>changing location of a file to the beginning<br>fseek: move to some location</p>
-<h2 id="getting-location"><a href="#getting-location" class="headerlink" title="getting location"></a>getting location</h2><pre><code>long ftell(FILE * stream);
-off_t ftello(FILE *stream);
-</code></pre><p>if is larger than a long in size, then:</p>
-<pre><code>int fgetpos(FILE *restrict stream, fpos_t *restrict pos);
-int fsetpos(FILE *stream, const fpos_t *pos);
-</code></pre><p>need to check man page for different systems<br>df: space of hard drive<br>file: blocks of pointers point to a chunk of data blocks of actual disk</p>
-<h2 id="Format-Printing"><a href="#Format-Printing" class="headerlink" title="Format Printing"></a>Format Printing</h2><h3 id="printing-to-a-string"><a href="#printing-to-a-string" class="headerlink" title="printing to a string"></a>printing to a string</h3><pre><code>int sprintf(char *str, const char *format, /* args */ );
-</code></pre><ul>
-<li>return number of bytes that would have been written</li>
-<li>writes at most size-1 bytes (leave space for null byte)</li>
+        <h2 id="二进制转十进制"><a href="#二进制转十进制" class="headerlink" title="二进制转十进制"></a>二进制转十进制</h2><p>很简单，从右往左加，第一位乘以2的零次方，第二位乘以2的一次方，然后以此类推……</p>
+<p>$$<br>10101_{10}=1\times2^4+0\times2^3+1\times2^2+0\times2^1+1\times2^0=21<br>$$</p>
+<p>还有一种方法是Horner’s Rule，从左往右算，每次把下一位加在这个结果中作为一个整体。</p>
+<p>$$<br>10101_{10}=(((1\times2+0)\times2+1)\times2+0)*2+1=21<br>$$</p>
+<h2 id="十进制转二进制"><a href="#十进制转二进制" class="headerlink" title="十进制转二进制"></a>十进制转二进制</h2><p>不断地除以二，直到除不动了为止，每一步得到的余数倒过来就是所求的二进制。</p>
+<ul>
+<li><strong>10</strong>/2=5 …0</li>
+<li>5/2=2 … 1</li>
+<li>2/2=1 … 0</li>
+<li>1/2=0 … 1<br>所以10的二进制为1010<br>当然，如果不想最后再颠倒一遍的话，可以算的时候从下往上写XD</li>
 </ul>
-<h3 id="line-based-input"><a href="#line-based-input" class="headerlink" title="line based input"></a>line based input</h3><pre><code>char *fgets(char *str, int size, FILE *stream);
-</code></pre><ul>
-<li>stores in str</li>
-<li>stops at -n, EOF</li>
-<li><strong>do not use gets</strong></li>
+<h2 id="十六进制转二进制"><a href="#十六进制转二进制" class="headerlink" title="十六进制转二进制"></a>十六进制转二进制</h2><p>十六进制的每一位都能转换成一个四位的二进制，然后把它们拼起来就好，其实还有一个转换表，但算起来也不麻烦，我觉得不背也行。</p>
+<h2 id="二进制转十六进制"><a href="#二进制转十六进制" class="headerlink" title="二进制转十六进制"></a>二进制转十六进制</h2><p>和上面一个道理，每四位二进制都能转换成一位十六进制，如果最后一组不足四位填上几个零就好。</p>
+<h2 id="十六进制转十进制"><a href="#十六进制转十进制" class="headerlink" title="十六进制转十进制"></a>十六进制转十进制</h2><p>和二进制转十进制一个道理，只不过把2换成16了而已。</p>
+<h2 id="十进制转十六进制"><a href="#十进制转十六进制" class="headerlink" title="十进制转十六进制"></a>十进制转十六进制</h2><p>同上，和二进制一样，只不过不断除以16。</p>
+<h2 id="Two’s-Complement"><a href="#Two’s-Complement" class="headerlink" title="Two’s Complement"></a>Two’s Complement</h2><p>这是一种用二进制表达整数（包括正负）的一种方法。<br>首先，从最左边的那一位可以看出这个数字的正负——0为正，1为负。<br>如果是正数的话，和之前讲到的传统二进制表达是相同的。<br>如果是负数的话，想要知道它的具体值，我们需要将Two’s Complement转换成它的相反数（也就是说这个数字的整数版本）。<br>转换成相反数的算法如下（同时适用与正数和负数）：</p>
+<ul>
+<li>将每一位的数字颠倒（颠倒指的是，1换成0，0换成1）</li>
+<li>在颠倒之后的基础上再+1<br>比如这里有个我瞎编的32bits的数字：<br>1010 0100 0100 1111 1010 1100 0101 0000<br>第一位是1，所以这个数是小于零的<br>首先我们要把它变成这样的：<br>0101 1011 1011 0000 0101 0011 1010 1111<br>然后再+1就变成了这样：<br>0101 1011 1011 0000 0101 0011 1011 0000<br>这个数就是最前面瞎编的那个数的相反数</li>
 </ul>
-<h3 id="scanf"><a href="#scanf" class="headerlink" title="scanf"></a>scanf</h3><pre><code>scanf(&quot;%d&quot;,&amp;x);
-scanf(&quot;%s&quot;,str);
-</code></pre><ul>
-<li>read line using fgets(), parses data using sscanf() from line</li>
-<li>character ranges(check textbook)<h3 id="realloc"><a href="#realloc" class="headerlink" title="realloc"></a>realloc</h3>  void <em> realloc(void </em>ptr, size_t size);</li>
-<li>change previous allocated block ptr be changed to size size(larger or smaller &amp; copy old data as needed)</li>
-<li><p>app: connect strings</p>
-<h3 id="getline"><a href="#getline" class="headerlink" title="getline"></a>getline</h3><p>  ssize_t getline(char <em>* linep, size_t </em>linecapp, FILE * stream);<br>  free(linep);</p>
-</li>
-<li><p>dynamically allocated, but must free later</p>
-</li>
-<li>not part of c standard</li>
-</ul>
+<p>哦对了，因为32bits的二进制写起来太长了，所以经常会用十六进制来表示。</p>
 
       
     </div>
@@ -417,8 +388,8 @@ scanf(&quot;%s&quot;,str);
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/12/2017booklist/" rel="next" title="2017年度书单">
-                <i class="fa fa-chevron-left"></i> 2017年度书单
+              <a href="/2019/01/17/ds-finally/" rel="next" title="写在最后，或者最前 - 简单粗暴数据结构（13）">
+                <i class="fa fa-chevron-left"></i> 写在最后，或者最前 - 简单粗暴数据结构（13）
               </a>
             
           </div>
@@ -426,10 +397,6 @@ scanf(&quot;%s&quot;,str);
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/17/OSB/" rel="prev" title="Operating Systems Basics ">
-                Operating Systems Basics  <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -590,7 +557,7 @@ scanf(&quot;%s&quot;,str);
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#read-a-file-from-stdin-and-put-it-to-both-stdout-amp-stderr"><span class="nav-number">1.</span> <span class="nav-text">read a file from stdin and put it to both stdout & stderr</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#re-reading"><span class="nav-number">2.</span> <span class="nav-text">re-reading</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getting-location"><span class="nav-number">3.</span> <span class="nav-text">getting location</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Format-Printing"><span class="nav-number">4.</span> <span class="nav-text">Format Printing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#printing-to-a-string"><span class="nav-number">4.1.</span> <span class="nav-text">printing to a string</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#line-based-input"><span class="nav-number">4.2.</span> <span class="nav-text">line based input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scanf"><span class="nav-number">4.3.</span> <span class="nav-text">scanf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#realloc"><span class="nav-number">4.4.</span> <span class="nav-text">realloc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getline"><span class="nav-number">4.5.</span> <span class="nav-text">getline</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#二进制转十进制"><span class="nav-number">1.</span> <span class="nav-text">二进制转十进制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十进制转二进制"><span class="nav-number">2.</span> <span class="nav-text">十进制转二进制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十六进制转二进制"><span class="nav-number">3.</span> <span class="nav-text">十六进制转二进制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二进制转十六进制"><span class="nav-number">4.</span> <span class="nav-text">二进制转十六进制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十六进制转十进制"><span class="nav-number">5.</span> <span class="nav-text">十六进制转十进制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十进制转十六进制"><span class="nav-number">6.</span> <span class="nav-text">十进制转十六进制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Two’s-Complement"><span class="nav-number">7.</span> <span class="nav-text">Two’s Complement</span></a></li></ol></div>
             
 
           </div>
