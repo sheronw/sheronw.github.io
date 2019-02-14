@@ -2,16 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://sheronw.github.io/about/index.html</loc>
+    <loc>http://sheronw.github.io/2018/11/06/Formatted-I-O-Line-Input-Scanf-C/</loc>
     
-    <lastmod>2019-02-14T15:30:19.612Z</lastmod>
+    <lastmod>2019-02-14T21:28:30.018Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sheronw.github.io/2018/11/17/OSB/</loc>
+    
+    <lastmod>2019-02-14T21:28:15.497Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sheronw.github.io/2018/01/03/pythonlittle/</loc>
+    
+    <lastmod>2019-02-14T21:28:05.220Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sheronw.github.io/2018/01/09/IntroToGit/</loc>
+    
+    <lastmod>2019-02-14T21:27:53.668Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://sheronw.github.io/2019/02/13/bit_level_operators/</loc>
     
-    <lastmod>2019-02-14T01:52:21.421Z</lastmod>
+    <lastmod>2019-02-14T21:21:13.760Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sheronw.github.io/about/index.html</loc>
+    
+    <lastmod>2019-02-14T15:30:19.612Z</lastmod>
     
   </url>
   
@@ -135,20 +163,6 @@
   </url>
   
   <url>
-    <loc>http://sheronw.github.io/2018/11/17/OSB/</loc>
-    
-    <lastmod>2018-11-17T14:17:50.202Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sheronw.github.io/2018/11/06/Formatted-I-O-Line-Input-Scanf-C/</loc>
-    
-    <lastmod>2018-11-06T20:18:28.677Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://sheronw.github.io/manifest.json</loc>
     
     <lastmod>2018-01-11T02:07:28.000Z</lastmod>
@@ -159,20 +173,6 @@
     <loc>http://sheronw.github.io/2018/01/05/Christmas2017InNYC/</loc>
     
     <lastmod>2018-01-10T19:09:44.629Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sheronw.github.io/2018/01/09/IntroToGit/</loc>
-    
-    <lastmod>2018-01-10T04:16:56.715Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sheronw.github.io/2018/01/03/pythonlittle/</loc>
-    
-    <lastmod>2018-01-10T04:12:55.528Z</lastmod>
     
   </url>
   
