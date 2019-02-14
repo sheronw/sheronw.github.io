@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sheronw.github.io/"/>
-  <updated>2019-02-14T00:47:46.370Z</updated>
+  <updated>2019-02-14T01:52:21.421Z</updated>
   <id>http://sheronw.github.io/</id>
   
   <author>
@@ -21,28 +21,16 @@
     <link href="http://sheronw.github.io/2019/02/13/bit_level_operators/"/>
     <id>http://sheronw.github.io/2019/02/13/bit_level_operators/</id>
     <published>2019-02-14T00:40:21.000Z</published>
-    <updated>2019-02-14T00:47:46.370Z</updated>
+    <updated>2019-02-14T01:52:21.421Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="编程语言中的操作符"><a href="#编程语言中的操作符" class="headerlink" title="编程语言中的操作符"></a>编程语言中的操作符</h2><h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><ul><li>&lt;&lt; left shift</li><li><blockquote><blockquote><p>signed right shift (filled with sign bits)</p></blockquote></blockquote></li><li><blockquote><blockquote><blockquote><p>unsigned right shift (filled with 0s)</p></blockquote></blockquote></blockquote></li><li>&amp; bitwise and</li><li>| bitwise or</li><li>^ bitwise exclusive or</li></ul><a id="more"></a><h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><p>大致与Java相同，只是没有unsigned right shift，具体会怎么shift取决于数据型本身。</p><h2 id="一些用法"><a href="#一些用法" class="headerlink" title="一些用法"></a>一些用法</h2><h3 id="set-bits-to-0"><a href="#set-bits-to-0" class="headerlink" title="set bits to 0"></a>set bits to 0</h3><p>x&amp;0=0<br>x&amp;1=x</p><h3 id="set-bits-to-1"><a href="#set-bits-to-1" class="headerlink" title="set bits to 1"></a>set bits to 1</h3><p>x|0=x<br>x|1=1</p><h3 id="invert-bits"><a href="#invert-bits" class="headerlink" title="invert bits"></a>invert bits</h3><p>x^0=x<br>x^1=!x</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="编程语言中的操作符"><a href="#编程语言中的操作符" class="headerlink" title="编程语言中的操作符"></a>编程语言中的操作符</h2><h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><ul><li>&lt;&lt; left shift</li><li>>> signed right shift (filled with sign bits)</li><li>>>> unsigned right shift (filled with 0s)</li><li>&amp; bitwise and</li><li>| bitwise or</li><li>^ bitwise exclusive or</li></ul><a id="more"></a><h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><p>大致与Java相同，只是没有unsigned right shift，具体会怎么shift取决于数据型本身。</p><h2 id="一些用法"><a href="#一些用法" class="headerlink" title="一些用法"></a>一些用法</h2><h3 id="set-bits-to-0"><a href="#set-bits-to-0" class="headerlink" title="set bits to 0"></a>set bits to 0</h3><p>x&amp;0=0<br>x&amp;1=x</p><h3 id="set-bits-to-1"><a href="#set-bits-to-1" class="headerlink" title="set bits to 1"></a>set bits to 1</h3><p>x|0=x<br>x|1=1</p><h3 id="invert-bits"><a href="#invert-bits" class="headerlink" title="invert bits"></a>invert bits</h3><p>x^0=x<br>x^1=!x</p>]]></content>
     
     <summary type="html">
     
       &lt;h2 id=&quot;编程语言中的操作符&quot;&gt;&lt;a href=&quot;#编程语言中的操作符&quot; class=&quot;headerlink&quot; title=&quot;编程语言中的操作符&quot;&gt;&lt;/a&gt;编程语言中的操作符&lt;/h2&gt;&lt;h3 id=&quot;Java&quot;&gt;&lt;a href=&quot;#Java&quot; class=&quot;headerlink&quot; title=&quot;Java&quot;&gt;&lt;/a&gt;Java&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&amp;lt;&amp;lt; left shift&lt;/li&gt;
-&lt;li&gt;&lt;blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;signed right shift (filled with sign bits)&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;blockquote&gt;
-&lt;blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;unsigned right shift (filled with 0s)&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
+&lt;li&gt;&gt;&gt; signed right shift (filled with sign bits)&lt;/li&gt;
+&lt;li&gt;&gt;&gt;&gt; unsigned right shift (filled with 0s)&lt;/li&gt;
 &lt;li&gt;&amp;amp; bitwise and&lt;/li&gt;
 &lt;li&gt;| bitwise or&lt;/li&gt;
 &lt;li&gt;^ bitwise exclusive or&lt;/li&gt;
