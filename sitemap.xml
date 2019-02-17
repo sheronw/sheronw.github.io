@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://sheronw.github.io/about/index.html</loc>
+    
+    <lastmod>2019-02-17T21:36:26.951Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://sheronw.github.io/2018/11/06/Formatted-I-O-Line-Input-Scanf-C/</loc>
     
     <lastmod>2019-02-14T21:28:30.018Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>http://sheronw.github.io/2019/02/13/bit_level_operators/</loc>
     
     <lastmod>2019-02-14T21:21:13.760Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sheronw.github.io/about/index.html</loc>
-    
-    <lastmod>2019-02-14T15:30:19.612Z</lastmod>
     
   </url>
   
