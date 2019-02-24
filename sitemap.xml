@@ -2,16 +2,93 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://sheronw.github.io/2019/02/22/efbscreen/</loc>
+    <loc>http://sheronw.github.io/2018/01/09/IntroToGit/</loc>
     
-    <lastmod>2019-02-22T22:41:55.448Z</lastmod>
+    <lastmod>2019-02-24T21:19:01.725Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sheronw.github.io/2018/01/05/Christmas2017InNYC/</loc>
+    
+    <lastmod>2019-02-24T21:19:01.376Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sheronw.github.io/2018/01/03/pythonlittle/</loc>
+    
+    <lastmod>2019-02-24T21:19:01.186Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sheronw.github.io/2017/10/13/twn/</loc>
+    
+    <lastmod>2019-02-24T21:19:00.580Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sheronw.github.io/2017/10/13/post/</loc>
+    
+    <lastmod>2019-02-24T21:18:59.972Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sheronw.github.io/2018/01/12/2017booklist/</loc>
+    
+    <lastmod>2019-02-24T21:18:49.456Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sheronw.github.io/2018/11/06/Formatted-I-O-Line-Input-Scanf-C/</loc>
+    
+    <lastmod>2019-02-24T21:18:42.780Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sheronw.github.io/2018/11/17/OSB/</loc>
+    
+    <lastmod>2019-02-24T21:18:25.050Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sheronw.github.io/2018/12/31/2018booklist/</loc>
+    
+    <lastmod>2019-02-24T21:17:18.480Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sheronw.github.io/2019/02/13/10,2,16&Two's%20Complement%20Notation/</loc>
+    
+    <lastmod>2019-02-24T21:17:15.497Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sheronw.github.io/2019/02/13/bit_level_operators/</loc>
+    
+    <lastmod>2019-02-24T21:17:12.085Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://sheronw.github.io/2019/02/20/float/</loc>
     
-    <lastmod>2019-02-20T18:40:46.313Z</lastmod>
+    <lastmod>2019-02-24T21:16:27.200Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sheronw.github.io/2019/02/22/efbscreen/</loc>
+    
+    <lastmod>2019-02-24T04:04:49.448Z</lastmod>
     
   </url>
   
@@ -19,62 +96,6 @@
     <loc>http://sheronw.github.io/about/index.html</loc>
     
     <lastmod>2019-02-17T21:36:26.951Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sheronw.github.io/2018/11/06/Formatted-I-O-Line-Input-Scanf-C/</loc>
-    
-    <lastmod>2019-02-14T21:28:30.018Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sheronw.github.io/2018/11/17/OSB/</loc>
-    
-    <lastmod>2019-02-14T21:28:15.497Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sheronw.github.io/2018/01/03/pythonlittle/</loc>
-    
-    <lastmod>2019-02-14T21:28:05.220Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sheronw.github.io/2018/01/09/IntroToGit/</loc>
-    
-    <lastmod>2019-02-14T21:27:53.668Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sheronw.github.io/2019/02/13/bit_level_operators/</loc>
-    
-    <lastmod>2019-02-14T21:21:13.760Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sheronw.github.io/2019/02/13/10,2,16&Two's%20Complement%20Notation/</loc>
-    
-    <lastmod>2019-02-14T00:02:30.568Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sheronw.github.io/2018/01/12/2017booklist/</loc>
-    
-    <lastmod>2019-01-18T01:07:19.777Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sheronw.github.io/2018/12/31/2018booklist/</loc>
-    
-    <lastmod>2019-01-18T01:00:46.596Z</lastmod>
     
   </url>
   
@@ -156,13 +177,6 @@
   </url>
   
   <url>
-    <loc>http://sheronw.github.io/2017/10/13/post/</loc>
-    
-    <lastmod>2019-01-05T03:30:45.752Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://sheronw.github.io/2019/01/04/ds-stackandqueue/</loc>
     
     <lastmod>2019-01-05T01:57:30.326Z</lastmod>
@@ -180,20 +194,6 @@
     <loc>http://sheronw.github.io/manifest.json</loc>
     
     <lastmod>2018-01-11T02:07:28.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sheronw.github.io/2018/01/05/Christmas2017InNYC/</loc>
-    
-    <lastmod>2018-01-10T19:09:44.629Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sheronw.github.io/2017/10/13/twn/</loc>
-    
-    <lastmod>2018-01-10T03:51:59.277Z</lastmod>
     
   </url>
   
