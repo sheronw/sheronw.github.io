@@ -58,6 +58,29 @@
   </entry>
   
   <entry>
+    <title>Belmont Principles</title>
+    <link href="http://sheronw.github.io/2019/02/17/Belmont_Principles/"/>
+    <id>http://sheronw.github.io/2019/02/17/Belmont_Principles/</id>
+    <published>2019-02-17T14:52:52.000Z</published>
+    <updated>2019-02-24T21:26:49.360Z</updated>
+    
+    <content type="html"><![CDATA[<p>Ethical Principles and Guidelines for the Protection of Human<br>Subjects of Research<br>好吧，这很人道主义。<br>三条粗略看完之后，觉得在实际情况中做出相应的权衡还是很难，几乎不太可能全部做到啊hhhh</p><h2 id="Respect-for-Persons"><a href="#Respect-for-Persons" class="headerlink" title="Respect for Persons"></a>Respect for Persons</h2><h3 id="acknowledge-autonomy"><a href="#acknowledge-autonomy" class="headerlink" title="acknowledge autonomy"></a>acknowledge autonomy</h3><p>autonomy的人就是有能力考虑自己的目标并行动的人。反正要尊重这帮人的意见和想法，除非他们干了对别人有害的事情，否则不能随意阻止他们的行为。</p><h3 id="protect-those-with-diminished-autonomy"><a href="#protect-those-with-diminished-autonomy" class="headerlink" title="protect those with diminished autonomy"></a>protect those with diminished autonomy</h3><p>对于那些做不到autonomy的人，就需要保护并且帮助他们。</p><h2 id="Beneficence"><a href="#Beneficence" class="headerlink" title="Beneficence"></a>Beneficence</h2><h3 id="do-not-harm"><a href="#do-not-harm" class="headerlink" title="do not harm"></a>do not harm</h3><p>不能伤害他们，也不能让他们有受伤的风险。</p><h3 id="maximize-possible-benefits-and-minimize-possible-harms"><a href="#maximize-possible-benefits-and-minimize-possible-harms" class="headerlink" title="maximize possible benefits and minimize possible harms"></a>maximize possible benefits and minimize possible harms</h3><p>最大化收益，不一定是对实验对象的收益，而是一个群体甚至全人类的那种长期收益。</p><h2 id="Justice"><a href="#Justice" class="headerlink" title="Justice"></a>Justice</h2><h3 id="to-each-person-an-equal-share"><a href="#to-each-person-an-equal-share" class="headerlink" title="to each person an equal share"></a>to each person an equal share</h3><h3 id="to-each-person-according-to-individual-need"><a href="#to-each-person-according-to-individual-need" class="headerlink" title="to each person according to individual need"></a>to each person according to individual need</h3><h3 id="to-each-person-according-to-individual-effort"><a href="#to-each-person-according-to-individual-effort" class="headerlink" title="to each person according to individual effort"></a>to each person according to individual effort</h3><h3 id="to-each-person-according-to-societal-contribution"><a href="#to-each-person-according-to-societal-contribution" class="headerlink" title="to each person according to societal contribution"></a>to each person according to societal contribution</h3><h3 id="to-each-person-according-to-merit"><a href="#to-each-person-according-to-merit" class="headerlink" title="to each person according to merit."></a>to each person according to merit.</h3>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Ethical Principles and Guidelines for the Protection of Human&lt;br&gt;Subjects of Research&lt;br&gt;好吧，这很人道主义。&lt;br&gt;三条粗略看完之后，觉得在实际情况中做出相应的权衡还是很难，几乎不太可
+      
+    
+    </summary>
+    
+      <category term="学业相关" scheme="http://sheronw.github.io/categories/%E5%AD%A6%E4%B8%9A%E7%9B%B8%E5%85%B3/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>bit level operators</title>
     <link href="http://sheronw.github.io/2019/02/13/bit_level_operators/"/>
     <id>http://sheronw.github.io/2019/02/13/bit_level_operators/</id>
@@ -440,42 +463,6 @@
 &lt;li&gt;kernel runs “init” process &amp;amp; sets runlevel&lt;/li&gt;
 &lt;li&gt;initialization scripts&lt;/li&gt;
 &lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="学业相关" scheme="http://sheronw.github.io/categories/%E5%AD%A6%E4%B8%9A%E7%9B%B8%E5%85%B3/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Formatted I/O, Line Input, Scanf - C</title>
-    <link href="http://sheronw.github.io/2018/11/06/Formatted-I-O-Line-Input-Scanf-C/"/>
-    <id>http://sheronw.github.io/2018/11/06/Formatted-I-O-Line-Input-Scanf-C/</id>
-    <published>2018-11-06T20:15:43.000Z</published>
-    <updated>2019-02-24T21:18:42.780Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="read-a-file-from-stdin-and-put-it-to-both-stdout-amp-stderr"><a href="#read-a-file-from-stdin-and-put-it-to-both-stdout-amp-stderr" class="headerlink" title="read a file from stdin and put it to both stdout &amp; stderr"></a>read a file from stdin and put it to both stdout &amp; stderr</h2><pre><code>int main (int argc, char *argv[]){    char *fname = NULL;    if (argc&gt;1){        frame=argv[1];    }    else{        return 1;    }    FILE *file = fopen(fname, &quot;r&quot;);    int input;    while((input=fgetc(file))!= EOF){        fputc(input,stdout);        fputc(input,stderr);    }}</code></pre><a id="more"></a><p>end of file ^D<br>end program ^C<br>stderr line buffer<br>stdout file buffer(???)</p><h2 id="re-reading"><a href="#re-reading" class="headerlink" title="re-reading"></a>re-reading</h2><pre><code>void rewind(FILE *stream);</code></pre><p>changing location of a file to the beginning<br>fseek: move to some location</p><h2 id="getting-location"><a href="#getting-location" class="headerlink" title="getting location"></a>getting location</h2><pre><code>long ftell(FILE * stream);off_t ftello(FILE *stream);</code></pre><p>if is larger than a long in size, then:</p><pre><code>int fgetpos(FILE *restrict stream, fpos_t *restrict pos);int fsetpos(FILE *stream, const fpos_t *pos);</code></pre><p>need to check man page for different systems<br>df: space of hard drive<br>file: blocks of pointers point to a chunk of data blocks of actual disk</p><h2 id="Format-Printing"><a href="#Format-Printing" class="headerlink" title="Format Printing"></a>Format Printing</h2><h3 id="printing-to-a-string"><a href="#printing-to-a-string" class="headerlink" title="printing to a string"></a>printing to a string</h3><pre><code>int sprintf(char *str, const char *format, /* args */ );</code></pre><ul><li>return number of bytes that would have been written</li><li>writes at most size-1 bytes (leave space for null byte)</li></ul><h3 id="line-based-input"><a href="#line-based-input" class="headerlink" title="line based input"></a>line based input</h3><pre><code>char *fgets(char *str, int size, FILE *stream);</code></pre><ul><li>stores in str</li><li>stops at -n, EOF</li><li><strong>do not use gets</strong></li></ul><h3 id="scanf"><a href="#scanf" class="headerlink" title="scanf"></a>scanf</h3><pre><code>scanf(&quot;%d&quot;,&amp;x);scanf(&quot;%s&quot;,str);</code></pre><ul><li>read line using fgets(), parses data using sscanf() from line</li><li>character ranges(check textbook)<h3 id="realloc"><a href="#realloc" class="headerlink" title="realloc"></a>realloc</h3>  void <em> realloc(void </em>ptr, size_t size);</li><li>change previous allocated block ptr be changed to size size(larger or smaller &amp; copy old data as needed)</li><li><p>app: connect strings</p><h3 id="getline"><a href="#getline" class="headerlink" title="getline"></a>getline</h3><p>  ssize_t getline(char <em>* linep, size_t </em>linecapp, FILE * stream);<br>  free(linep);</p></li><li><p>dynamically allocated, but must free later</p></li><li>not part of c standard</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;read-a-file-from-stdin-and-put-it-to-both-stdout-amp-stderr&quot;&gt;&lt;a href=&quot;#read-a-file-from-stdin-and-put-it-to-both-stdout-amp-stderr&quot; class=&quot;headerlink&quot; title=&quot;read a file from stdin and put it to both stdout &amp;amp; stderr&quot;&gt;&lt;/a&gt;read a file from stdin and put it to both stdout &amp;amp; stderr&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;int main (int argc, char *argv[]){
-    char *fname = NULL;
-    if (argc&amp;gt;1){
-        frame=argv[1];
-    }
-    else{
-        return 1;
-    }
-    FILE *file = fopen(fname, &amp;quot;r&amp;quot;);
-
-    int input;
-    while((input=fgetc(file))!= EOF){
-        fputc(input,stdout);
-        fputc(input,stderr);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     

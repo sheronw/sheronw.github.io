@@ -254,6 +254,315 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sheronw.github.io/2018/11/06/Formatted-I-O-Line-Input-Scanf-C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SheronW">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SheronW">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/06/Formatted-I-O-Line-Input-Scanf-C/" itemprop="url">Formatted I/O, Line Input, Scanf - C</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-06T15:15:43-05:00">
+                2018-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学业相关/" itemprop="url" rel="index">
+                    <span itemprop="name">学业相关</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="read-a-file-from-stdin-and-put-it-to-both-stdout-amp-stderr"><a href="#read-a-file-from-stdin-and-put-it-to-both-stdout-amp-stderr" class="headerlink" title="read a file from stdin and put it to both stdout &amp; stderr"></a>read a file from stdin and put it to both stdout &amp; stderr</h2><pre><code>int main (int argc, char *argv[]){
+    char *fname = NULL;
+    if (argc&gt;1){
+        frame=argv[1];
+    }
+    else{
+        return 1;
+    }
+    FILE *file = fopen(fname, &quot;r&quot;);
+
+    int input;
+    while((input=fgetc(file))!= EOF){
+        fputc(input,stdout);
+        fputc(input,stderr);
+    }
+}
+</code></pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/06/Formatted-I-O-Line-Input-Scanf-C/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sheronw.github.io/2018/08/24/shangjunliezhuan/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SheronW">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SheronW">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/24/shangjunliezhuan/" itemprop="url">史记商君列传</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-24T20:31:17-04:00">
+                2018-08-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/阅读笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">阅读笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>之前一直觉得商鞅的故事挺让人费解的，尤其是他这么拉仇恨。但这只是一个现代人的理解——虽然现在也没好到哪里去，但至少我们海标榜法制社会，民主法治不算深入人心但基本上都懂。我无法想象在一个统治阶级啥都说了算（现在不是？）的世界里，一个人跑出来说要法治要法治在什么程度上触及了既得利益者的利益。</p>
+<p>一个不算结论的结论：读古书的时候，不要站在一个穿越者的角度上去思考，结合时代背景才会不那么容易去纠结无关痛痒的点。这是在纵向层次上说的，不同文化间的横向的比较也同理。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/24/shangjunliezhuan/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sheronw.github.io/2018/01/12/2017booklist/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -777,8 +1086,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/课业相关/" itemprop="url" rel="index">
-                    <span itemprop="name">课业相关</span>
+                  <a href="/categories/学业相关/" itemprop="url" rel="index">
+                    <span itemprop="name">学业相关</span>
                   </a>
                 </span>
 
@@ -1331,7 +1640,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1342,7 +1651,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
