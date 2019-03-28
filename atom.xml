@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sheronw.github.io/"/>
-  <updated>2019-02-24T04:04:49.448Z</updated>
+  <updated>2019-03-28T03:39:17.432Z</updated>
   <id>http://sheronw.github.io/</id>
   
   <author>
@@ -17,17 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>2017EH Forwarder Bot 2.0保持后台运行</title>
-    <link href="http://sheronw.github.io/2019/02/22/efbscreen/"/>
-    <id>http://sheronw.github.io/2019/02/22/efbscreen/</id>
-    <published>2019-02-22T22:41:17.000Z</published>
-    <updated>2019-02-24T04:04:49.448Z</updated>
+    <title>我果然一直都在无效学习</title>
+    <link href="http://sheronw.github.io/2019/03/27/make_it_stick/"/>
+    <id>http://sheronw.github.io/2019/03/27/make_it_stick/</id>
+    <published>2019-03-28T03:39:14.000Z</published>
+    <updated>2019-03-28T03:39:17.432Z</updated>
     
-    <content type="html"><![CDATA[<p>微信升级到7之后就经常收不到后台推送（不知道问题是出在美国的网络还是我的pixel），但网页版的推送显然是正常的，于是决定时隔一年再次卸载微信，使用efb。<br>要是有空顺便把Facebook Messenger也部署了吧<br><a href="https://ehforwarderbot.readthedocs.io/en/latest/index.html" target="_blank" rel="external">感兴趣的话可以看一下这个documentation</a><br><a id="more"></a><br>用的是Vultr的VPS，5刀一个月的那个（之前用的是digitalocean，github student package里面有优惠），有点肉疼……<br>安装方法和当初装1.0没什么区别，只不过后台运行的方法和之前不太一样，所以从<a href="https://whitecodes.github.io/2018/02/Eh-Forwarder-Bot-2-0/" target="_blank" rel="external">这里</a>找到了解决方案，记在下面：</p><ol><li>首先要用screen保持后台运行</li><li>将其后台化需要Ctrl+a、Ctrl+d</li><li>再次打开的话需要执行screen -ls命令，然后再screen -r XXXXX</li></ol>]]></content>
+    <content type="html"><![CDATA[<p>高中的时候，由于被整个大环境洗了脑，我拿出了前所未有的干劲，开始随着全日制高中每一个小时都被安排好的作息，做出一副每时每刻都在好好学习的样子，但我很快就意识到，自己对所谓『知识』的掌握程度并不好，以至于到底学到了什么，我自己也说不出来。虽然隐约地觉得自己的学习方式可能出了些问题，但那时的我更认为自己只是还不够努力，只要没有学到死就没有资格去考虑这个问题，至于那些取得好成绩的同学，我统统将他们纳入天赋异禀的范畴。<br>直到这个春假忙里偷闲地看了本叫做『<a href="https://books.google.com/books/about/Make_It_Stick.html?id=t9JoAwAAQBAJ&amp;source=kp_book_description" target="_blank" rel="external">Make It Stick</a>』的书，自己隐约的猜想才算成了现实——是的，我之前接近二十年的人生中，很多时候的所谓『学习』都是无效的，为什么？因为没有动脑。现在想来，正如高中的我相信自己可以靠一点睡五点半起来取得好成绩一样，其实只是自己感动自己罢了——因为认真地去分析、去记忆很累，因此把时间用来不断地反复理解或记忆表层的内容，然后觉得自己应该掌握了，然后直接跳到下一个知识点。<br>这本书里面提到了一个叫做effortful learning的概念，其实这东西没什么可解释的，就是动脑子学的意思，基本上是个学生可能都能明白『真正动脑子学』是什么意思。我先解释一下为什么很多人都做不到effortful learning，然后再直接上方法论，至于effortful learning的益处暂时略去不谈，一些心理学和神经科学的原理我也不解释了。另外，书中针对教育者（父母、老师、培训机构等）也有一些针对性的建议，这里也略去不谈，以下内容主要针对像我这样的（苦逼）学生。<br><a id="more"></a></p><h1 id="为什么会无效学习"><a href="#为什么会无效学习" class="headerlink" title="为什么会无效学习"></a>为什么会无效学习</h1><h2 id="有效学习的缓慢与困难"><a href="#有效学习的缓慢与困难" class="headerlink" title="有效学习的缓慢与困难"></a>有效学习的缓慢与困难</h2><p>印象中第一次接触到所谓的『有效学习』，是在初中快会考的时候，历史老师建议我们晚上睡觉前把眼一闭，想一想自己这一天都学了什么，还有哪些需要学习或者改进的（其实就是之后我会提到的retrieval和reflection）。我想了想好有道理诶，然而坚持了一天就放弃了。<br>原因很简单，浪了一整天之后，晚上躺在床上的时候就已经很累了，回忆当天学了啥真的太难了，要很努力才能回忆起来，还不如看会儿<del>里</del>番放飞自我。<br>于是我用自己的亲身经历告诉了大家effortful learning有多困难。但是事实上，当你在努力回忆今天学了什么的时候，即使最后也没法全想出来，也是对学习很有利的。或者说，如果你回忆或者复习的时候越吃力，其实学到的东西就更多，真正掌握知识的学习曲线是很陡峭的。<br>可惜大多数人（比如我）都只是大概扫一眼，从来不在脑子里自己过一遍知识，把整个思考过程都复原一遍，因为『这么思考下去太慢了，肯定坐簿完作业』，想着『啊我觉得我应该会了吧』，就开始盲目地练习一些比较简单的题，如果会做更加引证了自己会做的假象，不会做就抄抄课本和笔记，照葫芦画瓢也能做出来，想着『那就考试之前看一下笔记吧』，也就这么搁置了下去。<br>除了学习曲线缓慢之外，effortful learning的过程中还有很多困难，比如下课之后回忆起之前课上讲过的内容，就会发现自己很多内容都不记得了，或者说认认真真做题不看课本的时候发现自己很多概念并不理解所以并不会做之类的。<br>不过这个也不用太担心，因为不断地试错错，即使最后都没做对，同样有利于学习。<br>这里灌一下原书提到的一段鸡汤：</p><blockquote><p>People who believe that their intellectual ability is fixed from birth, wired in their genes, tend to avoid challenges at which they may not succeed, because failure would appear to be an indication of lesser native ability.<br>By contrast, people who are helped to understand that effort and learning change the brain, and that their intellectual abilities lie to a large degree within their own control, are more likely to tackle difficult challenges and persist at them. They view failure as a sign of effort and as a turn in the road rather than as a measure of inability and the end of the road.<br>如果一个人相信自己的智力是与生俱来、嵌在基因里的，那么他会倾向于避免他们可能做不到的挑战，因为失败就代表着他们的先天能力不足。<br>与之相反地，如果一个人经过指点，明白努力和学习可以改变自己的大脑，并且自己的智力在很大程度上都是可以受自己控制，那么他就会更可能解决困难的挑战并在这上面坚持下去。他们将失败看作努力的证明或是一个转折点，而不是无能的标志或是死路一条。</p></blockquote><h2 id="知识被掌握的假象"><a href="#知识被掌握的假象" class="headerlink" title="知识被掌握的假象"></a>知识被掌握的假象</h2><p>只要说到复习，我做出的实际行动其实永远只有一项——『看错题和笔记』，真的只是来来回回地看，看到觉得自己好像已经背下来了就停下。其实我也知道最好的方式是重新做一遍，但想了想觉得自己既然已经重新做过一遍了，那么应该就不用再做、只要看看错在那里应该就会了。<br>于是我又中枪了——事实证明反反复复阅读笔记和文本是效率最低下的复习方式，因为缺少更深层的思考，很多时候我们只是掌握了『文本』，而不是『知识』本身。<br>更糟糕的是，这种『付出努力』的错觉，更加强化了我的错误认知，让我自己认为自己对于知识的掌握已经很熟练了，然后陷入了死循环。<br>心理学中的Imagination Inflation说的就是这种情况，如果一个人幻想过发生了某事，那么最后他真的会把它当真。我幻想反复阅读文本就能掌握知识，结果最后自己真的相信我已经把这些都学会了。<br>想要打破这种幻象，就要给自己设定一些指标，然后检查自己是否能够达到这些要求。对于一些没有硬性指标的抽象内容，可以时不时进行自测，或者和同学相互交流学习的内容。</p><h1 id="如何做到有效地学习"><a href="#如何做到有效地学习" class="headerlink" title="如何做到有效地学习"></a>如何做到有效地学习</h1><p>以下内容全部出自原书第八章。其实很多技巧我们都早已知道，只是由于思维惰性却迟迟不去实践。虽然开始改变很难，并且没啥成就感，但贵在坚持。</p><h2 id="Practice-Retrieving-New-Learning-from-memory"><a href="#Practice-Retrieving-New-Learning-from-memory" class="headerlink" title="Practice Retrieving New Learning from memory"></a>Practice Retrieving New Learning from memory</h2><p>有的时候，学到的知识其实已经储存到我们的大脑里了，只是我们仍然无法在需要的时候熟练调用。因此我们要为『调用』这个过程进行足够的练习。<br>首先，在学习，尤其是容易出现掌握假象的阅读笔记和文本时，要时不时停下来考虑以下几个问题：</p><ul><li>这些文本的要点有哪些？</li><li>其中有哪些我不熟悉的术语？如何定义它们？</li><li>其中有哪些我不熟悉的观点？如何把它们和我已知的内容连系起来？</li></ul><p>其次，<del>虽然大家都知道，</del>不要满足于翻来覆去地看课本和笔记，所有的知识最好都在脑子里自己重构一遍，并且课后习题做起来（除了练习retreving之外，也可以作为自己掌握程度的指标）。<br>当然，不要忘了每个周、每个月还有考试前温习学过的内容。</p><h2 id="Space-Out-Your-Retrieval-Practice"><a href="#Space-Out-Your-Retrieval-Practice" class="headerlink" title="Space Out Your Retrieval Practice"></a>Space Out Your Retrieval Practice</h2><p>首先，从真正掌握知识的角度上看，考前临时抱佛脚什么的绝对不可取，记得快忘得更快。因为知识需要时间来巩固，因此将知识分块，中间给予时间间隔的话学习效果更好。<br>对名词和脸来说，学完了如果不立刻复习的话很容易忘记。对于文本类的话，当天也要复习一次，一个月后一定要重新复习。<br>对于自己已经掌握的内容，也依然要复习。可以使用Leitner Box来管理自己掌握程度不同的知识。<br>不要总是学一种科目，在不同的科目间切换效果会更好。</p><h2 id="Interleave-the-Study-of-Different-Problem-types"><a href="#Interleave-the-Study-of-Different-Problem-types" class="headerlink" title="Interleave the Study of Different Problem types"></a>Interleave the Study of Different Problem types</h2><p>比起一口气突击一个知识点并进行盲目的单项训练，同时学习几个知识点，并且比较它们的相同点和不同点更好。</p><h2 id="Other-Effective-Study-Strategies"><a href="#Other-Effective-Study-Strategies" class="headerlink" title="Other Effective Study Strategies"></a>Other Effective Study Strategies</h2><h3 id="Elaboration"><a href="#Elaboration" class="headerlink" title="Elaboration"></a>Elaboration</h3><ul><li>试图用自己的话来总结所学知识</li><li>将所学内容与生活联系起来</li><li>寻找新知识与已知知识的关系<h3 id="Generation"><a href="#Generation" class="headerlink" title="Generation"></a>Generation</h3>其实就是在学习之前预先进行思考。比如在阅读文本前，先思考一下作者会针对这个topic讲哪些观点。做题的话，即使知道自己可能做不出来，也要在看答案之前自己做一做。学习理科的时候可以在课前根据已经有的知识试着做一下这一章节的题目。<h3 id="Reflection"><a href="#Reflection" class="headerlink" title="Reflection"></a>Reflection</h3>回顾最近的学习内容并思考以下问题：</li><li>那些是自己做得比较好的？哪些还需要改进和温习？</li><li>这些知识能够联想到哪些别的内容？</li><li>自己还可以做哪些？<h3 id="Calibration"><a href="#Calibration" class="headerlink" title="Calibration"></a>Calibration</h3>寻找一些标准来确认自己对于知识的掌握内容程度。之前已经说过。如果有标准的话就和标准比较，如果没有的话就自己测试，比如课后的习题，自我回顾等等。<h3 id="Mnemonic-Devices"><a href="#Mnemonic-Devices" class="headerlink" title="Mnemonic Devices"></a>Mnemonic Devices</h3>这就比较骚了，只要搜索『记忆方法』就能找出一大堆，这里不赘述了。</li></ul>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;微信升级到7之后就经常收不到后台推送（不知道问题是出在美国的网络还是我的pixel），但网页版的推送显然是正常的，于是决定时隔一年再次卸载微信，使用efb。&lt;br&gt;要是有空顺便把Facebook Messenger也部署了吧&lt;br&gt;&lt;a href=&quot;https://ehforwarderbot.readthedocs.io/en/latest/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;感兴趣的话可以看一下这个documentation&lt;/a&gt;&lt;br&gt;
+      &lt;p&gt;高中的时候，由于被整个大环境洗了脑，我拿出了前所未有的干劲，开始随着全日制高中每一个小时都被安排好的作息，做出一副每时每刻都在好好学习的样子，但我很快就意识到，自己对所谓『知识』的掌握程度并不好，以至于到底学到了什么，我自己也说不出来。虽然隐约地觉得自己的学习方式可能出了些问题，但那时的我更认为自己只是还不够努力，只要没有学到死就没有资格去考虑这个问题，至于那些取得好成绩的同学，我统统将他们纳入天赋异禀的范畴。&lt;br&gt;直到这个春假忙里偷闲地看了本叫做『&lt;a href=&quot;https://books.google.com/books/about/Make_It_Stick.html?id=t9JoAwAAQBAJ&amp;amp;source=kp_book_description&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Make It Stick&lt;/a&gt;』的书，自己隐约的猜想才算成了现实——是的，我之前接近二十年的人生中，很多时候的所谓『学习』都是无效的，为什么？因为没有动脑。现在想来，正如高中的我相信自己可以靠一点睡五点半起来取得好成绩一样，其实只是自己感动自己罢了——因为认真地去分析、去记忆很累，因此把时间用来不断地反复理解或记忆表层的内容，然后觉得自己应该掌握了，然后直接跳到下一个知识点。&lt;br&gt;这本书里面提到了一个叫做effortful learning的概念，其实这东西没什么可解释的，就是动脑子学的意思，基本上是个学生可能都能明白『真正动脑子学』是什么意思。我先解释一下为什么很多人都做不到effortful learning，然后再直接上方法论，至于effortful learning的益处暂时略去不谈，一些心理学和神经科学的原理我也不解释了。另外，书中针对教育者（父母、老师、培训机构等）也有一些针对性的建议，这里也略去不谈，以下内容主要针对像我这样的（苦逼）学生。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="阅读笔记" scheme="http://sheronw.github.io/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>EH Forwarder Bot 2.0保持后台运行（Screen）</title>
+    <link href="http://sheronw.github.io/2019/02/22/efbscreen/"/>
+    <id>http://sheronw.github.io/2019/02/22/efbscreen/</id>
+    <published>2019-02-22T22:41:17.000Z</published>
+    <updated>2019-03-03T02:54:33.814Z</updated>
+    
+    <content type="html"><![CDATA[<p>微信升级到7之后就经常收不到后台推送（不知道问题是出在美国的网络还是我的pixel），但网页版的推送显然是正常的，于是决定时隔一年再次卸载微信，使用efb。<br><del>要是有空顺便把Facebook Messenger也部署了吧</del><br><a href="https://ehforwarderbot.readthedocs.io/en/latest/index.html" target="_blank" rel="external">感兴趣的话可以看一下这个documentation</a><br><a id="more"></a><br>用的是Vultr的VPS，5刀一个月的那个（之前用的是digitalocean，github student package里面有优惠），有点肉疼……<br>安装方法和当初装1.0没什么区别，只不过后台运行的方法和之前不太一样，所以从<a href="https://whitecodes.github.io/2018/02/Eh-Forwarder-Bot-2-0/" target="_blank" rel="external">这里</a>找到了解决方案，记在下面：</p><ol><li>首先要用screen保持后台运行</li><li>将其后台化需要Ctrl+a、Ctrl+d</li><li>再次打开的话需要执行screen -ls命令，然后再screen -r XXXXX</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;微信升级到7之后就经常收不到后台推送（不知道问题是出在美国的网络还是我的pixel），但网页版的推送显然是正常的，于是决定时隔一年再次卸载微信，使用efb。&lt;br&gt;&lt;del&gt;要是有空顺便把Facebook Messenger也部署了吧&lt;/del&gt;&lt;br&gt;&lt;a href=&quot;https://ehforwarderbot.readthedocs.io/en/latest/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;感兴趣的话可以看一下这个documentation&lt;/a&gt;&lt;br&gt;
     
     </summary>
     
@@ -62,16 +82,13 @@
     <link href="http://sheronw.github.io/2019/02/17/Belmont_Principles/"/>
     <id>http://sheronw.github.io/2019/02/17/Belmont_Principles/</id>
     <published>2019-02-17T14:52:52.000Z</published>
-    <updated>2019-02-24T21:26:49.360Z</updated>
+    <updated>2019-02-24T21:30:03.877Z</updated>
     
-    <content type="html"><![CDATA[<p>Ethical Principles and Guidelines for the Protection of Human<br>Subjects of Research<br>好吧，这很人道主义。<br>三条粗略看完之后，觉得在实际情况中做出相应的权衡还是很难，几乎不太可能全部做到啊hhhh</p><h2 id="Respect-for-Persons"><a href="#Respect-for-Persons" class="headerlink" title="Respect for Persons"></a>Respect for Persons</h2><h3 id="acknowledge-autonomy"><a href="#acknowledge-autonomy" class="headerlink" title="acknowledge autonomy"></a>acknowledge autonomy</h3><p>autonomy的人就是有能力考虑自己的目标并行动的人。反正要尊重这帮人的意见和想法，除非他们干了对别人有害的事情，否则不能随意阻止他们的行为。</p><h3 id="protect-those-with-diminished-autonomy"><a href="#protect-those-with-diminished-autonomy" class="headerlink" title="protect those with diminished autonomy"></a>protect those with diminished autonomy</h3><p>对于那些做不到autonomy的人，就需要保护并且帮助他们。</p><h2 id="Beneficence"><a href="#Beneficence" class="headerlink" title="Beneficence"></a>Beneficence</h2><h3 id="do-not-harm"><a href="#do-not-harm" class="headerlink" title="do not harm"></a>do not harm</h3><p>不能伤害他们，也不能让他们有受伤的风险。</p><h3 id="maximize-possible-benefits-and-minimize-possible-harms"><a href="#maximize-possible-benefits-and-minimize-possible-harms" class="headerlink" title="maximize possible benefits and minimize possible harms"></a>maximize possible benefits and minimize possible harms</h3><p>最大化收益，不一定是对实验对象的收益，而是一个群体甚至全人类的那种长期收益。</p><h2 id="Justice"><a href="#Justice" class="headerlink" title="Justice"></a>Justice</h2><h3 id="to-each-person-an-equal-share"><a href="#to-each-person-an-equal-share" class="headerlink" title="to each person an equal share"></a>to each person an equal share</h3><h3 id="to-each-person-according-to-individual-need"><a href="#to-each-person-according-to-individual-need" class="headerlink" title="to each person according to individual need"></a>to each person according to individual need</h3><h3 id="to-each-person-according-to-individual-effort"><a href="#to-each-person-according-to-individual-effort" class="headerlink" title="to each person according to individual effort"></a>to each person according to individual effort</h3><h3 id="to-each-person-according-to-societal-contribution"><a href="#to-each-person-according-to-societal-contribution" class="headerlink" title="to each person according to societal contribution"></a>to each person according to societal contribution</h3><h3 id="to-each-person-according-to-merit"><a href="#to-each-person-according-to-merit" class="headerlink" title="to each person according to merit."></a>to each person according to merit.</h3>]]></content>
+    <content type="html"><![CDATA[<p>Ethical Principles and Guidelines for the Protection of Human<br>Subjects of Research<br>好吧，这很人道主义。<br>三条粗略看完之后，觉得在实际情况中做出相应的权衡还是很难，几乎不太可能全部做到啊hhhh</p><a id="more"></a><h2 id="Respect-for-Persons"><a href="#Respect-for-Persons" class="headerlink" title="Respect for Persons"></a>Respect for Persons</h2><h3 id="acknowledge-autonomy"><a href="#acknowledge-autonomy" class="headerlink" title="acknowledge autonomy"></a>acknowledge autonomy</h3><p>autonomy的人就是有能力考虑自己的目标并行动的人。反正要尊重这帮人的意见和想法，除非他们干了对别人有害的事情，否则不能随意阻止他们的行为。</p><h3 id="protect-those-with-diminished-autonomy"><a href="#protect-those-with-diminished-autonomy" class="headerlink" title="protect those with diminished autonomy"></a>protect those with diminished autonomy</h3><p>对于那些做不到autonomy的人，就需要保护并且帮助他们。</p><h2 id="Beneficence"><a href="#Beneficence" class="headerlink" title="Beneficence"></a>Beneficence</h2><h3 id="do-not-harm"><a href="#do-not-harm" class="headerlink" title="do not harm"></a>do not harm</h3><p>不能伤害他们，也不能让他们有受伤的风险。</p><h3 id="maximize-possible-benefits-and-minimize-possible-harms"><a href="#maximize-possible-benefits-and-minimize-possible-harms" class="headerlink" title="maximize possible benefits and minimize possible harms"></a>maximize possible benefits and minimize possible harms</h3><p>最大化收益，不一定是对实验对象的收益，而是一个群体甚至全人类的那种长期收益。</p><h2 id="Justice"><a href="#Justice" class="headerlink" title="Justice"></a>Justice</h2><h3 id="to-each-person-an-equal-share"><a href="#to-each-person-an-equal-share" class="headerlink" title="to each person an equal share"></a>to each person an equal share</h3><h3 id="to-each-person-according-to-individual-need"><a href="#to-each-person-according-to-individual-need" class="headerlink" title="to each person according to individual need"></a>to each person according to individual need</h3><h3 id="to-each-person-according-to-individual-effort"><a href="#to-each-person-according-to-individual-effort" class="headerlink" title="to each person according to individual effort"></a>to each person according to individual effort</h3><h3 id="to-each-person-according-to-societal-contribution"><a href="#to-each-person-according-to-societal-contribution" class="headerlink" title="to each person according to societal contribution"></a>to each person according to societal contribution</h3><h3 id="to-each-person-according-to-merit"><a href="#to-each-person-according-to-merit" class="headerlink" title="to each person according to merit."></a>to each person according to merit.</h3>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;Ethical Principles and Guidelines for the Protection of Human&lt;br&gt;Subjects of Research&lt;br&gt;好吧，这很人道主义。&lt;br&gt;三条粗略看完之后，觉得在实际情况中做出相应的权衡还是很难，几乎不太可
-      
+      &lt;p&gt;Ethical Principles and Guidelines for the Protection of Human&lt;br&gt;Subjects of Research&lt;br&gt;好吧，这很人道主义。&lt;br&gt;三条粗略看完之后，觉得在实际情况中做出相应的权衡还是很难，几乎不太可能全部做到啊hhhh&lt;/p&gt;
     
     </summary>
     
@@ -397,7 +414,7 @@
     <link href="http://sheronw.github.io/2019/01/03/ds-list/"/>
     <id>http://sheronw.github.io/2019/01/03/ds-list/</id>
     <published>2019-01-04T01:45:50.000Z</published>
-    <updated>2019-01-05T00:13:25.835Z</updated>
+    <updated>2019-03-03T03:04:45.988Z</updated>
     
     <content type="html"><![CDATA[<h1 id="The-List-Interface"><a href="#The-List-Interface" class="headerlink" title="The List Interface"></a>The List Interface</h1><h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>顾名思义，就是一个表。<br>按照惯例，index从零开始，每一个元素都有一个相应的index。<br>至于可以执行的操作，可以看<a href="https://docs.oracle.com/javase/7/docs/api/java/util/List.html" target="_blank" rel="external">官方文档</a>。比较基本的有添加、删除、查找等。<br><a id="more"></a></p><h2 id="Implementations"><a href="#Implementations" class="headerlink" title="Implementations"></a>Implementations</h2><p>2 implementations: ArrayList &amp; LinkedList</p><h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><p>什么是Array？<br>我的理解是，指定数据型（或者object）T，array可以在内存里面画出一块区域来储存<strong>给定数量</strong>的T。因此array的长度在初始化时必须声明。之后也不能改。<br>所以用array来搞list的话，其实还是挺麻烦的，比如在非list的结尾进行删除或者添加的操作，就得把所有后面的元素一个一个往后挪。<br>还有一个就是，因为array是给定数量的，但list指不定会往里加多少东西，所以一旦这个array快满了的时候我们就得新建一个array，把现有元素都一个个复制到新的里面，然后重定向list的array指针为这个新的array。<br>（*其实并不是真的用到了指针这个东西，只是为了帮助理解，具体的之后会说）<br><img src="https://i.loli.net/2019/01/04/5c2eaff197a53.png" alt="enter image description here"></p><h3 id="Linked-List"><a href="#Linked-List" class="headerlink" title="Linked List"></a>Linked List</h3><p>linked list就是一串首尾相连的单位，每个单位叫node。<br>最基本的node里面需要两种东西，第一种是这个node里面真正储存的数据，另外一种是指向下一个node的指针next。</p><h4 id="head-and-tail-pointers"><a href="#head-and-tail-pointers" class="headerlink" title="head and tail pointers"></a>head and tail pointers</h4><p>为了让我们能够在处理的时候能够找得着北，我们需要知道哪一个node是第一个，哪一个node是最后一个。每一个这样的liked list里面都有一个head node和一个tail node，指向相应的node，进行添加删除首尾node之类的操作的时候需要相应地update。<br>至于如何添加或删除node，首先我们需要一个叫做iterator的特殊的node指针来确定我们正在操作的node是哪一个（就跟基础课里面while循环的index计数器i一样），将它挪到相应的位置之后新建一个node并赋值，然后就是相关的几个指向的替换游戏了hmmm<br><img src="https://i.loli.net/2019/01/04/5c2eba55b74be.png" alt="enter image description here"></p><h4 id="doubly-linked"><a href="#doubly-linked" class="headerlink" title="doubly-linked"></a>doubly-linked</h4><p>其实和前面那种差不多，区别就是前面的是单向箭头，现在变双向了，每一个node里面都有一个指向后一个node的prev和指向下一个node的next。</p><h4 id="circular"><a href="#circular" class="headerlink" title="circular"></a>circular</h4><p>虽然还是需要head提醒我们哪里是开头，但这次我们不要tail了，直接把最后一个连到第一个node上。</p><h4 id="sentinel-nodes"><a href="#sentinel-nodes" class="headerlink" title="sentinel nodes"></a>sentinel nodes</h4><p>circular的升级版，可以把这个sentinel node想象成项链上的那个搭扣，连接了第一个node和最后一个node。</p><p><img src="https://i.loli.net/2019/01/04/5c2eb80d92f81.png" alt="enter image description here"></p><p><a href="https://www.tutorialspoint.com/data_structures_algorithms/linked_list_algorithms.htm" target="_blank" rel="external">https://www.tutorialspoint.com/data_structures_algorithms/linked_list_algorithms.htm</a><br><a href="https://www.tutorialspoint.com/data_structures_algorithms/doubly_linked_list_algorithm.htm" target="_blank" rel="external">https://www.tutorialspoint.com/data_structures_algorithms/doubly_linked_list_algorithm.htm</a><br><a href="https://www.tutorialspoint.com/data_structures_algorithms/circular_linked_list_algorithm.htm" target="_blank" rel="external">https://www.tutorialspoint.com/data_structures_algorithms/circular_linked_list_algorithm.htm</a></p>]]></content>
     
@@ -428,45 +445,6 @@
     </summary>
     
       <category term="阅读笔记" scheme="http://sheronw.github.io/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Operating Systems Basics </title>
-    <link href="http://sheronw.github.io/2018/11/17/OSB/"/>
-    <id>http://sheronw.github.io/2018/11/17/OSB/</id>
-    <published>2018-11-17T14:15:43.000Z</published>
-    <updated>2019-02-24T21:18:25.050Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="OS-tasks"><a href="#OS-tasks" class="headerlink" title="OS tasks"></a>OS tasks</h2><ul><li>managing the resources of a computer (hardware network, etc.)</li><li>coordinate the running of all other programs</li><li>can be considered as a set of programs<ul><li>kernel: name given to the core OS program<h2 id="Getting-program-to-run"><a href="#Getting-program-to-run" class="headerlink" title="Getting program to run"></a>Getting program to run</h2></li></ul></li><li>POST - test program from specific location in BIOS</li><li>Boot loader - “bootstrap loader”<ul><li>small program that begins loading the OS<ul><li>computer cannot run without 1st loading software, but needs instructions on how to load software</li></ul></li><li>might have multi stages</li></ul></li><li>kernel is loaded into memory &amp; executed</li><li>kernel runs “init” process &amp; sets runlevel</li><li>initialization scripts</li></ul><a id="more"></a><h2 id="System-calls"><a href="#System-calls" class="headerlink" title="System calls"></a>System calls</h2><ul><li>set of functions to request access to resources of the machine</li><li>system call numbers</li><li>often referred to as an API (Application Programming Interface)</li><li>differ by platform &amp; standards</li><li>APP-Kernel-(CPU&amp;Memory&amp;Devices)</li><li>C standard lib contains wrappers around system calls</li><li><p>behavior on x86 is essentially</p><ul><li>set up parameters to pass to sc</li><li>put all num in register EAX</li><li>trigger HW interrupt</li><li><a href="http://www.linux.it/~rubini/docs/ksys/" target="_blank" rel="external">http://www.linux.it/~rubini/docs/ksys/</a><h3 id="exec"><a href="#exec" class="headerlink" title="exec"></a>exec</h3></li><li>replace current running program as another program</li><li>execve<h3 id="Process-IDs"><a href="#Process-IDs" class="headerlink" title="Process IDs"></a>Process IDs</h3></li><li>every unix process has a unique identifier (int)</li><li>pid_t getpid(void);</li><li>every process has a parent process</li><li>pid_t getppid(void);</li><li><p>processing tables: ps</p><h3 id="fork"><a href="#fork" class="headerlink" title="fork"></a>fork</h3><p> #include<unistd.h><br> #include<sys types.h=""><br> pid_t fork(void);</sys></unistd.h></p></li><li><p>creating an identical copy of the running program with one exception</p></li><li>return 0 to the child, PID to the parent</li><li>vfork(): fork&amp;exec</li><li>process exit status<ul><li>can wait until the child process ends</li><li>wait() can return the exit status of child</li><li><strong>WIFEXITED</strong> return true if normally</li><li><strong>WEXITSTATUS</strong> extract actual return/exit value</li></ul></li></ul></li></ul><h3 id="Memory-management-calls"><a href="#Memory-management-calls" class="headerlink" title="Memory management calls"></a>Memory management calls</h3><ul><li>mmap - allocate memory or map files/devices into memory</li><li>shmget</li><li>shmctl</li><li>mprotect</li><li>mlock, munlock<h3 id="Time"><a href="#Time" class="headerlink" title="Time"></a>Time</h3><ul><li>time, gettimeofday/settimeofday</li><li>getitimer, setitimer</li><li>alarm</li></ul></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;OS-tasks&quot;&gt;&lt;a href=&quot;#OS-tasks&quot; class=&quot;headerlink&quot; title=&quot;OS tasks&quot;&gt;&lt;/a&gt;OS tasks&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;managing the resources of a computer (hardware network, etc.)&lt;/li&gt;
-&lt;li&gt;coordinate the running of all other programs&lt;/li&gt;
-&lt;li&gt;can be considered as a set of programs&lt;ul&gt;
-&lt;li&gt;kernel: name given to the core OS program&lt;h2 id=&quot;Getting-program-to-run&quot;&gt;&lt;a href=&quot;#Getting-program-to-run&quot; class=&quot;headerlink&quot; title=&quot;Getting program to run&quot;&gt;&lt;/a&gt;Getting program to run&lt;/h2&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;POST - test program from specific location in BIOS&lt;/li&gt;
-&lt;li&gt;Boot loader - “bootstrap loader”&lt;ul&gt;
-&lt;li&gt;small program that begins loading the OS&lt;ul&gt;
-&lt;li&gt;computer cannot run without 1st loading software, but needs instructions on how to load software&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;might have multi stages&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;kernel is loaded into memory &amp;amp; executed&lt;/li&gt;
-&lt;li&gt;kernel runs “init” process &amp;amp; sets runlevel&lt;/li&gt;
-&lt;li&gt;initialization scripts&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="学业相关" scheme="http://sheronw.github.io/categories/%E5%AD%A6%E4%B8%9A%E7%9B%B8%E5%85%B3/"/>
     
     
   </entry>
