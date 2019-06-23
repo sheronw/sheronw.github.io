@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://sheronw.github.io/2017/10/08/hello-world/</loc>
+    
+    <lastmod>2019-06-23T17:47:20.394Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sheronw.github.io/about/index.html</loc>
+    
+    <lastmod>2019-06-23T17:45:07.454Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://sheronw.github.io/2019/05/21/bye_sophomore/</loc>
     
-    <lastmod>2019-05-21T19:10:03.097Z</lastmod>
+    <lastmod>2019-05-29T22:30:31.865Z</lastmod>
     
   </url>
   
@@ -12,13 +26,6 @@
     <loc>http://sheronw.github.io/2019/03/27/make_it_stick/</loc>
     
     <lastmod>2019-05-21T19:03:34.956Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sheronw.github.io/about/index.html</loc>
-    
-    <lastmod>2019-05-21T18:36:38.327Z</lastmod>
     
   </url>
   
@@ -145,13 +152,6 @@
     <loc>http://sheronw.github.io/categories/index.html</loc>
     
     <lastmod>2018-01-10T03:22:00.640Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sheronw.github.io/2017/10/08/hello-world/</loc>
-    
-    <lastmod>2017-10-13T18:10:22.518Z</lastmod>
     
   </url>
   
