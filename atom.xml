@@ -106,102 +106,6 @@
   </entry>
   
   <entry>
-    <title>浮点数的表示法以及加法乘法</title>
-    <link href="https://blog.sheronw.xyz/2019/02/20/float/"/>
-    <id>https://blog.sheronw.xyz/2019/02/20/float/</id>
-    <published>2019-02-20T18:40:28.000Z</published>
-    <updated>2019-02-24T21:16:27.200Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="浮点数的表示法"><a href="#浮点数的表示法" class="headerlink" title="浮点数的表示法"></a>浮点数的表示法</h2><p>每一个浮点数都要转换成二进制版本的科学计数法再储存起来（也就是x*2<sup>y</sup>），因此需要存储如下数据：正负号（0正1负），科学计数法的幂（2的次方数），科学计数法的小数部分（用-2进制来表示）。</p><h3 id="十进制转二进制"><a href="#十进制转二进制" class="headerlink" title="十进制转二进制"></a>十进制转二进制</h3><p>把这个数分成小数和整数两种形式。<br>整数直接转二进制然后使用科学计数法。<br>分数部分，每次乘2，取该数的整数部分（要么取不到整数，要么取走1），直到啥都不剩为止。取到的数从左往右写，最前面加0.。</p><a id="more"></a><h3 id="IEEE-Floating-Point-Standard-754标准"><a href="#IEEE-Floating-Point-Standard-754标准" class="headerlink" title="IEEE Floating Point Standard 754标准"></a>IEEE Floating Point Standard 754标准</h3><p>32bits（float）从左往右依次为：</p><ul><li>31: 正负号</li><li>30-23: 8 bits的幂数</li><li>22-0: 23 bits的小数部分（因为科学记数法，所以第一位（小数点左侧）必然是1，就不计算在内了）</li></ul><p>64bits（double）从左往右依次为：</p><ul><li>63：正负号</li><li>62-52：11 bits的幂数</li><li>51-0：52 bits的小数部分</li></ul><h3 id="exponent-bias-method"><a href="#exponent-bias-method" class="headerlink" title="exponent bias method"></a>exponent bias method</h3><p>为了表示负数次幂，转换时在原本的幂数中加一些数字。<br>32位+127，64位+1023<br>这样32位幂的表示范围为-126~127，64为-1022~1023<br>在这里我们没有用two’s complement，原因是这种方法更容易比较两个数的大小。</p><h2 id="浮点数的加法"><a href="#浮点数的加法" class="headerlink" title="浮点数的加法"></a>浮点数的加法</h2><p>首先要把他们对齐，也就是说把两个数字的幂转换成一样的。然后和十进制一样相加减，最后再把得到的结果转换成科学记数法。</p><h2 id="浮点数的乘法"><a href="#浮点数的乘法" class="headerlink" title="浮点数的乘法"></a>浮点数的乘法</h2><p>和加法同理。<br>不过可以在乘之前先判断一下结果的符号，同号为正异号为负。<br>然后相乘（小数部分相乘，幂数相加），最后转回科学记数法。</p><p>不过在实现运算的过程中要注意，储存幂数的时候用的是bias method，而且小数部分中小数点左边的部分并没有实际存储在浮点数中。（血一样的教训）</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;浮点数的表示法&quot;&gt;&lt;a href=&quot;#浮点数的表示法&quot; class=&quot;headerlink&quot; title=&quot;浮点数的表示法&quot;&gt;&lt;/a&gt;浮点数的表示法&lt;/h2&gt;&lt;p&gt;每一个浮点数都要转换成二进制版本的科学计数法再储存起来（也就是x*2&lt;sup&gt;y&lt;/sup&gt;），因此需要存储如下数据：正负号（0正1负），科学计数法的幂（2的次方数），科学计数法的小数部分（用-2进制来表示）。&lt;/p&gt;
-&lt;h3 id=&quot;十进制转二进制&quot;&gt;&lt;a href=&quot;#十进制转二进制&quot; class=&quot;headerlink&quot; title=&quot;十进制转二进制&quot;&gt;&lt;/a&gt;十进制转二进制&lt;/h3&gt;&lt;p&gt;把这个数分成小数和整数两种形式。&lt;br&gt;整数直接转二进制然后使用科学计数法。&lt;br&gt;分数部分，每次乘2，取该数的整数部分（要么取不到整数，要么取走1），直到啥都不剩为止。取到的数从左往右写，最前面加0.。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="学业相关" scheme="https://blog.sheronw.xyz/categories/%E5%AD%A6%E4%B8%9A%E7%9B%B8%E5%85%B3/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Belmont Principles</title>
-    <link href="https://blog.sheronw.xyz/2019/02/17/Belmont_Principles/"/>
-    <id>https://blog.sheronw.xyz/2019/02/17/Belmont_Principles/</id>
-    <published>2019-02-17T14:52:52.000Z</published>
-    <updated>2019-02-24T21:30:03.877Z</updated>
-    
-    <content type="html"><![CDATA[<p>Ethical Principles and Guidelines for the Protection of Human<br>Subjects of Research<br>好吧，这很人道主义。<br>三条粗略看完之后，觉得在实际情况中做出相应的权衡还是很难，几乎不太可能全部做到啊hhhh</p><a id="more"></a><h2 id="Respect-for-Persons"><a href="#Respect-for-Persons" class="headerlink" title="Respect for Persons"></a>Respect for Persons</h2><h3 id="acknowledge-autonomy"><a href="#acknowledge-autonomy" class="headerlink" title="acknowledge autonomy"></a>acknowledge autonomy</h3><p>autonomy的人就是有能力考虑自己的目标并行动的人。反正要尊重这帮人的意见和想法，除非他们干了对别人有害的事情，否则不能随意阻止他们的行为。</p><h3 id="protect-those-with-diminished-autonomy"><a href="#protect-those-with-diminished-autonomy" class="headerlink" title="protect those with diminished autonomy"></a>protect those with diminished autonomy</h3><p>对于那些做不到autonomy的人，就需要保护并且帮助他们。</p><h2 id="Beneficence"><a href="#Beneficence" class="headerlink" title="Beneficence"></a>Beneficence</h2><h3 id="do-not-harm"><a href="#do-not-harm" class="headerlink" title="do not harm"></a>do not harm</h3><p>不能伤害他们，也不能让他们有受伤的风险。</p><h3 id="maximize-possible-benefits-and-minimize-possible-harms"><a href="#maximize-possible-benefits-and-minimize-possible-harms" class="headerlink" title="maximize possible benefits and minimize possible harms"></a>maximize possible benefits and minimize possible harms</h3><p>最大化收益，不一定是对实验对象的收益，而是一个群体甚至全人类的那种长期收益。</p><h2 id="Justice"><a href="#Justice" class="headerlink" title="Justice"></a>Justice</h2><h3 id="to-each-person-an-equal-share"><a href="#to-each-person-an-equal-share" class="headerlink" title="to each person an equal share"></a>to each person an equal share</h3><h3 id="to-each-person-according-to-individual-need"><a href="#to-each-person-according-to-individual-need" class="headerlink" title="to each person according to individual need"></a>to each person according to individual need</h3><h3 id="to-each-person-according-to-individual-effort"><a href="#to-each-person-according-to-individual-effort" class="headerlink" title="to each person according to individual effort"></a>to each person according to individual effort</h3><h3 id="to-each-person-according-to-societal-contribution"><a href="#to-each-person-according-to-societal-contribution" class="headerlink" title="to each person according to societal contribution"></a>to each person according to societal contribution</h3><h3 id="to-each-person-according-to-merit"><a href="#to-each-person-according-to-merit" class="headerlink" title="to each person according to merit."></a>to each person according to merit.</h3>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Ethical Principles and Guidelines for the Protection of Human&lt;br&gt;Subjects of Research&lt;br&gt;好吧，这很人道主义。&lt;br&gt;三条粗略看完之后，觉得在实际情况中做出相应的权衡还是很难，几乎不太可能全部做到啊hhhh&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="学业相关" scheme="https://blog.sheronw.xyz/categories/%E5%AD%A6%E4%B8%9A%E7%9B%B8%E5%85%B3/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>bit level operators</title>
-    <link href="https://blog.sheronw.xyz/2019/02/13/bit_level_operators/"/>
-    <id>https://blog.sheronw.xyz/2019/02/13/bit_level_operators/</id>
-    <published>2019-02-14T00:40:21.000Z</published>
-    <updated>2019-02-24T21:17:12.085Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="编程语言中的操作符"><a href="#编程语言中的操作符" class="headerlink" title="编程语言中的操作符"></a>编程语言中的操作符</h2><h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><ul><li>&lt;&lt; left shift</li><li>>> signed right shift (filled with sign bits)</li><li>>>> unsigned right shift (filled with 0s)</li><li>&amp; bitwise and</li><li>| bitwise or</li><li>^ bitwise exclusive or</li></ul><a id="more"></a><h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><p>大致与Java相同，只是没有unsigned right shift，具体会怎么shift取决于数据型本身。</p><h2 id="一些用法"><a href="#一些用法" class="headerlink" title="一些用法"></a>一些用法</h2><h3 id="set-bits-to-0"><a href="#set-bits-to-0" class="headerlink" title="set bits to 0"></a>set bits to 0</h3><p>x&amp;0=0<br>x&amp;1=x</p><h3 id="set-bits-to-1"><a href="#set-bits-to-1" class="headerlink" title="set bits to 1"></a>set bits to 1</h3><p>x|0=x<br>x|1=1</p><h3 id="invert-bits"><a href="#invert-bits" class="headerlink" title="invert bits"></a>invert bits</h3><p>x^0=x<br>x^1=!x</p><h2 id="应用……？"><a href="#应用……？" class="headerlink" title="应用……？"></a>应用……？</h2><p>刚刚看到了<a href="https://blog.coca.moe/post/er-jin-zhi-mei-ju" target="_blank" rel="external">这么一道题</a>，发现和当初学离散数学的时候遇到的那个小朋友分饼干的题型有点像，都是二进制的应用，就当是位运算的一个实例放在这里了。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;编程语言中的操作符&quot;&gt;&lt;a href=&quot;#编程语言中的操作符&quot; class=&quot;headerlink&quot; title=&quot;编程语言中的操作符&quot;&gt;&lt;/a&gt;编程语言中的操作符&lt;/h2&gt;&lt;h3 id=&quot;Java&quot;&gt;&lt;a href=&quot;#Java&quot; class=&quot;headerlink&quot; title=&quot;Java&quot;&gt;&lt;/a&gt;Java&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&amp;lt;&amp;lt; left shift&lt;/li&gt;
-&lt;li&gt;&gt;&gt; signed right shift (filled with sign bits)&lt;/li&gt;
-&lt;li&gt;&gt;&gt;&gt; unsigned right shift (filled with 0s)&lt;/li&gt;
-&lt;li&gt;&amp;amp; bitwise and&lt;/li&gt;
-&lt;li&gt;| bitwise or&lt;/li&gt;
-&lt;li&gt;^ bitwise exclusive or&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="学业相关" scheme="https://blog.sheronw.xyz/categories/%E5%AD%A6%E4%B8%9A%E7%9B%B8%E5%85%B3/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>十进制、二进制与十六进制的相互转换，以及Two’s Complement Notation</title>
-    <link href="https://blog.sheronw.xyz/2019/02/13/10,2,16&amp;Two&#39;s%20Complement%20Notation/"/>
-    <id>https://blog.sheronw.xyz/2019/02/13/10,2,16&amp;Two&#39;s Complement Notation/</id>
-    <published>2019-02-13T23:47:37.000Z</published>
-    <updated>2019-02-24T21:17:15.497Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="二进制转十进制"><a href="#二进制转十进制" class="headerlink" title="二进制转十进制"></a>二进制转十进制</h2><p>很简单，从右往左加，第一位乘以2的零次方，第二位乘以2的一次方，然后以此类推……<br>10101<sub>10</sub>=1*2^4+0*2^3+1*2^2+0*2^1+1*2^0=21<br>还有一种方法是Horner’s Rule，从左往右算，每次把下一位加在这个结果中作为一个整体。<br>10101<sub>10</sub>=(((1*2+0)*2+1)*2+0)*2+1=21</p><h2 id="十进制转二进制"><a href="#十进制转二进制" class="headerlink" title="十进制转二进制"></a>十进制转二进制</h2><p>不断地除以二，直到除不动了为止，每一步得到的余数倒过来就是所求的二进制。</p><ul><li><strong>10</strong>/2=5 …0</li><li>5/2=2 … 1</li><li>2/2=1 … 0</li><li>1/2=0 … 1</li></ul><p>所以10的二进制为1010<br>当然，如果不想最后再颠倒一遍的话，可以算的时候从下往上写XD<br><a id="more"></a></p><h2 id="十六进制转二进制"><a href="#十六进制转二进制" class="headerlink" title="十六进制转二进制"></a>十六进制转二进制</h2><p>十六进制的每一位都能转换成一个四位的二进制，然后把它们拼起来就好，其实还有一个转换表，但算起来也不麻烦，我觉得不背也行。</p><h2 id="二进制转十六进制"><a href="#二进制转十六进制" class="headerlink" title="二进制转十六进制"></a>二进制转十六进制</h2><p>和上面一个道理，每四位二进制都能转换成一位十六进制，如果最后一组不足四位填上几个零就好。</p><h2 id="十六进制转十进制"><a href="#十六进制转十进制" class="headerlink" title="十六进制转十进制"></a>十六进制转十进制</h2><p>和二进制转十进制一个道理，只不过把2换成16了而已。</p><h2 id="十进制转十六进制"><a href="#十进制转十六进制" class="headerlink" title="十进制转十六进制"></a>十进制转十六进制</h2><p>同上，和二进制一样，只不过不断除以16。</p><h2 id="Two’s-Complement"><a href="#Two’s-Complement" class="headerlink" title="Two’s Complement"></a>Two’s Complement</h2><p>这是一种用二进制表达整数（包括正负）的一种方法。<br>首先，从最左边的那一位可以看出这个数字的正负——0为正，1为负。<br>如果是正数的话，和之前讲到的传统二进制表达是相同的。<br>如果是负数的话，想要知道它的具体值，我们需要将Two’s Complement转换成它的相反数（也就是说这个数字的整数版本）。<br>转换成相反数的算法如下（同时适用与正数和负数）：</p><ul><li>将每一位的数字颠倒（颠倒指的是，1换成0，0换成1）</li><li>在颠倒之后的基础上再+1</li></ul><p>比如这里有个我瞎编的32bits的数字：<br>1010 0100 0100 1111 1010 1100 0101 0000<br>第一位是1，所以这个数是小于零的<br>首先我们要把它变成这样的：<br>0101 1011 1011 0000 0101 0011 1010 1111<br>然后再+1就变成了这样：<br>0101 1011 1011 0000 0101 0011 1011 0000<br>这个数就是最前面瞎编的那个数的相反数</p><p>哦对了，因为32bits的二进制写起来太长了，所以经常会用十六进制来表示。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;二进制转十进制&quot;&gt;&lt;a href=&quot;#二进制转十进制&quot; class=&quot;headerlink&quot; title=&quot;二进制转十进制&quot;&gt;&lt;/a&gt;二进制转十进制&lt;/h2&gt;&lt;p&gt;很简单，从右往左加，第一位乘以2的零次方，第二位乘以2的一次方，然后以此类推……&lt;br&gt;10101&lt;sub&gt;10&lt;/sub&gt;=1*2^4+0*2^3+1*2^2+0*2^1+1*2^0=21&lt;br&gt;还有一种方法是Horner’s Rule，从左往右算，每次把下一位加在这个结果中作为一个整体。&lt;br&gt;10101&lt;sub&gt;10&lt;/sub&gt;=(((1*2+0)*2+1)*2+0)*2+1=21&lt;/p&gt;
-&lt;h2 id=&quot;十进制转二进制&quot;&gt;&lt;a href=&quot;#十进制转二进制&quot; class=&quot;headerlink&quot; title=&quot;十进制转二进制&quot;&gt;&lt;/a&gt;十进制转二进制&lt;/h2&gt;&lt;p&gt;不断地除以二，直到除不动了为止，每一步得到的余数倒过来就是所求的二进制。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;10&lt;/strong&gt;/2=5 …0&lt;/li&gt;
-&lt;li&gt;5/2=2 … 1&lt;/li&gt;
-&lt;li&gt;2/2=1 … 0&lt;/li&gt;
-&lt;li&gt;1/2=0 … 1&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;所以10的二进制为1010&lt;br&gt;当然，如果不想最后再颠倒一遍的话，可以算的时候从下往上写XD&lt;br&gt;
-    
-    </summary>
-    
-      <category term="学业相关" scheme="https://blog.sheronw.xyz/categories/%E5%AD%A6%E4%B8%9A%E7%9B%B8%E5%85%B3/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>2018年度书单</title>
     <link href="https://blog.sheronw.xyz/2018/12/31/2018booklist/"/>
     <id>https://blog.sheronw.xyz/2018/12/31/2018booklist/</id>
@@ -217,81 +121,6 @@
     </summary>
     
       <category term="阅读笔记" scheme="https://blog.sheronw.xyz/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Operating Systems Basics </title>
-    <link href="https://blog.sheronw.xyz/2018/11/17/OSB/"/>
-    <id>https://blog.sheronw.xyz/2018/11/17/OSB/</id>
-    <published>2018-11-17T14:15:43.000Z</published>
-    <updated>2019-02-24T21:18:25.050Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="OS-tasks"><a href="#OS-tasks" class="headerlink" title="OS tasks"></a>OS tasks</h2><ul><li>managing the resources of a computer (hardware network, etc.)</li><li>coordinate the running of all other programs</li><li>can be considered as a set of programs<ul><li>kernel: name given to the core OS program<h2 id="Getting-program-to-run"><a href="#Getting-program-to-run" class="headerlink" title="Getting program to run"></a>Getting program to run</h2></li></ul></li><li>POST - test program from specific location in BIOS</li><li>Boot loader - “bootstrap loader”<ul><li>small program that begins loading the OS<ul><li>computer cannot run without 1st loading software, but needs instructions on how to load software</li></ul></li><li>might have multi stages</li></ul></li><li>kernel is loaded into memory &amp; executed</li><li>kernel runs “init” process &amp; sets runlevel</li><li>initialization scripts</li></ul><a id="more"></a><h2 id="System-calls"><a href="#System-calls" class="headerlink" title="System calls"></a>System calls</h2><ul><li>set of functions to request access to resources of the machine</li><li>system call numbers</li><li>often referred to as an API (Application Programming Interface)</li><li>differ by platform &amp; standards</li><li>APP-Kernel-(CPU&amp;Memory&amp;Devices)</li><li>C standard lib contains wrappers around system calls</li><li><p>behavior on x86 is essentially</p><ul><li>set up parameters to pass to sc</li><li>put all num in register EAX</li><li>trigger HW interrupt</li><li><a href="http://www.linux.it/~rubini/docs/ksys/" target="_blank" rel="external">http://www.linux.it/~rubini/docs/ksys/</a><h3 id="exec"><a href="#exec" class="headerlink" title="exec"></a>exec</h3></li><li>replace current running program as another program</li><li>execve<h3 id="Process-IDs"><a href="#Process-IDs" class="headerlink" title="Process IDs"></a>Process IDs</h3></li><li>every unix process has a unique identifier (int)</li><li>pid_t getpid(void);</li><li>every process has a parent process</li><li>pid_t getppid(void);</li><li><p>processing tables: ps</p><h3 id="fork"><a href="#fork" class="headerlink" title="fork"></a>fork</h3><p> #include<unistd.h><br> #include<sys types.h=""><br> pid_t fork(void);</sys></unistd.h></p></li><li><p>creating an identical copy of the running program with one exception</p></li><li>return 0 to the child, PID to the parent</li><li>vfork(): fork&amp;exec</li><li>process exit status<ul><li>can wait until the child process ends</li><li>wait() can return the exit status of child</li><li><strong>WIFEXITED</strong> return true if normally</li><li><strong>WEXITSTATUS</strong> extract actual return/exit value</li></ul></li></ul></li></ul><h3 id="Memory-management-calls"><a href="#Memory-management-calls" class="headerlink" title="Memory management calls"></a>Memory management calls</h3><ul><li>mmap - allocate memory or map files/devices into memory</li><li>shmget</li><li>shmctl</li><li>mprotect</li><li>mlock, munlock<h3 id="Time"><a href="#Time" class="headerlink" title="Time"></a>Time</h3><ul><li>time, gettimeofday/settimeofday</li><li>getitimer, setitimer</li><li>alarm</li></ul></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;OS-tasks&quot;&gt;&lt;a href=&quot;#OS-tasks&quot; class=&quot;headerlink&quot; title=&quot;OS tasks&quot;&gt;&lt;/a&gt;OS tasks&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;managing the resources of a computer (hardware network, etc.)&lt;/li&gt;
-&lt;li&gt;coordinate the running of all other programs&lt;/li&gt;
-&lt;li&gt;can be considered as a set of programs&lt;ul&gt;
-&lt;li&gt;kernel: name given to the core OS program&lt;h2 id=&quot;Getting-program-to-run&quot;&gt;&lt;a href=&quot;#Getting-program-to-run&quot; class=&quot;headerlink&quot; title=&quot;Getting program to run&quot;&gt;&lt;/a&gt;Getting program to run&lt;/h2&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;POST - test program from specific location in BIOS&lt;/li&gt;
-&lt;li&gt;Boot loader - “bootstrap loader”&lt;ul&gt;
-&lt;li&gt;small program that begins loading the OS&lt;ul&gt;
-&lt;li&gt;computer cannot run without 1st loading software, but needs instructions on how to load software&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;might have multi stages&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;kernel is loaded into memory &amp;amp; executed&lt;/li&gt;
-&lt;li&gt;kernel runs “init” process &amp;amp; sets runlevel&lt;/li&gt;
-&lt;li&gt;initialization scripts&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="学业相关" scheme="https://blog.sheronw.xyz/categories/%E5%AD%A6%E4%B8%9A%E7%9B%B8%E5%85%B3/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Formatted I/O, Line Input, Scanf - C</title>
-    <link href="https://blog.sheronw.xyz/2018/11/06/Formatted-I-O-Line-Input-Scanf-C/"/>
-    <id>https://blog.sheronw.xyz/2018/11/06/Formatted-I-O-Line-Input-Scanf-C/</id>
-    <published>2018-11-06T20:15:43.000Z</published>
-    <updated>2019-02-24T21:18:42.780Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="read-a-file-from-stdin-and-put-it-to-both-stdout-amp-stderr"><a href="#read-a-file-from-stdin-and-put-it-to-both-stdout-amp-stderr" class="headerlink" title="read a file from stdin and put it to both stdout &amp; stderr"></a>read a file from stdin and put it to both stdout &amp; stderr</h2><pre><code>int main (int argc, char *argv[]){    char *fname = NULL;    if (argc&gt;1){        frame=argv[1];    }    else{        return 1;    }    FILE *file = fopen(fname, &quot;r&quot;);    int input;    while((input=fgetc(file))!= EOF){        fputc(input,stdout);        fputc(input,stderr);    }}</code></pre><a id="more"></a><p>end of file ^D<br>end program ^C<br>stderr line buffer<br>stdout file buffer(???)</p><h2 id="re-reading"><a href="#re-reading" class="headerlink" title="re-reading"></a>re-reading</h2><pre><code>void rewind(FILE *stream);</code></pre><p>changing location of a file to the beginning<br>fseek: move to some location</p><h2 id="getting-location"><a href="#getting-location" class="headerlink" title="getting location"></a>getting location</h2><pre><code>long ftell(FILE * stream);off_t ftello(FILE *stream);</code></pre><p>if is larger than a long in size, then:</p><pre><code>int fgetpos(FILE *restrict stream, fpos_t *restrict pos);int fsetpos(FILE *stream, const fpos_t *pos);</code></pre><p>need to check man page for different systems<br>df: space of hard drive<br>file: blocks of pointers point to a chunk of data blocks of actual disk</p><h2 id="Format-Printing"><a href="#Format-Printing" class="headerlink" title="Format Printing"></a>Format Printing</h2><h3 id="printing-to-a-string"><a href="#printing-to-a-string" class="headerlink" title="printing to a string"></a>printing to a string</h3><pre><code>int sprintf(char *str, const char *format, /* args */ );</code></pre><ul><li>return number of bytes that would have been written</li><li>writes at most size-1 bytes (leave space for null byte)</li></ul><h3 id="line-based-input"><a href="#line-based-input" class="headerlink" title="line based input"></a>line based input</h3><pre><code>char *fgets(char *str, int size, FILE *stream);</code></pre><ul><li>stores in str</li><li>stops at -n, EOF</li><li><strong>do not use gets</strong></li></ul><h3 id="scanf"><a href="#scanf" class="headerlink" title="scanf"></a>scanf</h3><pre><code>scanf(&quot;%d&quot;,&amp;x);scanf(&quot;%s&quot;,str);</code></pre><ul><li>read line using fgets(), parses data using sscanf() from line</li><li>character ranges(check textbook)<h3 id="realloc"><a href="#realloc" class="headerlink" title="realloc"></a>realloc</h3>  void <em> realloc(void </em>ptr, size_t size);</li><li>change previous allocated block ptr be changed to size size(larger or smaller &amp; copy old data as needed)</li><li><p>app: connect strings</p><h3 id="getline"><a href="#getline" class="headerlink" title="getline"></a>getline</h3><p>  ssize_t getline(char <em>* linep, size_t </em>linecapp, FILE * stream);<br>  free(linep);</p></li><li><p>dynamically allocated, but must free later</p></li><li>not part of c standard</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;read-a-file-from-stdin-and-put-it-to-both-stdout-amp-stderr&quot;&gt;&lt;a href=&quot;#read-a-file-from-stdin-and-put-it-to-both-stdout-amp-stderr&quot; class=&quot;headerlink&quot; title=&quot;read a file from stdin and put it to both stdout &amp;amp; stderr&quot;&gt;&lt;/a&gt;read a file from stdin and put it to both stdout &amp;amp; stderr&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;int main (int argc, char *argv[]){
-    char *fname = NULL;
-    if (argc&amp;gt;1){
-        frame=argv[1];
-    }
-    else{
-        return 1;
-    }
-    FILE *file = fopen(fname, &amp;quot;r&amp;quot;);
-
-    int input;
-    while((input=fgetc(file))!= EOF){
-        fputc(input,stdout);
-        fputc(input,stderr);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-      <category term="学业相关" scheme="https://blog.sheronw.xyz/categories/%E5%AD%A6%E4%B8%9A%E7%9B%B8%E5%85%B3/"/>
     
     
   </entry>
@@ -360,61 +189,13 @@
   </entry>
   
   <entry>
-    <title>Introduction to Git for Data Science笔记</title>
-    <link href="https://blog.sheronw.xyz/2018/01/09/IntroToGit/"/>
-    <id>https://blog.sheronw.xyz/2018/01/09/IntroToGit/</id>
-    <published>2018-01-10T03:54:46.000Z</published>
-    <updated>2019-02-24T21:19:01.725Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>刷Ins的时候看到的<a href="https://www.datacamp.com/courses/introduction-to-git-for-data-science" target="_blank" rel="external">广告</a>hhh反正课时不长就点开了</p></blockquote><h2 id="Basic-Workflow"><a href="#Basic-Workflow" class="headerlink" title="Basic Workflow"></a>Basic Workflow</h2><ol><li><p>version control system</p><ul><li>保存不同版本</li><li>项目合作</li><li>防止重复工作</li></ul></li><li><p>repository</p><ul><li>文件</li><li>直接编辑的路径</li><li>其他信息（根目录中的.git）<br><em>all of the information about a repository is stored under its root directory（和文件夹同一层级）</em></li></ul></li><li><p><strong>git status</strong> #上次更改时保存的文件列表</p></li><li><p><strong>git diff (filename/depository)</strong> #compare the file as it currently is to what you last saved<br><strong>git diff -r HEAD filename</strong> #和上次更新对比</p></li><li><p><strong>git add filename</strong> #add a file to staging area</p></li><li><p><strong>git commit -m “Messeage”</strong></p></li><li><p><strong>git log (path)</strong> #view the log of the project’s history<br>Press the space bar to go down a page or the ‘q’ key to quit</p></li></ol><a id="more"></a><h2 id="Repositories"><a href="#Repositories" class="headerlink" title="Repositories"></a>Repositories</h2><ol><li><strong>git show hash</strong> #显示某次commit的信息</li><li>标签<strong>HEAD</strong>表示最近的一次commit，标签<strong>HEAD~1</strong>表示最近一次之前的commit，以此类推</li><li><strong>git annotate file</strong> #shows who made the last change to each line of a file and when</li><li><strong>git diff ID1..ID2</strong></li><li>忽略特定文件：在根目录新建 <strong>.gitignore</strong></li><li><strong>git clean -n</strong> #显示路径中没被追踪的文件<br><strong>git clean -f</strong> #删除这些文件</li><li><strong>git config –list</strong><br>- -system: settings for every user on this computer.<br>- -global: settings for every one of your projects.<br>- -local: settings for one specific project.</li></ol><h2 id="Undo"><a href="#Undo" class="headerlink" title="Undo"></a>Undo</h2><ol><li><strong>git checkout – filename</strong> #discard the changes that have not yet been staged</li><li><strong>git reset HEAD filename</strong> #undo changes that have been staged, to the state you last staged</li><li><strong>git checkout 某次commit的hash 文件名</strong> #将某个文件恢复到某次commit的状态</li><li>the act of restoring the file is saved as another commit</li><li><strong>git reset HEAD (path)</strong></li><li><strong>git checkout – (path)</strong></li><li>路径.代表所有该路径以及以下的文件</li></ol><h2 id="Working-with-branches"><a href="#Working-with-branches" class="headerlink" title="Working with branches"></a>Working with branches</h2><ol><li><strong>git branch</strong> #list all of the branches in a repository</li><li><strong>git diff branch-1..branch-2</strong> #shows the difference between two branches</li><li><strong>git checkout branch-name</strong> #switch to another branch(要commit所有的change)</li><li><strong>git rm file</strong> #delete file</li><li><strong>git checkout -b branch-name</strong> #create a new branch</li><li><strong>git merge source destination</strong> #merge to branch(incorporates the changes made to the source branch into the destination branch)</li><li>如果merge时出现了conflict，那么使用<strong>git status</strong>查找出问题的文件然后修改（<strong>nano filename</strong>）</li></ol><h2 id="Collaborating"><a href="#Collaborating" class="headerlink" title="Collaborating"></a>Collaborating</h2><ol><li><strong>git init project-name</strong> #create a new repository</li><li>尽量不要在repository里新建repository</li><li>在路径中<strong>git init</strong>或<strong>git init 路径</strong>将现有的project转化为repository</li><li><strong>git clone URL or file:///existing/project newRepository</strong> #clone a repository</li><li><strong>git remote</strong> #list the names of repository’s remotes</li><li><strong>git remote -v</strong> #shows the remote’s URLs</li><li><strong>git remote add remote-name URL</strong> #add more remote</li><li><strong>git remote rm remote-name</strong> #remove remote</li><li><strong>git pull remote branch</strong> #gets everything in branch in the remote repository identified by remote and merges it into the current branch of your local repository</li><li><strong>git push remote-name branch-name</strong> #pushes the contents of your branch branch-name into a branch with the same name in the remote repository associated with remote-name</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;刷Ins的时候看到的&lt;a href=&quot;https://www.datacamp.com/courses/introduction-to-git-for-data-science&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;广告&lt;/a&gt;hhh反正课时不长就点开了&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;Basic-Workflow&quot;&gt;&lt;a href=&quot;#Basic-Workflow&quot; class=&quot;headerlink&quot; title=&quot;Basic Workflow&quot;&gt;&lt;/a&gt;Basic Workflow&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;version control system&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;保存不同版本&lt;/li&gt;
-&lt;li&gt;项目合作&lt;/li&gt;
-&lt;li&gt;防止重复工作&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;repository&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;文件&lt;/li&gt;
-&lt;li&gt;直接编辑的路径&lt;/li&gt;
-&lt;li&gt;其他信息（根目录中的.git）&lt;br&gt;&lt;em&gt;all of the information about a repository is stored under its root directory（和文件夹同一层级）&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;git status&lt;/strong&gt; #上次更改时保存的文件列表&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;git diff (filename/depository)&lt;/strong&gt; #compare the file as it currently is to what you last saved&lt;br&gt;&lt;strong&gt;git diff -r HEAD filename&lt;/strong&gt; #和上次更新对比&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;git add filename&lt;/strong&gt; #add a file to staging area&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;git commit -m “Messeage”&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;git log (path)&lt;/strong&gt; #view the log of the project’s history&lt;br&gt;Press the space bar to go down a page or the ‘q’ key to quit&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-      <category term="实用主义" scheme="https://blog.sheronw.xyz/categories/%E5%AE%9E%E7%94%A8%E4%B8%BB%E4%B9%89/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>不知道应该起什么标题的纽约纪行</title>
     <link href="https://blog.sheronw.xyz/2018/01/05/Christmas2017InNYC/"/>
     <id>https://blog.sheronw.xyz/2018/01/05/Christmas2017InNYC/</id>
     <published>2018-01-05T20:35:12.000Z</published>
-    <updated>2019-02-24T21:19:01.376Z</updated>
+    <updated>2019-07-01T18:40:53.422Z</updated>
     
-    <content type="html"><![CDATA[<p>今年圣诞假也就两个周，和过年的时间也对不上，所以自认为并没有回国的需要（最主要的是今年入了Pixel 2，还有各种在墙外用习惯了的服务，不想回国再折腾），于是和几个中国留学生合计了一下，发现去趟纽约的来回路费+Airbnb多人拼房的费用比来回机票要便宜点儿，就在距离出发一两周前十分敷衍地把所有东西订完了（其实早点定的话会更便宜……）。</p><p>不过，写点什么好呢，只好翻翻自己没写几个字的流水账本和（第一个周）同行的女生在微博发的Vlog（因为本人在里面有正脸……所以就不发URL了hhhh），Vlog什么的似乎最近很流行的样子，看起来感觉也很好，但我连照片都懒得拍，拍视频什么的太难为我了QvQ</p><a id="more"></a><p>然后才发现……因为我们这一行人都懒散没规划，回过头来看看这两个周的假期并！没！有！逛！多！少！地！方！也就吃得还挺好（和我们学校typical American food相比），日常就是睡到中午，下午逛一会儿，晚上回去各自抱着各自的电脑熬到下半夜，再加上我们都是几个没什么仪式感的人，所以圣诞节和元旦也就跟没过差不多，甚至比平时都敷衍。</p><p>其实之前一直觉得美国不美（和世界上绝大多数国家or地区比，真的），尤其是非自然景观，因为这是一个老牌的现代化国家，所以一切都是看起来旧旧的新东西，历史感不浓厚。目前唯一能够感受到历史厚重感的地方应该就是东部的没落工业地区吧，就和<em>迷河</em>或<em>Sally Face</em>里的场景，还有我在路上看到的大多数没有什么烟火气的小镇一样，充满着颓圮的气息，楼要不高不低，砖要红，周围要有杂草，天要阴——这是一种不太积极向上的美感，但也是我目前为止唯一觉得美国“漂亮”的地方（至于一些高大上的东西，摩天大楼还有高科技什么玩意儿的，放在哪个国家都一样，所以忽略不计）。</p><p>纽约也是这样，虽然不能算是没落，但你可以深切地体会到这里的 <strong>脏 乱 差</strong> ，莫名其妙杂乱无章的城市规划，无处不在的垃圾和污水，大冬天睡在路边的无家可归者，总是有股尿骚味的地铁站里跟你搭讪的流浪汉。虽然说是这么说，我还是觉得纽约是散发着独特的魅力的，但又说不出来到底为什么——也许她的居民可以随意布置自己的房子不用担心天际线和穿墙打洞，也许不论什么人都能来这儿呆着找机会不必担心自己是低端人口，即使是连英语都不会说的人。Big Apple的绰号的确不为过，这是一个纷繁复杂的万花筒。</p><p>不过说是纽约纪行，但主要的活动范围其实也就在曼哈顿，尤其是比较靠南的那一块儿，就是SOHO和东村附近。最开始的几天好像都在陪着他们逛街（之后的几天好像也在陪他们逛街），大概就是SOHO周遭的各种小店铺大店铺，然而其实我最大的花销就是为了晚上大家一起看电影而在APPLE Store买的mini porter to HDMI adpter……接近四十刀的价格感觉肉疼极了。其实可能是之前我在国内也没买过那些牌子，反正看了看价格也都不便宜，在H&amp;M买了个白色卫衣就三十多刀，我之前的卫衣明明是漫踪打折的时候花了软妹币七八十捞的hhh</p><p>然后好像我们一直都在逛街，去了世贸中心附近但完全没去911纪念馆一直在逛街，第五大道洛克菲勒广场之类的当然更是逛街，本来打算去西边的高线公园但其实也没去成也是在附近逛街……可是因为去的时候只带了个书包连箱子都没带，回来的时候也只带了个书包，也就买了件卫衣买了条裤子，回来的时候都穿身上了，也没有什么购物体验可以分享（这次旅行之后我发现我之前真的对男孩子们的购买力和逛街力有很大的误会……可以说是纠正了刻板印象了）hhh</p><p>公园的话，好像去了bryant park的那个冬天的集市，但仅仅是路过所以根本没逛，再就是大名鼎鼎的central park，正好去的那天下了挺大的雪，虽然人不多但真的是白茫茫一片啥都没有如果是夏天草木繁盛的时候去应该会很热闹吧，但冬天真的没什么可看的。</p><p>纽约本来有无数值得去的博物馆艺术馆啊之类的，可是我们也就去了三个，大都会（MET），现代艺术（MoMA）还有自然历史博物馆（其实就是最著名的那三个）。</p><p>MET真的很棒，之前初中毕业旅行的时候就去过一次，而这次旅行有四分之一的时间都贡献给了它，尽管如此去了这么多次常规展览也可能看了不到四分之一QvQ说到逛博物馆，我一直都特别讨厌那种去最知名的几个展品前面拍好照绕了一圈就算是去过了的那种游览方式，可是如果要仔细观察每一个展品，把所有的说明都看完，听一遍官方解说再把各种历史背景了解完的话，估计一天一个展厅都看不完吧hhh这次正好同行的都是文科生，听他们一边解释一边讨论希腊罗马古埃及历史还有各种兵器的演变感觉还是挺有意思的。</p><p>在某些展厅可以看到外面中央公园的方尖碑，再加上在埃及展馆神庙前面有当初碑下放着的螃蟹，于是出于好奇就冒着严寒去看了一下。这个方尖碑和华盛顿特区那个美国人仿造的不一样，倒是埃及人公元前15世纪造的真货，换了好几个王朝挪了好几个地方，到托勒密王朝的时候有了个名字叫克娄巴特拉之针，反正辗转之后被送到了美国。一直都是这样，政府了一个古老又辉煌的文明之后就把那边的宝贝搬回家，和当年圆明园似的。估计古埃及那帮人也没想到过自己出于某种愿望建造的方尖碑会被挪好几个地方，从一个帝国到另一个帝国，知道几千年后远渡重洋，来到一个年轻又野心勃勃的国家，被刻上他们的文字和他们的愿望，放在公园里面供来自全世界的人瞻仰。他们可能更没想到在几千年后，新世界的人们又仿照方尖碑的式样又造了个方尖碑，然后给予了什么别的愿望。</p><p>自然历史博物馆的话，我也就逛了半天，门口有老罗斯福的雕像，卖票的地方还有老罗的语录，看样子应该是和（喜欢自然历史的）老罗有点关系了。虽然进去之后发现基本上全是标本………………可能在之前的时代里看标本是一件挺有意思的事情，但现在各式各样的资源这么多，看标本就有点无聊了。不过人类学方面的一些展馆都挺有意思，我看了大洋洲和亚洲的部分，之前一直不知道人类学都是学啥的，看完了之后大概有了一点印象hhh</p><p>虽然MoMA有很多著名的展品，但恕我直言，这个品牌营销做的十分不错，首先MoMA这四个单词就已经是一种符号一样的品牌形象了，还有那么多周边产品和Store（是的，感觉这栋楼已经被周边店给充满了，而除了楼马路对面还有一家），最主要的是楼下的那家餐馆还是米其林（当然我没去）……所以门票也是这几个里面最贵的，因为另外两个博物馆都是捐赠制每次不要脸地交一美刀就进去了hhh我去的那一天MoMA挤满了人，完全没有看下去的兴致。其他的展品倒是名气不大，但我至少硬着头皮看不懂装懂地看完了，可是五楼的那些画，本来值得好好看看，但看着一堆人排队在前面合影我就……嘛，所以梵高的星空我连看都没看，毕加索马蒂斯夏加尔的一些之前在画册上见到的我还是远远观望了一下。有意思的是MoMA的门票可以兑换一张楼下MoMA电影院的票，我看的是<em>Smithereens</em>，1982年的片子，很嬉皮士歌很好听，虽然和展品一样看不懂。</p><p>其实这次旅行花销最多的就是吃，主要是吃一些在我们村里吃不到的东西，比如中餐和日料，我们也没有去找什么推荐都是在路边随便找的店铺，最主要的是我……也感受不出来好吃不好吃，应该算是好吃吧，但就是贵极了，基本上都是把美元当人民币花的节奏。吃过一次法餐，还是从MET出来在上东区走投无路吃的（虽然我觉得还蛮好吃的）。结果就是最后几天我们都吃土了，天天吃burger king和subway……</p><p>说下纽约的地铁，其实感觉没有网上说的那么乱，uptown往北走downtown往南走，分清楚local和express这两种车，再就是仔细听广播还有多注意观察各种指示牌，反正我倒是没有遇到什么大问题。治安的话，即使是午夜地铁里也挤满了人……虽然还是有各种奇奇怪怪的人。卖艺的倒是挺多，虽然可以说是噪音污染但大部分时间都感觉很有feel，一想到北京地铁的卖艺人就觉得有点扎心。</p><p>最后秀一下单纯充值信仰订的Google Photo Book，九块九（美元）包邮的平装版，因为精装版十九块九……没怎么拍照所以把一些乱七八糟被发在别人微信群里的合照也加上了才凑够了最低要求二十张。印刷的话好像都是比屏幕上的颜色要深一些，以及pixel原生的图片印出来的效果都挺好，别人的手机（iphone）因为通过微信传输的原因（有的是发原图有的不是）会糊一点，内页的话……自己摄影水平垃圾就不放了。</p><p><img src="http://images2.imagebam.com/4c/3b/0d/d1db95714051993.jpg" alt="photo"></p>]]></content>
+    <content type="html"><![CDATA[<p>今年圣诞假也就两个周，和过年的时间也对不上，所以自认为并没有回国的需要（最主要的是今年入了Pixel 2，还有各种在墙外用习惯了的服务，不想回国再折腾），于是和几个中国留学生合计了一下，发现去趟纽约的来回路费+Airbnb多人拼房的费用比来回机票要便宜点儿，就在距离出发一两周前十分敷衍地把所有东西订完了（其实早点定的话会更便宜……）。</p><p>不过，写点什么好呢，只好翻翻自己没写几个字的流水账本和（第一个周）同行的女生在微博发的Vlog（因为本人在里面有正脸……所以就不发URL了hhhh），Vlog什么的似乎最近很流行的样子，看起来感觉也很好，但我连照片都懒得拍，拍视频什么的太难为我了QvQ</p><a id="more"></a><p>然后才发现……因为我们这一行人都懒散没规划，回过头来看看这两个周的假期并！没！有！逛！多！少！地！方！也就吃得还挺好（和我们学校typical American food相比），日常就是睡到中午，下午逛一会儿，晚上回去各自抱着各自的电脑熬到下半夜，再加上我们都是几个没什么仪式感的人，所以圣诞节和元旦也就跟没过差不多，甚至比平时都敷衍。</p><p>其实之前一直觉得美国不美（和世界上绝大多数国家or地区比，真的），尤其是非自然景观，因为这是一个老牌的现代化国家，所以一切都是看起来旧旧的新东西，历史感不浓厚。目前唯一能够感受到历史厚重感的地方应该就是东部的没落工业地区吧，就和<em>迷河</em>或<em>Sally Face</em>里的场景，还有我在路上看到的大多数没有什么烟火气的小镇一样，充满着颓圮的气息，楼要不高不低，砖要红，周围要有杂草，天要阴——这是一种不太积极向上的美感，但也是我目前为止唯一觉得美国“漂亮”的地方（至于一些高大上的东西，摩天大楼还有高科技什么玩意儿的，放在哪个国家都一样，所以忽略不计）。</p><p>纽约也是这样，虽然不能算是没落，但你可以深切地体会到这里的 <strong>脏 乱 差</strong> ，莫名其妙杂乱无章的城市规划，无处不在的垃圾和污水，大冬天睡在路边的无家可归者，总是有股尿骚味的地铁站里跟你搭讪的流浪汉。虽然说是这么说，我还是觉得纽约是散发着独特的魅力的，但又说不出来到底为什么——也许她的居民可以随意布置自己的房子不用担心天际线和穿墙打洞，也许不论什么人都能来这儿呆着找机会不必担心自己是低端人口，即使是连英语都不会说的人。Big Apple的绰号的确不为过，这是一个纷繁复杂的万花筒。</p><p>不过说是纽约纪行，但主要的活动范围其实也就在曼哈顿，尤其是比较靠南的那一块儿，就是SOHO和东村附近。最开始的几天好像都在陪着他们逛街（之后的几天好像也在陪他们逛街），大概就是SOHO周遭的各种小店铺大店铺，然而其实我最大的花销就是为了晚上大家一起看电影而在APPLE Store买的mini porter to HDMI adpter……接近四十刀的价格感觉肉疼极了。其实可能是之前我在国内也没买过那些牌子，反正看了看价格也都不便宜，在H&amp;M买了个白色卫衣就三十多刀，我之前的卫衣明明是漫踪打折的时候花了软妹币七八十捞的hhh</p><p>然后好像我们一直都在逛街，去了世贸中心附近但完全没去911纪念馆一直在逛街，第五大道洛克菲勒广场之类的当然更是逛街，本来打算去西边的高线公园但其实也没去成也是在附近逛街……可是因为去的时候只带了个书包连箱子都没带，回来的时候也只带了个书包，也就买了件卫衣买了条裤子，回来的时候都穿身上了，也没有什么购物体验可以分享（这次旅行之后我发现我之前真的对男孩子们的购买力和逛街力有很大的误会……可以说是纠正了刻板印象了）hhh</p><p>公园的话，好像去了bryant park的那个冬天的集市，但仅仅是路过所以根本没逛，再就是大名鼎鼎的central park，正好去的那天下了挺大的雪，虽然人不多但真的是白茫茫一片啥都没有如果是夏天草木繁盛的时候去应该会很热闹吧，但冬天真的没什么可看的。</p><p>纽约本来有无数值得去的博物馆艺术馆啊之类的，可是我们也就去了三个，大都会（MET），现代艺术（MoMA）还有自然历史博物馆（其实就是最著名的那三个）。</p><p>MET真的很棒，之前初中毕业旅行的时候就去过一次，而这次旅行有四分之一的时间都贡献给了它，尽管如此去了这么多次常规展览也可能看了不到四分之一QvQ说到逛博物馆，我一直都特别讨厌那种去最知名的几个展品前面拍好照绕了一圈就算是去过了的那种游览方式，可是如果要仔细观察每一个展品，把所有的说明都看完，听一遍官方解说再把各种历史背景了解完的话，估计一天一个展厅都看不完吧hhh这次正好同行的都是文科生，听他们一边解释一边讨论希腊罗马古埃及历史还有各种兵器的演变感觉还是挺有意思的。</p><p>在某些展厅可以看到外面中央公园的方尖碑，再加上在埃及展馆神庙前面有当初碑下放着的螃蟹，于是出于好奇就冒着严寒去看了一下。这个方尖碑和华盛顿特区那个美国人仿造的不一样，倒是埃及人公元前15世纪造的真货，换了好几个王朝挪了好几个地方，到托勒密王朝的时候有了个名字叫克娄巴特拉之针，反正辗转之后被送到了美国。一直都是这样，征服了一个古老又辉煌的文明之后就把那边的宝贝搬回家，和当年圆明园似的。估计古埃及那帮人也没想到过自己出于某种愿望建造的方尖碑会被挪好几个地方，从一个帝国到另一个帝国，直到几千年后远渡重洋，来到一个年轻又野心勃勃的国家，被刻上他们的文字和他们的愿望，放在公园里面供来自全世界的人瞻仰。他们可能更没想到在几千年后，新世界的人们又仿照方尖碑的式样又造了个方尖碑，然后给予了什么别的愿望。</p><p>自然历史博物馆的话，我也就逛了半天，门口有老罗斯福的雕像，卖票的地方还有老罗的语录，看样子应该是和（喜欢自然历史的）老罗有点关系了。虽然进去之后发现基本上全是标本………………可能在之前的时代里看标本是一件挺有意思的事情，但现在各式各样的资源这么多，看标本就有点无聊了。不过人类学方面的一些展馆都挺有意思，我看了大洋洲和亚洲的部分，之前一直不知道人类学都是学啥的，看完了之后大概有了一点印象hhh</p><p>虽然MoMA有很多著名的展品，但恕我直言，这个品牌营销做的十分不错，首先MoMA这四个单词就已经是一种符号一样的品牌形象了，还有那么多周边产品和Store（是的，感觉这栋楼已经被周边店给充满了，而除了楼马路对面还有一家），最主要的是楼下的那家餐馆还是米其林（当然我没去）……所以门票也是这几个里面最贵的，因为另外两个博物馆都是捐赠制每次不要脸地交一美刀就进去了hhh我去的那一天MoMA挤满了人，完全没有看下去的兴致。其他的展品倒是名气不大，但我至少硬着头皮看不懂装懂地看完了，可是五楼的那些画，本来值得好好看看，但看着一堆人排队在前面合影我就……嘛，所以梵高的星空我连看都没看，毕加索马蒂斯夏加尔的一些之前在画册上见到的我还是远远观望了一下。有意思的是MoMA的门票可以兑换一张楼下MoMA电影院的票，我看的是<em>Smithereens</em>，1982年的片子，很嬉皮士歌很好听，虽然和展品一样看不懂。</p><p>其实这次旅行花销最多的就是吃，主要是吃一些在我们村里吃不到的东西，比如中餐和日料，我们也没有去找什么推荐都是在路边随便找的店铺，最主要的是我……也感受不出来好吃不好吃，应该算是好吃吧，但就是贵极了，基本上都是把美元当人民币花的节奏。吃过一次法餐，还是从MET出来在上东区走投无路吃的（虽然我觉得还蛮好吃的）。结果就是最后几天我们都吃土了，天天吃burger king和subway……</p><p>说下纽约的地铁，其实感觉没有网上说的那么乱，uptown往北走downtown往南走，分清楚local和express这两种车，再就是仔细听广播还有多注意观察各种指示牌，反正我倒是没有遇到什么大问题。治安的话，即使是午夜地铁里也挤满了人……虽然还是有各种奇奇怪怪的人。卖艺的倒是挺多，虽然可以说是噪音污染但大部分时间都感觉很有feel，一想到北京地铁的卖艺人就觉得有点扎心。</p><p>最后秀一下单纯充值信仰订的Google Photo Book，九块九（美元）包邮的平装版，因为精装版十九块九……没怎么拍照所以把一些乱七八糟被发在别人微信群里的合照也加上了才凑够了最低要求二十张。印刷的话好像都是比屏幕上的颜色要深一些，以及pixel原生的图片印出来的效果都挺好，别人的手机（iphone）因为通过微信传输的原因（有的是发原图有的不是）会糊一点，内页的话……自己摄影水平垃圾就不放了。</p><p><img src="http://images2.imagebam.com/4c/3b/0d/d1db95714051993.jpg" alt="photo"></p>]]></content>
     
     <summary type="html">
     
@@ -424,34 +205,6 @@
     </summary>
     
       <category term="游记" scheme="https://blog.sheronw.xyz/categories/%E6%B8%B8%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>/父与子的编程之旅：与小卡特一起学Python/ 不完全笔记</title>
-    <link href="https://blog.sheronw.xyz/2018/01/03/pythonlittle/"/>
-    <id>https://blog.sheronw.xyz/2018/01/03/pythonlittle/</id>
-    <published>2018-01-04T00:10:32.000Z</published>
-    <updated>2019-02-24T21:26:34.371Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>花了一学期水了门Python，结果发现讲的内容还没给小孩看的课本多，所以圣诞假的时候瞄了几眼写了点笔记。<br>教程中使用的是2.7版本</p></blockquote><h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><ul><li>向列表添加元素<br>append()<br>extend()<br>insert(index,element)</li><li>从列表删除元素<br>list.remove(element)<br>del list[index]<br>lastLetter = list.pop(index) //将列表中的元素挪走 留空时挪走最后一个</li><li>搜索列表<br>index = list.index(element)</li><li>列表排序<br>list.sort()<br>list.reverse() //逆置<br>list.sort(reverse=True) //逆向排序<br>sortedList = sorted(list)</li></ul><a id="more"></a><h2 id="Dictionary"><a href="#Dictionary" class="headerlink" title="Dictionary"></a>Dictionary</h2><ul><li>value = dictionary.values()</li></ul><h2 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h2><ul><li>global var //强制全局</li></ul><h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><ul><li>object.attribute</li><li>object.method()</li></ul><h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2><ul><li>import my_module</li><li>from my_module import my_function</li><li>from my_module import* //从模块导入所有名字</li><li>time<ul><li>sleep(seconds)</li></ul></li></ul><h2 id="打印格式化与字符串"><a href="#打印格式化与字符串" class="headerlink" title="打印格式化与字符串"></a>打印格式化与字符串</h2><ul><li>换行<br>不换行：语句后加逗号or字符串间用加号连接<br>换行符：\n</li><li>水平间隔制表符（Tab）<br>制表符：\t<br>print “s1/ts2” //s2部分将挪到下一个制表点（每八个字符为一个制表快）</li><li>格式化<br>print “123’,str,’456”<br>浮点数格式化时四舍五入，整数格式化时直接去掉多余位<br>%+f //总是显示正负号<br>%e or %E //数字的e记法<br>%g or %G //自动选择浮点数或E记法<br>打印百分号： %%<br>format()<br>  print ‘I got {0:.1f} in math, {1:.1f} in science’.format(math,science)</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;花了一学期水了门Python，结果发现讲的内容还没给小孩看的课本多，所以圣诞假的时候瞄了几眼写了点笔记。&lt;br&gt;教程中使用的是2.7版本&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;List&quot;&gt;&lt;a href=&quot;#List&quot; class=&quot;headerlink&quot; title=&quot;List&quot;&gt;&lt;/a&gt;List&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;向列表添加元素&lt;br&gt;append()&lt;br&gt;extend()&lt;br&gt;insert(index,element)&lt;/li&gt;
-&lt;li&gt;从列表删除元素&lt;br&gt;list.remove(element)&lt;br&gt;del list[index]&lt;br&gt;lastLetter = list.pop(index) //将列表中的元素挪走 留空时挪走最后一个&lt;/li&gt;
-&lt;li&gt;搜索列表&lt;br&gt;index = list.index(element)&lt;/li&gt;
-&lt;li&gt;列表排序&lt;br&gt;list.sort()&lt;br&gt;list.reverse() //逆置&lt;br&gt;list.sort(reverse=True) //逆向排序&lt;br&gt;sortedList = sorted(list)&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="学业相关" scheme="https://blog.sheronw.xyz/categories/%E5%AD%A6%E4%B8%9A%E7%9B%B8%E5%85%B3/"/>
     
     
   </entry>
@@ -472,29 +225,6 @@
     </summary>
     
       <category term="阅读笔记" scheme="https://blog.sheronw.xyz/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>关于路径之类的一些乱七八糟的笔记</title>
-    <link href="https://blog.sheronw.xyz/2017/10/13/post/"/>
-    <id>https://blog.sheronw.xyz/2017/10/13/post/</id>
-    <published>2017-10-13T19:20:17.000Z</published>
-    <updated>2019-02-24T21:18:59.972Z</updated>
-    
-    <content type="html"><![CDATA[<p>显示当前目录下在的东西：ls<br>清空命令行上面的显示：cls<br>用户主目录~<br>根目录/<br>当前目录./<br>上一级目录../<br>进入到某一目录：cd<br>创建目录：mkdir<br>移动目录or文件：mv 源 目标<br>复制目录or文件： cp 源 目标<br>删除目录or文件： rm</p><p>删除目录及其文件： rm -r 目标文件夹</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;显示当前目录下在的东西：ls&lt;br&gt;清空命令行上面的显示：cls&lt;br&gt;用户主目录~&lt;br&gt;根目录/&lt;br&gt;当前目录./&lt;br&gt;上一级目录../&lt;br&gt;进入到某一目录：cd&lt;br&gt;创建目录：mkdir&lt;br&gt;移动目录or文件：mv 源 目标&lt;br&gt;复制目录or文件： cp 
-      
-    
-    </summary>
-    
-      <category term="实用主义" scheme="https://blog.sheronw.xyz/categories/%E5%AE%9E%E7%94%A8%E4%B8%BB%E4%B9%89/"/>
     
     
   </entry>
