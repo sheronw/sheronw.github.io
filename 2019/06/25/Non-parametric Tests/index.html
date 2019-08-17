@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Non-parametric Tests笔记 · SheronW</title><meta name="description" content="Non-parametric Tests笔记 - SheronW"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://blog.sheronw.xyz/atom.xml" title="SheronW"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://twitter.com/Uplus5F7B" target="_blank" class="nav-list-link">TWITTER</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">Non-parametric Tests笔记</h1><div class="post-info">Jun 25, 2019</div><div class="post-content"><p>ranking: make lowest value to be rank 1, seond lowest value to be rank 2… and then analysis</p>
+<p>procedure: </p>
+<ol>
+<li>carry out the analysis in R</li>
+<li>how to interpret</li>
+<li>how to report the results</li>
+</ol>
+<a id="more"></a>
+<h2 id="the-Wilcoxon-rank-sum-test-Mann-Whitney-test"><a href="#the-Wilcoxon-rank-sum-test-Mann-Whitney-test" class="headerlink" title="the Wilcoxon rank-sum test(Mann-Whitney test)"></a>the Wilcoxon rank-sum test(Mann-Whitney test)</h2><p><strong>comparing two independent conditions</strong></p>
+<p>compares two conditions when different participants take part in each condition and the resulting data violate any assumption of the independent t-test</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>将两组数据标上标签，然后放在一起排序。最小值为rank 1，第二小的为rank 2，然后以此类推……</p>
+<p>注意，如果有多个值相同（tied scores），那他们的rank统一为potential rank的平均值。potential rank就是假设他们不同的话应该是什么rank。</p>
+<p>然后再把相同组内的所有值的rank求和。</p>
+<p>为了校正，各减去mean rank of the group，公式为N(N+1)/2。</p>
+<p>（N为每个组的人数，其实这个就是等差数列1…N的和最后除以N）</p>
+<p>以上的计算结果为test statistic，取较小的那个值（？存疑）</p>
+<p>然后计算associated p-value，其实可以用monte carlo method，就是从整个样本里随机抽取出来一个组，然后再次计算，看看是否符合我们的结果（其实不应该，因为这种情况下null hypothesis is true）——不过这个要反反复复取样本计算，对大的数据来说很不友好。</p>
+<p>另外一种方法是normal approximation。</p>
+<p>该方法并不强求数据本身是成正态分布的，而是认为我们一次一次取样本计算的上述结果应该是成正态分布的。</p>
+<p>我们可以算出标准差，然后算z，然后算p-value。</p>
+<p>当然对R来说，如果你用这个方法算，它默认会加上一个continuity correction，因为政坛分布本身是平滑曲线，但我们的数据分成了rank所以不是平滑的，因此校正之后会把你的p-value稍微拉高一点。</p>
+<h3 id="calculating-effect-size"><a href="#calculating-effect-size" class="headerlink" title="calculating effect size"></a>calculating effect size</h3><p>r=z/sqrt(N)</p>
+<p>在R中计算z-score的方法：qnorm(xxmodel$p.value/2)</p>
+<p>if p-value&lt;0.05, then the two groups are significantly different</p>
+<h2 id="the-Wilcoxon-signed-rank-test"><a href="#the-Wilcoxon-signed-rank-test" class="headerlink" title="the Wilcoxon signed-rank test"></a>the Wilcoxon signed-rank test</h2><p><strong>comparing two related conditions</strong></p>
+<p>two set of scores, from the <strong>same</strong> participants, and the resulting data violate an assumption of the dependent t-test</p>
+<h3 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h3><p>对所有的数据：state 2 - state 1（如果差为0，那么直接筛掉该数据）</p>
+<p>然后根据结果的绝对值的大小对数据进行rank分配，处理tied scores的方法相同</p>
+<p>然后把数据分为差大于零和差小于零两种，求sum of positive ranks和sum of negative ranks</p>
+<p>最终的test statistic为这两个结果里比较小的那个</p>
+<p>然后计算significance of the test statistic（公式见课本p668下面），注意样本总数不算差为零的那几个</p>
+<p>mean和standard error的计算方法见p670</p>
+<p>计算effect size见p673</p>
+<p>if p-value&lt;0.05, then the two groups are significantly different</p>
+<h2 id="Kruskal-Wallis-test"><a href="#Kruskal-Wallis-test" class="headerlink" title="Kruskal-Wallis test"></a>Kruskal-Wallis test</h2><p><strong>comparing several conditions when different participants take part in each condition and the resulting data violate an assumption of one-way independent ANOVA</strong></p>
+<p>和wilcoxon rank-sum类似，一开始先把各组数据放在一起排rank，然和把各组的rank求和。</p>
+<p>各组的test statistic H有一个很复杂的公式，见p767最下面15.1</p>
+<h4 id="post-hoc-test"><a href="#post-hoc-test" class="headerlink" title="post hoc test"></a>post hoc test</h4><p>对于所有可能的两两比较，都进行一次wilcoxon rank-sum test，公式见p681的15.2</p>
+<p>R中的方法见p683</p>
+<p>if p-value&lt;0.05, then the two groups are significantly different</p>
+<h4 id="the-Jonckheere-Terpstra-test"><a href="#the-Jonckheere-Terpstra-test" class="headerlink" title="the Jonckheere-Terpstra test"></a>the Jonckheere-Terpstra test</h4><p>和Kruskal-Wallis test类似，只是包括了the order of the groups是否有意义的信息。</p>
+<p>R中的方法见p685</p>
+<h2 id="Friedman’s-test"><a href="#Friedman’s-test" class="headerlink" title="Friedman’s test"></a>Friedman’s test</h2><p><strong>differences between conditions when there are more than two conditions and the same participants have been used in all conditions(each case contributes several scores to the data)+violated an assumption of one-way repeated-measures ANOVA</strong></p>
+<p>Friedman’s ANOVA</p>
+<p>首先把不同的情况下的数据放在不同的列中，然后对<strong>每一行</strong>（也就是说每一个participants）中的列排rank（比如condition 2最小，那么它的rank是1，第二小的是condition 1，那么它的rank就是2……以此类推）</p>
+<p>最后，将不同condition（也就是说每一列）的rank相加。test statistics F_r 的公式还是很复杂，见p689最上方</p>
+<p>post hoc test的方法见p691的15.7.6.</p>
+<p>if p-value&lt;0.05, then the two groups are significantly different</p>
+</div></article></div></main><footer><div class="paginator"><a href="/2019/06/11/Privacy &amp; Human Behavior in the Age of Information/" class="next">下一篇</a></div><div class="copyright"><p>© 2017 - 2019 <a href="https://blog.sheronw.xyz">SheronW</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
