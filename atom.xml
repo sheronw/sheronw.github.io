@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.sheronw.xyz/"/>
-  <updated>2019-08-17T13:45:14.513Z</updated>
+  <updated>2019-08-17T21:24:05.167Z</updated>
   <id>https://blog.sheronw.xyz/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>折腾VPS的记录</title>
+    <link href="https://blog.sheronw.xyz/2019/07/12/basic_vps/"/>
+    <id>https://blog.sheronw.xyz/2019/07/12/basic_vps/</id>
+    <published>2019-07-12T18:40:50.000Z</published>
+    <updated>2019-08-17T21:24:05.167Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="new-VPS-setup-log"><a href="#new-VPS-setup-log" class="headerlink" title="new VPS setup log"></a>new VPS setup log</h1><h2 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h2><pre><code>useradd -m 用户名passwd 用户名</code></pre><h2 id="将该用户赋予root权限-利用sudo命令，需要输入密码"><a href="#将该用户赋予root权限-利用sudo命令，需要输入密码" class="headerlink" title="将该用户赋予root权限(利用sudo命令，需要输入密码)"></a>将该用户赋予root权限(利用sudo命令，需要输入密码)</h2><p>赋予文件读写权限：</p><pre><code>chmod u+w /etc/sudoers</code></pre><p>打开文件找到</p><pre><code>root ALL = (ALL:ALL) ALL</code></pre><p>下面添加</p><pre><code>用户名 ALL = (ALL:ALL) ALL</code></pre><p>取消读写权限：</p><pre><code>chmod u-w /etc/sudoers</code></pre><a id="more"></a><h2 id="ssh-configuration"><a href="#ssh-configuration" class="headerlink" title="ssh configuration"></a>ssh configuration</h2><p>create rsa key</p><pre><code>ssh-keygen -t rsa</code></pre><p>import public key</p><pre><code>cd .sshcat id_rsa.pub &gt;&gt; authorized_keyschmod 600 authorized_keyschmod 700 ~/.sshsudo chmod u+w /etc/ssh/sshd_configsudo vim /etc/ssh/sshd_config</code></pre><p>find these lines and change to:</p><pre><code>PermitRootLogin noRSAAuthentication yesPubkeyAuthentication yessudo chomod u-w /etc/ssh/sshd_config</code></pre><p>use WINSCP to get <code>id_rsa</code>, open PuTTYGen, load file, add necessary information, then save private key<br>open PuTTY, <code>Connection -&gt; SSH -&gt; Auth</code>, find Private key file for authentication and load it<br>you could go back to <code>/etc/ssh/sshd_config</code> and add this line to deny password authentication, if you like:</p><pre><code>PasswordAuthentication no</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;new-VPS-setup-log&quot;&gt;&lt;a href=&quot;#new-VPS-setup-log&quot; class=&quot;headerlink&quot; title=&quot;new VPS setup log&quot;&gt;&lt;/a&gt;new VPS setup log&lt;/h1&gt;&lt;h2 id=&quot;新建用户&quot;&gt;&lt;a href=&quot;#新建用户&quot; class=&quot;headerlink&quot; title=&quot;新建用户&quot;&gt;&lt;/a&gt;新建用户&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;useradd -m 用户名
+passwd 用户名
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;将该用户赋予root权限-利用sudo命令，需要输入密码&quot;&gt;&lt;a href=&quot;#将该用户赋予root权限-利用sudo命令，需要输入密码&quot; class=&quot;headerlink&quot; title=&quot;将该用户赋予root权限(利用sudo命令，需要输入密码)&quot;&gt;&lt;/a&gt;将该用户赋予root权限(利用sudo命令，需要输入密码)&lt;/h2&gt;&lt;p&gt;赋予文件读写权限：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;chmod u+w /etc/sudoers
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;打开文件找到&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;root ALL = (ALL:ALL) ALL
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;下面添加&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;用户名 ALL = (ALL:ALL) ALL
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;取消读写权限：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;chmod u-w /etc/sudoers
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://blog.sheronw.xyz/categories/Linux/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Non-parametric Tests笔记</title>
@@ -157,6 +187,75 @@
   </entry>
   
   <entry>
+    <title>浮点数的表示法以及加法乘法</title>
+    <link href="https://blog.sheronw.xyz/2019/02/20/float/"/>
+    <id>https://blog.sheronw.xyz/2019/02/20/float/</id>
+    <published>2019-02-20T18:40:28.000Z</published>
+    <updated>2019-08-17T21:24:11.407Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="浮点数的表示法"><a href="#浮点数的表示法" class="headerlink" title="浮点数的表示法"></a>浮点数的表示法</h2><p>每一个浮点数都要转换成二进制版本的科学计数法再储存起来（也就是x*2<sup>y</sup>），因此需要存储如下数据：正负号（0正1负），科学计数法的幂（2的次方数），科学计数法的小数部分（用-2进制来表示）。</p><h3 id="十进制转二进制"><a href="#十进制转二进制" class="headerlink" title="十进制转二进制"></a>十进制转二进制</h3><p>把这个数分成小数和整数两种形式。<br>整数直接转二进制然后使用科学计数法。<br>分数部分，每次乘2，取该数的整数部分（要么取不到整数，要么取走1），直到啥都不剩为止。取到的数从左往右写，最前面加0.。</p><a id="more"></a><h3 id="IEEE-Floating-Point-Standard-754标准"><a href="#IEEE-Floating-Point-Standard-754标准" class="headerlink" title="IEEE Floating Point Standard 754标准"></a>IEEE Floating Point Standard 754标准</h3><p>32bits（float）从左往右依次为：</p><ul><li>31: 正负号</li><li>30-23: 8 bits的幂数</li><li>22-0: 23 bits的小数部分（因为科学记数法，所以第一位（小数点左侧）必然是1，就不计算在内了）</li></ul><p>64bits（double）从左往右依次为：</p><ul><li>63：正负号</li><li>62-52：11 bits的幂数</li><li>51-0：52 bits的小数部分</li></ul><h3 id="exponent-bias-method"><a href="#exponent-bias-method" class="headerlink" title="exponent bias method"></a>exponent bias method</h3><p>为了表示负数次幂，转换时在原本的幂数中加一些数字。<br>32位+127，64位+1023<br>这样32位幂的表示范围为-126~127，64为-1022~1023<br>在这里我们没有用two’s complement，原因是这种方法更容易比较两个数的大小。</p><h2 id="浮点数的加法"><a href="#浮点数的加法" class="headerlink" title="浮点数的加法"></a>浮点数的加法</h2><p>首先要把他们对齐，也就是说把两个数字的幂转换成一样的。然后和十进制一样相加减，最后再把得到的结果转换成科学记数法。</p><h2 id="浮点数的乘法"><a href="#浮点数的乘法" class="headerlink" title="浮点数的乘法"></a>浮点数的乘法</h2><p>和加法同理。<br>不过可以在乘之前先判断一下结果的符号，同号为正异号为负。<br>然后相乘（小数部分相乘，幂数相加），最后转回科学记数法。</p><p>不过在实现运算的过程中要注意，储存幂数的时候用的是bias method，而且小数部分中小数点左边的部分并没有实际存储在浮点数中。（血一样的教训）</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;浮点数的表示法&quot;&gt;&lt;a href=&quot;#浮点数的表示法&quot; class=&quot;headerlink&quot; title=&quot;浮点数的表示法&quot;&gt;&lt;/a&gt;浮点数的表示法&lt;/h2&gt;&lt;p&gt;每一个浮点数都要转换成二进制版本的科学计数法再储存起来（也就是x*2&lt;sup&gt;y&lt;/sup&gt;），因此需要存储如下数据：正负号（0正1负），科学计数法的幂（2的次方数），科学计数法的小数部分（用-2进制来表示）。&lt;/p&gt;
+&lt;h3 id=&quot;十进制转二进制&quot;&gt;&lt;a href=&quot;#十进制转二进制&quot; class=&quot;headerlink&quot; title=&quot;十进制转二进制&quot;&gt;&lt;/a&gt;十进制转二进制&lt;/h3&gt;&lt;p&gt;把这个数分成小数和整数两种形式。&lt;br&gt;整数直接转二进制然后使用科学计数法。&lt;br&gt;分数部分，每次乘2，取该数的整数部分（要么取不到整数，要么取走1），直到啥都不剩为止。取到的数从左往右写，最前面加0.。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="计算机科学" scheme="https://blog.sheronw.xyz/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>bit level operators</title>
+    <link href="https://blog.sheronw.xyz/2019/02/13/bit_level_operators/"/>
+    <id>https://blog.sheronw.xyz/2019/02/13/bit_level_operators/</id>
+    <published>2019-02-14T00:40:21.000Z</published>
+    <updated>2019-08-17T21:24:29.184Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="编程语言中的操作符"><a href="#编程语言中的操作符" class="headerlink" title="编程语言中的操作符"></a>编程语言中的操作符</h2><h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><ul><li>&lt;&lt; left shift</li><li>>> signed right shift (filled with sign bits)</li><li>>>> unsigned right shift (filled with 0s)</li><li>&amp; bitwise and</li><li>| bitwise or</li><li>^ bitwise exclusive or</li></ul><h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><p>大致与Java相同，只是没有unsigned right shift，具体会怎么shift取决于数据型本身。</p><a id="more"></a><h2 id="一些用法"><a href="#一些用法" class="headerlink" title="一些用法"></a>一些用法</h2><h3 id="set-bits-to-0"><a href="#set-bits-to-0" class="headerlink" title="set bits to 0"></a>set bits to 0</h3><p>x&amp;0=0</p><p>x&amp;1=x</p><h3 id="set-bits-to-1"><a href="#set-bits-to-1" class="headerlink" title="set bits to 1"></a>set bits to 1</h3><p>x|0=x</p><p>x|1=1</p><h3 id="invert-bits"><a href="#invert-bits" class="headerlink" title="invert bits"></a>invert bits</h3><p>x^0=x</p><p>x^1=!x</p><h2 id="应用……？"><a href="#应用……？" class="headerlink" title="应用……？"></a>应用……？</h2><p>刚刚看到了<a href="https://blog.coca.moe/post/er-jin-zhi-mei-ju" target="_blank" rel="external">这么一道题</a>，发现和当初学离散数学的时候遇到的那个小朋友分饼干的题型有点像，都是二进制的应用，就当是位运算的一个实例放在这里了。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;编程语言中的操作符&quot;&gt;&lt;a href=&quot;#编程语言中的操作符&quot; class=&quot;headerlink&quot; title=&quot;编程语言中的操作符&quot;&gt;&lt;/a&gt;编程语言中的操作符&lt;/h2&gt;&lt;h3 id=&quot;Java&quot;&gt;&lt;a href=&quot;#Java&quot; class=&quot;headerlink&quot; title=&quot;Java&quot;&gt;&lt;/a&gt;Java&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&amp;lt;&amp;lt; left shift&lt;/li&gt;
+&lt;li&gt;&gt;&gt; signed right shift (filled with sign bits)&lt;/li&gt;
+&lt;li&gt;&gt;&gt;&gt; unsigned right shift (filled with 0s)&lt;/li&gt;
+&lt;li&gt;&amp;amp; bitwise and&lt;/li&gt;
+&lt;li&gt;| bitwise or&lt;/li&gt;
+&lt;li&gt;^ bitwise exclusive or&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;C&quot;&gt;&lt;a href=&quot;#C&quot; class=&quot;headerlink&quot; title=&quot;C&quot;&gt;&lt;/a&gt;C&lt;/h3&gt;&lt;p&gt;大致与Java相同，只是没有unsigned right shift，具体会怎么shift取决于数据型本身。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="计算机科学" scheme="https://blog.sheronw.xyz/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>十进制、二进制与十六进制的相互转换，以及Two’s Complement Notation</title>
+    <link href="https://blog.sheronw.xyz/2019/02/13/10,2,16&amp;Two&#39;s%20Complement%20Notation/"/>
+    <id>https://blog.sheronw.xyz/2019/02/13/10,2,16&amp;Two&#39;s Complement Notation/</id>
+    <published>2019-02-13T23:47:37.000Z</published>
+    <updated>2019-08-17T21:20:56.136Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="二进制转十进制"><a href="#二进制转十进制" class="headerlink" title="二进制转十进制"></a>二进制转十进制</h2><p>很简单，从右往左加，第一位乘以2的零次方，第二位乘以2的一次方，然后以此类推……<br>10101<sub>10</sub>=1*2^4+0*2^3+1*2^2+0*2^1+1*2^0=21<br>还有一种方法是Horner’s Rule，从左往右算，每次把下一位加在这个结果中作为一个整体。<br>10101<sub>10</sub>=(((1*2+0)*2+1)*2+0)*2+1=21</p><a id="more"></a><h2 id="十进制转二进制"><a href="#十进制转二进制" class="headerlink" title="十进制转二进制"></a>十进制转二进制</h2><p>不断地除以二，直到除不动了为止，每一步得到的余数倒过来就是所求的二进制。</p><ul><li><strong>10</strong>/2=5 …0</li><li>5/2=2 … 1</li><li>2/2=1 … 0</li><li>1/2=0 … 1</li></ul><p>所以10的二进制为1010<br>当然，如果不想最后再颠倒一遍的话，可以算的时候从下往上写XD</p><h2 id="十六进制转二进制"><a href="#十六进制转二进制" class="headerlink" title="十六进制转二进制"></a>十六进制转二进制</h2><p>十六进制的每一位都能转换成一个四位的二进制，然后把它们拼起来就好，其实还有一个转换表，但算起来也不麻烦，我觉得不背也行。</p><h2 id="二进制转十六进制"><a href="#二进制转十六进制" class="headerlink" title="二进制转十六进制"></a>二进制转十六进制</h2><p>和上面一个道理，每四位二进制都能转换成一位十六进制，如果最后一组不足四位填上几个零就好。</p><h2 id="十六进制转十进制"><a href="#十六进制转十进制" class="headerlink" title="十六进制转十进制"></a>十六进制转十进制</h2><p>和二进制转十进制一个道理，只不过把2换成16了而已。</p><h2 id="十进制转十六进制"><a href="#十进制转十六进制" class="headerlink" title="十进制转十六进制"></a>十进制转十六进制</h2><p>同上，和二进制一样，只不过不断除以16。</p><h2 id="Two’s-Complement"><a href="#Two’s-Complement" class="headerlink" title="Two’s Complement"></a>Two’s Complement</h2><p>这是一种用二进制表达整数（包括正负）的一种方法。<br>首先，从最左边的那一位可以看出这个数字的正负——0为正，1为负。<br>如果是正数的话，和之前讲到的传统二进制表达是相同的。<br>如果是负数的话，想要知道它的具体值，我们需要将Two’s Complement转换成它的相反数（也就是说这个数字的整数版本）。<br>转换成相反数的算法如下（同时适用与正数和负数）：</p><ul><li>将每一位的数字颠倒（颠倒指的是，1换成0，0换成1）</li><li>在颠倒之后的基础上再+1</li></ul><p>比如这里有个我瞎编的32bits的数字：<br>1010 0100 0100 1111 1010 1100 0101 0000<br>第一位是1，所以这个数是小于零的<br>首先我们要把它变成这样的：<br>0101 1011 1011 0000 0101 0011 1010 1111<br>然后再+1就变成了这样：<br>0101 1011 1011 0000 0101 0011 1011 0000<br>这个数就是最前面瞎编的那个数的相反数</p><p>哦对了，因为32bits的二进制写起来太长了，所以经常会用十六进制来表示。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;二进制转十进制&quot;&gt;&lt;a href=&quot;#二进制转十进制&quot; class=&quot;headerlink&quot; title=&quot;二进制转十进制&quot;&gt;&lt;/a&gt;二进制转十进制&lt;/h2&gt;&lt;p&gt;很简单，从右往左加，第一位乘以2的零次方，第二位乘以2的一次方，然后以此类推……&lt;br&gt;10101&lt;sub&gt;10&lt;/sub&gt;=1*2^4+0*2^3+1*2^2+0*2^1+1*2^0=21&lt;br&gt;还有一种方法是Horner’s Rule，从左往右算，每次把下一位加在这个结果中作为一个整体。&lt;br&gt;10101&lt;sub&gt;10&lt;/sub&gt;=(((1*2+0)*2+1)*2+0)*2+1=21&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="计算机科学" scheme="https://blog.sheronw.xyz/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>2018年度书单</title>
     <link href="https://blog.sheronw.xyz/2018/12/31/2018booklist/"/>
     <id>https://blog.sheronw.xyz/2018/12/31/2018booklist/</id>
@@ -172,6 +271,42 @@
     </summary>
     
       <category term="阅读笔记" scheme="https://blog.sheronw.xyz/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Formatted I/O, Line Input, Scanf - C</title>
+    <link href="https://blog.sheronw.xyz/2018/11/06/Formatted-I-O-Line-Input-Scanf-C/"/>
+    <id>https://blog.sheronw.xyz/2018/11/06/Formatted-I-O-Line-Input-Scanf-C/</id>
+    <published>2018-11-06T20:15:43.000Z</published>
+    <updated>2019-08-17T21:24:17.873Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="read-a-file-from-stdin-and-put-it-to-both-stdout-amp-stderr"><a href="#read-a-file-from-stdin-and-put-it-to-both-stdout-amp-stderr" class="headerlink" title="read a file from stdin and put it to both stdout &amp; stderr"></a>read a file from stdin and put it to both stdout &amp; stderr</h2><pre><code>int main (int argc, char *argv[]){    char *fname = NULL;    if (argc&gt;1){        frame=argv[1];    }    else{        return 1;    }    FILE *file = fopen(fname, &quot;r&quot;);    int input;    while((input=fgetc(file))!= EOF){        fputc(input,stdout);        fputc(input,stderr);    }}</code></pre><a id="more"></a><p>end of file ^D<br>end program ^C<br>stderr line buffer<br>stdout file buffer(???)</p><h2 id="re-reading"><a href="#re-reading" class="headerlink" title="re-reading"></a>re-reading</h2><pre><code>void rewind(FILE *stream);</code></pre><p>changing location of a file to the beginning<br>fseek: move to some location</p><h2 id="getting-location"><a href="#getting-location" class="headerlink" title="getting location"></a>getting location</h2><pre><code>long ftell(FILE * stream);off_t ftello(FILE *stream);</code></pre><p>if is larger than a long in size, then:</p><pre><code>int fgetpos(FILE *restrict stream, fpos_t *restrict pos);int fsetpos(FILE *stream, const fpos_t *pos);</code></pre><p>need to check man page for different systems<br>df: space of hard drive<br>file: blocks of pointers point to a chunk of data blocks of actual disk</p><h2 id="Format-Printing"><a href="#Format-Printing" class="headerlink" title="Format Printing"></a>Format Printing</h2><h3 id="printing-to-a-string"><a href="#printing-to-a-string" class="headerlink" title="printing to a string"></a>printing to a string</h3><pre><code>int sprintf(char *str, const char *format, /* args */ );</code></pre><ul><li>return number of bytes that would have been written</li><li>writes at most size-1 bytes (leave space for null byte)</li></ul><h3 id="line-based-input"><a href="#line-based-input" class="headerlink" title="line based input"></a>line based input</h3><pre><code>char *fgets(char *str, int size, FILE *stream);</code></pre><ul><li>stores in str</li><li>stops at -n, EOF</li><li><strong>do not use gets</strong></li></ul><h3 id="scanf"><a href="#scanf" class="headerlink" title="scanf"></a>scanf</h3><pre><code>scanf(&quot;%d&quot;,&amp;x);scanf(&quot;%s&quot;,str);</code></pre><ul><li>read line using fgets(), parses data using sscanf() from line</li><li>character ranges(check textbook)<h3 id="realloc"><a href="#realloc" class="headerlink" title="realloc"></a>realloc</h3>  void <em> realloc(void </em>ptr, size_t size);</li><li>change previous allocated block ptr be changed to size size(larger or smaller &amp; copy old data as needed)</li><li><p>app: connect strings</p><h3 id="getline"><a href="#getline" class="headerlink" title="getline"></a>getline</h3><p>  ssize_t getline(char <em>* linep, size_t </em>linecapp, FILE * stream);<br>  free(linep);</p></li><li><p>dynamically allocated, but must free later</p></li><li>not part of c standard</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;read-a-file-from-stdin-and-put-it-to-both-stdout-amp-stderr&quot;&gt;&lt;a href=&quot;#read-a-file-from-stdin-and-put-it-to-both-stdout-amp-stderr&quot; class=&quot;headerlink&quot; title=&quot;read a file from stdin and put it to both stdout &amp;amp; stderr&quot;&gt;&lt;/a&gt;read a file from stdin and put it to both stdout &amp;amp; stderr&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;int main (int argc, char *argv[]){
+    char *fname = NULL;
+    if (argc&amp;gt;1){
+        frame=argv[1];
+    }
+    else{
+        return 1;
+    }
+    FILE *file = fopen(fname, &amp;quot;r&amp;quot;);
+
+    int input;
+    while((input=fgetc(file))!= EOF){
+        fputc(input,stdout);
+        fputc(input,stderr);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="c语言" scheme="https://blog.sheronw.xyz/categories/c%E8%AF%AD%E8%A8%80/"/>
     
     
   </entry>

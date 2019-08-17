@@ -1,0 +1,20 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 浮点数的表示法以及加法乘法 · SheronW</title><meta name="description" content="浮点数的表示法以及加法乘法 - SheronW"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://blog.sheronw.xyz/atom.xml" title="SheronW"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://twitter.com/Uplus5F7B" target="_blank" class="nav-list-link">TWITTER</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">浮点数的表示法以及加法乘法</h1><div class="post-info">Feb 20, 2019</div><div class="post-content"><h2 id="浮点数的表示法"><a href="#浮点数的表示法" class="headerlink" title="浮点数的表示法"></a>浮点数的表示法</h2><p>每一个浮点数都要转换成二进制版本的科学计数法再储存起来（也就是x*2<sup>y</sup>），因此需要存储如下数据：正负号（0正1负），科学计数法的幂（2的次方数），科学计数法的小数部分（用-2进制来表示）。</p>
+<h3 id="十进制转二进制"><a href="#十进制转二进制" class="headerlink" title="十进制转二进制"></a>十进制转二进制</h3><p>把这个数分成小数和整数两种形式。<br>整数直接转二进制然后使用科学计数法。<br>分数部分，每次乘2，取该数的整数部分（要么取不到整数，要么取走1），直到啥都不剩为止。取到的数从左往右写，最前面加0.。</p>
+<a id="more"></a>
+<h3 id="IEEE-Floating-Point-Standard-754标准"><a href="#IEEE-Floating-Point-Standard-754标准" class="headerlink" title="IEEE Floating Point Standard 754标准"></a>IEEE Floating Point Standard 754标准</h3><p>32bits（float）从左往右依次为：</p>
+<ul>
+<li>31: 正负号</li>
+<li>30-23: 8 bits的幂数</li>
+<li>22-0: 23 bits的小数部分（因为科学记数法，所以第一位（小数点左侧）必然是1，就不计算在内了）</li>
+</ul>
+<p>64bits（double）从左往右依次为：</p>
+<ul>
+<li>63：正负号</li>
+<li>62-52：11 bits的幂数</li>
+<li>51-0：52 bits的小数部分</li>
+</ul>
+<h3 id="exponent-bias-method"><a href="#exponent-bias-method" class="headerlink" title="exponent bias method"></a>exponent bias method</h3><p>为了表示负数次幂，转换时在原本的幂数中加一些数字。<br>32位+127，64位+1023<br>这样32位幂的表示范围为-126~127，64为-1022~1023<br>在这里我们没有用two’s complement，原因是这种方法更容易比较两个数的大小。</p>
+<h2 id="浮点数的加法"><a href="#浮点数的加法" class="headerlink" title="浮点数的加法"></a>浮点数的加法</h2><p>首先要把他们对齐，也就是说把两个数字的幂转换成一样的。然后和十进制一样相加减，最后再把得到的结果转换成科学记数法。</p>
+<h2 id="浮点数的乘法"><a href="#浮点数的乘法" class="headerlink" title="浮点数的乘法"></a>浮点数的乘法</h2><p>和加法同理。<br>不过可以在乘之前先判断一下结果的符号，同号为正异号为负。<br>然后相乘（小数部分相乘，幂数相加），最后转回科学记数法。</p>
+<p>不过在实现运算的过程中要注意，储存幂数的时候用的是bias method，而且小数部分中小数点左边的部分并没有实际存储在浮点数中。（血一样的教训）</p>
+</div></article></div></main><footer><div class="paginator"><a href="/2019/02/22/efbscreen/" class="prev">上一篇</a><a href="/2019/02/13/bit_level_operators/" class="next">下一篇</a></div><div class="copyright"><p>© 2017 - 2019 <a href="https://blog.sheronw.xyz">SheronW</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Formatted I/O, Line Input, Scanf - C · SheronW</title><meta name="description" content="Formatted I/O, Line Input, Scanf - C - SheronW"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://blog.sheronw.xyz/atom.xml" title="SheronW"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://twitter.com/Uplus5F7B" target="_blank" class="nav-list-link">TWITTER</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">Formatted I/O, Line Input, Scanf - C</h1><div class="post-info">Nov 6, 2018</div><div class="post-content"><h2 id="read-a-file-from-stdin-and-put-it-to-both-stdout-amp-stderr"><a href="#read-a-file-from-stdin-and-put-it-to-both-stdout-amp-stderr" class="headerlink" title="read a file from stdin and put it to both stdout &amp; stderr"></a>read a file from stdin and put it to both stdout &amp; stderr</h2><pre><code>int main (int argc, char *argv[]){
+    char *fname = NULL;
+    if (argc&gt;1){
+        frame=argv[1];
+    }
+    else{
+        return 1;
+    }
+    FILE *file = fopen(fname, &quot;r&quot;);
+
+    int input;
+    while((input=fgetc(file))!= EOF){
+        fputc(input,stdout);
+        fputc(input,stderr);
+    }
+}
+</code></pre><a id="more"></a>
+<p>end of file ^D<br>end program ^C<br>stderr line buffer<br>stdout file buffer(???)</p>
+<h2 id="re-reading"><a href="#re-reading" class="headerlink" title="re-reading"></a>re-reading</h2><pre><code>void rewind(FILE *stream);
+</code></pre><p>changing location of a file to the beginning<br>fseek: move to some location</p>
+<h2 id="getting-location"><a href="#getting-location" class="headerlink" title="getting location"></a>getting location</h2><pre><code>long ftell(FILE * stream);
+off_t ftello(FILE *stream);
+</code></pre><p>if is larger than a long in size, then:</p>
+<pre><code>int fgetpos(FILE *restrict stream, fpos_t *restrict pos);
+int fsetpos(FILE *stream, const fpos_t *pos);
+</code></pre><p>need to check man page for different systems<br>df: space of hard drive<br>file: blocks of pointers point to a chunk of data blocks of actual disk</p>
+<h2 id="Format-Printing"><a href="#Format-Printing" class="headerlink" title="Format Printing"></a>Format Printing</h2><h3 id="printing-to-a-string"><a href="#printing-to-a-string" class="headerlink" title="printing to a string"></a>printing to a string</h3><pre><code>int sprintf(char *str, const char *format, /* args */ );
+</code></pre><ul>
+<li>return number of bytes that would have been written</li>
+<li>writes at most size-1 bytes (leave space for null byte)</li>
+</ul>
+<h3 id="line-based-input"><a href="#line-based-input" class="headerlink" title="line based input"></a>line based input</h3><pre><code>char *fgets(char *str, int size, FILE *stream);
+</code></pre><ul>
+<li>stores in str</li>
+<li>stops at -n, EOF</li>
+<li><strong>do not use gets</strong></li>
+</ul>
+<h3 id="scanf"><a href="#scanf" class="headerlink" title="scanf"></a>scanf</h3><pre><code>scanf(&quot;%d&quot;,&amp;x);
+scanf(&quot;%s&quot;,str);
+</code></pre><ul>
+<li>read line using fgets(), parses data using sscanf() from line</li>
+<li>character ranges(check textbook)<h3 id="realloc"><a href="#realloc" class="headerlink" title="realloc"></a>realloc</h3>  void <em> realloc(void </em>ptr, size_t size);</li>
+<li>change previous allocated block ptr be changed to size size(larger or smaller &amp; copy old data as needed)</li>
+<li><p>app: connect strings</p>
+<h3 id="getline"><a href="#getline" class="headerlink" title="getline"></a>getline</h3><p>  ssize_t getline(char <em>* linep, size_t </em>linecapp, FILE * stream);<br>  free(linep);</p>
+</li>
+<li><p>dynamically allocated, but must free later</p>
+</li>
+<li>not part of c standard</li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/2018/12/31/2018booklist/" class="prev">上一篇</a><a href="/2018/08/24/shangjunliezhuan/" class="next">下一篇</a></div><div class="copyright"><p>© 2017 - 2019 <a href="https://blog.sheronw.xyz">SheronW</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> bit level operators · SheronW</title><meta name="description" content="bit level operators - SheronW"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://blog.sheronw.xyz/atom.xml" title="SheronW"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://twitter.com/Uplus5F7B" target="_blank" class="nav-list-link">TWITTER</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">bit level operators</h1><div class="post-info">Feb 13, 2019</div><div class="post-content"><h2 id="编程语言中的操作符"><a href="#编程语言中的操作符" class="headerlink" title="编程语言中的操作符"></a>编程语言中的操作符</h2><h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><ul>
+<li>&lt;&lt; left shift</li>
+<li>>> signed right shift (filled with sign bits)</li>
+<li>>>> unsigned right shift (filled with 0s)</li>
+<li>&amp; bitwise and</li>
+<li>| bitwise or</li>
+<li>^ bitwise exclusive or</li>
+</ul>
+<h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><p>大致与Java相同，只是没有unsigned right shift，具体会怎么shift取决于数据型本身。</p>
+<a id="more"></a>
+<h2 id="一些用法"><a href="#一些用法" class="headerlink" title="一些用法"></a>一些用法</h2><h3 id="set-bits-to-0"><a href="#set-bits-to-0" class="headerlink" title="set bits to 0"></a>set bits to 0</h3><p>x&amp;0=0</p>
+<p>x&amp;1=x</p>
+<h3 id="set-bits-to-1"><a href="#set-bits-to-1" class="headerlink" title="set bits to 1"></a>set bits to 1</h3><p>x|0=x</p>
+<p>x|1=1</p>
+<h3 id="invert-bits"><a href="#invert-bits" class="headerlink" title="invert bits"></a>invert bits</h3><p>x^0=x</p>
+<p>x^1=!x</p>
+<h2 id="应用……？"><a href="#应用……？" class="headerlink" title="应用……？"></a>应用……？</h2><p>刚刚看到了<a href="https://blog.coca.moe/post/er-jin-zhi-mei-ju" target="_blank" rel="external">这么一道题</a>，发现和当初学离散数学的时候遇到的那个小朋友分饼干的题型有点像，都是二进制的应用，就当是位运算的一个实例放在这里了。</p>
+</div></article></div></main><footer><div class="paginator"><a href="/2019/02/20/float/" class="prev">上一篇</a><a href="/2019/02/13/10,2,16&amp;Two's Complement Notation/" class="next">下一篇</a></div><div class="copyright"><p>© 2017 - 2019 <a href="https://blog.sheronw.xyz">SheronW</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
