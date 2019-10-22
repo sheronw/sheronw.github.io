@@ -2,184 +2,191 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.sheronw.xyz/2019/06/09/7%20User-Centered%20Design/</loc>
+    <loc>https://blog.sheronw.xyz/2019/10/22/count_bits/</loc>
     
-    <lastmod>2019-08-17T22:51:03.382Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.sheronw.xyz/2019/06/06/6%20The%20Design%20Challenge/</loc>
-    
-    <lastmod>2019-08-17T22:50:26.181Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.sheronw.xyz/2019/06/03/5%20To%20Err%20Is%20Human/</loc>
-    
-    <lastmod>2019-08-17T22:49:54.134Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.sheronw.xyz/2019/06/01/4%20Knowing%20What%20to%20Do/</loc>
-    
-    <lastmod>2019-08-17T22:49:23.085Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.sheronw.xyz/2019/05/29/3%20Knowledge%20in%20the%20Head%20and%20in%20the%20World/</loc>
-    
-    <lastmod>2019-08-17T22:48:38.588Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.sheronw.xyz/2019/05/27/2%20The%20Psychology%20of%20Everyday%20Actions/</loc>
-    
-    <lastmod>2019-08-17T22:48:21.545Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.sheronw.xyz/2019/05/26/1%20The%20Psychopathology%20of%20Everyday%20Things/</loc>
-    
-    <lastmod>2019-08-17T22:48:13.357Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.sheronw.xyz/2019/05/23/0%20index/</loc>
-    
-    <lastmod>2019-08-17T22:48:07.609Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.sheronw.xyz/2019/02/13/bit_level_operators/</loc>
-    
-    <lastmod>2019-08-17T21:24:29.184Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.sheronw.xyz/2018/11/06/Formatted-I-O-Line-Input-Scanf-C/</loc>
-    
-    <lastmod>2019-08-17T21:24:17.873Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.sheronw.xyz/2019/02/20/float/</loc>
-    
-    <lastmod>2019-08-17T21:24:11.407Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.sheronw.xyz/2019/07/12/basic_vps/</loc>
-    
-    <lastmod>2019-08-17T21:24:05.167Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.sheronw.xyz/2019/02/13/10,2,16&Two's%20Complement%20Notation/</loc>
-    
-    <lastmod>2019-08-17T21:20:56.136Z</lastmod>
+    <lastmod>2019-10-22T19:40:51.650Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.sheronw.xyz/2019/06/25/Non-parametric%20Tests/</loc>
     
-    <lastmod>2019-08-17T13:45:14.513Z</lastmod>
+    <lastmod>2019-10-06T18:31:14.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.sheronw.xyz/2019/06/09/7%20User-Centered%20Design/</loc>
+    
+    <lastmod>2019-08-17T22:51:03.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.sheronw.xyz/2019/06/06/6%20The%20Design%20Challenge/</loc>
+    
+    <lastmod>2019-08-17T22:50:26.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.sheronw.xyz/2019/06/03/5%20To%20Err%20Is%20Human/</loc>
+    
+    <lastmod>2019-08-17T22:49:54.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.sheronw.xyz/2019/06/01/4%20Knowing%20What%20to%20Do/</loc>
+    
+    <lastmod>2019-08-17T22:49:23.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.sheronw.xyz/2019/05/29/3%20Knowledge%20in%20the%20Head%20and%20in%20the%20World/</loc>
+    
+    <lastmod>2019-08-17T22:48:38.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.sheronw.xyz/2019/05/27/2%20The%20Psychology%20of%20Everyday%20Actions/</loc>
+    
+    <lastmod>2019-08-17T22:48:21.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.sheronw.xyz/2019/05/26/1%20The%20Psychopathology%20of%20Everyday%20Things/</loc>
+    
+    <lastmod>2019-08-17T22:48:13.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.sheronw.xyz/2019/05/23/0%20index/</loc>
+    
+    <lastmod>2019-08-17T22:48:07.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.sheronw.xyz/2019/02/13/bit_level_operators/</loc>
+    
+    <lastmod>2019-08-17T21:24:29.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.sheronw.xyz/2018/11/06/Formatted-I-O-Line-Input-Scanf-C/</loc>
+    
+    <lastmod>2019-08-17T21:24:17.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.sheronw.xyz/2019/02/20/float/</loc>
+    
+    <lastmod>2019-08-17T21:24:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.sheronw.xyz/2019/07/12/basic_vps/</loc>
+    
+    <lastmod>2019-08-17T21:24:05.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.sheronw.xyz/2019/02/13/10,2,16&Two's%20Complement%20Notation/</loc>
+    
+    <lastmod>2019-08-17T21:20:56.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.sheronw.xyz/2019/02/22/efbscreen/</loc>
     
-    <lastmod>2019-08-17T13:43:51.742Z</lastmod>
+    <lastmod>2019-08-17T13:43:51.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.sheronw.xyz/2019/06/11/Privacy%20&%20Human%20Behavior%20in%20the%20Age%20of%20Information/</loc>
     
-    <lastmod>2019-08-17T13:42:48.334Z</lastmod>
+    <lastmod>2019-08-17T13:42:48.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.sheronw.xyz/2018/12/31/2018booklist/</loc>
     
-    <lastmod>2019-07-09T16:32:47.309Z</lastmod>
+    <lastmod>2019-07-09T16:32:47.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.sheronw.xyz/2019/03/30/gear_world/</loc>
     
-    <lastmod>2019-07-06T13:15:00.836Z</lastmod>
+    <lastmod>2019-07-06T13:15:00.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.sheronw.xyz/2018/01/05/Christmas2017InNYC/</loc>
     
-    <lastmod>2019-07-01T18:40:53.422Z</lastmod>
+    <lastmod>2019-07-01T18:40:53.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.sheronw.xyz/2018/05/24/shenzhen1st/</loc>
     
-    <lastmod>2019-06-27T20:05:42.389Z</lastmod>
+    <lastmod>2019-06-27T20:05:42.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.sheronw.xyz/2017/10/08/hello-world/</loc>
+    <loc>https://blog.sheronw.xyz/2019/06/23/hello-world/</loc>
     
-    <lastmod>2019-06-23T17:47:20.394Z</lastmod>
+    <lastmod>2019-06-23T17:47:20.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.sheronw.xyz/2019/05/21/bye_sophomore/</loc>
     
-    <lastmod>2019-05-29T22:30:31.865Z</lastmod>
+    <lastmod>2019-05-29T22:30:31.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.sheronw.xyz/2019/03/27/make_it_stick/</loc>
     
-    <lastmod>2019-05-21T19:03:34.956Z</lastmod>
+    <lastmod>2019-05-21T19:03:34.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.sheronw.xyz/2018/08/24/shangjunliezhuan/</loc>
     
-    <lastmod>2019-02-24T21:31:46.372Z</lastmod>
+    <lastmod>2019-02-24T21:31:46.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.sheronw.xyz/2017/10/13/twn/</loc>
     
-    <lastmod>2019-02-24T21:19:00.580Z</lastmod>
+    <lastmod>2019-02-24T21:19:00.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.sheronw.xyz/2018/01/12/2017booklist/</loc>
     
-    <lastmod>2019-02-24T21:18:49.456Z</lastmod>
+    <lastmod>2019-02-24T21:18:49.000Z</lastmod>
     
   </url>
   
@@ -193,7 +200,7 @@
   <url>
     <loc>https://blog.sheronw.xyz/categories/index.html</loc>
     
-    <lastmod>2018-01-10T03:22:00.640Z</lastmod>
+    <lastmod>2018-01-10T03:22:00.000Z</lastmod>
     
   </url>
   

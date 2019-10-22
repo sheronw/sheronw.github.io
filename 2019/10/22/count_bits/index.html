@@ -1,0 +1,19 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 二进制中1的个数问题 · SheronW</title><meta name="description" content="二进制中1的个数问题 - SheronW"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://blog.sheronw.xyz/atom.xml" title="SheronW"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://twitter.com/_sheron_w" target="_blank" class="nav-list-link">TWITTER</a></li><li class="nav-list-item"><a href="https://t.me/sheron_w" target="_blank" class="nav-list-link">TELEGRAM</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">二进制中1的个数问题</h1><div class="post-info">Oct 22, 2019</div><div class="post-content"><p>之前在computer architecture的课上用assembly language实现了一遍，当初的实现方法大概这样：<br>每次使用位运算符往右挪一下然后再往左挪一下，因为系统默认会用0来填充，所以如果最右位为零，那么变换前后值相等，否则最右位为1.结束判断后，再向右移以消除该位……直到整个数字归零。<br>然后前几天刷题的时候看到了类似的题目，然后就开心地直接上手这么写了，然后负数部分的test全部没通过。<br><a id="more"></a><br>后来找到了问题所在：在大部分高级语言中，当一个数为负数时，向右挪的话，最左位时会用1而不是0来填充的，这就导致了负数不管shift多少次都没法变成零，然后就runtime error了。<br>我还专门查了一下，至少JavaScript里面是有zero-fill right shift操作符（&gt;&gt;&gt;）的，但是既然都用Python写了这么多了……<br>最后只好单独处理负数。如果一个数字为负，那么使用位运算符～将其翻转，然后我们数出来的1的个数其实是它0的个数，最后用总数32位减去0的个数就可以得到1的个数了。</p>
+<p>代码如下：</p>
+<pre><code>def countOnes(self, num):
+    # write your code here
+    count = 0
+    negative = False
+    if num&lt;0:
+        num = ~num
+        negative = True
+    while num!=0:
+        num2 = num &gt;&gt; 1
+        num2 = num2 &lt;&lt; 1
+        if num2!=num:
+            count+=1
+        num = num &gt;&gt; 1
+    if negative:
+        count = 32-count
+    return count
+</code></pre></div></article></div></main><footer><div class="paginator"><a href="/2019/07/12/basic_vps/" class="next">NEXT</a></div><div class="copyright"><p>© 2017 - 2019 <a href="https://blog.sheronw.xyz">SheronW</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
