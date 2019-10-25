@@ -37,62 +37,6 @@
   </entry>
   
   <entry>
-    <title>折腾VPS的记录</title>
-    <link href="https://blog.sheronw.xyz/2019/07/12/basic_vps/"/>
-    <id>https://blog.sheronw.xyz/2019/07/12/basic_vps/</id>
-    <published>2019-07-12T18:40:50.000Z</published>
-    <updated>2019-08-17T21:24:05.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="new-VPS-setup-log"><a href="#new-VPS-setup-log" class="headerlink" title="new VPS setup log"></a>new VPS setup log</h1><h2 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h2><pre><code>useradd -m 用户名passwd 用户名</code></pre><h2 id="将该用户赋予root权限-利用sudo命令，需要输入密码"><a href="#将该用户赋予root权限-利用sudo命令，需要输入密码" class="headerlink" title="将该用户赋予root权限(利用sudo命令，需要输入密码)"></a>将该用户赋予root权限(利用sudo命令，需要输入密码)</h2><p>赋予文件读写权限：</p><pre><code>chmod u+w /etc/sudoers</code></pre><p>打开文件找到</p><pre><code>root ALL = (ALL:ALL) ALL</code></pre><p>下面添加</p><pre><code>用户名 ALL = (ALL:ALL) ALL</code></pre><p>取消读写权限：</p><pre><code>chmod u-w /etc/sudoers</code></pre><a id="more"></a><h2 id="ssh-configuration"><a href="#ssh-configuration" class="headerlink" title="ssh configuration"></a>ssh configuration</h2><p>create rsa key</p><pre><code>ssh-keygen -t rsa</code></pre><p>import public key</p><pre><code>cd .sshcat id_rsa.pub &gt;&gt; authorized_keyschmod 600 authorized_keyschmod 700 ~/.sshsudo chmod u+w /etc/ssh/sshd_configsudo vim /etc/ssh/sshd_config</code></pre><p>find these lines and change to:</p><pre><code>PermitRootLogin noRSAAuthentication yesPubkeyAuthentication yessudo chomod u-w /etc/ssh/sshd_config</code></pre><p>use WINSCP to get <code>id_rsa</code>, open PuTTYGen, load file, add necessary information, then save private key<br>open PuTTY, <code>Connection -&gt; SSH -&gt; Auth</code>, find Private key file for authentication and load it<br>you could go back to <code>/etc/ssh/sshd_config</code> and add this line to deny password authentication, if you like:</p><pre><code>PasswordAuthentication no</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;new-VPS-setup-log&quot;&gt;&lt;a href=&quot;#new-VPS-setup-log&quot; class=&quot;headerlink&quot; title=&quot;new VPS setup log&quot;&gt;&lt;/a&gt;new VPS setup log&lt;/h1&gt;&lt;h2 id=&quot;新建用户&quot;&gt;&lt;a href=&quot;#新建用户&quot; class=&quot;headerlink&quot; title=&quot;新建用户&quot;&gt;&lt;/a&gt;新建用户&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;useradd -m 用户名
-passwd 用户名
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;将该用户赋予root权限-利用sudo命令，需要输入密码&quot;&gt;&lt;a href=&quot;#将该用户赋予root权限-利用sudo命令，需要输入密码&quot; class=&quot;headerlink&quot; title=&quot;将该用户赋予root权限(利用sudo命令，需要输入密码)&quot;&gt;&lt;/a&gt;将该用户赋予root权限(利用sudo命令，需要输入密码)&lt;/h2&gt;&lt;p&gt;赋予文件读写权限：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;chmod u+w /etc/sudoers
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;打开文件找到&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;root ALL = (ALL:ALL) ALL
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;下面添加&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;用户名 ALL = (ALL:ALL) ALL
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;取消读写权限：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;chmod u-w /etc/sudoers
-&lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-      <category term="Linux" scheme="https://blog.sheronw.xyz/categories/Linux/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Non-parametric Tests笔记</title>
-    <link href="https://blog.sheronw.xyz/2019/06/25/Non-parametric%20Tests/"/>
-    <id>https://blog.sheronw.xyz/2019/06/25/Non-parametric Tests/</id>
-    <published>2019-06-25T16:43:35.000Z</published>
-    <updated>2019-10-06T18:31:14.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>ranking: make lowest value to be rank 1, seond lowest value to be rank 2… and then analysis</p><p>procedure: </p><ol><li>carry out the analysis in R</li><li>how to interpret</li><li>how to report the results</li></ol><a id="more"></a><h2 id="the-Wilcoxon-rank-sum-test-Mann-Whitney-test"><a href="#the-Wilcoxon-rank-sum-test-Mann-Whitney-test" class="headerlink" title="the Wilcoxon rank-sum test(Mann-Whitney test)"></a>the Wilcoxon rank-sum test(Mann-Whitney test)</h2><p><strong>comparing two independent conditions</strong></p><p>compares two conditions when different participants take part in each condition and the resulting data violate any assumption of the independent t-test</p><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>将两组数据标上标签，然后放在一起排序。最小值为rank 1，第二小的为rank 2，然后以此类推……</p><p>注意，如果有多个值相同（tied scores），那他们的rank统一为potential rank的平均值。potential rank就是假设他们不同的话应该是什么rank。</p><p>然后再把相同组内的所有值的rank求和。</p><p>为了校正，各减去mean rank of the group，公式为N(N+1)/2。</p><p>（N为每个组的人数，其实这个就是等差数列1…N的和最后除以N）</p><p>以上的计算结果为test statistic，取较小的那个值（？存疑）</p><p>然后计算associated p-value，其实可以用monte carlo method，就是从整个样本里随机抽取出来一个组，然后再次计算，看看是否符合我们的结果（其实不应该，因为这种情况下null hypothesis is true）——不过这个要反反复复取样本计算，对大的数据来说很不友好。</p><p>另外一种方法是normal approximation。</p><p>该方法并不强求数据本身是成正态分布的，而是认为我们一次一次取样本计算的上述结果应该是成正态分布的。</p><p>我们可以算出标准差，然后算z，然后算p-value。</p><p>当然对R来说，如果你用这个方法算，它默认会加上一个continuity correction，因为正态分布本身是平滑曲线，但我们的数据分成了rank所以不是平滑的，因此校正之后会把你的p-value稍微拉高一点。</p><h3 id="calculating-effect-size"><a href="#calculating-effect-size" class="headerlink" title="calculating effect size"></a>calculating effect size</h3><p>r=z/sqrt(N)</p><p>在R中计算z-score的方法：qnorm(xxmodel$p.value/2)</p><p>if p-value&lt;0.05, then the two groups are significantly different</p><h2 id="the-Wilcoxon-signed-rank-test"><a href="#the-Wilcoxon-signed-rank-test" class="headerlink" title="the Wilcoxon signed-rank test"></a>the Wilcoxon signed-rank test</h2><p><strong>comparing two related conditions</strong></p><p>two set of scores, from the <strong>same</strong> participants, and the resulting data violate an assumption of the dependent t-test</p><h3 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h3><p>对所有的数据：state 2 - state 1（如果差为0，那么直接筛掉该数据）</p><p>然后根据结果的绝对值的大小对数据进行rank分配，处理tied scores的方法相同</p><p>然后把数据分为差大于零和差小于零两种，求sum of positive ranks和sum of negative ranks</p><p>最终的test statistic为这两个结果里比较小的那个</p><p>然后计算significance of the test statistic（公式见课本p668下面），注意样本总数不算差为零的那几个</p><p>mean和standard error的计算方法见p670</p><p>计算effect size见p673</p><p>if p-value&lt;0.05, then the two groups are significantly different</p><h2 id="Kruskal-Wallis-test"><a href="#Kruskal-Wallis-test" class="headerlink" title="Kruskal-Wallis test"></a>Kruskal-Wallis test</h2><p><strong>comparing several conditions when different participants take part in each condition and the resulting data violate an assumption of one-way independent ANOVA</strong></p><p>和wilcoxon rank-sum类似，一开始先把各组数据放在一起排rank，然和把各组的rank求和。</p><p>各组的test statistic H有一个很复杂的公式，见p767最下面15.1</p><h4 id="post-hoc-test"><a href="#post-hoc-test" class="headerlink" title="post hoc test"></a>post hoc test</h4><p>对于所有可能的两两比较，都进行一次wilcoxon rank-sum test，公式见p681的15.2</p><p>R中的方法见p683</p><p>if p-value&lt;0.05, then the two groups are significantly different</p><h4 id="the-Jonckheere-Terpstra-test"><a href="#the-Jonckheere-Terpstra-test" class="headerlink" title="the Jonckheere-Terpstra test"></a>the Jonckheere-Terpstra test</h4><p>和Kruskal-Wallis test类似，只是包括了the order of the groups是否有意义的信息。</p><p>R中的方法见p685</p><h2 id="Friedman’s-test"><a href="#Friedman’s-test" class="headerlink" title="Friedman’s test"></a>Friedman’s test</h2><p><strong>differences between conditions when there are more than two conditions and the same participants have been used in all conditions(each case contributes several scores to the data)+violated an assumption of one-way repeated-measures ANOVA</strong></p><p>Friedman’s ANOVA</p><p>首先把不同的情况下的数据放在不同的列中，然后对<strong>每一行</strong>（也就是说每一个participants）中的列排rank（比如condition 2最小，那么它的rank是1，第二小的是condition 1，那么它的rank就是2……以此类推）</p><p>最后，将不同condition（也就是说每一列）的rank相加。test statistics F_r 的公式还是很复杂，见p689最上方</p><p>post hoc test的方法见p691的15.7.6.</p><p>if p-value&lt;0.05, then the two groups are significantly different</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;ranking: make lowest value to be rank 1, seond lowest value to be rank 2… and then analysis&lt;/p&gt;
-&lt;p&gt;procedure: &lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;carry out the analysis in R&lt;/li&gt;
-&lt;li&gt;how to interpret&lt;/li&gt;
-&lt;li&gt;how to report the results&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-      <category term="研究相关" scheme="https://blog.sheronw.xyz/categories/%E7%A0%94%E7%A9%B6%E7%9B%B8%E5%85%B3/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>Hello World</title>
     <link href="https://blog.sheronw.xyz/2019/06/23/hello-world/"/>
     <id>https://blog.sheronw.xyz/2019/06/23/hello-world/</id>
@@ -110,31 +54,6 @@ passwd 用户名
       
     
     </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Privacy &amp; Human Behavior in the Age of Information笔记</title>
-    <link href="https://blog.sheronw.xyz/2019/06/11/Privacy%20&amp;%20Human%20Behavior%20in%20the%20Age%20of%20Information/"/>
-    <id>https://blog.sheronw.xyz/2019/06/11/Privacy &amp; Human Behavior in the Age of Information/</id>
-    <published>2019-06-11T19:45:10.000Z</published>
-    <updated>2019-08-17T13:42:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>论文原文出自SCIENCE VOL 347，以下为阅读笔记。</p><p>main content: empirical research on privacy behavior</p><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>背景：原本只是限于小圈子的、不可保留的内容如今都有迹可循，个人信息的收集与处理变得普遍。</p><p>一方面，不论是对公司还是对个人，信息的收集与处理都会带来许多方便，比如用医疗相关的大数据来研发更有效的药物；另一方面，个人信息的滥用可能会带来不可估量的影响，比如信息歧视、舆论操纵与监视等。</p><p>关于人们保护信息的能力与相关公共政策的讨论，如今有两种针锋相对的观点：第一种人认为人们能够根据自己的决策来保护好自己的信息隐私，过多的公共政策反而会干扰信息产业对人类带来的有益影响；另一种人认为，在日益复杂的信息世界中，人们很难权衡利弊、自行管理好自己的信息隐私，现有的一些工具已经不够用了，这个时候适当的公共政策与机构应该介入其中，从而抗衡商业团体和政府部门对于信息的收集与操纵。</p><p>本文试图探讨一些影响人们作出信息隐私决策的因素，以及这些决策是如何导致保护或者违反信息隐私安全的行为的。</p><a id="more"></a>  <p>探讨的因素主要有三个：</p><ul><li>人们在各种隐私权衡面前的不确定性，以及人们的偏好</li><li>由情境决定的隐私偏好——在不同的情况下，人们会做出不同的信息安全决策</li><li>信息隐私的偏好会受很多因素影响，因此具有一定的可塑性</li></ul><p>当然，这三个因素互相影响，就因为对隐私问题不够确定，所以人们倾向于从情境中寻找线索来作出决策，因此隐私偏好是由情境决定的；如果因此对情境加以干涉，那么人们的信息偏好也会受到影响，因此具有可塑性。</p><h3 id="Uncertainty"><a href="#Uncertainty" class="headerlink" title="Uncertainty"></a>Uncertainty</h3><p>人们会通过种种手段划定隐私与公开的界限，并且这种手段是自然发生的。不过，物理意义上的界限容易划分，但信息安全相关的边界具有模糊性，人们无法知道自己的信息安全是否、什么时候、被谁、在哪种程度上侵犯。</p><h4 id="信息不对称与不完整"><a href="#信息不对称与不完整" class="headerlink" title="信息不对称与不完整"></a>信息不对称与不完整</h4><p>造成这种不确定性的第一个因素是信息不对称与不完整。现代科技使信息的收集、处理变得用户不可见，人们对自己的信息被其他机构利用了多少这件事情毫无概念。</p><p>另外，人们想要判定自己的某种信息隐私相关的行为到底会造成哪些后果也很难。首先，一些信息安全隐患是无形的，比如人们可能不知道自己信息泄漏会给自己带来多少财产上的损失。其次，隐私是一把双刃剑，在损失它的同时，也会得到一些好处，例子就不提了。</p><p>如果将某种信息安全行为可能带来的损失与好处透明化（并且容易理解）的话，能够影响人们信息相关的决策。</p><h4 id="偏好"><a href="#偏好" class="headerlink" title="偏好"></a>偏好</h4><p>第二个因素是人们对于自己的偏好也有着不确定性。即使人们知道了自己的某种决策会对信息安全造成影响，他们也并不确定自己到底要不要这么做、或者这样好不好。相关研究发现其实人们对自己喜不喜欢某种商品或者服务、甚至人都没有一个明确的概念，更何况自己的隐私决策了。</p><p>首先，<strong>人们的态度与行为之间经常有着不确定性</strong>，即使人们有着对隐私警惕的态度，事实上也未必会做出相应的行为。</p><p>一种可能的解释方法是：广义上的「对隐私的态度」与狭义上的「相关的意图与行为」并不一定成正相关，人们可能这么想，但考虑到特定的情境并不会采取相应行为。但这个假说有一定问题——它无法解释一些态度与行为呈正相关的其他情况，并且没有考虑到错误估算利弊的情况。</p><p>其次，<strong>人们对于「用金钱来量化隐私」这件事也并不确定</strong>。当然了，在日常生活中，推断各种隐私行为的「估值」会受到各种各样的因素影响，尤其现在的情况是，信息分享相关的科技产品（比如各种社交媒体）发展比隐私保护的科技产品要发展得更好，以至于人们容易低估隐私相关的因素。</p><p>事实上，人们对隐私的估计可以具有诱导性，因此也未必可信。根据研究，人们只有得到隐私了之后才会珍惜，但要是没有这个东西就基本上也不会注意它了（。一些不法商家可能会这么诱导用户一开始就交出隐私，并且不再去考虑它</p><p>最后，其他的社会需求，比方说与别人分享、暴露自己的一些信息等，是会和隐私保护相矛盾的，而它们也同样重要。一方面适当的隐私让人安心，另一方面适当的暴露也让人安心，人类真是不好伺候（。</p><h3 id="Context-dependence"><a href="#Context-dependence" class="headerlink" title="Context-dependence"></a>Context-dependence</h3><p>正如前文所提到的那样，当人们不确定自己的偏好的时候，就会倾向于从情境中寻找线索，所以不同的情况下，人们对于隐私可能有着不同的考虑。并且，我们在很多情况下，对于「公共」和「隐私」的界限也并不明确——虽然大部分时间只会把秘密告诉自己关系最近的人，但有的时候却只和陌生人说。</p><h4 id="Sensible-Behavior"><a href="#Sensible-Behavior" class="headerlink" title="Sensible Behavior"></a>Sensible Behavior</h4><p>人们对于隐私的判断有时是「合情合理」的，比如当政府出台了相应法规之后，人们会更加容易信任各种收集信息的机构。不过，这种线索也会有坏处，有些时候人们在某种特定环境下可能会无意识地交出自己的隐私。</p><h4 id="Culture-and-Behavior-of-Other-People"><a href="#Culture-and-Behavior-of-Other-People" class="headerlink" title="Culture and Behavior of Other People"></a>Culture and Behavior of Other People</h4><p>两种方式：descriptive norms or via reciprocity</p><p>当周围的人都暴露自己的信息的时候，人们会更倾向于随大流也这么做；当对方暴露了一些信息的时候，人们也会随之暴露相应的信息（尽管对方可能只是个AI）。这也是网络上为什么那么多人公开自己信息的原因。</p><p>另外，他人对于信息的态度也会影响到自己的隐私，因为一旦你将某种信息告诉别人，他/她就会和你共同拥有该信息，这就更加模糊了隐私和公开的边界。</p><p>同样地，对于隐私的考虑也会与经验有关，比如看到监控摄像头就会本能地感到警惕。但同时它也是有适应性的——要是监控摄像头天天都放在那里，那人们也会逐渐放松警惕。因此人们可能会逐渐习惯信息时代带来的隐私侵犯。</p><p> 因为信息时代隐私的界限逐渐模糊，所以区分线上线下、满足每一个人对自己的预期越来越困难，我们不再能够精确地控制住自己发布的信息的目标群众，这也会带来一些关于当代信息科技的一些担忧。</p><h3 id="Malleability-and-Influence"><a href="#Malleability-and-Influence" class="headerlink" title="Malleability and Influence"></a>Malleability and Influence</h3><p>就因为大部分人并没有意识到自己的隐私抉择与情境相关，但很多机构和组织注意到了，所以信息收集与利用成了一个巨大的产业（。他们会利用人们隐私倾向的可塑性来（诱导）交出数据。</p><h4 id="默认设置"><a href="#默认设置" class="headerlink" title="默认设置"></a>默认设置</h4><p>人们一般都不会改自己的默认设置，而且倾向于认为默认设置是系统推荐的最优解。因此如果社交媒体默认公开信息，那人们也会更有可能公开自己的信息。</p><h4 id="诱导用户公开信息"><a href="#诱导用户公开信息" class="headerlink" title="诱导用户公开信息"></a>诱导用户公开信息</h4><p>比如有诱导性的用户界面。或者在收集信息的时候并不会发出警告，即使发出警告了也会顺便搞点光顾什么的让人们对警告本身印象不太好。</p><h4 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h4><p>有的时候，只需要一点点干预赢得用户的信任，他们就会对信息安全的警惕性放松，比如公布一个消费者并不会仔细看的隐私保护政策，用户就会「放心地」将数据交给第三方。</p><h4 id="可控性"><a href="#可控性" class="headerlink" title="可控性"></a>可控性</h4><p>基本上所有的相关产品都会让用户可以控制自己信息的公开范围，而且一般认为这是一个保护用户隐私的必备措施。然而将决定权交给用户有时会产生反作用。研究发现当用户在信息公开范围中有更多的选择时，他们反而会倾向于公开更多的信息。</p><h4 id="信息透明化"><a href="#信息透明化" class="headerlink" title="信息透明化"></a>信息透明化</h4><p>和可控性类似，它一般也被认为对保护用户的隐私有利，但事实上却成了鸡肋。毕竟没有几个用户会真的阅读条款，并且弄明白那些网站和服务是如何收集并且利用自己的数据的。更何况即使想要读，也很难弄懂，反而是浪费时间。</p><p>不过，之前用「诱导」这个词好像算贬义，但不是所有的可塑性与可操作性都是负面的。然而如果使用得当，可塑性可以对社会有着积极的影响，比如让用户感知到被监视能够让用户无意识地做出更有利于社会的行为。相同地，网络带来的去人格化也能够用来收集准确性更高的公共数据（比如人们在实名状态下不太愿意透露的数据）。</p><h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>在不同的文化中，关于隐私的共识和行为是不同的；然而，不论在哪种文化中，如何控制隐私与公开的界限是每一个人都需要注意的，而这个问题在信息时代更加重要（控制这个的能力已经超出了我们的生理极限）。</p><p>论公共政策能够起到什么作用？</p><p>根据研究发现，单纯地「通知」或者「赋予」用户隐私相关的权力，已经不能提供足够的保护了。尤其是「控制」和「不透明度」，事实上效果并没有那么好，甚至还有反作用。</p><p>如果想要最大程度上保护用户的隐私，很遗憾地，就要让用户做尽可能少的理性决定，也就是说需要一套保护相关的基本准则，来协助用户在当前的信息环境下做出抉择，力图实现用户、公民与公司、信息持有者之间的权力对等。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;论文原文出自SCIENCE VOL 347，以下为阅读笔记。&lt;/p&gt;
-&lt;p&gt;main content: empirical research on privacy behavior&lt;/p&gt;
-&lt;h3 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h3&gt;&lt;p&gt;背景：原本只是限于小圈子的、不可保留的内容如今都有迹可循，个人信息的收集与处理变得普遍。&lt;/p&gt;
-&lt;p&gt;一方面，不论是对公司还是对个人，信息的收集与处理都会带来许多方便，比如用医疗相关的大数据来研发更有效的药物；另一方面，个人信息的滥用可能会带来不可估量的影响，比如信息歧视、舆论操纵与监视等。&lt;/p&gt;
-&lt;p&gt;关于人们保护信息的能力与相关公共政策的讨论，如今有两种针锋相对的观点：第一种人认为人们能够根据自己的决策来保护好自己的信息隐私，过多的公共政策反而会干扰信息产业对人类带来的有益影响；另一种人认为，在日益复杂的信息世界中，人们很难权衡利弊、自行管理好自己的信息隐私，现有的一些工具已经不够用了，这个时候适当的公共政策与机构应该介入其中，从而抗衡商业团体和政府部门对于信息的收集与操纵。&lt;/p&gt;
-&lt;p&gt;本文试图探讨一些影响人们作出信息隐私决策的因素，以及这些决策是如何导致保护或者违反信息隐私安全的行为的。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="研究笔记" scheme="https://blog.sheronw.xyz/categories/%E7%A0%94%E7%A9%B6%E7%AC%94%E8%AE%B0/"/>
     
     
   </entry>
@@ -402,90 +321,125 @@ passwd 用户名
   </entry>
   
   <entry>
-    <title>EH Forwarder Bot 2.0保持后台运行（Screen）</title>
-    <link href="https://blog.sheronw.xyz/2019/02/22/efbscreen/"/>
-    <id>https://blog.sheronw.xyz/2019/02/22/efbscreen/</id>
-    <published>2019-02-22T22:41:17.000Z</published>
-    <updated>2019-08-17T13:43:51.000Z</updated>
+    <title>2018年度书单</title>
+    <link href="https://blog.sheronw.xyz/2018/12/31/2018booklist/"/>
+    <id>https://blog.sheronw.xyz/2018/12/31/2018booklist/</id>
+    <published>2019-01-01T01:35:17.000Z</published>
+    <updated>2019-07-09T16:32:47.000Z</updated>
     
-    <content type="html"><![CDATA[<p>微信升级到7之后就经常收不到后台推送（不知道问题是出在美国的网络还是我的pixel），但网页版的推送显然是正常的，于是决定时隔一年再次卸载微信，使用efb。<br><del>要是有空顺便把Facebook Messenger也部署了吧</del><br><a href="https://ehforwarderbot.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener">感兴趣的话可以看一下这个documentation</a><br><a id="more"></a><br>用的是Vultr的VPS，5刀一个月的那个（之前用的是digitalocean，github student package里面有优惠），有点肉疼……<br>安装方法和当初装1.0没什么区别，只不过后台运行的方法和之前不太一样，所以从<a href="https://whitecodes.github.io/2018/02/Eh-Forwarder-Bot-2-0/" target="_blank" rel="noopener">这里</a>找到了解决方案，记在下面：</p><ol><li>首先要用screen保持后台运行</li><li>将其后台化需要Ctrl+a、Ctrl+d</li><li>再次打开的话需要执行screen -ls命令，然后再screen -r XXXXX</li></ol>]]></content>
+    <content type="html"><![CDATA[<p>我觉得我今年没怎么读书，准确来讲是没逼着自己读书，结果就是读了好多虚构类(其实就是小说……)<br><a id="more"></a></p><ol><li>《人月神话》 Frederick P. Brooks, Jr.</li><li>《China’s Urban Billion》 Tom Miller</li><li>《生命是什么》 薛定谔</li><li>《黑暗时代的她们》 杰奎琳 罗斯</li><li>《欢乐英雄》 古龙</li><li>《觅渡》 梁衡</li><li>《白》 原研哉</li><li>《激荡三十年 ：中国企业1978-2008》 吴晓波</li><li>《激荡十年，水大鱼大 2008-2018》 吴晓波</li><li>《呐喊》 鲁迅</li><li>《直到最后一句》 卢丽莉</li><li>《布鲁克林有棵树》贝蒂 史密斯</li><li>《人类简史》 尤瓦尔 赫拉利</li><li>《未来简史》 尤瓦尔 赫拉利</li><li>《爱上她的12种方法》 入间人间</li><li>《后羿》 叶兆言</li><li>《红玫瑰与白玫瑰》 张爱玲</li><li>《文心》夏沔尊 叶圣陶</li><li>《下流社会》三浦展</li></ol><p>八本虚构类文学里面，《后羿》和《直到最后一句》都是二刷，而且还是明明知道评价不怎么样但是因为各种各样的共鸣感还是去二刷了的那种，不评价。</p><p>梁衡的散文集真的是因为被写瞿秋白和项羽的那篇给惊艳到了(毕竟是喜欢了一整个中学时代的文章)才买的，之后发现文笔不错官腔太多，不太喜欢。</p><p>忘了在哪儿听说了红白玫瑰就去图书馆借了本张爱玲，对这种小布尔乔亚不太感兴趣，但这个两性关系的研究是真滴巧妙，虽然我我不知道为什么一看到男主内心戏就觉得膝盖中枪，读完赶紧借了本同时代的鲁迅。</p><p>入间人间那本还是电波系，一个男的被另外一个男的和自己喜欢的妹子虐狗，没有之前660有意思。</p><p>布鲁克林里面人名太难记，不过毕竟是几十年前的美国鸡汤，平平淡淡读着挺舒服的。</p><p>《欢乐英雄》受众比较广也不烧脑，而且我就是喜欢古龙比金庸更多一些。但这个开头写的真他娘的好，可以算是心中小说最佳开头top3了。</p><p>非虚构类，《人月神话》差不多算是软工专业书了，其实这书是去年年初购入的，当初好像是在知乎看到这个推荐就入了。成书年代久了点儿，许多内容没有那个时代的专业背景感觉还是看不太懂，好在主要还是讲管理这种比较通用的内容的，所以不能算是过时。虽然好像现在也没有什么看管理类书籍的必要，我也不会去主持什么项目，但其中的一些观点之类的还是可以用在个人生活或者是小项目中的。</p><p>薛定鄂写的那本严格来说不算是科普的科普书，也的确很有意思。虽然物理学家讲生命这事儿挺奇怪的，但也算是从一个很有意思的角度来看了这件事情。书中关于哲学内容的探讨也挺厉害的(或者说物理学家学多了都变成哲学家了)，阅读起来稍微有点吃力，不论是物理方面的内容还是哲学方面的内容，都需要动不动停下来想想，但一旦想明白了就会不由得感叹一句卧槽了……看世界的角度都变得物理学家了起来。</p><p>《文心》更适合给初中生普及语文知识，学校的语文课真的很不到位。</p><p>《黑暗时代的她们》就是致敬类传记，在西方很政治正确的那种，几个妹子我都喜欢，翻译略差。以女权为卖点的书，就怀着猎奇心理买了。虽然能看出来作者写书的侧重点并不是女权，而是尽可能综合地来讲书中的人物，但不免有种剪报的感觉——例子用得太多，没什么作者自己的明确观点在里面，更何况她讲了好几个艺术家，艺术方面的那些解说我是真的看不懂，而且这些人所处的时代大背景我也都不是太清楚，除了梦露的那部分能感同身受之外都算是一头雾水。<br>原研哉那本还是《设计中的设计》的核心思想，只不过挑出来一部分细讲了。</p><p>《中国十亿城民》(虽然我看的是英文版)是在中国呆了很久的歪果仁写的书，记得初中的时候想看中译本，发现太贵了就没买。总之是关于自己一直还算比较关注的城市化问题，农村人口向城市人口的转化。在户籍制度下，在城中生活和工作的农村人口很难向城市人口转变，进而很难享受到与城市人口同等的福利；农村的土地制度和城市的商品房制度相比少了灵活的交易权，而且也更容易受到地方政府的剥削；政府方面，疯狂的城市扩张与各种公共设施的迅速建设诚然满足了城市人口的快速膨胀，但其实是一种不符合市场规律、十分低效的发展模式，圈地也容易使政府财政收支出现问题；过高的房价使得人民将大部分收入用来购入房产，农村和进城人口的消费习惯完全没有形成，反而不利于拉动内需，刺激消费的增长。当然，感觉作者讲得还算中肯，也对中国的高效与执行力做出了一定的褒奖，但正如作者所说的——每一个当地官员都会谈到中国没有出现其他发展中国家在城市化过程中的贫民窟，可是在大多数情况下是，如果城市不能承受住足够的外来人口，他们会直接把他们赶走。这书明明是2012年写的。</p><p>《下流社会》和《中国十亿城民》都不是太新鲜的书，但里面的问题都显然没解决，一个是发展中国家城市化的冲突，另一个是发达国家看不见的阶级固化，类似的书挺多的。</p><p>安利吴晓波的激荡系列，根正苗红是不假，问题是读起来真他妈有意思。</p><p>简史系列同理，明明是融合了多个学科观点的历史书，但不知道为什么就像看起点爽文一样顺。能写出这样的畅销书，两个作者我是真的服气。</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;微信升级到7之后就经常收不到后台推送（不知道问题是出在美国的网络还是我的pixel），但网页版的推送显然是正常的，于是决定时隔一年再次卸载微信，使用efb。&lt;br&gt;&lt;del&gt;要是有空顺便把Facebook Messenger也部署了吧&lt;/del&gt;&lt;br&gt;&lt;a href=&quot;https://ehforwarderbot.readthedocs.io/en/latest/index.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;感兴趣的话可以看一下这个documentation&lt;/a&gt;&lt;br&gt;
+      &lt;p&gt;我觉得我今年没怎么读书，准确来讲是没逼着自己读书，结果就是读了好多虚构类(其实就是小说……)&lt;br&gt;
     
     </summary>
     
-      <category term="Linux" scheme="https://blog.sheronw.xyz/categories/Linux/"/>
+      <category term="阅读笔记" scheme="https://blog.sheronw.xyz/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
     
     
   </entry>
   
   <entry>
-    <title>浮点数的表示法以及加法乘法</title>
-    <link href="https://blog.sheronw.xyz/2019/02/20/float/"/>
-    <id>https://blog.sheronw.xyz/2019/02/20/float/</id>
-    <published>2019-02-20T18:40:28.000Z</published>
-    <updated>2019-08-17T21:24:11.000Z</updated>
+    <title>史记商君列传</title>
+    <link href="https://blog.sheronw.xyz/2018/08/24/shangjunliezhuan/"/>
+    <id>https://blog.sheronw.xyz/2018/08/24/shangjunliezhuan/</id>
+    <published>2018-08-25T00:31:17.000Z</published>
+    <updated>2019-02-24T21:31:46.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="浮点数的表示法"><a href="#浮点数的表示法" class="headerlink" title="浮点数的表示法"></a>浮点数的表示法</h2><p>每一个浮点数都要转换成二进制版本的科学计数法再储存起来（也就是x*2<sup>y</sup>），因此需要存储如下数据：正负号（0正1负），科学计数法的幂（2的次方数），科学计数法的小数部分（用-2进制来表示）。</p><h3 id="十进制转二进制"><a href="#十进制转二进制" class="headerlink" title="十进制转二进制"></a>十进制转二进制</h3><p>把这个数分成小数和整数两种形式。<br>整数直接转二进制然后使用科学计数法。<br>分数部分，每次乘2，取该数的整数部分（要么取不到整数，要么取走1），直到啥都不剩为止。取到的数从左往右写，最前面加0.。</p><a id="more"></a><h3 id="IEEE-Floating-Point-Standard-754标准"><a href="#IEEE-Floating-Point-Standard-754标准" class="headerlink" title="IEEE Floating Point Standard 754标准"></a>IEEE Floating Point Standard 754标准</h3><p>32bits（float）从左往右依次为：</p><ul><li>31: 正负号</li><li>30-23: 8 bits的幂数</li><li>22-0: 23 bits的小数部分（因为科学记数法，所以第一位（小数点左侧）必然是1，就不计算在内了）</li></ul><p>64bits（double）从左往右依次为：</p><ul><li>63：正负号</li><li>62-52：11 bits的幂数</li><li>51-0：52 bits的小数部分</li></ul><h3 id="exponent-bias-method"><a href="#exponent-bias-method" class="headerlink" title="exponent bias method"></a>exponent bias method</h3><p>为了表示负数次幂，转换时在原本的幂数中加一些数字。<br>32位+127，64位+1023<br>这样32位幂的表示范围为-126~127，64为-1022~1023<br>在这里我们没有用two’s complement，原因是这种方法更容易比较两个数的大小。</p><h2 id="浮点数的加法"><a href="#浮点数的加法" class="headerlink" title="浮点数的加法"></a>浮点数的加法</h2><p>首先要把他们对齐，也就是说把两个数字的幂转换成一样的。然后和十进制一样相加减，最后再把得到的结果转换成科学记数法。</p><h2 id="浮点数的乘法"><a href="#浮点数的乘法" class="headerlink" title="浮点数的乘法"></a>浮点数的乘法</h2><p>和加法同理。<br>不过可以在乘之前先判断一下结果的符号，同号为正异号为负。<br>然后相乘（小数部分相乘，幂数相加），最后转回科学记数法。</p><p>不过在实现运算的过程中要注意，储存幂数的时候用的是bias method，而且小数部分中小数点左边的部分并没有实际存储在浮点数中。（血一样的教训）</p>]]></content>
+    <content type="html"><![CDATA[<p>之前一直觉得商鞅的故事挺让人费解的，尤其是他这么拉仇恨。但这只是一个现代人的理解——虽然现在也没好到哪里去，但至少我们还标榜法制社会嘛，民主法治不算深入人心但基本上都懂。我无法想象在一个统治阶级啥都说了算（现在不是？）的世界里，一个人跑出来说要法治要法治在什么程度上触及了既得利益者的利益。</p><p>一个不算结论的结论：读古书的时候，不要站在一个穿越者的角度上去思考，结合时代背景才会不那么容易去纠结无关痛痒的点。这是在纵向层次上说的，不同文化间的横向的比较也同理。<br><a id="more"></a><br>当然，商鞅死得惨从某种程度上来说，好像也的确是自己作的——这老铁活得太超前了嘛。现代的官员，事情办得好，荣华富贵似乎是理所应当的，更何况私有财产神圣不可侵犯好像已经称为了常识。但在那个时候，当官的，如果你不是贵族，一定要低调低调再低调才算美德，和上古时代一个德性，商鞅相比之下就太膨胀了。</p><p>不过他存在的意义，就是用来打破这些自古流传的规矩不是吗，他不会care这单独一条规矩的。只可惜在之后的几千年里，中国信得也是那些儒家从上古的规矩中还原的那一套。也不能说一点道理都没有吧，但后世像商鞅那样的人似乎就不多了，以至于最后得凭借外力来打破那些陈旧的规矩了。</p><p>（司马迁好像也是儒生吧……？感觉他基本上都在diss商鞅hhh</p>]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;浮点数的表示法&quot;&gt;&lt;a href=&quot;#浮点数的表示法&quot; class=&quot;headerlink&quot; title=&quot;浮点数的表示法&quot;&gt;&lt;/a&gt;浮点数的表示法&lt;/h2&gt;&lt;p&gt;每一个浮点数都要转换成二进制版本的科学计数法再储存起来（也就是x*2&lt;sup&gt;y&lt;/sup&gt;），因此需要存储如下数据：正负号（0正1负），科学计数法的幂（2的次方数），科学计数法的小数部分（用-2进制来表示）。&lt;/p&gt;
-&lt;h3 id=&quot;十进制转二进制&quot;&gt;&lt;a href=&quot;#十进制转二进制&quot; class=&quot;headerlink&quot; title=&quot;十进制转二进制&quot;&gt;&lt;/a&gt;十进制转二进制&lt;/h3&gt;&lt;p&gt;把这个数分成小数和整数两种形式。&lt;br&gt;整数直接转二进制然后使用科学计数法。&lt;br&gt;分数部分，每次乘2，取该数的整数部分（要么取不到整数，要么取走1），直到啥都不剩为止。取到的数从左往右写，最前面加0.。&lt;/p&gt;
+      &lt;p&gt;之前一直觉得商鞅的故事挺让人费解的，尤其是他这么拉仇恨。但这只是一个现代人的理解——虽然现在也没好到哪里去，但至少我们还标榜法制社会嘛，民主法治不算深入人心但基本上都懂。我无法想象在一个统治阶级啥都说了算（现在不是？）的世界里，一个人跑出来说要法治要法治在什么程度上触及了既得利益者的利益。&lt;/p&gt;
+&lt;p&gt;一个不算结论的结论：读古书的时候，不要站在一个穿越者的角度上去思考，结合时代背景才会不那么容易去纠结无关痛痒的点。这是在纵向层次上说的，不同文化间的横向的比较也同理。&lt;br&gt;
     
     </summary>
     
-      <category term="计算机科学" scheme="https://blog.sheronw.xyz/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/"/>
+      <category term="阅读笔记" scheme="https://blog.sheronw.xyz/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
     
     
   </entry>
   
   <entry>
-    <title>bit level operators</title>
-    <link href="https://blog.sheronw.xyz/2019/02/13/bit_level_operators/"/>
-    <id>https://blog.sheronw.xyz/2019/02/13/bit_level_operators/</id>
-    <published>2019-02-14T00:40:21.000Z</published>
-    <updated>2019-08-17T21:24:29.000Z</updated>
+    <title>深圳小纪行</title>
+    <link href="https://blog.sheronw.xyz/2018/05/24/shenzhen1st/"/>
+    <id>https://blog.sheronw.xyz/2018/05/24/shenzhen1st/</id>
+    <published>2018-05-24T17:25:12.000Z</published>
+    <updated>2019-06-27T20:05:42.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="编程语言中的操作符"><a href="#编程语言中的操作符" class="headerlink" title="编程语言中的操作符"></a>编程语言中的操作符</h2><h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><ul><li>&lt;&lt; left shift</li><li>>> signed right shift (filled with sign bits)</li><li>>>> unsigned right shift (filled with 0s)</li><li>&amp; bitwise and</li><li>| bitwise or</li><li>^ bitwise exclusive or</li></ul><h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><p>大致与Java相同，只是没有unsigned right shift，具体会怎么shift取决于数据型本身。</p><a id="more"></a><h2 id="一些用法"><a href="#一些用法" class="headerlink" title="一些用法"></a>一些用法</h2><h3 id="set-bits-to-0"><a href="#set-bits-to-0" class="headerlink" title="set bits to 0"></a>set bits to 0</h3><p>x&amp;0=0</p><p>x&amp;1=x</p><h3 id="set-bits-to-1"><a href="#set-bits-to-1" class="headerlink" title="set bits to 1"></a>set bits to 1</h3><p>x|0=x</p><p>x|1=1</p><h3 id="invert-bits"><a href="#invert-bits" class="headerlink" title="invert bits"></a>invert bits</h3><p>x^0=x</p><p>x^1=!x</p><h2 id="应用……？"><a href="#应用……？" class="headerlink" title="应用……？"></a>应用……？</h2><p>刚刚看到了<a href="https://blog.coca.moe/post/er-jin-zhi-mei-ju" target="_blank" rel="noopener">这么一道题</a>，发现和当初学离散数学的时候遇到的那个小朋友分饼干的题型有点像，都是二进制的应用，就当是位运算的一个实例放在这里了。</p>]]></content>
+    <content type="html"><![CDATA[<p>虽然之前没去过，但基本上和自己的预想没什么区别，除了真的没想到五月份就这么热QvQ<br>就业环境什么的没条件实地考察，也就远远看个logo什么的，感觉和其他城市并没有太大差别。不过好在基础设施和城区都比较新，空气和绿化炒鸡棒，感觉是一个很积极向上的地方？<br>本来也不能用一个旅游城市来衡量它，所以其实本身作为旅行的体验的确好像也不怎么样，再加上正好没赶上双年双城展和设计周，感觉就是文化上的荒漠。<br>城区的一些小细节还是很有设计感的，感觉政府对文化产业也有一定投入，但因为太年轻总感觉这城市没啥底蕴……<br>总之就是一个适合工作但真心不适合享受的地方。<br><a id="more"></a><br>另外，在地铁上看到的统一校服比帝都地铁上看到的要好看(我真的不是黑X大附中)！<br>去深圳前对它的印象仅限于老人画的圈和鹅厂，找符合这城市气质的书发现根本找不到，于是勉为其难选了「激荡三十年」，在飞机上正好看完了关于袁庚和他的蛇口那段。<br>其实我一开始是对那个V&amp;A感兴趣，然而高价门票把我给推到了楼上的免费展馆，就是那个蛇口改革开放博物馆，没想到这儿竟然成了这一个周里自认为唯一值得去的地方。博物馆的布置和装潢的确超级符合我个人的美学，可惜正好赶上某zf组团学习，穿正装带话筒的小姐姐一直在逼逼，体验不是太好，包括文中提到的设计方和相关部门的博弈，在天朝也是喜闻乐见，不再赘述。<br>不过，我仍然难以喜欢上深圳这个城市，自始至终都觉得这里只有机会没有内涵，就像空空荡荡的V&amp;A那样，算是文化上的荒漠，强政府可以让经济短期飞升，然而提升文化很难。更糟的是，随着与其他城市的同质化，深圳在其他方面也不再是蛇口的那个乌托邦，或者是改开的桥头堡。<br>当然，感觉这个城市我应该是绕不过去了，就等不那么热而且还有双城展的时候一个人再去一次吧。</p>]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;编程语言中的操作符&quot;&gt;&lt;a href=&quot;#编程语言中的操作符&quot; class=&quot;headerlink&quot; title=&quot;编程语言中的操作符&quot;&gt;&lt;/a&gt;编程语言中的操作符&lt;/h2&gt;&lt;h3 id=&quot;Java&quot;&gt;&lt;a href=&quot;#Java&quot; class=&quot;headerlink&quot; title=&quot;Java&quot;&gt;&lt;/a&gt;Java&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&amp;lt;&amp;lt; left shift&lt;/li&gt;
-&lt;li&gt;&gt;&gt; signed right shift (filled with sign bits)&lt;/li&gt;
-&lt;li&gt;&gt;&gt;&gt; unsigned right shift (filled with 0s)&lt;/li&gt;
-&lt;li&gt;&amp;amp; bitwise and&lt;/li&gt;
-&lt;li&gt;| bitwise or&lt;/li&gt;
-&lt;li&gt;^ bitwise exclusive or&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;C&quot;&gt;&lt;a href=&quot;#C&quot; class=&quot;headerlink&quot; title=&quot;C&quot;&gt;&lt;/a&gt;C&lt;/h3&gt;&lt;p&gt;大致与Java相同，只是没有unsigned right shift，具体会怎么shift取决于数据型本身。&lt;/p&gt;
+      &lt;p&gt;虽然之前没去过，但基本上和自己的预想没什么区别，除了真的没想到五月份就这么热QvQ&lt;br&gt;就业环境什么的没条件实地考察，也就远远看个logo什么的，感觉和其他城市并没有太大差别。不过好在基础设施和城区都比较新，空气和绿化炒鸡棒，感觉是一个很积极向上的地方？&lt;br&gt;本来也不能用一个旅游城市来衡量它，所以其实本身作为旅行的体验的确好像也不怎么样，再加上正好没赶上双年双城展和设计周，感觉就是文化上的荒漠。&lt;br&gt;城区的一些小细节还是很有设计感的，感觉政府对文化产业也有一定投入，但因为太年轻总感觉这城市没啥底蕴……&lt;br&gt;总之就是一个适合工作但真心不适合享受的地方。&lt;br&gt;
     
     </summary>
     
-      <category term="计算机科学" scheme="https://blog.sheronw.xyz/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/"/>
+      <category term="游记" scheme="https://blog.sheronw.xyz/categories/%E6%B8%B8%E8%AE%B0/"/>
     
     
   </entry>
   
   <entry>
-    <title>十进制、二进制与十六进制的相互转换，以及Two’s Complement Notation</title>
-    <link href="https://blog.sheronw.xyz/2019/02/13/10,2,16&amp;Two&#39;s%20Complement%20Notation/"/>
-    <id>https://blog.sheronw.xyz/2019/02/13/10,2,16&amp;Two&#39;s Complement Notation/</id>
-    <published>2019-02-13T23:47:37.000Z</published>
-    <updated>2019-08-17T21:20:56.000Z</updated>
+    <title>2017年度书单</title>
+    <link href="https://blog.sheronw.xyz/2018/01/12/2017booklist/"/>
+    <id>https://blog.sheronw.xyz/2018/01/12/2017booklist/</id>
+    <published>2018-01-13T01:35:17.000Z</published>
+    <updated>2019-02-24T21:18:49.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="二进制转十进制"><a href="#二进制转十进制" class="headerlink" title="二进制转十进制"></a>二进制转十进制</h2><p>很简单，从右往左加，第一位乘以2的零次方，第二位乘以2的一次方，然后以此类推……<br>10101<sub>10</sub>=1*2^4+0*2^3+1*2^2+0*2^1+1*2^0=21<br>还有一种方法是Horner’s Rule，从左往右算，每次把下一位加在这个结果中作为一个整体。<br>10101<sub>10</sub>=(((1*2+0)*2+1)*2+0)*2+1=21</p><a id="more"></a><h2 id="十进制转二进制"><a href="#十进制转二进制" class="headerlink" title="十进制转二进制"></a>十进制转二进制</h2><p>不断地除以二，直到除不动了为止，每一步得到的余数倒过来就是所求的二进制。</p><ul><li><strong>10</strong>/2=5 …0</li><li>5/2=2 … 1</li><li>2/2=1 … 0</li><li>1/2=0 … 1</li></ul><p>所以10的二进制为1010<br>当然，如果不想最后再颠倒一遍的话，可以算的时候从下往上写XD</p><h2 id="十六进制转二进制"><a href="#十六进制转二进制" class="headerlink" title="十六进制转二进制"></a>十六进制转二进制</h2><p>十六进制的每一位都能转换成一个四位的二进制，然后把它们拼起来就好，其实还有一个转换表，但算起来也不麻烦，我觉得不背也行。</p><h2 id="二进制转十六进制"><a href="#二进制转十六进制" class="headerlink" title="二进制转十六进制"></a>二进制转十六进制</h2><p>和上面一个道理，每四位二进制都能转换成一位十六进制，如果最后一组不足四位填上几个零就好。</p><h2 id="十六进制转十进制"><a href="#十六进制转十进制" class="headerlink" title="十六进制转十进制"></a>十六进制转十进制</h2><p>和二进制转十进制一个道理，只不过把2换成16了而已。</p><h2 id="十进制转十六进制"><a href="#十进制转十六进制" class="headerlink" title="十进制转十六进制"></a>十进制转十六进制</h2><p>同上，和二进制一样，只不过不断除以16。</p><h2 id="Two’s-Complement"><a href="#Two’s-Complement" class="headerlink" title="Two’s Complement"></a>Two’s Complement</h2><p>这是一种用二进制表达整数（包括正负）的一种方法。<br>首先，从最左边的那一位可以看出这个数字的正负——0为正，1为负。<br>如果是正数的话，和之前讲到的传统二进制表达是相同的。<br>如果是负数的话，想要知道它的具体值，我们需要将Two’s Complement转换成它的相反数（也就是说这个数字的整数版本）。<br>转换成相反数的算法如下（同时适用与正数和负数）：</p><ul><li>将每一位的数字颠倒（颠倒指的是，1换成0，0换成1）</li><li>在颠倒之后的基础上再+1</li></ul><p>比如这里有个我瞎编的32bits的数字：<br>1010 0100 0100 1111 1010 1100 0101 0000<br>第一位是1，所以这个数是小于零的<br>首先我们要把它变成这样的：<br>0101 1011 1011 0000 0101 0011 1010 1111<br>然后再+1就变成了这样：<br>0101 1011 1011 0000 0101 0011 1011 0000<br>这个数就是最前面瞎编的那个数的相反数</p><p>哦对了，因为32bits的二进制写起来太长了，所以经常会用十六进制来表示。</p>]]></content>
+    <content type="html"><![CDATA[<p>  拖了很久才动笔写，一口气全写完感觉快要吐了。今年按理来说真的不算特别忙，但所有的品类加在一起也就读了二十本左右（不过小说类比往年低了很多……真的是一年比一年小说看得少），而且回顾思考也远远不到位，希望2018能够养成抽空读书的好习惯。</p><h2 id="1-《仲夏之死》by-三岛由纪夫"><a href="#1-《仲夏之死》by-三岛由纪夫" class="headerlink" title="1. 《仲夏之死》by 三岛由纪夫"></a>1. 《仲夏之死》by 三岛由纪夫</h2><p>  不是很懂文学，不太好评判。比起彻底厌世的太宰，三岛的文笔有一种昭和味道的纤细，还带点贵族气息。一边是繁华的市井，一边是放弃人生的人，平凡人的幻灭其实也没什么可说的，但加上了不知道该说时冗杂还是细腻的心里描写，这些破碎的故事反而别有一番风味。</p><h2 id="2-《人间草木》by-汪曾祺"><a href="#2-《人间草木》by-汪曾祺" class="headerlink" title="2. 《人间草木》by 汪曾祺"></a>2. 《人间草木》by 汪曾祺</h2><p>  一直觉得散文很无聊，冲着『夏天』中关于栀子花的描写买了这本书，然后才发现汪曾祺老爷子还真可爱，字里行间总有股朴实劲儿，从来找不出什么空话套话，也从来不讲什么大道理，简简单单像个孩子，还有很多幽默的字眼，读着特顺溜。除了各种有趣的日常观察之外，关于西南联大的各种你不知道的事情也蛮有意思的，强烈推荐。<br><a id="more"></a></p><h2 id="3-《圣经中文和合本》"><a href="#3-《圣经中文和合本》" class="headerlink" title="3. 《圣经中文和合本》"></a>3. 《圣经中文和合本》</h2><p>  花了好几个月，扫完了全文（是的……没有认真读），对于这么一本全球性的典籍来说，不知道为啥感觉翻译成中文之后文学性大打折扣（想想一下诗经什么的翻译成英文……）。即使将神迹显现的部分去掉，一切也仍然成立，换句话说，这不是一个神的故事，这是一部人的历史。</p><h2 id="4-《万万没想到：用理工科思维理解世界》by-同人于野"><a href="#4-《万万没想到：用理工科思维理解世界》by-同人于野" class="headerlink" title="4. 《万万没想到：用理工科思维理解世界》by 同人于野"></a>4. 《万万没想到：用理工科思维理解世界》by 同人于野</h2><p>题目有噱头，感觉应该是畅销书。作者的功力和学识我自然是认可的，但因为是博客的摘选，比较碎片化，和十万加本质上没什么区别。虽然不过作者科普做得很到位，和由人组成的社会结合起来谈科学的内容也有新意，但只能当作消遣读物在地铁公交车上打开看看，别指望能够瞬间读出什么干货就是了。仍然推荐。</p><h2 id="5-《群体性孤独》by-雪莉·特克尔"><a href="#5-《群体性孤独》by-雪莉·特克尔" class="headerlink" title="5. 《群体性孤独》by 雪莉·特克尔"></a>5. 《群体性孤独》by 雪莉·特克尔</h2><p>  可能是比较早的探讨科技给人精神层面带来的困境的书……？作者是社科出身的，行文比较感性一点，也没有什么特别强有力的观点，第一部分探讨人工智能和机器人的可能性，第二部分是社交媒体和IM，都和现在日常生活中感受到的孤独有关（因为时代原因，现在看来这些问题和其它问题相比都没那么严重了），读起来稍微有点无聊。</p><h2 id="6-《二手时间》by-S-A-阿列克谢耶维奇"><a href="#6-《二手时间》by-S-A-阿列克谢耶维奇" class="headerlink" title="6. 《二手时间》by S.A.阿列克谢耶维奇"></a>6. 《二手时间》by S.A.阿列克谢耶维奇</h2><p>  这是一本真实的访谈录。不愧是诺奖得主，关于人性的探讨和历史的厚重感根本不是我能够详细阐述的。选题叫『二手时间』，题材的跨度以及写作时间都很长，从备受争议的斯大林时代到苏联解体，甚至俄罗斯建国后的一些历史遗留问题还有恐袭都有所涉及。在历史课本上被一带而过的从十月革命到苏联解体的这段时间里，无数俄罗斯人民的血与泪都挥洒在了这片土地上。</p><p>  从各种意义上来说，俄罗斯这个民族都很特殊——在高寒冻土的艰苦条件下生活的太久了，以至于面对死亡和战争时都平静得可怕，仿佛他们正为此而生。当然，这也是一个文豪辈出的国度，在那个计划经济的年代，书籍才是人们的食粮，每个人都在阅读和谈论文学，他们相信哲学，相信爱，甚至可以为了理想而疯狂。上天赋予了俄罗斯人复杂的天性，也赋予了他们多舛的命运。『俄罗斯的生活就应该是不幸的，贫寒的，那样灵魂才能高尚。它的意义就在与它不属于这个世界，越是肮脏和血腥，灵魂越能得到自由……』</p><p>  阿列克谢耶维奇一贯采用纪实文学性质的复调写作，自始至终都没有为任何谈话添加自己的主观意愿，因此我们可以在同一本书、甚至同一章节中见到两种针锋相对的观点，这也预示着不同的人在不同的立场上发声，没有人是『政治正确』的。受访者多为普通民众，却十分具有代表性，因为『这是属于一个时代而不是某一个人的故事』，在大的时代背景下，小人物的牺牲往往是被忽略的，因此同样的故事反反复复地发生。</p><p>  当然，被议论得最多的就是『苏联』存在过的意义了。一方人憎恨计划经济，憎恨斯大林以及那个时代的种种荒谬却又骇人听闻的行为（初中的时候还买过古拉格的书，但我没读完……）以及给人们带来的巨大伤痛。然而另一方人，多是那些老年的、为苏联奉献一生的人，却无比怀念那个光荣的时代：苏联在艰苦的条件下造出了原子弹、击败了希特勒、水坝和各种公共设施从无到有……他们为共产主义的不战而败而惋惜，同时也因为理想时代和拜金主义切换得如此之迅速而无比困惑。『商店里满是香肠，但人们没有幸福。我再也看不到人们炽热的目光了。』</p><p>  因为我们也经历过如斯大林时代一般的『狂热』，也曾为姓『资』还是姓『社』而争论不休，因此这本书，以及曾经红色帝国的历史，对我国也许会有特别的借鉴意义，如果能够耐心看得完厚厚一本的话，强烈推荐。</p><h2 id="7-《少女不十分》by-西尾维新"><a href="#7-《少女不十分》by-西尾维新" class="headerlink" title="7. 《少女不十分》by 西尾维新"></a>7. 《少女不十分》by 西尾维新</h2><p>  其实这是我看的第一本西尾维新的轻小说……说实话感觉挺一般的，可能是因为自己看过一些他原作担当的动画而且喜欢的轻小说作者入间人间是他的脑残粉所以要求有点高。当然这个差不多是伪自传的文章也不需要开太多脑洞，所以还没看完我就猜到结局了（喂）。</p><p>  虽然是这样，西尾的文笔倒是真的有那种轻小说的风范，特点就是废话多，一点剧情配十万句吐槽，物语系列还是新房改得好，特点都保留了（来来来让我看到你们的暂停键），当然这是跑题了。……所以阿宅们比较有带入感，然后再弄点家里蹲的人生危机就能大卖了，换句话说西尾算不上是小说家，应该说是输出某一种特定价值观的OTAKU人生导师吧……？</p><p>  具体有多废话呢，前20页根本没情节，而全篇也差不多是这种步调吧，一个短篇小说的情节量凑了一本书，终于知道为什么刀语一卷改一集动画了，当年追忆飞行员好像是一本就是一个剧场版……？虽然可能是这方面的东西（西尾价值观）接触太多了，所以我其实还是很喜欢西尾这种风格的，看来我的思想已经严重西化了hhh</p><h2 id="8-《天空的另一半》by-尼可拉斯·D-克里斯多夫-amp-雪莉·邓恩"><a href="#8-《天空的另一半》by-尼可拉斯·D-克里斯多夫-amp-雪莉·邓恩" class="headerlink" title="8. 《天空的另一半》by 尼可拉斯·D.克里斯多夫&amp;雪莉·邓恩"></a>8. 《天空的另一半》by 尼可拉斯·D.克里斯多夫&amp;雪莉·邓恩</h2><p>  可能我就是那种利己主义者，看完全书之后内心毫无波动。为自己争取权利，同时为自己所在的群体争取权利，这点觉悟我还是有的，然而自己这儿还有一摊乱事还去帮别人，对不起我做不到。虽然从这个角度上看作者的出发点并没有什么不妥，文章都一度在纽约时报上登载了，愿意干好事的有钱人也会看到的，只要一百个人里面有一个人看到了也会大不一样。可能这就是西方媒体的一种责任吧。</p><h2 id="9-《国富论（罗卫东选译本）》by-亚当·斯密"><a href="#9-《国富论（罗卫东选译本）》by-亚当·斯密" class="headerlink" title="9. 《国富论（罗卫东选译本）》by 亚当·斯密"></a>9. 《国富论（罗卫东选译本）》by 亚当·斯密</h2><p>  我不知道该怎么说这本书，一是因为这只是选译本，无法窥其全貌，二是因为这种到处都是精华的书没法写一个概括出来。如果你是一个没上高中的初中生的话，强烈建议稍微瞧几眼选译本，比高中政治课本经济生活部分不知道高到哪里去了。</p><h2 id="10-《贝尔实验室与美国革新大时代》by-乔恩·格特纳"><a href="#10-《贝尔实验室与美国革新大时代》by-乔恩·格特纳" class="headerlink" title="10. 《贝尔实验室与美国革新大时代》by 乔恩·格特纳"></a>10. 《贝尔实验室与美国革新大时代》by 乔恩·格特纳</h2><p>  这本书讲的是贝尔实验室从建立到重组直至衰落的历史，中间提到的科学家很多，不少重要科研成果的研发过程也很有意思，包括但不限于我们现在司空见惯的晶体管、太阳能电池、光导纤维、激光、通讯卫星、蜂窝移动数据还有现代通讯技术的基本概念，而且贝尔实验室兴起的时代正是美国赶超欧洲的那个年代，听上去还真是热血沸腾。尽管上文提到的每一个发明都巨牛逼，但作为『创新』成果来讲贝尔实验室留给后人的遗产反而是一种培养并管理创新人才的系统，即使在今天都值得借鉴。不管怎么说，贝尔实验室的成就代表了那个辉煌的年代，正是它孕育出了当时的未来，也就是我们如今习以为常的现在。</p><h2 id="11-《单身社会》by-克里南伯格"><a href="#11-《单身社会》by-克里南伯格" class="headerlink" title="11. 《单身社会》by 克里南伯格"></a>11. 《单身社会》by 克里南伯格</h2><p>本来以为是和什么年轻人不婚有关的书（这样就可以理直气壮地保持单身了），但好像也没有给出什么特别新的观点，主要是一些访谈什么的，而且很大一部分内容都给了老年人独居的问题，可以参考《无缘社会》。</p><h2 id="12-《斯通纳》-by-约翰·威廉斯"><a href="#12-《斯通纳》-by-约翰·威廉斯" class="headerlink" title="12. 《斯通纳》 by 约翰·威廉斯"></a>12. 《斯通纳》 by 约翰·威廉斯</h2><p>这书我一开始就是在国家图书馆书架上随便找的，结果没想到看了几页不知为何有些哽咽，回去入了kindle版。喜欢这种行文叙事的感觉，克制又不失张力。一个平淡无奇的人，平淡无奇地出生，平淡无奇地活着，平淡无奇地死去，而人生好像其实就是这样。推荐。</p><h2 id="13-《大国大城》by-陆铭"><a href="#13-《大国大城》by-陆铭" class="headerlink" title="13. 《大国大城》by 陆铭"></a>13. 《大国大城》by 陆铭</h2><p>讲中国城市（尤其是一线城市）的规划问题，写了一些现有政策（尤其是户籍制度）的不合理性并提出了建议，打算二刷。陆铭教授绝壁是中国学界一股令人心疼的泥石流，整本书清晰易懂又有理有据，然而书都出了好几年了到目前为止政策并没有什么变化。强烈推荐。</p><h2 id="14-《Weapons-of-Math-Destruction》by-Cathy-O’Neil"><a href="#14-《Weapons-of-Math-Destruction》by-Cathy-O’Neil" class="headerlink" title="14. 《Weapons of Math Destruction》by Cathy O’Neil"></a>14. 《Weapons of Math Destruction》by Cathy O’Neil</h2><p>一个数据学家以自己亲历的职业经验为起点，搜集了各种导致阶级固化恶性循环的数据处理筛选系统并命名为WMD（Weapons of Math Destruction），看了之后各种细思恐极。虽然好像在美国这种现象更加严重，但在中国也能够感同身受。我不认为这是陈词滥调，毕竟原本人们可以规避这一切，算是为目前正火的什么big data敲响了警钟。</p><h2 id="15-《One-Child-The-Past-and-Future-of-China’s-Most-Radical-Experiment》by-Mei-Fong"><a href="#15-《One-Child-The-Past-and-Future-of-China’s-Most-Radical-Experiment》by-Mei-Fong" class="headerlink" title="15. 《One Child: The Past and Future of China’s Most Radical Experiment》by Mei Fong"></a>15. 《One Child: The Past and Future of China’s Most Radical Experiment》by Mei Fong</h2><p>马来西亚华裔作为纽约时报记者，以一个旁观者的角度写的书。出人意料地包括了关于独生子女政策许多方面，比如对于重男轻女、超生、独生子女的娇惯现象以及失独家庭。整本书并不长，作者官网有中文版下载（但应该被墙了吧）。</p><h2 id="16-《A-Christmas-Carol》-by-Charles-Dickens"><a href="#16-《A-Christmas-Carol》-by-Charles-Dickens" class="headerlink" title="16. 《A Christmas Carol》 by Charles Dickens"></a>16. 《A Christmas Carol》 by Charles Dickens</h2><p>在那个年代肯定算是不错的人文关怀类小说，可惜现在看来有点套路（虽然双城记也有点套路但没它这么套路），可能是我之前看过类似的故事吧，直接猜到结局了QvQ</p><h2 id="17-《All-I-Really-Need-to-Know-I-Learned-in-Kindergarten》by-Robert-Fulghum"><a href="#17-《All-I-Really-Need-to-Know-I-Learned-in-Kindergarten》by-Robert-Fulghum" class="headerlink" title="17. 《All I Really Need to Know I Learned in Kindergarten》by Robert Fulghum"></a>17. 《All I Really Need to Know I Learned in Kindergarten》by Robert Fulghum</h2><p>也是一本散文集，虽然这是我读的第一本全英文的散文集，但这作者和汪曾祺老爷爷的风格有点像，还是走日常诙谐路线的（可能是美式休闲风吧），所以读起来并不难，有空的时候就读一篇小短文也不累。不过成书在上个世纪八十年代，有的时候发现了关于美国那个时代的一些小细节（比如冷战什么的）还觉得挺有意思的。这本书里的序言被人教版高中语文课本收录了，起了个名字叫《教条》，当初就印象深刻……</p><h2 id="18-《复眼人》by-吴明益"><a href="#18-《复眼人》by-吴明益" class="headerlink" title="18. 《复眼人》by 吴明益"></a>18. 《复眼人》by 吴明益</h2><p>虽然只看过吴明益的《天桥上的魔术师》，但一直觉得他是那种typical的台湾小说家hhh之前那本『天桥上的魔术师』主要是讲台北，而这本『复眼人』讲台湾土著的一些价值观和古老传承更多一点（一本是城市，一本是自然），而且关于女主儿子的那段我觉得逻辑上稍微有点站不住脚，可能这种文艺的人更适合写一个留下很多空白的人物（比如天桥上的那个魔术师）而不是进行世界观搭建吧。虽然我真的更喜欢『天桥上的魔术师』多一点，但这本『复眼人』也还算不错。如果有机会的话可以读一下。</p><h2 id="19-《From-the-Soil-The-Foundation-of-Chinese-Society》by-费孝通"><a href="#19-《From-the-Soil-The-Foundation-of-Chinese-Society》by-费孝通" class="headerlink" title="19. 《From the Soil: The Foundation of Chinese Society》by 费孝通"></a>19. 《From the Soil: The Foundation of Chinese Society》by 费孝通</h2><p>挺有年头的书了，现在中国农村的情况已经大不一样了，但有很多传统的思想还是没有改变的。整本书不太厚，有机会应该会认真重读吧。</p><h2 id="20-《Willful-Blindness》by-Margaret-Heffernan"><a href="#20-《Willful-Blindness》by-Margaret-Heffernan" class="headerlink" title="20. 《Willful Blindness》by Margaret Heffernan"></a>20. 《Willful Blindness》by Margaret Heffernan</h2><p>研讨课上要求的课本，讲人的潜意识在日常生活中的一些表现，运用了大量的例子引证，不过大多数例子都和美国人的日常生活密切相关（或者是他们亲身经历过的），所以中国人读起来可能没有那种熟悉的感觉。差不多是自己（不得不）正经八百地读的第一本英文作品。之前很少接触这种体裁的文学，留学之后才发现还是挺多的。</p><h2 id="21-《The-Hidden-Brain》by-Shankar-Vedantam"><a href="#21-《The-Hidden-Brain》by-Shankar-Vedantam" class="headerlink" title="21. 《The Hidden Brain》by Shankar Vedantam"></a>21. 《The Hidden Brain》by Shankar Vedantam</h2><p>也是研讨课上要求的课本，但感觉比上一本写的要好一点，例子举得没那么碎了还图文并茂，而且这个作者好像挺擅长使用比喻和通感这两种修辞手法的（喂）。总之看了这两本书之后对人类的潜力感到深深地绝望。本来以为自己会变得更好，结果科学研究发现『你不行的』『你做不到的』『这是基因所决定的』『这就是人类极限了』。本来以为人活着要被社会和其他各种东西所束缚所以不可能自由，结果其实连自己都不受自己控制hhhh</p><h2 id="22-《黄昏色的咏使》by-细音启"><a href="#22-《黄昏色的咏使》by-细音启" class="headerlink" title="22. 《黄昏色的咏使》by 细音启"></a>22. 《黄昏色的咏使》by 细音启</h2><p>人生中读完的第一个轻小说系列，初中的时候看着觉得写的真好，后来就下了电子书重温了一遍，现在看来好像没有当时看的时候觉得那么好了，但仍然是目前心中轻小说NO.1，之后细音启写的东西一本不如一本，只有这本还没完全被商业气息给沾染，还是最初的少年少女的故事。</p>]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;二进制转十进制&quot;&gt;&lt;a href=&quot;#二进制转十进制&quot; class=&quot;headerlink&quot; title=&quot;二进制转十进制&quot;&gt;&lt;/a&gt;二进制转十进制&lt;/h2&gt;&lt;p&gt;很简单，从右往左加，第一位乘以2的零次方，第二位乘以2的一次方，然后以此类推……&lt;br&gt;10101&lt;sub&gt;10&lt;/sub&gt;=1*2^4+0*2^3+1*2^2+0*2^1+1*2^0=21&lt;br&gt;还有一种方法是Horner’s Rule，从左往右算，每次把下一位加在这个结果中作为一个整体。&lt;br&gt;10101&lt;sub&gt;10&lt;/sub&gt;=(((1*2+0)*2+1)*2+0)*2+1=21&lt;/p&gt;
+      &lt;p&gt;  拖了很久才动笔写，一口气全写完感觉快要吐了。今年按理来说真的不算特别忙，但所有的品类加在一起也就读了二十本左右（不过小说类比往年低了很多……真的是一年比一年小说看得少），而且回顾思考也远远不到位，希望2018能够养成抽空读书的好习惯。&lt;/p&gt;
+&lt;h2 id=&quot;1-《仲夏之死》by-三岛由纪夫&quot;&gt;&lt;a href=&quot;#1-《仲夏之死》by-三岛由纪夫&quot; class=&quot;headerlink&quot; title=&quot;1. 《仲夏之死》by 三岛由纪夫&quot;&gt;&lt;/a&gt;1. 《仲夏之死》by 三岛由纪夫&lt;/h2&gt;&lt;p&gt;  不是很懂文学，不太好评判。比起彻底厌世的太宰，三岛的文笔有一种昭和味道的纤细，还带点贵族气息。一边是繁华的市井，一边是放弃人生的人，平凡人的幻灭其实也没什么可说的，但加上了不知道该说时冗杂还是细腻的心里描写，这些破碎的故事反而别有一番风味。&lt;/p&gt;
+&lt;h2 id=&quot;2-《人间草木》by-汪曾祺&quot;&gt;&lt;a href=&quot;#2-《人间草木》by-汪曾祺&quot; class=&quot;headerlink&quot; title=&quot;2. 《人间草木》by 汪曾祺&quot;&gt;&lt;/a&gt;2. 《人间草木》by 汪曾祺&lt;/h2&gt;&lt;p&gt;  一直觉得散文很无聊，冲着『夏天』中关于栀子花的描写买了这本书，然后才发现汪曾祺老爷子还真可爱，字里行间总有股朴实劲儿，从来找不出什么空话套话，也从来不讲什么大道理，简简单单像个孩子，还有很多幽默的字眼，读着特顺溜。除了各种有趣的日常观察之外，关于西南联大的各种你不知道的事情也蛮有意思的，强烈推荐。&lt;br&gt;
     
     </summary>
     
-      <category term="计算机科学" scheme="https://blog.sheronw.xyz/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/"/>
+      <category term="阅读笔记" scheme="https://blog.sheronw.xyz/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>不知道应该起什么标题的纽约纪行</title>
+    <link href="https://blog.sheronw.xyz/2018/01/05/Christmas2017InNYC/"/>
+    <id>https://blog.sheronw.xyz/2018/01/05/Christmas2017InNYC/</id>
+    <published>2018-01-05T20:35:12.000Z</published>
+    <updated>2019-07-01T18:40:53.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>今年圣诞假也就两个周，和过年的时间也对不上，所以自认为并没有回国的需要（最主要的是今年入了Pixel 2，还有各种在墙外用习惯了的服务，不想回国再折腾），于是和几个中国留学生合计了一下，发现去趟纽约的来回路费+Airbnb多人拼房的费用比来回机票要便宜点儿，就在距离出发一两周前十分敷衍地把所有东西订完了（其实早点定的话会更便宜……）。</p><p>不过，写点什么好呢，只好翻翻自己没写几个字的流水账本和（第一个周）同行的女生在微博发的Vlog（因为本人在里面有正脸……所以就不发URL了hhhh），Vlog什么的似乎最近很流行的样子，看起来感觉也很好，但我连照片都懒得拍，拍视频什么的太难为我了QvQ</p><a id="more"></a><p>然后才发现……因为我们这一行人都懒散没规划，回过头来看看这两个周的假期并！没！有！逛！多！少！地！方！也就吃得还挺好（和我们学校typical American food相比），日常就是睡到中午，下午逛一会儿，晚上回去各自抱着各自的电脑熬到下半夜，再加上我们都是几个没什么仪式感的人，所以圣诞节和元旦也就跟没过差不多，甚至比平时都敷衍。</p><p>其实之前一直觉得美国不美（和世界上绝大多数国家or地区比，真的），尤其是非自然景观，因为这是一个老牌的现代化国家，所以一切都是看起来旧旧的新东西，历史感不浓厚。目前唯一能够感受到历史厚重感的地方应该就是东部的没落工业地区吧，就和<em>迷河</em>或<em>Sally Face</em>里的场景，还有我在路上看到的大多数没有什么烟火气的小镇一样，充满着颓圮的气息，楼要不高不低，砖要红，周围要有杂草，天要阴——这是一种不太积极向上的美感，但也是我目前为止唯一觉得美国“漂亮”的地方（至于一些高大上的东西，摩天大楼还有高科技什么玩意儿的，放在哪个国家都一样，所以忽略不计）。</p><p>纽约也是这样，虽然不能算是没落，但你可以深切地体会到这里的 <strong>脏 乱 差</strong> ，莫名其妙杂乱无章的城市规划，无处不在的垃圾和污水，大冬天睡在路边的无家可归者，总是有股尿骚味的地铁站里跟你搭讪的流浪汉。虽然说是这么说，我还是觉得纽约是散发着独特的魅力的，但又说不出来到底为什么——也许她的居民可以随意布置自己的房子不用担心天际线和穿墙打洞，也许不论什么人都能来这儿呆着找机会不必担心自己是低端人口，即使是连英语都不会说的人。Big Apple的绰号的确不为过，这是一个纷繁复杂的万花筒。</p><p>不过说是纽约纪行，但主要的活动范围其实也就在曼哈顿，尤其是比较靠南的那一块儿，就是SOHO和东村附近。最开始的几天好像都在陪着他们逛街（之后的几天好像也在陪他们逛街），大概就是SOHO周遭的各种小店铺大店铺，然而其实我最大的花销就是为了晚上大家一起看电影而在APPLE Store买的mini porter to HDMI adpter……接近四十刀的价格感觉肉疼极了。其实可能是之前我在国内也没买过那些牌子，反正看了看价格也都不便宜，在H&amp;M买了个白色卫衣就三十多刀，我之前的卫衣明明是漫踪打折的时候花了软妹币七八十捞的hhh</p><p>然后好像我们一直都在逛街，去了世贸中心附近但完全没去911纪念馆一直在逛街，第五大道洛克菲勒广场之类的当然更是逛街，本来打算去西边的高线公园但其实也没去成也是在附近逛街……可是因为去的时候只带了个书包连箱子都没带，回来的时候也只带了个书包，也就买了件卫衣买了条裤子，回来的时候都穿身上了，也没有什么购物体验可以分享（这次旅行之后我发现我之前真的对男孩子们的购买力和逛街力有很大的误会……可以说是纠正了刻板印象了）hhh</p><p>公园的话，好像去了bryant park的那个冬天的集市，但仅仅是路过所以根本没逛，再就是大名鼎鼎的central park，正好去的那天下了挺大的雪，虽然人不多但真的是白茫茫一片啥都没有如果是夏天草木繁盛的时候去应该会很热闹吧，但冬天真的没什么可看的。</p><p>纽约本来有无数值得去的博物馆艺术馆啊之类的，可是我们也就去了三个，大都会（MET），现代艺术（MoMA）还有自然历史博物馆（其实就是最著名的那三个）。</p><p>MET真的很棒，之前初中毕业旅行的时候就去过一次，而这次旅行有四分之一的时间都贡献给了它，尽管如此去了这么多次常规展览也可能看了不到四分之一QvQ说到逛博物馆，我一直都特别讨厌那种去最知名的几个展品前面拍好照绕了一圈就算是去过了的那种游览方式，可是如果要仔细观察每一个展品，把所有的说明都看完，听一遍官方解说再把各种历史背景了解完的话，估计一天一个展厅都看不完吧hhh这次正好同行的都是文科生，听他们一边解释一边讨论希腊罗马古埃及历史还有各种兵器的演变感觉还是挺有意思的。</p><p>在某些展厅可以看到外面中央公园的方尖碑，再加上在埃及展馆神庙前面有当初碑下放着的螃蟹，于是出于好奇就冒着严寒去看了一下。这个方尖碑和华盛顿特区那个美国人仿造的不一样，倒是埃及人公元前15世纪造的真货，换了好几个王朝挪了好几个地方，到托勒密王朝的时候有了个名字叫克娄巴特拉之针，反正辗转之后被送到了美国。一直都是这样，征服了一个古老又辉煌的文明之后就把那边的宝贝搬回家，和当年圆明园似的。估计古埃及那帮人也没想到过自己出于某种愿望建造的方尖碑会被挪好几个地方，从一个帝国到另一个帝国，直到几千年后远渡重洋，来到一个年轻又野心勃勃的国家，被刻上他们的文字和他们的愿望，放在公园里面供来自全世界的人瞻仰。他们可能更没想到在几千年后，新世界的人们又仿照方尖碑的式样又造了个方尖碑，然后给予了什么别的愿望。</p><p>自然历史博物馆的话，我也就逛了半天，门口有老罗斯福的雕像，卖票的地方还有老罗的语录，看样子应该是和（喜欢自然历史的）老罗有点关系了。虽然进去之后发现基本上全是标本………………可能在之前的时代里看标本是一件挺有意思的事情，但现在各式各样的资源这么多，看标本就有点无聊了。不过人类学方面的一些展馆都挺有意思，我看了大洋洲和亚洲的部分，之前一直不知道人类学都是学啥的，看完了之后大概有了一点印象hhh</p><p>虽然MoMA有很多著名的展品，但恕我直言，这个品牌营销做的十分不错，首先MoMA这四个单词就已经是一种符号一样的品牌形象了，还有那么多周边产品和Store（是的，感觉这栋楼已经被周边店给充满了，而除了楼马路对面还有一家），最主要的是楼下的那家餐馆还是米其林（当然我没去）……所以门票也是这几个里面最贵的，因为另外两个博物馆都是捐赠制每次不要脸地交一美刀就进去了hhh我去的那一天MoMA挤满了人，完全没有看下去的兴致。其他的展品倒是名气不大，但我至少硬着头皮看不懂装懂地看完了，可是五楼的那些画，本来值得好好看看，但看着一堆人排队在前面合影我就……嘛，所以梵高的星空我连看都没看，毕加索马蒂斯夏加尔的一些之前在画册上见到的我还是远远观望了一下。有意思的是MoMA的门票可以兑换一张楼下MoMA电影院的票，我看的是<em>Smithereens</em>，1982年的片子，很嬉皮士歌很好听，虽然和展品一样看不懂。</p><p>其实这次旅行花销最多的就是吃，主要是吃一些在我们村里吃不到的东西，比如中餐和日料，我们也没有去找什么推荐都是在路边随便找的店铺，最主要的是我……也感受不出来好吃不好吃，应该算是好吃吧，但就是贵极了，基本上都是把美元当人民币花的节奏。吃过一次法餐，还是从MET出来在上东区走投无路吃的（虽然我觉得还蛮好吃的）。结果就是最后几天我们都吃土了，天天吃burger king和subway……</p><p>说下纽约的地铁，其实感觉没有网上说的那么乱，uptown往北走downtown往南走，分清楚local和express这两种车，再就是仔细听广播还有多注意观察各种指示牌，反正我倒是没有遇到什么大问题。治安的话，即使是午夜地铁里也挤满了人……虽然还是有各种奇奇怪怪的人。卖艺的倒是挺多，虽然可以说是噪音污染但大部分时间都感觉很有feel，一想到北京地铁的卖艺人就觉得有点扎心。</p><p>最后秀一下单纯充值信仰订的Google Photo Book，九块九（美元）包邮的平装版，因为精装版十九块九……没怎么拍照所以把一些乱七八糟被发在别人微信群里的合照也加上了才凑够了最低要求二十张。印刷的话好像都是比屏幕上的颜色要深一些，以及pixel原生的图片印出来的效果都挺好，别人的手机（iphone）因为通过微信传输的原因（有的是发原图有的不是）会糊一点，内页的话……自己摄影水平垃圾就不放了。</p><p><img src="http://images2.imagebam.com/4c/3b/0d/d1db95714051993.jpg" alt="photo"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今年圣诞假也就两个周，和过年的时间也对不上，所以自认为并没有回国的需要（最主要的是今年入了Pixel 2，还有各种在墙外用习惯了的服务，不想回国再折腾），于是和几个中国留学生合计了一下，发现去趟纽约的来回路费+Airbnb多人拼房的费用比来回机票要便宜点儿，就在距离出发一两周前十分敷衍地把所有东西订完了（其实早点定的话会更便宜……）。&lt;/p&gt;
+&lt;p&gt;不过，写点什么好呢，只好翻翻自己没写几个字的流水账本和（第一个周）同行的女生在微博发的Vlog（因为本人在里面有正脸……所以就不发URL了hhhh），Vlog什么的似乎最近很流行的样子，看起来感觉也很好，但我连照片都懒得拍，拍视频什么的太难为我了QvQ&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="游记" scheme="https://blog.sheronw.xyz/categories/%E6%B8%B8%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>《国富论（罗卫东选译本）》摘抄</title>
+    <link href="https://blog.sheronw.xyz/2017/10/13/twn/"/>
+    <id>https://blog.sheronw.xyz/2017/10/13/twn/</id>
+    <published>2017-10-13T19:35:12.000Z</published>
+    <updated>2019-02-24T21:19:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><em>只有第一章有认真读，越到后面越不认真，最后直接放弃了hmm</em></p><a id="more"></a><h3 id="第一篇-论劳动生产力提高的原因，以及论劳动产品在不同阶层的人中间自然分配的顺序"><a href="#第一篇-论劳动生产力提高的原因，以及论劳动产品在不同阶层的人中间自然分配的顺序" class="headerlink" title="第一篇 论劳动生产力提高的原因，以及论劳动产品在不同阶层的人中间自然分配的顺序"></a>第一篇 论劳动生产力提高的原因，以及论劳动产品在不同阶层的人中间自然分配的顺序</h3><p>亚当·斯密第一次定义了生产的三大要素：劳动、土地和资本，在他看来，是资本——而不是其他——带来了市场进而劳动分工的扩展，资本的投入导致市场扩张，而后者反过来也带来更多的利润和投资，所谓的“资本主义”便是从这个定义延展出来的概念。</p><p>当人们的全部注意力集中在单独一个目标上，而不是分散在许许多多的事物上时，他们就更有可能发现比较容易和比较迅捷地实现任何目的的方法。</p><p>经常去参观这些制造业的人，常常会看到一些非常巧妙的机器，它们是普通劳动者为了便利和加快他们自己承担的那部分工作而发明出来的。</p><p>劳动分工的结果之一在于，每个劳动者产出的产品，除了自给自足之外，还有多余的产品可以用于等价交换。普遍的富裕就这样自动扩散到所有不同阶层中了。</p><p>哎呀，假如我们考察一下所有这些东西，看一看每一种都要使用多少种不同的劳动，我们就会了解到，没有成千上万人的帮助和合作，连一个文明社会中最卑微的劳动者，都不可能得到他日常所使用的那种平常简单（即便是我们臆想的那种平常简单）的生活用品。</p><p>由于确定能拿自己劳动产出的所有剩余物，也即超出自己消费的那部分产出，去交换自己所需要的他人劳动产出的剩余部分，这就鼓励每一个人去从事一种专门的职业，鼓励每一个人培养和完善他可能拥有的从事这一职业的才能或天资。</p><p>劳动分工源自相互交换的力量，分工的程度必然总是受限于这一力量的大小，换言之，即受限于市场的规模。</p><p>我们可以发现，“价值”一词有两种不同的含义：有时表示某一特定物品的效用，有时又表示占有该物品时所带来的购买其他货物的能力。前者可以称为“使用价值”，后者可以称为“交换价值”。具有最大使用价值的东西，常常很少或根本没有交换价值；反之，具有最大的交换价值的东西，常常很少或根本没有使用价值。</p><p>任何商品的价值，对于占有它但不愿自己使用或消费而是用来交换其他产品的人来说，等于该商品能使他购买或支配的劳动的数量。因此，劳动是衡量一切商品交换价值的尺度。</p><p>劳动是为一切东西支付的最初的价格，是初始购买货币。</p><p>拥有财富立即地、直接地给她带来的权力是购买力，即一种对市场上所有劳动或所有劳动产品的支配力。</p><p>一旦资本在个别人手中积聚起来，他们其中的一些人就会自然用之来雇佣勤勉的人民劳作，并为他们提供原材料和生活资料，目的是通过劳动产品的售卖以及从他们的劳动对原材料价值的增加中获得利润。</p><p>工人们附加在原材料上的价值分成了两个部分：一部分用来支付工人的工资，另一部分支付雇主的利润，作为他垫付原料和工资的全部资本的报偿。</p><p>劳动不仅衡量价格中分解成为劳动工资的那一部分的价值，而且也衡量其分解成为地租和利润的那两部分的价值。</p><p>绝大多数商品的价格都由三部分组成：劳动者的工资、地租、资本家的利润。当然，牲畜、机器的损耗也可以直接或最终分解为地租、劳动和利润这三部分。</p><p>雇佣劳动是资本存在的前提，如果没有无产者出卖劳动力，资本就不会产生。</p><p>引起劳动工资上升的，不是国民财富的实际大小，而是它的不断增长。因此，劳动工资最高的，不是在最富的国家，而是在最兴旺发达或者说致富最快的国家。</p><p>资本的增加，会提高工资，也倾向于降低利润。</p><p>地租，作为使用土地所支付的价格，自然是承租人在土地的实际状况下所能支付的最高价格。</p><p>土地初级产物中的有些部分的真实价格的上升，最初是扩大改良和耕种的结果，而后又成为改良和耕种进一步扩大的原因。</p><p>所有劳动生产力中的改良都会直接降低制造品的真实价格，并会间接提高土地的真实地租。</p><p>商人的利益总是要扩大市场，缩小竞争的范围。</p><p>这些建议是来自这样一个阶层的人，他们的利益从来不和公共利益完全一致，他们会为了获得利益而欺骗甚至压迫公众，在许多场合下，他们也因此确实欺骗和压迫了公众。</p><h3 id="第二篇-论存货的性质、积累和使用"><a href="#第二篇-论存货的性质、积累和使用" class="headerlink" title="第二篇 论存货的性质、积累和使用"></a>第二篇 论存货的性质、积累和使用</h3><p>每个国家的劳动数量不仅随使用劳动的存货增加而增加，而且由于上述增加的结果，相同数量的劳动能完成数量大得多的工作。</p><p>资本可以用来生产、制造或购买货物，然后再将其卖出以取得利润。</p><p>资本可以用来改良土地、购买机器或生产用的工具，或被用作其他无须易主或流通就能提供收入或利润东西。</p><p>每年能再任何一国被使用的货币数量，一定是由每年在该国流通的消费品的价值决定的。</p><p>个体的收入可以用于：各种即时消费之上——那些某天的支出花费不能减轻或支持另一天的支出花费的消费；还可以用于比较耐久，因而可以积累起来的东西之上——某天的支出可以减少或支持和提高另一天的支出。</p><p>用于耐用商品的花销，不仅有利于积累，而且有利于节俭。</p><p>资本可以用作四种用途：第一，用以获取社会上每年所需使用和消费的天然产物；第二，用来制造和准备这些天然产物，以供直接使用和消费；第三，将天然产物和制成品从充裕的地方运往缺乏的地方；第四，将天然产物和制成品分成较小的部分，以适应所需之人的随时需求。按照第一种方法使用的，是所有从事土地、矿藏和渔业的改良或耕作的人的资本；按照第二种方法使用的，是所有制造厂主的资本；按照第三种方法使用的，是所有批发商的资本；按照第四种方法使用的，是所有零售商的资本。</p><p>当任何一个产业部门的产出超过了本国的需求时，剩余的部分必须被送往国外，交换一些本国需要的东西。没有这种出口，本国的一部分生产性劳动必然会停止，而年产物的价值也会减少。</p><p>当一国资本增加到这种程度，以致不能全部用来供应本国消费和支持本国生产性劳动时，其剩余部分自然会流入运输贸易，用来为其他国家履行相同的职能。</p><h3 id="第三篇-论不同国家中不同的财富增长过程"><a href="#第三篇-论不同国家中不同的财富增长过程" class="headerlink" title="第三篇 论不同国家中不同的财富增长过程"></a>第三篇 论不同国家中不同的财富增长过程</h3><p>实际上，城市并不总是从其邻近的农村获取其全部生活资料，甚至不一定仰赖于其国内农村，而可以从遥远的国家获取；虽然这算不上一般规则的例外情形，但却导致不同时期、不同国家财富发展过程中的巨大差异。</p><p>商人一般有志于成为乡绅，而他们确实变成乡绅时，通常会成为最好的乡村改进者。商人习惯于把他的钱主要用于有利可图的项目上；而一个纯粹的乡绅，却习惯于把钱主要用在花销上。前者常常是看着他的钱从口袋中出去，然后又带着利润回来；后者一旦与钱分离，则很少会再期望能够见到它了。</p><h3 id="第四篇-论政治经济学体系"><a href="#第四篇-论政治经济学体系" class="headerlink" title="第四篇 论政治经济学体系"></a>第四篇 论政治经济学体系</h3><p>鼓励出口、抑制进口是重商主义提出的两大富国手段，但对于某些特定的商品，重商主义体系却遵循相反的政策：抑制出口，鼓励进口。可是，它宣称，其最终的目的总是一致的，都是要通过有利的贸易顺差使国家富饶。</p><p>消费是所有生产的唯一归宿和目标；只有当是为促进消费者的利益所必须时才应该去注意生产者的利益。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;em&gt;只有第一章有认真读，越到后面越不认真，最后直接放弃了hmm&lt;/em&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="阅读笔记" scheme="https://blog.sheronw.xyz/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
     
     
   </entry>
