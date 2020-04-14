@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="主要思路生写一个 Telegram Bot 也不是不行但我就是想找借口玩 IFTTT VPS或树莓派：写一个自动化的程序并定时运行，从 Toggl Report API 获取数据，整理之后 Post 给 IFTTT 的Webhook。 IFTTT：if 收到服务器端的 Post then 发消息到 Telegram 指定 chat Telegram：利用@IFTTT实现 IFTTT 与 Teleg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用 IFTTT 将 Toggl Report 发送到 Telegram Channel">
+<meta property="og:url" content="https://blog.sheronw.xyz/2020/04/13/ifttt_toggl_telegram/index.html">
+<meta property="og:site_name" content="SheronW">
+<meta property="og:description" content="主要思路生写一个 Telegram Bot 也不是不行但我就是想找借口玩 IFTTT VPS或树莓派：写一个自动化的程序并定时运行，从 Toggl Report API 获取数据，整理之后 Post 给 IFTTT 的Webhook。 IFTTT：if 收到服务器端的 Post then 发消息到 Telegram 指定 chat Telegram：利用@IFTTT实现 IFTTT 与 Teleg">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-04-14T01:51:56.839Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="利用 IFTTT 将 Toggl Report 发送到 Telegram Channel">
+<meta name="twitter:description" content="主要思路生写一个 Telegram Bot 也不是不行但我就是想找借口玩 IFTTT VPS或树莓派：写一个自动化的程序并定时运行，从 Toggl Report API 获取数据，整理之后 Post 给 IFTTT 的Webhook。 IFTTT：if 收到服务器端的 Post then 发消息到 Telegram 指定 chat Telegram：利用@IFTTT实现 IFTTT 与 Teleg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>利用 IFTTT 将 Toggl Report 发送到 Telegram Channel</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a href="https://notes.sheronw.xyz">Notes</a></li>
+         
+          <li><a href="https://t.me/sheronw_in_the_box">Channel</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/05/21/bye_sophomore/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.sheronw.xyz/2020/04/13/ifttt_toggl_telegram/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.sheronw.xyz/2020/04/13/ifttt_toggl_telegram/&text=利用 IFTTT 将 Toggl Report 发送到 Telegram Channel"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.sheronw.xyz/2020/04/13/ifttt_toggl_telegram/&title=利用 IFTTT 将 Toggl Report 发送到 Telegram Channel"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.sheronw.xyz/2020/04/13/ifttt_toggl_telegram/&is_video=false&description=利用 IFTTT 将 Toggl Report 发送到 Telegram Channel"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=利用 IFTTT 将 Toggl Report 发送到 Telegram Channel&body=Check out this article: https://blog.sheronw.xyz/2020/04/13/ifttt_toggl_telegram/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.sheronw.xyz/2020/04/13/ifttt_toggl_telegram/&title=利用 IFTTT 将 Toggl Report 发送到 Telegram Channel"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.sheronw.xyz/2020/04/13/ifttt_toggl_telegram/&title=利用 IFTTT 将 Toggl Report 发送到 Telegram Channel"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.sheronw.xyz/2020/04/13/ifttt_toggl_telegram/&title=利用 IFTTT 将 Toggl Report 发送到 Telegram Channel"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.sheronw.xyz/2020/04/13/ifttt_toggl_telegram/&title=利用 IFTTT 将 Toggl Report 发送到 Telegram Channel"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.sheronw.xyz/2020/04/13/ifttt_toggl_telegram/&name=利用 IFTTT 将 Toggl Report 发送到 Telegram Channel&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://blog.sheronw.xyz/2020/04/13/ifttt_toggl_telegram/&t=利用 IFTTT 将 Toggl Report 发送到 Telegram Channel"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#主要思路"><span class="toc-number">1.</span> <span class="toc-text">主要思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取-Toggl-API-Token-及-Workspace-ID"><span class="toc-number">2.</span> <span class="toc-text">获取 Toggl API Token 及 Workspace ID</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建-IFTTT-Recipe"><span class="toc-number">3.</span> <span class="toc-text">创建 IFTTT Recipe</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编码及部署"><span class="toc-number">4.</span> <span class="toc-text">编码及部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取-Toggl-数据"><span class="toc-number">4.1.</span> <span class="toc-text">获取 Toggl 数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#清理格式"><span class="toc-number">4.2.</span> <span class="toc-text">清理格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发送至-IFTTT"><span class="toc-number">4.3.</span> <span class="toc-text">发送至 IFTTT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定时运行"><span class="toc-number">4.4.</span> <span class="toc-text">定时运行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他想法"><span class="toc-number">5.</span> <span class="toc-text">其他想法</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        利用 IFTTT 将 Toggl Report 发送到 Telegram Channel
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">SheronW</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-04-14T01:47:20.000Z" itemprop="datePublished">2020-04-13</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/折腾记录/">折腾记录</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="主要思路"><a href="#主要思路" class="headerlink" title="主要思路"></a>主要思路</h2><p><del>生写一个 Telegram Bot 也不是不行但我就是想找借口玩 IFTTT</del></p>
+<p>VPS或树莓派：写一个自动化的程序并定时运行，从 Toggl Report API 获取数据，整理之后 Post 给 IFTTT 的Webhook。</p>
+<p>IFTTT：<code>if</code> 收到服务器端的 Post <code>then</code> 发消息到 Telegram 指定 chat</p>
+<p>Telegram：利用<a href="https://t.me/IFTTT" target="_blank" rel="noopener">@IFTTT</a>实现 IFTTT 与 Telegram 的联动</p>
+<p>本记录使用的是目前的 Toggl API v8 以及 Toggl Report API v2。</p>
+<h2 id="获取-Toggl-API-Token-及-Workspace-ID"><a href="#获取-Toggl-API-Token-及-Workspace-ID" class="headerlink" title="获取 Toggl API Token 及 Workspace ID"></a>获取 Toggl API Token 及 Workspace ID</h2><p>登录 Toggl 网页版，进入<code>Profile Settings</code>页面翻到下面有自己的<code>api_token</code>，把这玩意儿记下来待会儿用。切换到自己想要获取 Report 的 Workspace，点 Settings，把地址栏中<code>https://toggl.com/app/{workspace_id}/settings/general</code>的<code>workspace_id</code>记下来。</p>
+<p>还有另外一种更加麻烦的获取方式：</p>
+<p>在命令行中输入（第一行替换自己的<code>api_token</code>）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -v -u &#123;api_token&#125;:api_token \</span><br><span class="line">  -H "Content-Type: application/json" \</span><br><span class="line">  -X GET 'https://www.toggl.com/api/v8/workspaces'</span><br></pre></td></tr></table></figure>
+<p>然后在返回的一大堆 JSON 数据中中找到相应 Workspace 名字并记录其<code>id</code>。</p>
+<h2 id="创建-IFTTT-Recipe"><a href="#创建-IFTTT-Recipe" class="headerlink" title="创建 IFTTT Recipe"></a>创建 IFTTT Recipe</h2><p>在 Telegram 中找到 <a href="https://t.me/IFTTT" target="_blank" rel="noopener">@IFTTT</a> 的官方机器人，<code>\start</code>并授权 IFTTT 帐号，根据机器人提示关联相应的群组或频道。（如果是私密频道的话要先公开把机器人拉进来再改回去……）</p>
+<p>在 IFTTT 中新建一个 Recipe：</p>
+<ul>
+<li><code>this</code> 选择 Webhook -&gt; Receive a web request，设置 event 名</li>
+<li><code>that</code> 选择 Telegram -&gt; Send message -&gt; 信息内容<code></code></li>
+</ul>
+<h2 id="编码及部署"><a href="#编码及部署" class="headerlink" title="编码及部署"></a>编码及部署</h2><p><del>IFTTT 还是不太行，对于高贵的 Apple 用户来说，整个流程都能用 workflow 来无代码无服务器实现。</del></p>
+<p>咱用了 Node.js 在 Linode 上跑。</p>
+<h3 id="获取-Toggl-数据"><a href="#获取-Toggl-数据" class="headerlink" title="获取 Toggl 数据"></a>获取 Toggl 数据</h3><p>以每周发送本周的 Detailed Report为例，想要在这个基础上实现其他功能可以参考其<a href="https://github.com/toggl/toggl_api_docs/blob/master/reports.md#request-parameters" target="_blank" rel="noopener">官方文档</a>。</p>
+<p>常用参数：</p>
+<ul>
+<li><code>user_agent</code>：必填，app名或自己邮箱就行</li>
+<li><code>workspace_id</code>：必填，即上一步我们记录的id</li>
+<li><code>since</code>和<code>until</code>：YYYY-MM-DD格式，默认区间为[today-6 days,today]</li>
+</ul>
+<p>先<code>node 文件名.js</code> 在命令行里打印下原始数据，确认代码可用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> https = <span class="built_in">require</span>(<span class="string">"https"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> api_token = <span class="string">"你的api_token"</span>;</span><br><span class="line"><span class="keyword">const</span> workplace_id = <span class="string">"你的workplace_id"</span>;</span><br><span class="line"><span class="keyword">const</span> user_agent = <span class="string">"你的邮箱或应用名"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> url = <span class="keyword">new</span> URL(</span><br><span class="line">  <span class="string">"https://toggl.com/reports/api/v2/details?user_agent="</span> +</span><br><span class="line">    user_agent +</span><br><span class="line">    <span class="string">"&amp;workspace_id="</span> +</span><br><span class="line">    workplace_id</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> options = &#123;</span><br><span class="line">  headers: &#123;</span><br><span class="line">    <span class="string">"Content-Type"</span>: <span class="string">"application/json"</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  auth: api_token + <span class="string">":api_token"</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">https.get(url, options, (res) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> data = <span class="string">""</span>;</span><br><span class="line">  res.on(<span class="string">"data"</span>, (chunk) =&gt; &#123;</span><br><span class="line">    data += chunk;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  res.on(<span class="string">"end"</span>, () =&gt; &#123;</span><br><span class="line">    <span class="comment">// 获得所有数据</span></span><br><span class="line">    <span class="built_in">console</span>.log(data);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="清理格式"><a href="#清理格式" class="headerlink" title="清理格式"></a>清理格式</h3><p>IFTTT <del>果然不太行，</del>只能 POST 三个值，那就头铁把结果并成一个字符串吧。</p>
+<p>先把能用得到的数据挑出来，然后整理格式。</p>
+<p>把上面代码里的 <code>console.log(data);</code>替换成下面的内容，再打印看效果……</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> minEntries = <span class="built_in">JSON</span>.parse(data).data.reduce(<span class="function">(<span class="params">acc, cur</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 选取需要的信息</span></span><br><span class="line">  <span class="keyword">const</span> &#123; description, start, end, project &#125; = cur;</span><br><span class="line">  <span class="keyword">const</span> summary = <span class="string">`<span class="subst">$&#123;start.slice(<span class="number">5</span>, <span class="number">10</span>)&#125;</span> <span class="subst">$&#123;start.slice(<span class="number">11</span>, <span class="number">16</span>)&#125;</span>-<span class="subst">$&#123;end.slice(<span class="number">11</span>,<span class="number">16</span>)&#125;</span>「<span class="subst">$&#123;project&#125;</span>」<span class="subst">$&#123;description&#125;</span>&lt;br&gt;`</span>;</span><br><span class="line">  <span class="keyword">return</span> acc + summary;</span><br><span class="line">&#125;, <span class="string">""</span>);</span><br><span class="line"><span class="built_in">console</span>.log(minEntries);</span><br></pre></td></tr></table></figure>
+<h3 id="发送至-IFTTT"><a href="#发送至-IFTTT" class="headerlink" title="发送至 IFTTT"></a>发送至 IFTTT</h3><p>进入 <a href="https://ifttt.com/maker_webhooks，选择右上角" target="_blank" rel="noopener">https://ifttt.com/maker_webhooks，选择右上角</a> <code>Documentation</code>，记录发送请求的URL。</p>
+<p>然后把之前新建的 Receipe 的 Event 名添加到你的URL那个空缺里，用它来发送一个 POST 请求。</p>
+<p>把我们上一步处理完的字符串作为数据 POST 出去，然后整个编码过程就完工了（</p>
+<p>再次运行，测试自己的频道或群聊是否收到相应消息。</p>
+<script src="https://gist.github.com/sheronw/cb716022219d4356c863ec29bdc7abec.js"></script>
+
+<h3 id="定时运行"><a href="#定时运行" class="headerlink" title="定时运行"></a>定时运行</h3><p>利用 Crontab 实现每周日晚上23:59运行该程序<del>，请使用命令<code>date</code>查看 VPS 所在地区的时间</del>。</p>
+<p>命令行中输入<code>crontab -e</code>，然后添加一行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">59 23 * * 0 node /home/你的用户名/到程序的路径</span><br></pre></td></tr></table></figure>
+<h2 id="其他想法"><a href="#其他想法" class="headerlink" title="其他想法"></a>其他想法</h2><p>这么一套搞下来，觉得用 IFTTT 的自动化还是挺鸡肋的，工作量近似于自己搞一个 Telegram Bot ，POST 还有参数限制。</p>
+<p>不过动手搞的过程中想到了很多脑洞：</p>
+<ul>
+<li><em>因为Toggl API 还可以输出 PDF 格式的 Report，所以可以用类似的原理来自动化储存 Report至云端（IFTTT）？</em></li>
+<li>可以用 IFTTT 实现 Google Assistant 和之前写的 Expire Soon Bot 的联动</li>
+<li>IFTTT 只适合轻量级的自动化，比如 Spotify 收藏新歌或者 Github 开新坑之后分享到频道这样的。但从另一个角度来说，其简单易用性能让非程序员也能玩得开心，相比之下 Workflow 虽然简单易用，但功能过于强大所以对于不熟悉程序的人来说上手成本太高了（</li>
+</ul>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a href="https://notes.sheronw.xyz">Notes</a></li>
+         
+          <li><a href="https://t.me/sheronw_in_the_box">Channel</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#主要思路"><span class="toc-number">1.</span> <span class="toc-text">主要思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取-Toggl-API-Token-及-Workspace-ID"><span class="toc-number">2.</span> <span class="toc-text">获取 Toggl API Token 及 Workspace ID</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建-IFTTT-Recipe"><span class="toc-number">3.</span> <span class="toc-text">创建 IFTTT Recipe</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编码及部署"><span class="toc-number">4.</span> <span class="toc-text">编码及部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取-Toggl-数据"><span class="toc-number">4.1.</span> <span class="toc-text">获取 Toggl 数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#清理格式"><span class="toc-number">4.2.</span> <span class="toc-text">清理格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发送至-IFTTT"><span class="toc-number">4.3.</span> <span class="toc-text">发送至 IFTTT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定时运行"><span class="toc-number">4.4.</span> <span class="toc-text">定时运行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他想法"><span class="toc-number">5.</span> <span class="toc-text">其他想法</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://blog.sheronw.xyz/2020/04/13/ifttt_toggl_telegram/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://blog.sheronw.xyz/2020/04/13/ifttt_toggl_telegram/&text=利用 IFTTT 将 Toggl Report 发送到 Telegram Channel"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://blog.sheronw.xyz/2020/04/13/ifttt_toggl_telegram/&title=利用 IFTTT 将 Toggl Report 发送到 Telegram Channel"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.sheronw.xyz/2020/04/13/ifttt_toggl_telegram/&is_video=false&description=利用 IFTTT 将 Toggl Report 发送到 Telegram Channel"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=利用 IFTTT 将 Toggl Report 发送到 Telegram Channel&body=Check out this article: https://blog.sheronw.xyz/2020/04/13/ifttt_toggl_telegram/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://blog.sheronw.xyz/2020/04/13/ifttt_toggl_telegram/&title=利用 IFTTT 将 Toggl Report 发送到 Telegram Channel"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://blog.sheronw.xyz/2020/04/13/ifttt_toggl_telegram/&title=利用 IFTTT 将 Toggl Report 发送到 Telegram Channel"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://blog.sheronw.xyz/2020/04/13/ifttt_toggl_telegram/&title=利用 IFTTT 将 Toggl Report 发送到 Telegram Channel"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://blog.sheronw.xyz/2020/04/13/ifttt_toggl_telegram/&title=利用 IFTTT 将 Toggl Report 发送到 Telegram Channel"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://blog.sheronw.xyz/2020/04/13/ifttt_toggl_telegram/&name=利用 IFTTT 将 Toggl Report 发送到 Telegram Channel&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://blog.sheronw.xyz/2020/04/13/ifttt_toggl_telegram/&t=利用 IFTTT 将 Toggl Report 发送到 Telegram Channel"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 SheronW
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a href="https://notes.sheronw.xyz">Notes</a></li>
+         
+          <li><a href="https://t.me/sheronw_in_the_box">Channel</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
