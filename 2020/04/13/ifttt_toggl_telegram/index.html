@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="SheronW">
 <meta property="og:description" content="主要思路生写一个 Telegram Bot 也不是不行但我就是想找借口玩 IFTTT VPS或树莓派：写一个自动化的程序并定时运行，从 Toggl Report API 获取数据，整理之后 Post 给 IFTTT 的Webhook。 IFTTT：if 收到服务器端的 Post then 发消息到 Telegram 指定 chat Telegram：利用@IFTTT实现 IFTTT 与 Teleg">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-14T01:51:56.839Z">
+<meta property="og:updated_time" content="2020-04-14T02:03:02.646Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用 IFTTT 将 Toggl Report 发送到 Telegram Channel">
 <meta name="twitter:description" content="主要思路生写一个 Telegram Bot 也不是不行但我就是想找借口玩 IFTTT VPS或树莓派：写一个自动化的程序并定时运行，从 Toggl Report API 获取数据，整理之后 Post 给 IFTTT 的Webhook。 IFTTT：if 收到服务器端的 Post then 发消息到 Telegram 指定 chat Telegram：利用@IFTTT实现 IFTTT 与 Teleg">
@@ -161,7 +161,7 @@
 <p>在 IFTTT 中新建一个 Recipe：</p>
 <ul>
 <li><code>this</code> 选择 Webhook -&gt; Receive a web request，设置 event 名</li>
-<li><code>that</code> 选择 Telegram -&gt; Send message -&gt; 信息内容<code></code></li>
+<li><code>that</code> 选择 Telegram -&gt; Send message -&gt; 信息内容只留value1</li>
 </ul>
 <h2 id="编码及部署"><a href="#编码及部署" class="headerlink" title="编码及部署"></a>编码及部署</h2><p><del>IFTTT 还是不太行，对于高贵的 Apple 用户来说，整个流程都能用 workflow 来无代码无服务器实现。</del></p>
 <p>咱用了 Node.js 在 Linode 上跑。</p>
