@@ -2,28 +2,24 @@ module.exports = {
   title: "My Site",
   tagline: "The tagline of my site",
   url: "https://sheronw.github.io",
-  baseUrl: "/sheronw.github.io/",
+  baseUrl: "/",
   favicon: "img/favicon.ico",
   organizationName: "sheronw", // Usually your GitHub org/user name.
   projectName: "sheronw.github.io", // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: "My Site",
+      title: "SheronW",
+      /*
       logo: {
         alt: "My Site Logo",
-        src: "img/logo.svg",
-      },
+        src: "img/mstile-150x150.png",
+      },*/
       links: [
+        { to: "blog", label: "Blog", position: "right" },
         {
           to: "docs/doc1",
           activeBasePath: "docs",
-          label: "Docs",
-          position: "left",
-        },
-        { to: "blog", label: "Blog", position: "left" },
-        {
-          href: "https://github.com/facebook/docusaurus",
-          label: "GitHub",
+          label: "Novels",
           position: "right",
         },
       ],
@@ -32,50 +28,33 @@ module.exports = {
       style: "dark",
       links: [
         {
-          title: "Docs",
+          title: "Writing",
           items: [
             {
-              label: "Style Guide",
-              to: "docs/doc1",
+              label: "Notes",
+              to: "docs/notes",
             },
             {
-              label: "Second Doc",
-              to: "docs/doc2",
+              label: "Novels",
+              to: "docs/novels",
             },
           ],
         },
         {
-          title: "Community",
+          title: "More",
           items: [
             {
-              label: "Stack Overflow",
-              href: "https://stackoverflow.com/questions/tagged/docusaurus",
-            },
-            {
-              label: "Discord",
-              href: "https://discordapp.com/invite/docusaurus",
-            },
-          ],
-        },
-        {
-          title: "Social",
-          items: [
-            {
-              label: "Blog",
-              to: "blog",
+              label: "Telegram Channel",
+              to: "https://t.me/sheronw_in_the_box",
             },
             {
               label: "GitHub",
-              href: "https://github.com/facebook/docusaurus",
-            },
-            {
-              label: "Twitter",
-              href: "https://twitter.com/docusaurus",
+              href: "http://github.com/sheronw",
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} SheronW. Built with Docusaurus.`,
     },
   },
   presets: [
@@ -84,8 +63,6 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl:
-            "https://github.com/facebook/docusaurus/edit/master/website/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
