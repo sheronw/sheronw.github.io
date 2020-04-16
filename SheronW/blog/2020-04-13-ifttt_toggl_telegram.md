@@ -195,8 +195,6 @@ function sendToIFTTT(data) {
 }
 ```
 
-<script src="https://gist.github.com/sheronw/cb716022219d4356c863ec29bdc7abec.js"></script>
-
 ### 定时运行
 
 利用 Crontab 实现每周日晚上 23:59 运行该程序<del>，请使用命令`date`查看 VPS 所在地区的时间</del>。
