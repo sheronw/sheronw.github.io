@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[10],{143:function(o){o.exports=JSON.parse('{"allTagsPath":"/sheronw.github.io/blog/tags","slug":"\u9605\u8bfb\u7b14\u8bb0","name":"\u9605\u8bfb\u7b14\u8bb0","count":4,"permalink":"/sheronw.github.io/blog/tags/\u9605\u8bfb\u7b14\u8bb0"}')}}]);
