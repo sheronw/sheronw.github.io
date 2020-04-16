@@ -1,8 +1,8 @@
-name: novel notify
+name: blog notify
 on:
   push:
     paths:
-      - "blog/**"
+      - "SheronW/blog/**"
 
 jobs:
   post:

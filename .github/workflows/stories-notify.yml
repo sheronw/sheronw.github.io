@@ -2,7 +2,7 @@ name: stories notify
 on:
   push:
     paths:
-      - "stories/**"
+      - "SheronW/stories/**"
 
 jobs:
   post:
