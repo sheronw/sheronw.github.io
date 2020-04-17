@@ -17,9 +17,9 @@ module.exports = {
       links: [
         { to: "blog", label: "Blog", position: "right" },
         {
-          to: "stories/doc1",
-          activeBasePath: "stories",
-          label: "Novels",
+          to: "docs/index",
+          activeBasePath: "docs",
+          label: "Stories",
           position: "right",
         },
       ],
@@ -32,11 +32,11 @@ module.exports = {
           items: [
             {
               label: "Notes",
-              to: "docs/notes",
+              to: "https://notes.sheronw.xyz",
             },
             {
-              label: "Novels",
-              to: "docs/novels",
+              label: "Stories",
+              to: "docs/index",
             },
           ],
         },
