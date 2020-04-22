@@ -1,6 +1,6 @@
 module.exports = {
-  title: "My Site",
-  tagline: "The tagline of my site",
+  title: "Sheron W",
+  tagline: "CS student & daydreamer",
   url: "https://sheronw.github.io",
   baseUrl: "/",
   favicon: "img/favicon.ico",
@@ -9,6 +9,7 @@ module.exports = {
   themeConfig: {
     navbar: {
       title: "SheronW",
+      disableDarkMode: true,
       /*
       logo: {
         alt: "My Site Logo",
@@ -20,6 +21,11 @@ module.exports = {
           to: "docs/index",
           activeBasePath: "docs",
           label: "Stories",
+          position: "right",
+        },
+        {
+          to: "https://notes.sheronw.xyz",
+          label: "Notes",
           position: "right",
         },
       ],
