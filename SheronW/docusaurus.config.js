@@ -18,7 +18,7 @@ module.exports = {
       links: [
         { to: "blog", label: "Blog", position: "right" },
         {
-          to: "docs/index",
+          to: "docs/yeyin",
           activeBasePath: "docs",
           label: "Stories",
           position: "right",
@@ -42,7 +42,7 @@ module.exports = {
             },
             {
               label: "Stories",
-              to: "docs/index",
+              to: "docs/yeyin",
             },
           ],
         },
