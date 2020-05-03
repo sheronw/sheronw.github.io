@@ -213,4 +213,4 @@ function sendToIFTTT(data) {
 
 - _因为 Toggl API 还可以输出 PDF 格式的 Report，所以可以用类似的原理来自动化储存 Report 至云端（IFTTT）？_
 - 可以用 IFTTT 实现 Google Assistant 和之前写的 Expire Soon Bot 的联动
-- IFTTT 只适合轻量级的自动化，比如 Spotify 收藏新歌或者 Github 开新坑之后分享到频道这样的。但从另一个角度来说，其简单易用性能让非程序员也能玩得开心，相比之下 Workflow 虽然简单易用，但功能过于强大所以对于不熟悉程序的人来说上手成本太高了（
+- IFTTT 只适合轻量级的自动化，比如 Spotify 收藏新歌或者 Github 开新坑之后分享到频道这样的。但从另一个角度来说，其简单易用性能让非程序员也能玩得开心，相比之下 Workflow 虽然功能强大，但对于不熟悉程序的人来说上手成本太高了（
