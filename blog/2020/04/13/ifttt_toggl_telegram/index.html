@@ -16,21 +16,21 @@
 <link rel="stylesheet" href="/styles.2981586a.css">
 
 
-<link rel="preload" href="/styles.5a2c51e7.js" as="script">
+<link rel="preload" href="/styles.e5114850.js" as="script">
 
-<link rel="preload" href="/runtime~main.34e39e05.js" as="script">
+<link rel="preload" href="/runtime~main.639dede4.js" as="script">
 
-<link rel="preload" href="/main.0850be80.js" as="script">
+<link rel="preload" href="/main.e6532f81.js" as="script">
 
-<link rel="preload" href="/1.4bfd08d9.js" as="script">
+<link rel="preload" href="/1.cc0613b4.js" as="script">
 
-<link rel="preload" href="/2.dd61a959.js" as="script">
+<link rel="preload" href="/2.7bcdf1a0.js" as="script">
 
-<link rel="preload" href="/3.0b16b381.js" as="script">
+<link rel="preload" href="/3.8d30e8eb.js" as="script">
 
-<link rel="preload" href="/ccc49370.6cbae085.js" as="script">
+<link rel="preload" href="/ccc49370.3e1c78f5.js" as="script">
 
-<link rel="preload" href="/10ff35aa.a92175df.js" as="script">
+<link rel="preload" href="/10ff35aa.728d7d39.js" as="script">
 
 </head>
 <body>
@@ -55,21 +55,21 @@
 </span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">  </span><span class="token comment" style="color:rgb(105, 112, 152);font-style:italic">// Write data to request body</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">  req</span><span class="token punctuation" style="color:rgb(199, 146, 234)">.</span><span class="token method function property-access" style="color:rgb(130, 170, 255)">write</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">postData</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">  req</span><span class="token punctuation" style="color:rgb(199, 146, 234)">.</span><span class="token method function property-access" style="color:rgb(130, 170, 255)">end</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span></div></div></div></div></div><h3><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_ZqCz" id="定时运行"></a><a aria-hidden="true" tabindex="-1" class="hash-link" href="#定时运行" title="Direct link to heading">#</a>定时运行</h3><p>利用 Crontab 实现每周日晚上 23:59 运行该程序<del>，请使用命令<code>date</code>查看 VPS 所在地区的时间</del>。</p><p>命令行中输入<code>crontab -e</code>，然后添加一行：</p><div class="mdxCodeBlock_iHAB"><div class="codeBlockContent_32p_"><button type="button" aria-label="Copy code to clipboard" class="copyButton_1BYj">Copy</button><div tabindex="0" class="prism-code language-bash codeBlock_19pQ"><div class="codeBlockLines_2n9r" style="color:#bfc7d5;background-color:#292d3e"><div class="token-line" style="color:#bfc7d5"><span class="token number" style="color:rgb(247, 140, 108)">59</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">23</span><span class="token plain"> * * </span><span class="token number" style="color:rgb(247, 140, 108)">0</span><span class="token plain"> node /home/你的用户名/到程序的路径</span></div></div></div></div></div><h2><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_ZqCz" id="其他想法"></a><a aria-hidden="true" tabindex="-1" class="hash-link" href="#其他想法" title="Direct link to heading">#</a>其他想法</h2><p>这么一套搞下来，觉得用 IFTTT 的自动化还是挺鸡肋的，工作量近似于自己搞一个 Telegram Bot ，POST 还有参数限制。</p><p>不过动手搞的过程中想到了很多脑洞：</p><ul><li><em>因为 Toggl API 还可以输出 PDF 格式的 Report，所以可以用类似的原理来自动化储存 Report 至云端（IFTTT）？</em></li><li>可以用 IFTTT 实现 Google Assistant 和之前写的 Expire Soon Bot 的联动</li><li>IFTTT 只适合轻量级的自动化，比如 Spotify 收藏新歌或者 Github 开新坑之后分享到频道这样的。但从另一个角度来说，其简单易用性能让非程序员也能玩得开心，相比之下 Workflow 虽然功能强大，但对于不熟悉程序的人来说上手成本太高了（</li></ul></section><footer class="row margin-vert--lg"><div class="col"><strong>Tags:</strong><a class="margin-horiz--sm" href="/blog/tags/折腾记录">折腾记录</a></div></footer></article><div class="margin-vert--xl"><nav class="pagination-nav"><div class="pagination-nav__item"></div><div class="pagination-nav__item pagination-nav__item--next"><a class="pagination-nav__link" href="/blog/2019/05/21/bye_sophomore"><div class="pagination-nav__link--sublabel">Next Post</div><div class="pagination-nav__link--label">以学年总结为题的未来展望 »</div></a></div></nav></div></div></div></div></div><footer class="footer footer--dark"><div class="container"><div class="row footer__links"><div class="col footer__col"><h4 class="footer__title">Writing</h4><ul class="footer__items"><li class="footer__item"><a class="footer__link-item" to="https://notes.sheronw.xyz" href="https://notes.sheronw.xyz">Notes</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/yeyin">Stories</a></li></ul></div><div class="col footer__col"><h4 class="footer__title">More</h4><ul class="footer__items"><li class="footer__item"><a class="footer__link-item" to="https://t.me/sheronw_in_the_box" href="https://t.me/sheronw_in_the_box">Telegram Channel</a></li><li class="footer__item"><a class="footer__link-item" target="_blank" rel="noopener noreferrer" href="http://github.com/sheronw">GitHub</a></li></ul></div></div><div class="text--center"><div>Copyright © 2020 SheronW. Built with Docusaurus.</div></div></div></footer>
 </div>
 
-<script src="/styles.5a2c51e7.js"></script>
+<script src="/styles.e5114850.js"></script>
 
-<script src="/runtime~main.34e39e05.js"></script>
+<script src="/runtime~main.639dede4.js"></script>
 
-<script src="/main.0850be80.js"></script>
+<script src="/main.e6532f81.js"></script>
 
-<script src="/1.4bfd08d9.js"></script>
+<script src="/1.cc0613b4.js"></script>
 
-<script src="/2.dd61a959.js"></script>
+<script src="/2.7bcdf1a0.js"></script>
 
-<script src="/3.0b16b381.js"></script>
+<script src="/3.8d30e8eb.js"></script>
 
-<script src="/ccc49370.6cbae085.js"></script>
+<script src="/ccc49370.3e1c78f5.js"></script>
 
-<script src="/10ff35aa.a92175df.js"></script>
+<script src="/10ff35aa.728d7d39.js"></script>
 
 
 </body>
