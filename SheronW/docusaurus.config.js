@@ -73,6 +73,8 @@ module.exports = {
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
+        showLastUpdateAuthor: true,
+        showLastUpdateTime: true,
       },
     ],
   ],
