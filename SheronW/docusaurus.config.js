@@ -7,20 +7,20 @@ module.exports = {
   organizationName: "sheronw", // Usually your GitHub org/user name.
   projectName: "sheronw.github.io", // Usually your repo name.
   themeConfig: {
+    disableDarkMode: true,
     navbar: {
-      title: "SheronW",
-      disableDarkMode: true,
+      title: "Sheron W",
       /*
       logo: {
         alt: "My Site Logo",
         src: "img/mstile-150x150.png",
       },*/
       links: [
-        { to: "blog", label: "Blog", position: "right" },
+        { to: "blog", label: "博客", position: "right" },
         {
           to: "docs/yeyin",
           activeBasePath: "docs",
-          label: "Stories",
+          label: "编故事",
           position: "right",
         },
         {
@@ -41,7 +41,7 @@ module.exports = {
               to: "https://notes.sheronw.xyz",
             },
             {
-              label: "Stories",
+              label: "编故事",
               to: "docs/yeyin",
             },
           ],
@@ -50,7 +50,7 @@ module.exports = {
           title: "More",
           items: [
             {
-              label: "Telegram Channel",
+              label: "电报频道",
               to: "https://t.me/sheronw_in_the_box",
             },
             {
