@@ -18,13 +18,19 @@ module.exports = {
       links: [
         { to: "blog", label: "博客", position: "right" },
         {
-          to: "docs/yeyin",
+          to: "docs/stories/index",
           activeBasePath: "docs",
           label: "编故事",
           position: "right",
         },
         {
-          to: "https://notes.sheronw.xyz",
+          to: "docs/read/index",
+          activeBasePath: "docs",
+          label: "阅读",
+          position: "right",
+        },
+        {
+          href: "https://notes.sheronw.xyz",
           label: "Notes",
           position: "right",
         },
@@ -42,7 +48,7 @@ module.exports = {
             },
             {
               label: "编故事",
-              to: "docs/yeyin",
+              to: "docs/stories/index",
             },
           ],
         },
@@ -68,6 +74,7 @@ module.exports = {
       "@docusaurus/preset-classic",
       {
         docs: {
+          homePageId: "read/index",
           sidebarPath: require.resolve("./sidebars.js"),
         },
         theme: {
