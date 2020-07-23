@@ -1,7 +1,12 @@
 module.exports = {
   stories: {
     归档: ["stories/index"],
-    夜隐千隙泯于明: ["stories/yeyin", "stories/yeyin0", "stories/yeyin1"],
+    夜隐千隙泯于明: [
+      "stories/yeyin",
+      "stories/yeyin0",
+      "stories/yeyin1",
+      "stories/yeyin2",
+    ],
   },
   read: {
     归档: ["read/index"],
