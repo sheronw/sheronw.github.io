@@ -2,17 +2,22 @@ import React from "react";
 import classnames from "classnames";
 import Layout from "@theme/Layout";
 import styles from "./styles.module.css";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 
 function Home() {
   return (
     <Layout description="SheronW 的自留地">
-      <header className={classnames("hero hero--primary", styles.heroBanner)}>
-        <div className="container">
-          <h1 className="hero__title">Sheron W</h1>
-          <p className="hero__subtitle">CS student & DayDreamer</p>
-          <p className="hero__subtitle">大学生，码民工，常写无用文字。</p>
-        </div>
-      </header>
+      <div style={{ textAlign: "center", marginTop: "50px" }}>
+        <h1>This is Sheron,</h1>
+        <p>
+          a developer, a amateur Chinese storyteller and a student @ Columbia
+          SEAS.
+        </p>
+        <h1>I build stuffs,</h1>
+        <p>TBA</p>
+        <h1>I write Chinese stories,</h1>
+        <p>TBA</p>
+      </div>
     </Layout>
   );
 }

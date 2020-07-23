@@ -38,34 +38,6 @@ module.exports = {
     },
     footer: {
       style: "dark",
-      links: [
-        {
-          title: "Writing",
-          items: [
-            {
-              label: "Notes",
-              to: "https://notes.sheronw.xyz",
-            },
-            {
-              label: "编故事",
-              to: "docs/stories/index",
-            },
-          ],
-        },
-        {
-          title: "More",
-          items: [
-            {
-              label: "电报频道",
-              to: "https://t.me/sheronw_in_the_box",
-            },
-            {
-              label: "GitHub",
-              href: "http://github.com/sheronw",
-            },
-          ],
-        },
-      ],
       copyright: `Copyright © ${new Date().getFullYear()} SheronW. Built with Docusaurus.`,
     },
   },
