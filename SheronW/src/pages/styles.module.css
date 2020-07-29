@@ -4,18 +4,96 @@
  * and scoped locally.
  */
 
+.mainContainer {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.leftContainer {
+  margin: 6rem;
+}
+
+h1 {
+  font-size: 3em;
+  font-weight: normal;
+  margin-bottom: 0.2rem;
+}
+h2 {
+  font-size: 2em;
+  font-weight: normal;
+  margin-bottom: 0.5rem;
+}
+
+.headerContainer {
+  margin-bottom: 8rem;
+}
+
+.subheaderContainer {
+  margin-bottom: 4rem;
+}
+
 .text {
   text-align: center;
 }
 
-@media screen and (max-width: 966px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+/* project */
+.projectContainer {
+  margin-bottom: 3rem;
 }
 
-.buttons {
+.square {
+  position: absolute;
+  width: 2.5em;
+  height: 2.5em;
+  z-index: -1;
+  background-color: gray;
+}
+
+.projectHeader {
+  font-weight: bold;
+  margin-left: 0.5em;
+}
+
+.projectURL {
+  border-bottom: 1px solid black;
+  width: 40rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.projectURL a {
+  margin-left: 0.2em;
+  margin-right: 0.2em;
+  color: black;
+  font-weight: bold;
+}
+
+/* cube & mobius */
+
+.canvasContainer {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: stretch;
+  /* position in the screen */
+  justify-content: flex-end;
+}
+
+.canvas {
+  flex-grow: 1;
+  max-height: 50vh;
+  min-width: 50vw;
+}
+
+/* for smaller screen */
+@media (max-width: 52rem) {
+  .projectURL {
+    width: auto;
+  }
+  .leftContainer {
+    margin: 3rem;
+  }
 }
