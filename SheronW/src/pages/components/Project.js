@@ -8,11 +8,13 @@ export class Project extends Component {
   }
 
   render() {
-    return (
+    return this.info ? (
       <div className={styles.projectContainer}>
         <div
           className={styles.square}
-          style={{ backgroundColor: this.info.color }}
+          style={{
+            backgroundColor: this.info.color,
+          }}
         ></div>
         <h2 className={styles.projectHeader}>{this.info.name}</h2>
         <p className={styles.projectDescription}>{this.info.description}</p>
@@ -27,6 +29,8 @@ export class Project extends Component {
           {this.info.time}
         </div>
       </div>
+    ) : (
+      <div></div>
     );
   }
 }
