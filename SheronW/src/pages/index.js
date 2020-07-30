@@ -4,6 +4,7 @@ import Layout from "@theme/Layout";
 import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import Project from "./components/Project";
+import Cube from "./components/Cube";
 
 const Header = () => {
   return (
@@ -62,6 +63,7 @@ function Home() {
             <Project info={p} key={p.name} />
           ))}
         </div>
+        <Cube />
       </div>
     </Layout>
   );

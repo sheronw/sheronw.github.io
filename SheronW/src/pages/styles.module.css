@@ -74,18 +74,10 @@ h2 {
 /* cube & mobius */
 
 .canvasContainer {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  align-items: stretch;
-  /* position in the screen */
-  justify-content: flex-end;
-}
-
-.canvas {
-  flex-grow: 1;
-  max-height: 50vh;
-  min-width: 50vw;
+  position: absolute;
+  right: 0px;
+  z-index: -2;
+  margin: 6rem;
 }
 
 /* for smaller screen */
@@ -95,5 +87,8 @@ h2 {
   }
   .leftContainer {
     margin: 3rem;
+  }
+  .canvasContainer {
+    display: none;
   }
 }
