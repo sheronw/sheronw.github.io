@@ -53,10 +53,15 @@ function Home() {
   return (
     <Layout description="SheronW 的自留地">
       <div className={styles.mainContainer}>
+        <img
+          className={styles.light}
+          alt="light off"
+          src={useBaseUrl("img/off.svg")}
+        />
         <div className={styles.leftContainer}>
           <Header />
           <div className={styles.subheaderContainer}>
-            <h1>I build stuffs for fun,</h1>
+            <h1>I build things for fun,</h1>
             <h2>and for my interests in user interactions.</h2>
           </div>
           {projects.map((p) => (
