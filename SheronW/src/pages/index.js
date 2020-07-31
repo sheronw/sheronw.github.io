@@ -1,19 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import classnames from "classnames";
 import Layout from "@theme/Layout";
 import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import Project from "./components/Project";
 import Cube from "./components/Cube";
-
-const Header = () => {
-  return (
-    <div className={styles.headerContainer}>
-      <h1>This is Sheron,</h1>
-      <h2>just a random CS student @ Columbia SEAS.</h2>
-    </div>
-  );
-};
 
 const projects = [
   {
@@ -49,25 +40,66 @@ const projects = [
   },
 ];
 
+const stories = [
+  {
+    name: "夜隐千隙泯于明",
+    color: "#ad8e7f",
+    description:
+      "拼命模仿却终究无法成为的那个人，是否也曾同样地向往着另一个无法企及的人生？",
+    links: [
+      {
+        label: "Contents",
+        link: "http://sheronw.xyz/docs/stories/yeyin",
+      },
+    ],
+    time: "2013 - today",
+  },
+];
+
 function Home() {
+  const [lightOn, setlightOn] = useState(false);
   return (
     <Layout description="SheronW 的自留地">
-      <div className={styles.mainContainer}>
+      <div
+        className={`${styles.mainContainer} ${
+          lightOn ? styles.lightOnContainer : ""
+        }`}
+      >
         <img
           className={styles.light}
           alt="light off"
-          src={useBaseUrl("img/off.svg")}
+          src={lightOn ? useBaseUrl("img/on.svg") : useBaseUrl("img/off.svg")}
+          onClick={() => setlightOn(!lightOn)}
         />
-        <div className={styles.leftContainer}>
-          <Header />
-          <div className={styles.subheaderContainer}>
-            <h1>I build things for fun,</h1>
-            <h2>and for my interests in user interactions.</h2>
+        {lightOn ? (
+          <div className={styles.leftContainer}>
+            <div className={styles.headerContainer}>
+              <h1>This is Sheron,</h1>
+              <h2>just a random dreamer & amateur Chinese storyteller.</h2>
+            </div>
+            <div className={styles.subheaderContainer}>
+              <h1>I write stories for myself,</h1>
+              <h2>and for stupid fantasies in my head while lying in bed.</h2>
+            </div>
+            {stories.map((p) => (
+              <Project info={p} key={p.name} />
+            ))}
           </div>
-          {projects.map((p) => (
-            <Project info={p} key={p.name} />
-          ))}
-        </div>
+        ) : (
+          <div className={styles.leftContainer}>
+            <div className={styles.headerContainer}>
+              <h1>This is Sheron,</h1>
+              <h2>just a random CS student @ Columbia SEAS.</h2>
+            </div>
+            <div className={styles.subheaderContainer}>
+              <h1>I build things for fun,</h1>
+              <h2>and for my interests in user interactions.</h2>
+            </div>
+            {projects.map((p) => (
+              <Project info={p} key={p.name} />
+            ))}
+          </div>
+        )}
         <Cube />
       </div>
     </Layout>
