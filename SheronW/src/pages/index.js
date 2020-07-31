@@ -43,7 +43,7 @@ const projects = [
 const stories = [
   {
     name: "夜隐千隙泯于明",
-    color: "#ad8e7f",
+    color: "#787878",
     description:
       "拼命模仿却终究无法成为的那个人，是否也曾同样地向往着另一个无法企及的人生？",
     links: [
