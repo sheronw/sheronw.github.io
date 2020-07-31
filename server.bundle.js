@@ -472,7 +472,7 @@ __webpack_require__.d(__webpack_exports__, "h", function() { return /* binding *
 // UNUSED EXPORTS: MemoryRouter, Prompt, Redirect, __HistoryContext, generatePath, useHistory, useParams, useRouteMatch
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js
-var inheritsLoose = __webpack_require__(16);
+var inheritsLoose = __webpack_require__(17);
 
 // EXTERNAL MODULE: ./node_modules/react/index.js
 var react = __webpack_require__(1);
@@ -662,7 +662,7 @@ var index = react_default.a.createContext || createReactContext;
 /* harmony default export */ var esm = (index);
 
 // EXTERNAL MODULE: ./node_modules/tiny-invariant/dist/tiny-invariant.esm.js
-var tiny_invariant_esm = __webpack_require__(17);
+var tiny_invariant_esm = __webpack_require__(18);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/extends.js
 var esm_extends = __webpack_require__(2);
@@ -2024,6 +2024,26 @@ var styles = __webpack_require__(318);
 
 /***/ }),
 /* 15 */
+/***/ (function(module, exports) {
+
+// Exports
+module.exports = {
+	"mainContainer": "mainContainer_2bKl",
+	"leftContainer": "leftContainer_22va",
+	"headerContainer": "headerContainer_3XAF",
+	"subheaderContainer": "subheaderContainer_VRRC",
+	"text": "text_2aKv",
+	"projectContainer": "projectContainer_3pUc",
+	"square": "square_2RZQ",
+	"projectHeader": "projectHeader_1cy4",
+	"projectURL": "projectURL_1Ysy",
+	"canvasContainer": "canvasContainer_2txs",
+	"light": "light_QGGw"
+};
+
+
+/***/ }),
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2055,7 +2075,7 @@ exports.fromPromise = function (fn) {
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2067,7 +2087,7 @@ function _inheritsLoose(subClass, superClass) {
 }
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2087,31 +2107,12 @@ function invariant(condition, message) {
 
 
 /***/ }),
-/* 18 */
-/***/ (function(module, exports) {
-
-// Exports
-module.exports = {
-	"mainContainer": "mainContainer_2bKl",
-	"leftContainer": "leftContainer_22va",
-	"headerContainer": "headerContainer_3XAF",
-	"subheaderContainer": "subheaderContainer_VRRC",
-	"text": "text_2aKv",
-	"projectContainer": "projectContainer_3pUc",
-	"square": "square_2RZQ",
-	"projectHeader": "projectHeader_1cy4",
-	"projectURL": "projectURL_1Ysy",
-	"canvasContainer": "canvasContainer_2txs"
-};
-
-
-/***/ }),
 /* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-const u = __webpack_require__(15).fromCallback
+const u = __webpack_require__(16).fromCallback
 const mkdirs = u(__webpack_require__(292))
 const mkdirsSync = __webpack_require__(293)
 
@@ -2261,7 +2262,7 @@ function valueEqual(a, b) {
 /* harmony default export */ var value_equal = (valueEqual);
 
 // EXTERNAL MODULE: ./node_modules/tiny-invariant/dist/tiny-invariant.esm.js
-var tiny_invariant_esm = __webpack_require__(17);
+var tiny_invariant_esm = __webpack_require__(18);
 
 // CONCATENATED MODULE: ./node_modules/history/esm/history.js
 
@@ -3204,7 +3205,7 @@ function createMemoryHistory(props) {
 
 "use strict";
 
-const u = __webpack_require__(15).fromPromise
+const u = __webpack_require__(16).fromPromise
 const fs = __webpack_require__(114)
 
 function pathExists (path) {
@@ -4570,7 +4571,7 @@ module.exports = override(compactable, vendorPrefixedCompactable);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "d", function() { return react_router__WEBPACK_IMPORTED_MODULE_0__["g"]; });
 
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(16);
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(17);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var history__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(20);
@@ -4578,7 +4579,7 @@ module.exports = override(compactable, vendorPrefixedCompactable);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(2);
 /* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(31);
-/* harmony import */ var tiny_invariant__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(17);
+/* harmony import */ var tiny_invariant__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(18);
 
 
 
@@ -10180,7 +10181,7 @@ module.exports = {
 "use strict";
 
 
-const u = __webpack_require__(15).fromCallback
+const u = __webpack_require__(16).fromCallback
 const rimraf = __webpack_require__(297)
 
 module.exports = {
@@ -10295,7 +10296,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Project", function() { return Project; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _styles_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(18);
+/* harmony import */ var _styles_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(15);
 /* harmony import */ var _styles_module_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_styles_module_css__WEBPACK_IMPORTED_MODULE_1__);
 class Project extends react__WEBPACK_IMPORTED_MODULE_0__["Component"]{constructor(props){super(props);this.info=props.info;}render(){return this.info?/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div",{className:_styles_module_css__WEBPACK_IMPORTED_MODULE_1___default.a.projectContainer},/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div",{className:_styles_module_css__WEBPACK_IMPORTED_MODULE_1___default.a.square,style:{backgroundColor:this.info.color}}),/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2",{className:_styles_module_css__WEBPACK_IMPORTED_MODULE_1___default.a.projectHeader},this.info.name),/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p",{className:_styles_module_css__WEBPACK_IMPORTED_MODULE_1___default.a.projectDescription},this.info.description),/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div",{className:_styles_module_css__WEBPACK_IMPORTED_MODULE_1___default.a.projectURL},/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span",null,this.info.links.map(link=>/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a",{href:link.link,target:"_blank",key:link.label},link.label))),this.info.time)):/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div",null);}}/* harmony default export */ __webpack_exports__["default"] = (Project);
 
@@ -10372,7 +10373,7 @@ var react = __webpack_require__(1);
 var react_default = /*#__PURE__*/__webpack_require__.n(react);
 
 // EXTERNAL MODULE: ./src/pages/styles.module.css
-var styles_module = __webpack_require__(18);
+var styles_module = __webpack_require__(15);
 var styles_module_default = /*#__PURE__*/__webpack_require__.n(styles_module);
 
 // CONCATENATED MODULE: ./node_modules/three/build/three.module.js
@@ -65103,7 +65104,7 @@ module.exports =
 "use strict";
 
 
-const u = __webpack_require__(15).fromCallback
+const u = __webpack_require__(16).fromCallback
 const jsonFile = __webpack_require__(305)
 
 module.exports = {
@@ -66820,7 +66821,7 @@ module.exports =
 
 // This is adapted from https://github.com/normalize/mz
 // Copyright (c) 2014-2016 Jonathan Ong me@jongleberry.com and Contributors
-const u = __webpack_require__(15).fromCallback
+const u = __webpack_require__(16).fromCallback
 const fs = __webpack_require__(11)
 
 const api = [
@@ -67071,7 +67072,7 @@ module.exports = {
 "use strict";
 
 
-const u = __webpack_require__(15).fromCallback
+const u = __webpack_require__(16).fromCallback
 module.exports = {
   copy: u(__webpack_require__(295))
 }
@@ -67823,12 +67824,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _theme_Layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(14);
-/* harmony import */ var _styles_module_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(18);
+/* harmony import */ var _styles_module_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(15);
 /* harmony import */ var _styles_module_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_styles_module_css__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _docusaurus_useBaseUrl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(12);
 /* harmony import */ var _components_Project__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(54);
 /* harmony import */ var _components_Cube__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(56);
-const Header=()=>{return/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div",{className:_styles_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.headerContainer},/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1",null,"This is Sheron,"),/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2",null,"just a random CS student @ Columbia SEAS."));};const projects=[{name:"Seeing Epidemiology",color:"#D6EFFA",description:"Forked from Seeing Theory, this is a visualization for basic terms in epidemiology and my d3.js playground.",links:[{label:"Website",link:"https://sheronw.xyz/Seeing-Epidemiology/Measure-Disease-Frequency/"},{label:"Github",link:"https://github.com/sheronw/Seeing-Epidemiology"}],time:"2020.06 - today"},{name:"六博出土地点可视化",color:"#ad8e7f",description:"A visual and educational website for the findspots of liubo (Chinese: 六博), an ancient Chinese board game.",links:[{label:"Github",link:"https://github.com/sheronw/liubo"}],time:"2020.03 - today"}];function Home(){return/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_theme_Layout__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"],{description:"SheronW \u7684\u81EA\u7559\u5730"},/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div",{className:_styles_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.mainContainer},/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div",{className:_styles_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.leftContainer},/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Header,null),/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div",{className:_styles_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.subheaderContainer},/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1",null,"I build stuffs for fun,"),/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2",null,"and for my interests in user interactions.")),projects.map(p=>/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Project__WEBPACK_IMPORTED_MODULE_5__["default"],{info:p,key:p.name}))),/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Cube__WEBPACK_IMPORTED_MODULE_6__["default"],null)));}/* harmony default export */ __webpack_exports__["default"] = (Home);
+const Header=()=>{return/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div",{className:_styles_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.headerContainer},/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1",null,"This is Sheron,"),/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2",null,"just a random CS student @ Columbia SEAS."));};const projects=[{name:"Seeing Epidemiology",color:"#D6EFFA",description:"Forked from Seeing Theory, this is a visualization for basic terms in epidemiology and my d3.js playground.",links:[{label:"Website",link:"https://sheronw.xyz/Seeing-Epidemiology/Measure-Disease-Frequency/"},{label:"Github",link:"https://github.com/sheronw/Seeing-Epidemiology"}],time:"2020.06 - today"},{name:"六博出土地点可视化",color:"#ad8e7f",description:"A visual and educational website for the findspots of liubo (Chinese: 六博), an ancient Chinese board game.",links:[{label:"Github",link:"https://github.com/sheronw/liubo"}],time:"2020.03 - today"}];function Home(){return/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_theme_Layout__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"],{description:"SheronW \u7684\u81EA\u7559\u5730"},/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div",{className:_styles_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.mainContainer},/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img",{className:_styles_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.light,alt:"light off",src:Object(_docusaurus_useBaseUrl__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])("img/off.svg")}),/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div",{className:_styles_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.leftContainer},/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Header,null),/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div",{className:_styles_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.subheaderContainer},/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1",null,"I build things for fun,"),/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2",null,"and for my interests in user interactions.")),projects.map(p=>/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Project__WEBPACK_IMPORTED_MODULE_5__["default"],{info:p,key:p.name}))),/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Cube__WEBPACK_IMPORTED_MODULE_6__["default"],null)));}/* harmony default export */ __webpack_exports__["default"] = (Home);
 
 /***/ }),
 /* 163 */
@@ -84940,7 +84941,7 @@ module.exports = copy
 "use strict";
 
 
-const u = __webpack_require__(15).fromCallback
+const u = __webpack_require__(16).fromCallback
 const fs = __webpack_require__(11)
 const path = __webpack_require__(5)
 const mkdir = __webpack_require__(19)
@@ -85346,7 +85347,7 @@ module.exports = {
 "use strict";
 
 
-const u = __webpack_require__(15).fromCallback
+const u = __webpack_require__(16).fromCallback
 const path = __webpack_require__(5)
 const fs = __webpack_require__(11)
 const mkdir = __webpack_require__(19)
@@ -85402,7 +85403,7 @@ module.exports = {
 "use strict";
 
 
-const u = __webpack_require__(15).fromCallback
+const u = __webpack_require__(16).fromCallback
 const path = __webpack_require__(5)
 const fs = __webpack_require__(11)
 const mkdir = __webpack_require__(19)
@@ -85470,7 +85471,7 @@ module.exports = {
 "use strict";
 
 
-const u = __webpack_require__(15).fromCallback
+const u = __webpack_require__(16).fromCallback
 const path = __webpack_require__(5)
 const fs = __webpack_require__(11)
 const _mkdirs = __webpack_require__(19)
@@ -85684,7 +85685,7 @@ module.exports = {
 "use strict";
 
 
-const u = __webpack_require__(15).fromCallback
+const u = __webpack_require__(16).fromCallback
 const jsonFile = __webpack_require__(87)
 
 jsonFile.outputJson = u(__webpack_require__(306))
@@ -85972,7 +85973,7 @@ module.exports = moveSync
 "use strict";
 
 
-const u = __webpack_require__(15).fromCallback
+const u = __webpack_require__(16).fromCallback
 module.exports = {
   move: u(__webpack_require__(311))
 }
@@ -86057,7 +86058,7 @@ module.exports = move
 "use strict";
 
 
-const u = __webpack_require__(15).fromCallback
+const u = __webpack_require__(16).fromCallback
 const fs = __webpack_require__(11)
 const path = __webpack_require__(5)
 const mkdir = __webpack_require__(19)
