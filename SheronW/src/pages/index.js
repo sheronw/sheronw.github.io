@@ -5,10 +5,11 @@ import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import Project from "./components/Project";
 import Cube from "./components/Cube";
+import Torus from "./components/Torus";
 
 const projects = [
   {
-    name: "Seeing Epidemiology",
+    name: "Seeing Epidemiology (Working)",
     color: "#D6EFFA",
     description:
       "Forked from Seeing Theory, this is a visualization for basic terms in epidemiology and my d3.js playground.",
@@ -26,7 +27,7 @@ const projects = [
     time: "2020.06 - today",
   },
   {
-    name: "六博出土地点可视化",
+    name: "六博出土地点可视化 (Working)",
     color: "#ad8e7f",
     description:
       "A visual and educational website for the findspots of liubo (Chinese: 六博), an ancient Chinese board game.",
@@ -37,6 +38,23 @@ const projects = [
       },
     ],
     time: "2020.03 - today",
+  },
+  {
+    name: "Expire Soon Bot",
+    color: "#91B493",
+    description:
+      "A telegram bot to send notifications when any item you track is expiring soon.",
+    links: [
+      {
+        label: "Github",
+        link: "https://github.com/sheronw/ExpireBot",
+      },
+      {
+        label: "Telegram",
+        link: "https://t.me/expiresoonbot",
+      },
+    ],
+    time: "2019.11 - 2019.12",
   },
 ];
 
@@ -100,7 +118,7 @@ function Home() {
             ))}
           </div>
         )}
-        <Cube />
+        {lightOn ? <Torus /> : <Cube />}
       </div>
     </Layout>
   );

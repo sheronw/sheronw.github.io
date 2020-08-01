@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styles from "../styles.module.css";
 import * as THREE from "three";
 
-export class Cube extends Component {
+export class Torus extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,12 +34,12 @@ export class Cube extends Component {
 
     // draw cubes
     const drawCube = (x, y, z) => {
-      const geometry = new THREE.BoxGeometry(60, 60, 60, 0, 0, 0);
+      const geometry = new THREE.TorusKnotGeometry(65, 8, 14, 4, 11, 7);
       const wireframe = new THREE.WireframeGeometry(geometry);
       const line = new THREE.LineSegments(
         wireframe,
         new THREE.LineBasicMaterial({
-          color: 0x000000,
+          color: 0xffffff,
         })
       );
       line.position.set(x, y, z);
@@ -47,12 +47,6 @@ export class Cube extends Component {
     };
 
     drawCube(0, 0, 0);
-    drawCube(0, 0, 60);
-    drawCube(0, 60, 0);
-    drawCube(60, 0, 0);
-    drawCube(0, 0, -60);
-    drawCube(0, -60, 0);
-    drawCube(-60, 0, 0);
 
     this.canvas.parentElement.addEventListener("mousemove", this.onMouseMove);
 
@@ -70,8 +64,8 @@ export class Cube extends Component {
 
   onMouseMove(event) {
     this.setState({
-      mouseX: this.state.mouseX + event.movementX * 0.05,
-      mouseY: this.state.mouseY + event.movementY * 0.1,
+      mouseX: this.state.mouseX + event.movementX * 0.1,
+      mouseY: this.state.mouseY + event.movementY * 0.2,
     });
   }
 
@@ -85,4 +79,4 @@ export class Cube extends Component {
   }
 }
 
-export default Cube;
+export default Torus;
