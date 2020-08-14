@@ -18,12 +18,6 @@ module.exports = {
       links: [
         { to: "blog", label: "博客", position: "right" },
         {
-          to: "docs/stories/index",
-          activeBasePath: "docs",
-          label: "编故事",
-          position: "right",
-        },
-        {
           to: "docs/read/index",
           activeBasePath: "docs",
           label: "阅读",
