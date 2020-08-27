@@ -33,6 +33,10 @@ const projects = [
       "A visual and educational website for the findspots of liubo (Chinese: 六博), an ancient Chinese board game.",
     links: [
       {
+        label: "Website",
+        link: "https://sheronw.xyz/liubo",
+      },
+      {
         label: "Github",
         link: "https://github.com/sheronw/liubo",
       },
@@ -107,7 +111,7 @@ function Home() {
           <div className={styles.leftContainer}>
             <div className={styles.headerContainer}>
               <h1>This is Sheron,</h1>
-              <h2>just a random CS student @ Columbia SEAS.</h2>
+              <h2>just a random junior CS student @ Columbia SEAS.</h2>
             </div>
             <div className={styles.subheaderContainer}>
               <h1>I build things for fun,</h1>

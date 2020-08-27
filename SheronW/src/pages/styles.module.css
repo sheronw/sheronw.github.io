@@ -3,6 +3,7 @@
  * CSS files with the .module.css suffix will be treated as CSS modules
  * and scoped locally.
  */
+@import url("https://fonts.loli.net/css2?family=Libre+Baskerville:wght@400;700&display=swap");
 
 .mainContainer {
   display: flex;
@@ -11,6 +12,7 @@
   flex-grow: 1;
   transition: background-color 1s;
   min-height: 100vh;
+  font-family: "Libre Baskerville", serif;
 }
 
 .leftContainer {
