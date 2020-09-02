@@ -7,6 +7,7 @@ module.exports = {
       "stories/yeyin1",
       "stories/yeyin2",
       "stories/yeyin3",
+      "stories/yeyin4",
     ],
   },
   read: {
