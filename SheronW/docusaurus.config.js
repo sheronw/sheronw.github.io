@@ -7,7 +7,7 @@ module.exports = {
   organizationName: "sheronw", // Usually your GitHub org/user name.
   projectName: "sheronw.github.io", // Usually your repo name.
   themeConfig: {
-    disableDarkMode: true,
+    colorMode: { disableSwitch: true },
     navbar: {
       title: "Sheron W",
       /*
@@ -15,7 +15,7 @@ module.exports = {
         alt: "My Site Logo",
         src: "img/mstile-150x150.png",
       },*/
-      links: [
+      items: [
         { to: "blog", label: "博客", position: "right" },
         {
           to: "docs/read/index",
@@ -40,7 +40,6 @@ module.exports = {
       "@docusaurus/preset-classic",
       {
         docs: {
-          homePageId: "read/index",
           sidebarPath: require.resolve("./sidebars.js"),
         },
         theme: {
