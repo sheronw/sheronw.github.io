@@ -27,7 +27,7 @@ const projects = [
     time: "2020.06 - today",
   },
   {
-    name: "六博出土地点可视化 (Working)",
+    name: "六博出土位置考",
     color: "#ad8e7f",
     description:
       "A visual and educational website for the findspots of liubo (Chinese: 六博), an ancient Chinese board game.",
@@ -50,12 +50,12 @@ const projects = [
       "A telegram bot to send notifications when any item you track is expiring soon.",
     links: [
       {
-        label: "Github",
-        link: "https://github.com/sheronw/ExpireBot",
-      },
-      {
         label: "Telegram",
         link: "https://t.me/expiresoonbot",
+      },
+      {
+        label: "Github",
+        link: "https://github.com/sheronw/ExpireBot",
       },
     ],
     time: "2019.11 - 2019.12",
