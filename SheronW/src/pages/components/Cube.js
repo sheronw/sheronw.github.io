@@ -76,7 +76,7 @@ export class Cube extends Component {
     const y = this.state.mouseY;
     this.setState({
       mouseX: x + event.movementX * 0.4 * -1,
-      mouseY: y + event.movementY * 0.8,
+      mouseY: y + event.movementY * 0.8 * -1,
     });
   }
 
