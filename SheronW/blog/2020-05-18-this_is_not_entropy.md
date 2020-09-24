@@ -48,6 +48,8 @@ tags: [荒唐言]
 - 「万有引力之虹」托马斯·品钦
 - 「猫的摇篮」库尔特·冯内古特
 
+一篇解释熵的科普文章：[Entropy Explained, With Sheep](https://aatishb.com/entropy/)
+
 参考文献：
 
 - 「宇宙演化与热寂说」 俞允强（原载于「物理」杂志 40 卷）
