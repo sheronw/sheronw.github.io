@@ -6,8 +6,8 @@ export class Cube extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mouseX: 200,
-      mouseY: 200,
+      positionX: 200,
+      positionY: 200,
     };
     this.onMouseMove = this.onMouseMove.bind(this);
   }
@@ -63,8 +63,8 @@ export class Cube extends Component {
     const animate = () => {
       requestAnimationFrame(animate);
       // required if controls.enableDamping or controls.autoRotate are set to true
-      camera.position.x = this.state.mouseX;
-      camera.position.y = this.state.mouseY;
+      camera.position.x = this.state.positionX;
+      camera.position.y = this.state.positionY;
       camera.lookAt(scene.position);
       renderer.render(scene, camera);
     };
@@ -72,11 +72,11 @@ export class Cube extends Component {
   }
 
   onMouseMove(event) {
-    const x = this.state.mouseX;
-    const y = this.state.mouseY;
+    const x = this.state.positionX;
+    const y = this.state.positionY;
     this.setState({
-      mouseX: x + event.movementX * 0.4 * -1,
-      mouseY: y + event.movementY * 0.8 * -1,
+      positionX: x + event.movementX * 0.4 * -1,
+      positionY: y + event.movementY * 0.1 * -1,
     });
   }
 

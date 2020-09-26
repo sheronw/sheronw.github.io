@@ -3,6 +3,8 @@ title: 利用 IFTTT 将 Toggl Report 发送到 Telegram Channel
 tags: [折腾记录]
 ---
 
+【2020.9.25 更新】现在 IFTTT 开始付费，感觉不值，散了吧散了吧（虽然 Toggl Report 的获取依然可以参考）。
+
 ## 主要思路
 
 <del>生写一个 Telegram Bot 也不是不行但我就是想找借口玩 IFTTT</del>
