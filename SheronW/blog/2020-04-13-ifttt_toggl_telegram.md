@@ -3,6 +3,8 @@ title: 利用 IFTTT 将 Toggl Report 发送到 Telegram Channel
 tags: [折腾记录]
 ---
 
+【2020.11.5 更新】趣闻一则：因为 star 了 Toggl API，被一个英国的独立开发者发了 cold email，于是就花了十分钟在 zoom 上和他聊了聊，老哥似乎是想做一个使用类似 Toggl 这样的工具手机数据，然后用外加机器学习分析码农生产力的产品。
+
 【2020.9.25 更新】现在 IFTTT 开始付费，感觉不值，散了吧散了吧（虽然 Toggl Report 的获取依然可以参考）。
 
 ## 主要思路
