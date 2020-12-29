@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://sheronw.github.io/blog</id>
+    <title>Sheron W Blog</title>
+    <updated>2020-08-14T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://sheronw.github.io/blog"/>
+    <subtitle>Sheron W Blog</subtitle>
+    <icon>https://sheronw.github.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[我已经忘记半年前在做什么了]]></title>
+        <id>我已经忘记半年前在做什么了</id>
+        <link href="https://sheronw.github.io/blog/2020/08/14/my-pandemic-life"/>
+        <updated>2020-08-14T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[这篇文章是我今年的年度总结，准确来说，是「这半年」的居家隔离总结，因为这半年的生活的确是十分之废，以至于我对一切正常的「前半年」实在是没什么印象了。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[IMGUI 中文支持方案]]></title>
+        <id>IMGUI 中文支持方案</id>
+        <link href="https://sheronw.github.io/blog/2020/07/01/imgui-chinese"/>
+        <updated>2020-07-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[没学过 c++，单纯想头铁汉化个东西，就查资料折腾了一下，这里做一个小的总结。如果有更好的方案请指正。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[关于熵的简短科普（？）]]></title>
+        <id>关于熵的简短科普（？）</id>
+        <link href="https://sheronw.github.io/blog/2020/05/18/this_is_not_entropy"/>
+        <updated>2020-05-18T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[咱一个同学想把文科生社科生艺术生理科生（我）凑在一起聊一下这学期学到的有趣的东西，我寻思着这学期也没讲啥能够激发脑洞的东西啊……于是就找了物理基础课热力学那一章里面的东西准备讲讲，其实大部分内容都和课程本身没什么关系了。以下是粗劣的讲稿，如果有物理大佬帮我订正肯定是极好的 www]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[利用 IFTTT 将 Toggl Report 发送到 Telegram Channel]]></title>
+        <id>利用 IFTTT 将 Toggl Report 发送到 Telegram Channel</id>
+        <link href="https://sheronw.github.io/blog/2020/04/13/ifttt_toggl_telegram"/>
+        <updated>2020-04-13T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[【2020.11.5 更新】趣闻一则：因为 star 了 Toggl API，被一个英国的独立开发者发了 cold email，于是就花了十分钟在 zoom 上和他聊了聊，老哥似乎是想做一个使用类似 Toggl 这样的工具手机数据，然后用外加机器学习分析码农生产力的产品。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[以学年总结为题的未来展望]]></title>
+        <id>以学年总结为题的未来展望</id>
+        <link href="https://sheronw.github.io/blog/2019/05/21/bye_sophomore"/>
+        <updated>2019-05-21T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[在大二学年的末尾，我觉得自己又多上了两年高中。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[齿轮化的我们]]></title>
+        <id>齿轮化的我们</id>
+        <link href="https://sheronw.github.io/blog/2019/03/30/gear_world"/>
+        <updated>2019-03-30T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[读英语言文学专业的同学写的小说，里面某个人物说了这么一句话：]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[我果然一直都在无效学习]]></title>
+        <id>我果然一直都在无效学习</id>
+        <link href="https://sheronw.github.io/blog/2019/03/27/make_it_stick"/>
+        <updated>2019-03-27T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[高中的时候，由于被整个大环境洗了脑，我拿出了前所未有的干劲，开始随着全日制高中每一个小时都被安排好的作息，做出一副每时每刻都在好好学习的样子，但我很快就意识到，自己对所谓『知识』的掌握程度并不好，以至于到底学到了什么，我自己也说不出来。虽然隐约地觉得自己的学习方式可能出了些问题，但那时的我更认为自己只是还不够努力，只要没有学到死就没有资格去考虑这个问题，至于那些取得好成绩的同学，我统统将他们纳入天赋异禀的范畴。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2018年度书单]]></title>
+        <id>2018年度书单</id>
+        <link href="https://sheronw.github.io/blog/2018/12/31/2018booklist"/>
+        <updated>2018-12-31T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[我觉得我今年没怎么读书，准确来讲是没逼着自己读书，结果就是读了好多虚构类(其实就是小说……)]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[史记商君列传]]></title>
+        <id>史记商君列传</id>
+        <link href="https://sheronw.github.io/blog/2018/08/24/shangjunliezhuan"/>
+        <updated>2018-08-24T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[之前一直觉得商鞅的故事挺让人费解的，尤其是他这么拉仇恨。但这只是一个现代人的理解——虽然现在也没好到哪里去，但至少我们还标榜法制社会嘛，民主法治不算深入人心但基本上都懂。我无法想象在一个统治阶级啥都说了算（现在不是？）的世界里，一个人跑出来说要法治要法治在什么程度上触及了既得利益者的利益。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[深圳小纪行]]></title>
+        <id>深圳小纪行</id>
+        <link href="https://sheronw.github.io/blog/2018/05/24/shenzhen1st"/>
+        <updated>2018-05-24T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[虽然之前没去过，但基本上和自己的预想没什么区别，除了真的没想到五月份就这么热 QvQ]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2017年度书单]]></title>
+        <id>2017年度书单</id>
+        <link href="https://sheronw.github.io/blog/2018/01/12/2017booklist"/>
+        <updated>2018-01-12T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[拖了很久才动笔写，一口气全写完感觉快要吐了。今年按理来说真的不算特别忙，但所有的品类加在一起也就读了二十本左右（不过小说类比往年低了很多……真的是一年比一年小说看得少），而且回顾思考也远远不到位，希望 2018 能够养成抽空读书的好习惯。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[不知道应该起什么标题的纽约纪行]]></title>
+        <id>不知道应该起什么标题的纽约纪行</id>
+        <link href="https://sheronw.github.io/blog/2018/01/05/Christmas2017InNYC"/>
+        <updated>2018-01-05T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[今年圣诞假也就两个周，和过年的时间也对不上，所以自认为并没有回国的需要（最主要的是今年入了 Pixel 2，还有各种在墙外用习惯了的服务，不想回国再折腾），于是和几个中国留学生合计了一下，发现去趟纽约的来回路费+Airbnb 多人拼房的费用比来回机票要便宜点儿，就在距离出发一两周前十分敷衍地把所有东西订完了（其实早点定的话会更便宜……）。]]></summary>
+    </entry>
+</feed>
