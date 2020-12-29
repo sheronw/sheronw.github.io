@@ -11,10 +11,24 @@ import BlogPostPaginator from "@theme/BlogPostPaginator";
 import BlogSidebar from "@theme/BlogSidebar";
 import TOC from "@theme/TOC";
 import IconEdit from "@theme/IconEdit";
-import GitalkComponent from "gitalk/dist/gitalk-component";
+import "gitalk/dist/gitalk.css";
+import Gitalk from "gitalk";
 import { config } from "./config";
 
 function BlogPostPage(props) {
+  useEffect(() => {
+    const gitalk = new Gitalk({
+      clientID: "8a38f2dd6eab3ba97cf5",
+      clientSecret: config.clientSecret,
+      repo: "sheronw.github.io",
+      owner: "sheronw",
+      admin: ["sheronw"],
+      distractionFreeMode: false, // Facebook-like distraction free mode
+    });
+
+    gitalk.render("gitalk-container");
+  }, []);
+
   const { content: BlogPostContents, sidebar } = props;
   const { frontMatter, metadata } = BlogPostContents;
   const { title, description, nextItem, prevItem, editUrl } = metadata;
@@ -52,16 +66,7 @@ function BlogPostPage(props) {
                   <BlogPostPaginator nextItem={nextItem} prevItem={prevItem} />
                 </div>
               )}
-              <GitalkComponent
-                options={{
-                  clientID: "8a38f2dd6eab3ba97cf5",
-                  clientSecret: config.clientSecret,
-                  repo: "sheronw.github.io",
-                  owner: "sheronw",
-                  admin: ["sheronw"],
-                  id: title,
-                }}
-              />
+              <div id="gitalk-container"></div>
             </main>
             {!hideTableOfContents && BlogPostContents.toc && (
               <div className="col col--2">
