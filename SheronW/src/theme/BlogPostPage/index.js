@@ -14,21 +14,9 @@ import IconEdit from "@theme/IconEdit";
 import "gitalk/dist/gitalk.css";
 import Gitalk from "gitalk";
 import { config } from "./config";
+import BrowserOnly from "@docusaurus/BrowserOnly";
 
 function BlogPostPage(props) {
-  useEffect(() => {
-    const gitalk = new Gitalk({
-      clientID: "8a38f2dd6eab3ba97cf5",
-      clientSecret: config.clientSecret,
-      repo: "sheronw.github.io",
-      owner: "sheronw",
-      admin: ["sheronw"],
-      distractionFreeMode: false, // Facebook-like distraction free mode
-    });
-
-    gitalk.render("gitalk-container");
-  }, []);
-
   const { content: BlogPostContents, sidebar } = props;
   const { frontMatter, metadata } = BlogPostContents;
   const { title, description, nextItem, prevItem, editUrl } = metadata;
@@ -66,7 +54,7 @@ function BlogPostPage(props) {
                   <BlogPostPaginator nextItem={nextItem} prevItem={prevItem} />
                 </div>
               )}
-              <div id="gitalk-container"></div>
+              <div id="comment"></div>
             </main>
             {!hideTableOfContents && BlogPostContents.toc && (
               <div className="col col--2">
@@ -74,6 +62,25 @@ function BlogPostPage(props) {
               </div>
             )}
           </div>
+          <BrowserOnly fallback={<div id="comment"></div>}>
+            {() => {
+              window.onload = function () {
+                const node = document.createElement("div");
+                node.setAttribute("id", "gitalk-container");
+                document.getElementById("comment").appendChild(node);
+                const gitalk = new Gitalk({
+                  clientID: "8a38f2dd6eab3ba97cf5",
+                  clientSecret: config.clientSecret,
+                  repo: "sheronw.github.io",
+                  owner: "sheronw",
+                  admin: ["sheronw"],
+                  distractionFreeMode: false, // Facebook-like distraction free mode
+                });
+
+                gitalk.render("gitalk-container");
+              };
+            }}
+          </BrowserOnly>
         </div>
       )}
     </Layout>
