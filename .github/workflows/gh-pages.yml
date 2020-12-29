@@ -30,6 +30,8 @@ jobs:
 
       - run: yarn install
         working-directory: ./SheronW
+      - run: echo "const config = {clientSecret:'${{ secrets.CLIENT_SECRET }}'};export { config };" > config.js
+        working-directory: ./SheronW/src/theme/BlogPostPage
       - run: yarn build
         working-directory: ./SheronW
 
