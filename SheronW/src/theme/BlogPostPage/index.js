@@ -59,6 +59,7 @@ function BlogPostPage(props) {
                   repo: "sheronw.github.io",
                   owner: "sheronw",
                   admin: ["sheronw"],
+                  id: window.location.pathname,
                 }}
               />
             </main>
