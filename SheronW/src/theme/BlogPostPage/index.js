@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "@theme/Layout";
 import BlogPostItem from "@theme/BlogPostItem";
 import BlogPostPaginator from "@theme/BlogPostPaginator";
@@ -14,9 +14,24 @@ import IconEdit from "@theme/IconEdit";
 import "gitalk/dist/gitalk.css";
 import Gitalk from "gitalk";
 import { config } from "./config";
-import BrowserOnly from "@docusaurus/BrowserOnly";
+import md5 from "md5";
 
 function BlogPostPage(props) {
+  useEffect(() => {
+    const node = document.createElement("div");
+    node.setAttribute("id", "gitalk-container");
+    document.getElementById("comment").appendChild(node);
+    const gitalk = new Gitalk({
+      clientID: "8a38f2dd6eab3ba97cf5",
+      clientSecret: config.clientSecret,
+      repo: "sheronw.github.io",
+      owner: "sheronw",
+      admin: ["sheronw"],
+      id: md5(title),
+      distractionFreeMode: false, // Facebook-like distraction free mode
+    });
+    gitalk.render("gitalk-container");
+  }, []);
   const { content: BlogPostContents, sidebar } = props;
   const { frontMatter, metadata } = BlogPostContents;
   const { title, description, nextItem, prevItem, editUrl } = metadata;
@@ -62,25 +77,6 @@ function BlogPostPage(props) {
               </div>
             )}
           </div>
-          <BrowserOnly fallback={<div id="comment"></div>}>
-            {() => {
-              window.onload = function () {
-                const node = document.createElement("div");
-                node.setAttribute("id", "gitalk-container");
-                document.getElementById("comment").appendChild(node);
-                const gitalk = new Gitalk({
-                  clientID: "8a38f2dd6eab3ba97cf5",
-                  clientSecret: config.clientSecret,
-                  repo: "sheronw.github.io",
-                  owner: "sheronw",
-                  admin: ["sheronw"],
-                  distractionFreeMode: false, // Facebook-like distraction free mode
-                });
-
-                gitalk.render("gitalk-container");
-              };
-            }}
-          </BrowserOnly>
         </div>
       )}
     </Layout>
