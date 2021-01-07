@@ -4,9 +4,16 @@
         <title>Sheron W Blog</title>
         <link>https://sheronw.github.io/blog</link>
         <description>Sheron W Blog</description>
-        <lastBuildDate>Fri, 14 Aug 2020 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 04 Jan 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[Assign a Subdomain to Elastic Beanstalk and Enable HTTPS]]></title>
+            <link>https://sheronw.github.io/blog/2021/01/04/subdomain-https-for-eb</link>
+            <guid>Assign a Subdomain to Elastic Beanstalk and Enable HTTPS</guid>
+            <pubDate>Mon, 04 Jan 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[To enable HTTPS (easily), make sure you created one Elastic Beanstalk environment with Load Balancer option.]]></description>
+        </item>
         <item>
             <title><![CDATA[我已经忘记半年前在做什么了]]></title>
             <link>https://sheronw.github.io/blog/2020/08/14/my-pandemic-life</link>

@@ -2,11 +2,18 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sheronw.github.io/blog</id>
     <title>Sheron W Blog</title>
-    <updated>2020-08-14T00:00:00.000Z</updated>
+    <updated>2021-01-04T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sheronw.github.io/blog"/>
     <subtitle>Sheron W Blog</subtitle>
     <icon>https://sheronw.github.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Assign a Subdomain to Elastic Beanstalk and Enable HTTPS]]></title>
+        <id>Assign a Subdomain to Elastic Beanstalk and Enable HTTPS</id>
+        <link href="https://sheronw.github.io/blog/2021/01/04/subdomain-https-for-eb"/>
+        <updated>2021-01-04T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[To enable HTTPS (easily), make sure you created one Elastic Beanstalk environment with Load Balancer option.]]></summary>
+    </entry>
     <entry>
         <title type="html"><![CDATA[我已经忘记半年前在做什么了]]></title>
         <id>我已经忘记半年前在做什么了</id>
