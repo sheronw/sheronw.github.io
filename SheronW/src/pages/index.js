@@ -111,7 +111,7 @@ function Home() {
           <div className={styles.leftContainer}>
             <div className={styles.headerContainer}>
               <h1>This is Sheron,</h1>
-              <h2>just a random junior CS student @ Columbia SEAS.</h2>
+              <h2>just a random CS student @ Columbia SEAS.</h2>
             </div>
             <div className={styles.subheaderContainer}>
               <h1>I build things for fun,</h1>

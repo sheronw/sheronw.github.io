@@ -28,6 +28,7 @@ module.exports = {
           label: "Notes",
           position: "right",
         },
+        { to: "links", label: "Links", position: "right" },
       ],
     },
     footer: {
