@@ -4,9 +4,16 @@
         <title>Sheron W Blog</title>
         <link>https://sheronw.github.io/blog</link>
         <description>Sheron W Blog</description>
-        <lastBuildDate>Mon, 04 Jan 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 29 Apr 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[两家中餐馆、折扣超市与中超送货，还有俩月没手机]]></title>
+            <link>https://sheronw.github.io/blog/2021/04/29/one-year-of-isolation</link>
+            <guid>两家中餐馆、折扣超市与中超送货，还有俩月没手机</guid>
+            <pubDate>Thu, 29 Apr 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[与上一学年的对比]]></description>
+        </item>
         <item>
             <title><![CDATA[Assign a Subdomain to Elastic Beanstalk and Enable HTTPS]]></title>
             <link>https://sheronw.github.io/blog/2021/01/04/subdomain-https-for-eb</link>
