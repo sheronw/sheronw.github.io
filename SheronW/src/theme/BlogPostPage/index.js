@@ -9,6 +9,7 @@ import Seo from "@theme/Seo";
 import BlogLayout from "@theme/BlogLayout";
 import BlogPostItem from "@theme/BlogPostItem";
 import BlogPostPaginator from "@theme/BlogPostPaginator";
+import BrowserOnly from "@docusaurus/BrowserOnly";
 import { ThemeClassNames } from "@docusaurus/theme-common";
 import TOC from "@theme/TOC";
 import { config } from "./config";
@@ -90,17 +91,21 @@ function BlogPostPage(props) {
       {(nextItem || prevItem) && (
         <BlogPostPaginator nextItem={nextItem} prevItem={prevItem} />
       )}
-      <GitalkComponent
-        options={{
-          clientID: "8a38f2dd6eab3ba97cf5",
-          clientSecret: config.clientSecret,
-          repo: "sheronw.github.io",
-          owner: "sheronw",
-          admin: ["sheronw"],
-          id: md5(title),
-          distractionFreeMode: false, // Facebook-like distraction free mode
-        }}
-      />
+      <BrowserOnly>
+        {() => (
+          <GitalkComponent
+            options={{
+              clientID: "8a38f2dd6eab3ba97cf5",
+              clientSecret: config.clientSecret,
+              repo: "sheronw.github.io",
+              owner: "sheronw",
+              admin: ["sheronw"],
+              id: md5(title),
+              distractionFreeMode: false, // Facebook-like distraction free mode
+            }}
+          />
+        )}
+      </BrowserOnly>
     </BlogLayout>
   );
 }
