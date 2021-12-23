@@ -28,11 +28,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - run: yarn install
+      - run: npm run install
         working-directory: ./SheronW
       - run: echo "const config = {clientSecret:'${{ secrets.CLIENT_SECRET }}'};export { config };" > config.js
         working-directory: ./SheronW/src/theme/BlogPostPage
-      - run: yarn build
+      - run: npm run build
         working-directory: ./SheronW
 
       - name: Deploy
