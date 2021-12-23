@@ -18,7 +18,7 @@ module.exports = {
       items: [
         { to: "blog", label: "博客", position: "right" },
         {
-          to: "docs/read/index",
+          to: "docs/read/",
           activeBasePath: "docs",
           label: "阅读",
           position: "right",
@@ -46,8 +46,6 @@ module.exports = {
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
-        showLastUpdateAuthor: true,
-        showLastUpdateTime: true,
       },
     ],
   ],

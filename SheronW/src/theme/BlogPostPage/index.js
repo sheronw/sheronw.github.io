@@ -4,82 +4,104 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import React, { useEffect } from "react";
-import Layout from "@theme/Layout";
+import React from "react";
+import Seo from "@theme/Seo";
+import BlogLayout from "@theme/BlogLayout";
 import BlogPostItem from "@theme/BlogPostItem";
 import BlogPostPaginator from "@theme/BlogPostPaginator";
-import BlogSidebar from "@theme/BlogSidebar";
+import { ThemeClassNames } from "@docusaurus/theme-common";
 import TOC from "@theme/TOC";
-import IconEdit from "@theme/IconEdit";
-import "gitalk/dist/gitalk.css";
-import Gitalk from "gitalk";
 import { config } from "./config";
 import md5 from "md5";
+import "gitalk/dist/gitalk.css";
+import GitalkComponent from "gitalk/dist/gitalk-component";
 
 function BlogPostPage(props) {
-  useEffect(() => {
-    const node = document.createElement("div");
-    node.setAttribute("id", "gitalk-container");
-    document.getElementById("comment").appendChild(node);
-    const gitalk = new Gitalk({
-      clientID: "8a38f2dd6eab3ba97cf5",
-      clientSecret: config.clientSecret,
-      repo: "sheronw.github.io",
-      owner: "sheronw",
-      admin: ["sheronw"],
-      id: md5(title),
-      distractionFreeMode: false, // Facebook-like distraction free mode
-    });
-    gitalk.render("gitalk-container");
-  }, []);
   const { content: BlogPostContents, sidebar } = props;
-  const { frontMatter, metadata } = BlogPostContents;
-  const { title, description, nextItem, prevItem, editUrl } = metadata;
-  const { hide_table_of_contents: hideTableOfContents } = frontMatter;
+  const {
+    // TODO this frontmatter is not validated/normalized, it's the raw user-provided one. We should expose normalized one too!
+    frontMatter,
+    assets,
+    metadata,
+  } = BlogPostContents;
+  const { title, description, nextItem, prevItem, date, tags, authors } =
+    metadata;
+  const {
+    hide_table_of_contents: hideTableOfContents,
+    keywords,
+    toc_min_heading_level: tocMinHeadingLevel,
+    toc_max_heading_level: tocMaxHeadingLevel,
+  } = frontMatter;
+  const image = assets.image ?? frontMatter.image;
   return (
-    <Layout
-      title={title}
-      description={description}
-      wrapperClassName="blog-wrapper"
+    <BlogLayout
+      wrapperClassName={ThemeClassNames.wrapper.blogPages}
+      pageClassName={ThemeClassNames.page.blogPostPage}
+      sidebar={sidebar}
+      toc={
+        !hideTableOfContents &&
+        BlogPostContents.toc &&
+        BlogPostContents.toc.length > 0 ? (
+          <TOC
+            toc={BlogPostContents.toc}
+            minHeadingLevel={tocMinHeadingLevel}
+            maxHeadingLevel={tocMaxHeadingLevel}
+          />
+        ) : undefined
+      }
     >
-      {BlogPostContents && (
-        <div className="container margin-vert--lg">
-          <div className="row">
-            <div className="col col--2">
-              <BlogSidebar sidebar={sidebar} />
-            </div>
-            <main className="col col--8">
-              <BlogPostItem
-                frontMatter={frontMatter}
-                metadata={metadata}
-                isBlogPostPage
-              >
-                <BlogPostContents />
-              </BlogPostItem>
-              <div>
-                {editUrl && (
-                  <a href={editUrl} target="_blank" rel="noreferrer noopener">
-                    <IconEdit />
-                    Edit this page
-                  </a>
-                )}
-              </div>
-              {(nextItem || prevItem) && (
-                <div className="margin-vert--xl">
-                  <BlogPostPaginator nextItem={nextItem} prevItem={prevItem} />
-                </div>
-              )}
-              <div id="comment"></div>
-            </main>
-            {!hideTableOfContents && BlogPostContents.toc && (
-              <div className="col col--2">
-                <TOC toc={BlogPostContents.toc} />
-              </div>
-            )}
-          </div>
-        </div>
+      <Seo // TODO refactor needed: it's a bit annoying but Seo MUST be inside BlogLayout
+        // otherwise  default image (set by BlogLayout) would shadow the custom blog post image
+        title={title}
+        description={description}
+        keywords={keywords}
+        image={image}
+      >
+        <meta property="og:type" content="article" />
+        <meta property="article:published_time" content={date} />
+
+        {/* TODO double check those article metas array syntaxes, see https://ogp.me/#array */}
+        {authors.some((author) => author.url) && (
+          <meta
+            property="article:author"
+            content={authors
+              .map((author) => author.url)
+              .filter(Boolean)
+              .join(",")}
+          />
+        )}
+        {tags.length > 0 && (
+          <meta
+            property="article:tag"
+            content={tags.map((tag) => tag.label).join(",")}
+          />
+        )}
+      </Seo>
+
+      <BlogPostItem
+        frontMatter={frontMatter}
+        assets={assets}
+        metadata={metadata}
+        isBlogPostPage
+      >
+        <BlogPostContents />
+      </BlogPostItem>
+
+      {(nextItem || prevItem) && (
+        <BlogPostPaginator nextItem={nextItem} prevItem={prevItem} />
       )}
-    </Layout>
+      <GitalkComponent
+        options={{
+          clientID: "8a38f2dd6eab3ba97cf5",
+          clientSecret: config.clientSecret,
+          repo: "sheronw.github.io",
+          owner: "sheronw",
+          admin: ["sheronw"],
+          id: md5(title),
+          distractionFreeMode: false, // Facebook-like distraction free mode
+        }}
+      />
+    </BlogLayout>
   );
 }
 
