@@ -16,7 +16,7 @@ module.exports = {
         src: "img/mstile-150x150.png",
       },*/
       items: [
-        { to: "blog", label: "博客", position: "right" },
+        { to: "/", label: "博客", position: "right" },
         {
           to: "docs/read/",
           activeBasePath: "docs",
@@ -42,6 +42,9 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
+        },
+        blog: {
+          routeBasePath: "/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
