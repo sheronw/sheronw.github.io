@@ -31,6 +31,6 @@ jobs:
         if: github.ref == 'refs/heads/source'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./sheron-box/build
+          publish_dir: ./sheron-box/public
           cname: sheronw.xyz
           publish_branch: master
