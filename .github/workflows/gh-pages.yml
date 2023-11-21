@@ -8,30 +8,29 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Setup Node
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
         with:
-          node-version: "16.x"
-          cache: "yarn"
-          cache-dependency-path: ./SheronW/yarn.lock
+          submodules: true # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
 
-      # - name: Setup Git Talk Config
-      #   working-directory: ./SheronW/src/theme/BlogPostPage
-      #   run: echo "const config = {clientSecret:'${{ secrets.CLIENT_SECRET }}'};export { config };" > config.js
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "latest"
+          # extended: true
 
-      - name: Build website
-        working-directory: ./SheronW
-        run: |
-          yarn install --frozen-lockfile
-          yarn build
+      - name: Build
+        working-directory: ./sheron-box
+        run: hugo --minify
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/master'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./SheronW/build
+          publish_dir: ./sheron-box/build
           cname: sheronw.xyz
           publish_branch: master
