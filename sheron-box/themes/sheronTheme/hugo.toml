@@ -1,0 +1,23 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'SheronW'
+
+[[menus.main]]
+name = '主页'
+pageRef = '/'
+weight = 10
+
+[[menus.main]]
+name = '文章'
+pageRef = '/posts'
+weight = 20
+
+[[menus.main]]
+name = '标签'
+pageRef = '/tags'
+weight = 30
+
+[module]
+  [module.hugoVersion]
+    extended = false
+    min = "0.116.0"

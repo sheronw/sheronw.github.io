@@ -1,0 +1,24 @@
+baseURL = 'https://sheronw.xyz/'
+languageCode = 'zh-cn'
+title = 'シャロン'
+theme = 'sheronTheme'
+
+[[menus.main]]
+name = '主页'
+pageRef = '/'
+weight = 10
+
+[[menus.main]]
+name = '文章'
+pageRef = '/posts'
+weight = 20
+
+[[menus.main]]
+name = '标签'
+pageRef = '/tags'
+weight = 30
+
+[[menus.main]]
+name = '频道'
+url = 'https://t.me/sheronw_in_the_box'
+weight = 40

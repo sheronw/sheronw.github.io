@@ -1,0 +1,22 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+{{ .Content }} {{ range .Pages }}
+{{ $dateMachine := .Date | time.Format
+"2006-01-02T15:04:05-07:00" }} {{ $dateHuman := .Date | time.Format ":date_long"}}
+{{- if eq .Kind "page" }}
+<div class="box-list">
+  <a href="{{ .RelPermalink }}"><h2 class="page-title-list">{{ .LinkTitle }}</h2></a>
+  <h3>Time published: <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time> </h3>
+  <p>{{ index (split .Content "</p>") 0 | plainify | truncate 300 }}</p>
+</div>
+{{- else if eq .Kind "term"}}
+
+<a href="{{ .RelPermalink }}"
+  ><p class="page-title-list">
+    <img src="/bullet.png" />
+    {{ .LinkTitle | truncate 40 }} |
+    <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+  </p></a
+>
+{{- end }}
+{{ end }} {{ end }}

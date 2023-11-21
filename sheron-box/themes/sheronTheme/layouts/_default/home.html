@@ -1,0 +1,11 @@
+{{ define "main" }} {{ .Content }}
+{{ range (where .Site.RegularPages.ByTitle "Type" "posts").ByDate.Reverse.Limit 5 }}
+<div class="box-list">
+  <a href="{{ .RelPermalink }}"><h2 class="page-title-list">{{ .LinkTitle }}</h2></a>
+      {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+  {{ $dateHuman := .Date | time.Format ":date_long" }}
+  <h3>Time published: <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time> </h3>
+  <p>{{ index (split .Content "</p>") 0 | plainify | truncate 300 }}</p>
+</div>
+{{ end }}
+{{ end }}
