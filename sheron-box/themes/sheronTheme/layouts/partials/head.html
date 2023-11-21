@@ -3,9 +3,13 @@
 {{ if .IsHome }}
 <title>{{ site.Title }}</title>
 <meta property="og:title" content="{{ site.Title }}" />
+<meta property="og:description" content="{{ .Description }}" />
 {{ else }}
 <title>{{ printf "%s | %s" .Title site.Title }}</title>
 <meta property="og:title" content="{{ printf "%s | %s" .Title site.Title }}" />
 <meta property="og:description" content="{{ index (split .Content "</p>") 0 | plainify | truncate 150 }}" />
-{{ end }} {{ partialCached "head/css.html" . }} {{ partialCached "head/js.html"
+{{ end }}
+<meta property="og:url" content="{{ .Permalink }}" />
+<meta property="og:image" content="{{ site.BaseURL }}avatar.png" />
+{{ partialCached "head/css.html" . }} {{ partialCached "head/js.html"
 . }}
