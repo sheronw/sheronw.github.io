@@ -10,13 +10,13 @@
   <p>{{ index (split .Content "</p>") 0 | plainify | truncate 300 }}</p>
 </div>
 {{- else if eq .Kind "term"}}
-
+<li>
 <a href="{{ .RelPermalink }}"
   ><p class="page-title-list">
-    <img src="/bullet.png" />
     {{ .LinkTitle | truncate 40 }} |
     <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
   </p></a
 >
+</li>
 {{- end }}
 {{ end }} {{ end }}

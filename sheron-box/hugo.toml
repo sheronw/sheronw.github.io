@@ -17,8 +17,3 @@ weight = 20
 name = '标签'
 pageRef = '/tags'
 weight = 30
-
-[[menus.main]]
-name = '频道'
-url = 'https://t.me/sheronw_in_the_box'
-weight = 40
