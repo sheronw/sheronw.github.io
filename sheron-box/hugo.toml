@@ -17,3 +17,8 @@ weight = 20
 name = '标签'
 pageRef = '/tags'
 weight = 30
+
+[[menus.main]]
+name = '关于'
+pageRef = '/aboutme'
+weight = 40
