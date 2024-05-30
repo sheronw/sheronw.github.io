@@ -1,5 +1,5 @@
 <a href="/"><img src="/avatar.png" /></a>
-<class id="header-inner">
+<class id="header-inner" {{ if eq .Page.Kind "page" }} class="page-header-inner" {{ end }}>
   <h1 id="site-title">{{ site.Title }}</h1>
   {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
 </class>

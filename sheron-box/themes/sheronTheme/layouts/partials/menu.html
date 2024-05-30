@@ -36,6 +36,7 @@ Renders a menu for the given menu ID.
           {{- end }}
         {{- end -}}
       >{{ or (T .Identifier) .Name | safeHTML }}</a>
+      <img src="/nav.gif" />
       {{- with .Children }}
         <ul>
           {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
