@@ -26,3 +26,4 @@ draft = false
 - [拉米](https://rami3l.github.io/)
 - [吼姆拉](https://homura.live/)
 - [滴滴](https://github.com/Icecovery)
+- [猎风](https://www.northarea.tech/)
