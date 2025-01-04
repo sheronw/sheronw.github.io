@@ -70,7 +70,7 @@ main {
 }
 
 .page-title-list:hover {
-  border-bottom: #eb7a77 1px;
+  border-bottom: var(--primary-color) 1px;
   color: var(--secondary-color-light);
 }
 
@@ -123,19 +123,22 @@ strong {
 
 .right li {
   padding-left: 20px;
+  padding-bottom: 5px;
   background-image: url(/bullet.png);
   list-style-type: none;
   background-repeat: no-repeat;
-  background-position-y: 0.25em;
+  background-position-y: 0.28em;
 }
 
 /* element style */
 
 blockquote {
-  background-image: url(/background.jpg);
+  background: linear-gradient(rgba(246, 235, 217, 0.6), rgba(246, 235, 217, 0.6)), 
+              url(/background.jpg);
   font-weight: 800;
   padding-left: 1em;
   margin-bottom: 1em;
+  border-left: solid var(--primary-color);
 }
 
 h1 {
