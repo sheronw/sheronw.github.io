@@ -1,5 +1,5 @@
 {{ define "main" }} {{ .Content }}
-{{ range (where .Site.RegularPages.ByTitle "Type" "posts").ByDate.Reverse.Limit 5 }}
+{{ $paginator := .Paginate (where .Site.RegularPages.ByTitle "Type" "posts").ByDate.Reverse }} {{ range $paginator.Pages }}
 <div class="box-list">
   <a href="{{ .RelPermalink }}"><h2 class="page-title-list">{{ .LinkTitle }}</h2></a>
       {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
@@ -8,4 +8,27 @@
   <p>{{ index (split .Content "</p>") 0 | plainify | truncate 300 }}</p>
 </div>
 {{ end }}
+<nav class="pagination">
+  <ul class="pagination-list">
+
+    {{ if $paginator.HasPrev }}
+      <li>
+        <a href="{{ $paginator.Prev.URL }}">«</a>
+      </li>
+    {{ end }}
+
+    {{ range $paginator.Pagers }}
+      <li class="{{ if eq . $paginator }}is-active{{ end }}">
+        <a href="{{ .URL }}">{{ .PageNumber }}</a>
+      </li>
+    {{ end }}
+
+    {{ if $paginator.HasNext }}
+      <li>
+        <a href="{{ $paginator.Next.URL }}">»</a>
+      </li>
+    {{ end }}
+
+  </ul>
+</nav>
 {{ end }}

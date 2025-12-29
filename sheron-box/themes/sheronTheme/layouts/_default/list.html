@@ -1,6 +1,7 @@
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
-{{ .Content }} {{ range .Pages }}
+{{ .Content }}
+{{ $paginator := .Paginate .Pages }} {{ range $paginator.Pages }}
 {{ $dateMachine := .Date | time.Format
 "2006-01-02T15:04:05-07:00" }} {{ $dateHuman := .Date | time.Format ":date_long"}}
 {{- if eq .Kind "page" }}
@@ -19,4 +20,28 @@
 >
 </li>
 {{- end }}
-{{ end }} {{ end }}
+{{ end }}
+<nav class="pagination">
+  <ul class="pagination-list">
+
+    {{ if $paginator.HasPrev }}
+      <li>
+        <a href="{{ $paginator.Prev.URL }}">«</a>
+      </li>
+    {{ end }}
+
+    {{ range $paginator.Pagers }}
+      <li class="{{ if eq . $paginator }}is-active{{ end }}">
+        <a href="{{ .URL }}">{{ .PageNumber }}</a>
+      </li>
+    {{ end }}
+
+    {{ if $paginator.HasNext }}
+      <li>
+        <a href="{{ $paginator.Next.URL }}">»</a>
+      </li>
+    {{ end }}
+
+  </ul>
+</nav>
+{{ end }}
